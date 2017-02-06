@@ -26,7 +26,7 @@ public class ArrayPractice{
       int[] test4 = {4, 4, 4, 4, 4, 4};
       System.out.println(Arrays.toString(findBetween(test4, 1, 5)));
 
-      int[] test5 = {4, 3, 65, 7, 8, 123};
+      int[] test5 = {4, 3, 65, 7, 8, 125};
       System.out.println(Arrays.toString(findBetween(test5, 4, 4)));
   }
   
