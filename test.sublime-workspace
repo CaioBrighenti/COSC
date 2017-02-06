@@ -1,0 +1,218 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+		]
+	},
+	"buffers":
+	[
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 152.0,
+		"last_filter": "Package Control: insta",
+		"selected_items":
+		[
+			[
+				"Package Control: insta",
+				"Package Control: Install Package"
+			],
+			[
+				"Package Control: in",
+				"Package Control: Install Package"
+			],
+			[
+				"Package Control: instal",
+				"Package Control: Install Package"
+			],
+			[
+				"Package Control: add\t",
+				"Package Control: Add Repository"
+			],
+			[
+				"set sytnax c#",
+				"Set Syntax: C#"
+			],
+			[
+				"Package Control: inst",
+				"Package Control: Install Package"
+			],
+			[
+				"Package Control: add",
+				"Package Control: Add Repository"
+			],
+			[
+				"Package Control: install\t",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 408.0
+	},
+	"console":
+	{
+		"height": 0.0,
+		"history":
+		[
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/C/Users/Caio Laptop/AppData/Roaming/Sublime Text 3/Packages/Default/Preferences.sublime-settings",
+		"/C/Users/Caio Laptop/AppData/Roaming/Sublime Text 3/Packages/User/Package Control.sublime-settings",
+		"/C/Users/Caio Laptop/Downloads/Quick Start to Unity_Volume 1/Unity Files/Assets/Scripts/CharacterMovement.cs",
+		"/C/Autodesk/Autodesk_Maya_2017_EN_JP_ZH_Win_64bit_dlm/setup.ini",
+		"/C/Users/Caio Laptop/Downloads/Autodesk/Autodesk_Maya_2017_EN_JP_ZH_Win_64bit_dlm/setup.ini",
+		"/C/Users/Caio Laptop/Documents/Viz Lab/Stonehenge/NEW WORK/Stonehengev2/Assets/Editor/Object2Terrain.cs",
+		"/C/Users/Caio Laptop/Downloads/cemu_1.6.4b/cemu_1.6.4/settings.bin",
+		"/C/Users/Caio Laptop/Documents/FIFA 15/fifasetup.ini",
+		"/C/Users/Caio Laptop/Documents/Unity Projects/Tutorial/Tutorial/Assets/CharacterMovement.cs",
+		"/C/Users/Caio Laptop/Documents/Unity Projects/Tutorial/Tutorial/Assets/movement_basic.cs",
+		"/C/Autodesk/Autodesk_Maya_2017_wi_en-US/setup.ini",
+		"/C/Program Files/Autodesk/Maya2017/bin/maya.exe"
+	],
+	"find":
+	{
+		"height": 23.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"theme",
+			"Scheme - Default/Monokai.tmTheme\",",
+			"5",
+			"prerequisi",
+			"requisite",
+			"require",
+			"prerequ",
+			"prere",
+			"3rd",
+			"prere"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"sheets":
+			[
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 23.0
+	},
+	"input":
+	{
+		"height": 49.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "",
+	"project": "test.sublime-project",
+	"replace":
+	{
+		"height": 42.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": true,
+	"show_tabs": true,
+	"side_bar_visible": false,
+	"side_bar_width": 225.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}

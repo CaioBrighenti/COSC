@@ -1,0 +1,787 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"new",
+				"newArray"
+			],
+			[
+				"nums",
+				"numsInRange"
+			],
+			[
+				"n",
+				"n_in_range"
+			],
+			[
+				"find",
+				"findFloor"
+			],
+			[
+				"bou",
+				"bound2"
+			],
+			[
+				"boun",
+				"bound1"
+			],
+			[
+				"S",
+				"System"
+			],
+			[
+				"draw",
+				"drawP2"
+			],
+			[
+				"empty",
+				"empty_spaces"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"contents": "/* COSC 102 - Lab 02\n * Spring '17\n * Caio Brighenti\n * 02/03/2017\n */ \n\nimport java.util.Scanner;\nimport java.util.Arrays;\n\npublic class ArrayPractice{\n  \n   public static void main(String[] args) {\n    // Test cases\n      int[] test = {4, 2, 9, 1, 4, 12};\n      System.out.println(Arrays.toString(findBetween(test, 10, 2)));\n\n      int[] test1 = {4, 12, 7, 8, 2, 9, 5};\n      System.out.println(Arrays.toString(findBetween(test1, 4, 10)));\n\n      int[] test2 = {8, 8, 10, 10, 8};\n      System.out.println(Arrays.toString(findBetween(test2, 9, 7)));\n\n      int[] test3 = {1, 2, 3, 4, 5};\n      System.out.println(Arrays.toString(findBetween(test3, 9728, 9921)));\n\n      int[] test4 = {4, 4, 4, 4, 4, 4};\n      System.out.println(Arrays.toString(findBetween(test4, 1, 5)));\n\n      int[] test5 = {4, 3, 65, 7, 8, 123};\n      System.out.println(Arrays.toString(findBetween(test5, 4, 4)));\n  }\n  \n  /* Accepts an array of ints, as well as two ints representing bounds.\n   * Returns a new array of ints that fall between the two bound arguments, inclusive.\n   * The returned array should be exactly the same size as the number of applicable numbers,\n   * with no extra indices.\n   * \n   * Returns a brand new array and does not modify the original argument array.\n   */\n  public static int[] findBetween(int[] nums, int bound1, int bound2){\n\n    // Find ceiling and floor\n  \tint ceil = findCeil(bound1, bound2);\n    int floor = findFloor(bound1, bound2);\n  \t\n    // Count numbers in range\n  \tint n_in_range = numsInRange(nums, ceil, floor);\n  \t\n    // Initialize array of proper size\n  \tint[] new_nums = new int[n_in_range];\n  \t\n    // Add numbers in range to array\n  \tpopulateArray(nums, ceil, floor, new_nums);\n  \t\n    return new_nums;\n  }\n\n  /*\n  * Helper methods\n  */\n\n  // Finds and returns the ceil\n  // given two bounds           \n  public static int findCeil(int bound1, int bound2){\n    if (bound1 > bound2)\n      return bound1;\n    return bound2;\n  }\n  \n  // Finds and returns the floor\n  // given two bounds    \n  public static int findFloor(int bound1, int bound2){\n    if (bound1 < bound2)\n      return bound1;\n    return bound2;\n  }\n\n  // Returns amount of numbers in\n  // given range\n  public static int numsInRange(int[] nums, int ceil, int floor){\n    int n_in_range = 0;\n    // Iterate through array, increment count for\n    // each number in range\n    for (int i = 0; i < nums.length; i++){\n      if (nums[i] >= floor && nums[i] <= ceil)\n        n_in_range++;\n    }\n    return n_in_range;\n  }\n\n  // Populates empty array with numbers\n  // found in the given range\n  public static void populateArray(int[] nums, int ceil, int floor, int[] newArray){\n    int count = 0;\n    // Iterate through array, add each number \n    // in range to new array\n    for (int i = 0; i < nums.length; i++){\n      if (nums[i] >= floor && nums[i] <= ceil){\n        newArray[count] = nums[i];\n        count ++;\n      }\n    }\n  }\n}",
+			"file": "ArrayPractice.java",
+			"file_size": 2922,
+			"file_write_time": 131306560882200747,
+			"settings":
+			{
+				"buffer_size": 2922,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "Histogram.java",
+			"settings":
+			{
+				"buffer_size": 200,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"contents": "{\n\t// save before running commands\n\t\"save_first\": true\n\n\t// if present, use this command instead of plain \"git\"\n\t// e.g. \"/Users/kemayo/bin/git\" or \"C:\\bin\\git.exe\"\n\t,\"git_command\": false\n\n\t// if present, use this command instead of plain \"gitk\"\n\t// e.g. \"/Users/kemayo/bin/gitk\" or \"C:\\bin\\gitk.exe\"\n\t,\"gitk_command\": false\n\n\t// point this the installation location of git-flow\n\t,\"git_flow_command\": \"/usr/local/bin/git-flow\"\n\n\t// use the panel for diff output, rather than a new scratch window (new tab)\n\t,\"diff_panel\": false\n\n\t// If you'd rather have your status command open files instead of show you a\n\t// diff, set this to true.  You can still do `Git: Status` followed by\n\t// 'Git: Diff Current File' to get a file diff\n\t,\"status_opens_file\": false\n\n\t// Use --verbose flag for commit messages\n\t,\"verbose_commits\": true\n\n\t// How many commit messages to store in the history. Set to 0 to disable.\n\t,\"history_size\": 5\n\n\t// Show git flow commands\n\t,\"flow\": false\n\t\n\t// By default git flow release and hotfix will tag a version. Set to true to disable.\n\t,\"flow-notag\": false\n\n\t// Annotations default to being on for all files. Can be slow in some cases.\n\t,\"annotations\": false\n\n\t// statusbar\n\t,\"statusbar_branch\": true\n\t// Symbols for quick git status in status bar\n\t,\"statusbar_status\": true\n\t,\"statusbar_status_symbols\" : {\"modified\": \"≠\", \"added\": \"+\", \"deleted\": \"×\", \"untracked\": \"?\", \"conflicts\": \"‼\", \"renamed\":\"R\", \"copied\":\"C\", \"clean\": \"✓\", \"separator\": \" \"}\n\n\t// e.g. \"Packages/Git/syntax/Git Commit Message.tmLanguage\"\n\t,\"diff_syntax\": \"Packages/Diff/Diff.tmLanguage\"\n\n\t// Rulers for commit view\n\t,\"commit_rulers\": [70]\n\n\t// Watch for gitignore changes?\n\t,\"gitignore_sync\": false\n}\n",
+			"file": "/C/Users/Caio Laptop/AppData/Roaming/Sublime Text 3/Packages/Git/Git.sublime-settings",
+			"file_size": -1,
+			"file_write_time": -1,
+			"settings":
+			{
+				"buffer_size": 1696,
+				"line_ending": "Windows",
+				"read_only": true,
+				"scratch": true
+			}
+		},
+		{
+			"contents": "Package Control Messages\n========================\n\nGitGutter\n---------\n\n  Thanks for installing Git Gutter!!!\n  \n  👣 Follow me: @jisaacks\n  \n  \n  💛 Git Gutter? Want to support development?\n  \n  I've teamed up with Wes Bos to offer the following discounts:\n  \n  +------------------------------------------------+\n  |                                                |\n  |   Use the coupon code GITGUTTER for $10 off    |\n  |                                                |\n  +------------------------------------------------+\n  \n  🏅 ⭐ ES6 ⭐\n  \n  👉 ES6.io/friend/GITGUTTER\n  \n  🏅 ⭐ Sublime Text Book ⭐\n  \n  👉 SublimeTextBook.com/friend/GITGUTTER\n  \n  🏅 ⭐ React For Beginners ⭐\n  \n  👉 ReactForBeginners.com/friend/GITGUTTER\n  \n  \n  Join 15,000 other developers already learning with Wes Bos.\n  \n  These are fantastic resources - 100% money back guarantee! 🌟\n",
+			"settings":
+			{
+				"buffer_size": 854,
+				"line_ending": "Windows",
+				"name": "Package Control Messages",
+				"read_only": true,
+				"scratch": true
+			}
+		}
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 354.0,
+		"last_filter": "git ",
+		"selected_items":
+		[
+			[
+				"git ",
+				"Git: Init"
+			],
+			[
+				"Package Control: insta",
+				"Package Control: Install Package"
+			],
+			[
+				"Package Control: install",
+				"Package Control: Install Package"
+			],
+			[
+				"Package Control: inst",
+				"Package Control: Install Package"
+			],
+			[
+				"Package Control: install \t",
+				"Package Control: Install Package"
+			],
+			[
+				"Package Control:in",
+				"Package Control: Install Package"
+			],
+			[
+				"Package Control: in",
+				"Package Control: Install Package"
+			],
+			[
+				"ssjava",
+				"Set Syntax: Java"
+			],
+			[
+				"Package Control: instal",
+				"Package Control: Install Package"
+			],
+			[
+				"Package Control: add\t",
+				"Package Control: Add Repository"
+			],
+			[
+				"set sytnax c#",
+				"Set Syntax: C#"
+			],
+			[
+				"Package Control: add",
+				"Package Control: Add Repository"
+			],
+			[
+				"Package Control: install\t",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 446.0
+	},
+	"console":
+	{
+		"height": 0.0,
+		"history":
+		[
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/C/Users/Caio Laptop/Documents/COSC 102"
+	],
+	"file_history":
+	[
+		"/C/Users/Caio Laptop/AppData/Roaming/Sublime Text 3/Packages/User/Terminal.sublime-settings",
+		"/C/Users/Caio Laptop/AppData/Roaming/Sublime Text 3/Packages/Terminal/Terminal.sublime-settings",
+		"/C/Users/Caio Laptop/Documents/COSC 102/SpaceNeedle.java",
+		"/C/Users/Caio Laptop/Documents/Rainmeter/Skins/Textime/12Hr/12Hr.ini",
+		"/C/Users/Caio Laptop/Documents/Rainmeter/Skins/Textime/Config.ini",
+		"/C/Users/Caio Laptop/Documents/Rainmeter/Skins/Textime/@Resources/Variables.inc",
+		"/C/Users/Caio Laptop/Documents/COSC 102/ArrayPractice.java",
+		"/C/Users/Caio Laptop/Documents/COSC 102/terminal.glue",
+		"/C/Users/Caio Laptop/Downloads/SpaceNeedle.java",
+		"/C/Users/Caio Laptop/Documents/COSC 102/test.java",
+		"/C/Users/Caio Laptop/AppData/Roaming/Sublime Text 3/Packages/Themr/Default (Windows).sublime-keymap",
+		"/C/Users/Caio Laptop/AppData/Roaming/Sublime Text 3/Packages/User/Preferences.sublime-settings",
+		"/C/Users/Caio Laptop/AppData/Roaming/Sublime Text 3/Packages/Terminal/readme.md",
+		"/C/Users/Caio Laptop/Documents/WindowsPowerShell/Microsoft.PowerShell_profile.ps1",
+		"/C/Users/Caio Laptop/AppData/Roaming/Sublime Text 3/Packages/Default/Preferences.sublime-settings",
+		"/C/Users/Caio Laptop/AppData/Roaming/Sublime Text 3/Packages/User/Package Control.sublime-settings",
+		"/C/Users/Caio Laptop/Downloads/Quick Start to Unity_Volume 1/Unity Files/Assets/Scripts/CharacterMovement.cs",
+		"/C/Autodesk/Autodesk_Maya_2017_EN_JP_ZH_Win_64bit_dlm/setup.ini",
+		"/C/Users/Caio Laptop/Downloads/Autodesk/Autodesk_Maya_2017_EN_JP_ZH_Win_64bit_dlm/setup.ini",
+		"/C/Users/Caio Laptop/Documents/Viz Lab/Stonehenge/NEW WORK/Stonehengev2/Assets/Editor/Object2Terrain.cs",
+		"/C/Users/Caio Laptop/Downloads/cemu_1.6.4b/cemu_1.6.4/settings.bin",
+		"/C/Users/Caio Laptop/Documents/FIFA 15/fifasetup.ini",
+		"/C/Users/Caio Laptop/Documents/Unity Projects/Tutorial/Tutorial/Assets/CharacterMovement.cs",
+		"/C/Users/Caio Laptop/Documents/Unity Projects/Tutorial/Tutorial/Assets/movement_basic.cs",
+		"/C/Autodesk/Autodesk_Maya_2017_wi_en-US/setup.ini",
+		"/C/Program Files/Autodesk/Maya2017/bin/maya.exe"
+	],
+	"find":
+	{
+		"height": 38.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"//",
+			"System.out.println",
+			"test",
+			"70",
+			"130",
+			"size",
+			"bound2",
+			"theme",
+			"Scheme - Default/Monokai.tmTheme\",",
+			"5",
+			"prerequisi",
+			"requisite",
+			"require",
+			"prerequ",
+			"prere",
+			"3rd",
+			"prere"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 1,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "ArrayPractice.java",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2922,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								72,
+								0
+							]
+						],
+						"settings":
+						{
+							"bracket_highlighter.busy": false,
+							"bracket_highlighter.locations":
+							{
+								"close":
+								{
+								},
+								"icon":
+								{
+								},
+								"open":
+								{
+								},
+								"unmatched":
+								{
+								}
+							},
+							"bracket_highlighter.regions":
+							[
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content"
+							],
+							"syntax": "Packages/Java/Java.sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "Histogram.java",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 200,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								195,
+								195
+							]
+						],
+						"settings":
+						{
+							"_anf_new": "",
+							"bracket_highlighter.busy": false,
+							"bracket_highlighter.locations":
+							{
+								"close":
+								{
+									"1":
+									[
+										197,
+										198
+									]
+								},
+								"icon":
+								{
+									"1":
+									[
+										"Packages/BracketHighlighter/icons/curly_bracket.png",
+										"brackethighlighter.default"
+									]
+								},
+								"open":
+								{
+									"1":
+									[
+										157,
+										158
+									]
+								},
+								"unmatched":
+								{
+								}
+							},
+							"bracket_highlighter.regions":
+							[
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content"
+							],
+							"syntax": "Packages/Java/Java.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "/C/Users/Caio Laptop/AppData/Roaming/Sublime Text 3/Packages/Git/Git.sublime-settings",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1696,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								422,
+								422
+							]
+						],
+						"settings":
+						{
+							"bracket_highlighter.busy": false,
+							"bracket_highlighter.locations":
+							{
+								"close":
+								{
+									"1":
+									[
+										425,
+										426
+									]
+								},
+								"icon":
+								{
+									"1":
+									[
+										"Packages/BracketHighlighter/icons/double_quote.png",
+										"brackethighlighter.default"
+									]
+								},
+								"open":
+								{
+									"1":
+									[
+										401,
+										402
+									]
+								},
+								"unmatched":
+								{
+								}
+							},
+							"bracket_highlighter.regions":
+							[
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content"
+							],
+							"syntax": "Packages/JavaScript/JSON.sublime-syntax"
+						},
+						"translation.x": -0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 854,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								854,
+								854
+							]
+						],
+						"settings":
+						{
+							"auto_indent": false,
+							"bracket_highlighter.busy": false,
+							"bracket_highlighter.locations":
+							{
+								"close":
+								{
+								},
+								"icon":
+								{
+								},
+								"open":
+								{
+								},
+								"unmatched":
+								{
+								}
+							},
+							"bracket_highlighter.regions":
+							[
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content"
+							],
+							"syntax": "Packages/Text/Plain text.tmLanguage",
+							"tab_width": 2,
+							"word_wrap": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 23.0
+	},
+	"input":
+	{
+		"height": 67.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "",
+	"project": "COSC102.sublime-project",
+	"replace":
+	{
+		"height": 42.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": true,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 225.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}
