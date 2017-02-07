@@ -4,7 +4,6 @@
  * 02/06/2017
  */ 
 
-
 public class Histogram{
 
 	public static void main(String[] args) {
