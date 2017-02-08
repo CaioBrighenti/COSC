@@ -53,6 +53,7 @@ public class Histogram{
 		return count;
 	}
 
+	// Populate the new array
 	public static void populateArray(String[][] new_array, String[] nums_str){
 		int count = 0;
 		// Iterate through original array
@@ -75,6 +76,7 @@ public class Histogram{
 		System.out.println(Arrays.deepToString(new_array));
 	}
 
+	// Print out the histogram
 	public static void printHistogram(String[][] data_array){
 		// Figure out amount of empty spaces
 		int max_length = getBiggest(data_array);
@@ -96,6 +98,7 @@ public class Histogram{
 		}
 	}
 
+	// Find the biggest length in the given array
 	public static int getBiggest(String[][] data_array){
 		int max_length = 0;
 		for (int i = 0; i < data_array.length; i++) {
@@ -106,6 +109,7 @@ public class Histogram{
 		return max_length;
 	}
 
+	// Print spaces given amount
 	public static void printSpaces(int spaces){
 		for (int i = 0; i < spaces; i++) {
 			System.out.print(" ");
