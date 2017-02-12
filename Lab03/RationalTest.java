@@ -9,7 +9,7 @@ public class RationalTest{
 	public static void main(String[] args){
 		Rational test = new Rational(1,2);
 		System.out.println(test.toString());
-		Rational test_1 = new Rational(1,4);
+		Rational test_1 = new Rational(10,9);
 		
 		System.out.println(test_1.getNumerator());
 		System.out.println(test_1.getDenominator());
