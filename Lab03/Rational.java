@@ -25,8 +25,9 @@ public class Rational{
 		if (td == 0){
 			throw new IllegalStateException("Denominator cannot be 0.");
 		}
-		n = tn;
-		d = td;
+		int gcd = Rational.gcd(tn, td);
+		n = tn / gcd;
+		d = td / gcd;
 	}
 	
 
@@ -67,7 +68,6 @@ public class Rational{
 	
 	// Adds two rationals and returns the sum
 	public Rational add(Rational other){
-		// (ny+xd)/dy returns
 		int ny = this.n * other.getDenominator();
 		int xd = other.getNumerator() * this.d;
 		int dy = this.d * other.getDenominator();
@@ -79,7 +79,7 @@ public class Rational{
 	}
 	
 	public Rational divide(Rational other){
-		return new Rational();
+		return this.multiply(other.reciprocal());
 	}
 	
 	public String toString(){
@@ -87,7 +87,6 @@ public class Rational{
 	}
 	
 	public static int gcd(int x, int y){
-		System.out.println("X: " + x + "Y: " + y);
 		if (x == 0){
 			return y;
 		} else if (y == 0){
