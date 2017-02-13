@@ -7,35 +7,45 @@
 
 public class Rational{
 	
+	// Instance variables
+	// n is numerator
+	// d is denominator 
 	private int n;
 	private int d;
 	
-	public Rational(int tn, int td){
-		if (td == 0){
-			throw new IllegalStateException("Cannont divide by zero!!");
-		}
-		n = tn;
-		d = td;
-	}
-	
+	// Constructor if no parameters given
 	public Rational(){
 		n = 1;
 		d = 1;
 	}
 	
+	// Constructor for when parameters are given
+	public Rational(int tn, int td){
+		// Throw exception if denominator set to 0
+		if (td == 0){
+			throw new IllegalStateException("Denominator cannot be 0.");
+		}
+		n = tn;
+		d = td;
+	}
+	
+
 	public static void main(String[] args){
 		
 	
 	}
 	
+	// Returns the numerator
 	public int getNumerator(){
 		return n;
 	}
 	
+	// Returns the denominator
 	public int getDenominator(){
 		return d;
 	}
 	
+	// Returns the rational multiplied
 	public Rational negate(){
 		return new Rational(-n,d);
 	}
