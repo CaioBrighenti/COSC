@@ -13,9 +13,28 @@ public class Histogram{
 
 	public static void main(String[] args) {
 		int[] test = {4, 2, 9, 1, 4, 12, 100, 100, 100, 100};
+		makeHistogram(test);
+		System.out.println();
 		makeHistogram();
 	}
 
+	// Makes a histogram based on given int array
+	public static void makeHistogram(int[] nums){
+		// Ask user if array is to be sorted
+		getSort();
+		// Count unique numbers
+		int unique_count = countUnique(makeString(nums));
+		// Initialize 2d array
+		String[][] data = new String[unique_count][2];
+		// Populate 2d array
+		populateArray(data, makeString(nums));
+		// Sort 2d array
+		selectionSort(data);
+		// Print out histogram
+		printHistogram(data);	
+	}
+
+	// Makes a histogram based on user input
 	public static void makeHistogram(){
 		// Get input for array length
 		int size = getSize();
@@ -35,6 +54,7 @@ public class Histogram{
 		printHistogram(data);	
 	}
 
+	// Gets user input for size of array and returns it
 	public static int getSize(){
 		Scanner sc = new Scanner(System.in);
 		System.out.print("How many integers do you wish to enter?: ");
@@ -48,6 +68,8 @@ public class Histogram{
 		return size;
 	}
 
+	// Asks for user input for each number in array
+	// based on array size and returns new array
 	public static int[] buildNumArray(int size){
 		Scanner sc = new Scanner(System.in);
 		// Initialize array
@@ -62,6 +84,7 @@ public class Histogram{
 		return user_array;
 	}
 
+	// Asks for user input on whether or not to sort the fianl array
 	public static void getSort(){
 		Scanner sc = new Scanner(System.in);
 		System.out.print("Would you like your histogram to be sorted? (Y/N): ");
