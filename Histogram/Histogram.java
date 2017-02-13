@@ -156,7 +156,7 @@ public class Histogram{
 				count++;
 			}
 		}
-		// Uncomment to print out 2d array for debugging
+		// Uncomment to print out 2D array for debugging
 		//System.out.println(Arrays.deepToString(new_array));
 	}
 

@@ -50,10 +50,13 @@ public class Rational{
 		return new Rational(-n,d);
 	}
 	
+	// Returns the reciprocal of the rational
 	public Rational reciprocal(){
 		return new Rational(d,n);
 	}
 	
+	// Returns true if the objects equal one another
+	// and false otherwise
 	public boolean equals(Object other){
 		if (other instanceof Rational){
 			Rational temp = (Rational) other;
@@ -62,12 +65,17 @@ public class Rational{
 		return false;
 	}
 	
+	// Adds two rationals and returns the sum
 	public Rational add(Rational other){
-		return new Rational();
+		// (ny+xd)/dy returns
+		int ny = this.n * other.getDenominator();
+		int xd = other.getNumerator() * this.d;
+		int dy = this.d * other.getDenominator();
+		return new Rational((ny + xd), dy);
 	}
 	
 	public Rational multiply(Rational other){
-		return new Rational();
+		return new Rational(this.n * other.getNumerator(), this.d * other.getDenominator());
 	}
 	
 	public Rational divide(Rational other){
@@ -78,7 +86,8 @@ public class Rational{
 		return n + "/" + d;
 	}
 	
-	public int gcd(int x, int y){
+	public static int gcd(int x, int y){
+		System.out.println("X: " + x + "Y: " + y);
 		if (x == 0){
 			return y;
 		} else if (y == 0){
