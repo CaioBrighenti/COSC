@@ -7,10 +7,10 @@
 public class RationalTest{
 
 	public static void main(String[] args){
-		Rational test = new Rational(1,4);
-		Rational test_1 = new Rational(1,4);
+		Rational test = new Rational(25,100);
+		Rational test_1 = new Rational(25,100);
 		
-		System.out.println(test.divide(test_1).toString());
+		System.out.println(test.add(test_1).toString());
 		
 	}	
 	

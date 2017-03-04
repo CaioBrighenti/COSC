@@ -13,7 +13,13 @@ public class Histogram{
 
 	public static void main(String[] args) {
 		int[] test = {4, 2, 9, 1, 4, 12, 100, 100, 100, 100};
+		int[] test2 = {1,1,1,1,3,1,3,5,6,7,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,270,5,5,4,2,3};
+		int[] test3 = {1};
 		makeHistogram(test);
+		System.out.println();
+		makeHistogram(test2);
+		System.out.println();
+		makeHistogram(test3);
 		System.out.println();
 		makeHistogram();
 	}
@@ -115,7 +121,6 @@ public class Histogram{
 	}
 
 	// Iterate through each item, if item isn't a !, increment count and iterate setting all items equal to !
-	// Slightly spaghetti code, REFACTOR BEFORE UPLOADING
 	public static int countUnique(String[] nums_str){
 		int count = 0;
 		// Iterate through array
@@ -136,7 +141,6 @@ public class Histogram{
 	}
 
 	// Populate the new array
-	// Slightly spaghetti code, REFACTOR BEFORE UPLOADING
 	public static void populateArray(String[][] new_array, String[] nums_str){
 		int count = 0;
 		// Iterate through original array

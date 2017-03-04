@@ -1,0 +1,25 @@
+Caio's Log Book
+
+I forgot we had to keep a log book until after I was done with the code. I figured it'd be 
+better to just be honest about that instead of faking it and pretending like I had actually 
+kept a log as I worked on the code.
+
+I wrote 99% of the code in one sitting, on Monday the 5th (last monday). I sat down and worked 
+from around 8pm or 9pm until 1:30am or so. I found that the first section of the code, making
+the makeHistogram function work with a fixed input, was the most difficult section. Usually in
+COSC101 it felt like the progression went from easy to hard. This difference isn't a bad thing,
+just a difference I noticed. I actually liked this better since it felt like a natural progression
+of code as opposed to the assignment holding my hand through it. After the makeHistogram function
+worked, the rest was fairly easy. The only issue I ran into that took me a little bit of time to
+resolve was getting the proper spacing when printing numbers of multiple digits, but I resolved
+that and the rest was straightforward. The explanation for sorting was actually very clear in the
+textbook, and made sense to me. 
+
+Yesterday, on the 12th, I finished up the code by adding a few more comments and doing a little
+bit of cleanup. I also realized I needed two different makeHistogram functions, one for a fixed
+input and one for variable input, instead of just writing the function for fixed input and then
+modifying it, so I added that. 
+
+Today, on the 13th, I wrote this "logbook". It's unfortunately not a log book in the sense that
+I kept track of my thought process as I developed my solution, but it includes my rationale for
+how I felt about the assignment.

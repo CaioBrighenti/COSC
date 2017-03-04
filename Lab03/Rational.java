@@ -1,7 +1,7 @@
 /* COSC 102 - Lab 03
  * Jake French, Caio Brighenti
  * Spring '17
- * Rational.java File (mlyboult - Feb 2017)
+ * Rational.java File (Feb 2017)
  */ 
 
 
