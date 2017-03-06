@@ -1,17 +1,17 @@
 import java.awt.Color;
 
-public class Piece {
+public abstract class Piece {
 
-	private Location loc;
+	protected Location[] locs;
 	private Color col;
 
-	public Piece(Location tloc, Color tcolor){
-		loc = tloc;
+	public Piece(Location[] tlocs, Color tcolor){
+		locs = tlocs;
 		col = tcolor;
 	}
 
-	public Location getLoc(){
-		return loc;
+	public Location[] getLocs(){
+		return locs;
 	}
 
 	public Color getColor(){
@@ -19,27 +19,47 @@ public class Piece {
 	}
 
 	public boolean scroll(GameGrid grid){
-		Location tloc = new Location(loc.getRow(), loc.getCol() - 1, col);
-		Location[] newlocs = new Location[]{tloc};
+		// Figure out new proposed positions
+		Location[] newlocs = new Location[locs.length];
+		for (int i = 0; i < locs.length; i++) {
+			newlocs[i] = new Location(locs[i].getRow() + 1, locs[i].getCol(), col);
+		}
+		// If the move is valid, perform it
 		if (checkMove(newlocs, grid)){
-			loc = tloc;
+			for (int i = 0; i < locs.length; i++) {
+				locs[i] = newlocs[i];
+			}
 			return true;
 		}
 		return false;
 	}	
 
-	public void moveUp(GameGrid grid){
-		Location tloc = new Location(loc.getRow() - 1, loc.getCol(), col);
-		Location[] newlocs = new Location[]{tloc};
-		if (checkMove(newlocs, grid))
-			loc = tloc;
+	public void moveLeft(GameGrid grid){
+		// Figure out new proposed positions
+		Location[] newlocs = new Location[locs.length];
+		for (int i = 0; i < locs.length; i++) {
+			newlocs[i] = new Location(locs[i].getRow(), locs[i].getCol() - 1, col);
+		}
+		// If the move is valid, perform it
+		if (checkMove(newlocs, grid)){
+			for (int i = 0; i < locs.length; i++) {
+				locs[i] = newlocs[i];
+			}
+		}
 	}
 
-	public void moveDown(GameGrid grid){
-		Location tloc = new Location(loc.getRow() + 1, loc.getCol(), col);
-		Location[] newlocs = new Location[]{tloc};
-		if (checkMove(newlocs, grid))
-			loc = tloc;
+	public void moveRight(GameGrid grid){
+		// Figure out new proposed positions
+		Location[] newlocs = new Location[locs.length];
+		for (int i = 0; i < locs.length; i++) {
+			newlocs[i] = new Location(locs[i].getRow(), locs[i].getCol() + 1, col);
+		}
+		// If the move is valid, perform it
+		if (checkMove(newlocs, grid)){
+			for (int i = 0; i < locs.length; i++) {
+				locs[i] = newlocs[i];
+			}
+		}
 	}
 
 	// Receives an array of locations and a GameGrid as parameters
@@ -61,10 +81,13 @@ public class Piece {
 				return false;
 
 			// Check if position is empty
-			if (checkgrid.getCellImage(positions[i]) == "test.jpg")
+			if (checkgrid.getCellImage(positions[i]) == "piece.png")
 				return false;
 		}
 		// If no false flags are caught, then the move is valid
 		return true;
 	}
+
+	public abstract void rotate(GameGrid grid);
+
 }

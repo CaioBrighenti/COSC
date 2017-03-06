@@ -22,7 +22,8 @@ implements KeyListener, MouseListener {
 	private JFrame frame;
 	private Color lineColor;
 	private Image background = null;
-	private Image splash = null; 	
+	private Image splash = null;
+	
 	private int lastKeyPressed;
 	private Location lastLocationClicked;
 	
@@ -99,7 +100,7 @@ implements KeyListener, MouseListener {
 	public void setColor(Location loc, Color color) {
 		if (isValid(loc)) {
 			cells[loc.getRow()][loc.getCol()].setColor(color);
-			//System.out.println("change cell color " + loc + " " + color);
+			System.out.println("change cell color " + loc + " " + color);
 			repaint();
 		}
 	}

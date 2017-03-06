@@ -10,20 +10,19 @@ public class CaioBrighentiGame {
 	// Game window should be wider than tall:  H_DIM < W_DIM   
 	// (more effectively using space)
 	// # of cells vertically by default: height of game
-	private static final int H_DIM = 25; 
+	private static final int H_DIM = 20; 
 	// # of cells horizontally by default: width of game
 	private static final int W_DIM = 10;  
 	// default location of asdadthe user at the start of the game
 	private static final int U_ROW = 0;
 	
-	private static final int FACTOR = 3;      // you might change that this
+	private static final int FACTOR = 1;      // you might change that this
 	                           // setting or declaration when working on timing
 	                           // (speed up and down the game)
 	                           
 	                           
 	private final String USER_IMG = "user.gif";    //ADD others
-	private final String TEST_IMG = "piece.png";
-	private final String BG_IMG = "background.jpg";
+	private final String TEST_IMG = "test.jpg";
 	                        
 	private static Random rand = new Random();  //USE ME 
 	                                          // don't instantiate me every frame
@@ -40,8 +39,6 @@ public class CaioBrighentiGame {
 	private Piece activePiece = null;
 
 	private boolean gameOver = false;
-
-	private int gameScore;
 
 	
 	public CaioBrighentiGame() {
@@ -79,8 +76,6 @@ public class CaioBrighentiGame {
 		//grid.setCellImage(new Location(userRow, 0), USER_IMG);
 		
 		updateTitle();
-
-		grid.setGameBackground(BG_IMG);
 		
 	}
 	
@@ -113,8 +108,6 @@ public class CaioBrighentiGame {
 			updateTitle();
 			msElapsed += pauseTime;
 		}
-
-		System.out.println("GET FUCKED YOU LOST");
 	}
 	
 	public void handleMouseClick() {
@@ -154,117 +147,48 @@ public class CaioBrighentiGame {
 			// Avoid run time error by checking if piece exists
 			if (activePiece == null)
 				return;		
-			hidePiece();
+			grid.setCellImage(activePiece.getLoc(), null);
 			activePiece.moveLeft(grid);
-			drawPiece();
+			grid.setCellImage(activePiece.getLoc(), TEST_IMG);
 		}
 		else if (key == KeyEvent.VK_RIGHT){
 			// Avoid run time error by checking if piece exists
 			if (activePiece == null)
 				return;		
-			hidePiece();
+			grid.setCellImage(activePiece.getLoc(), null);
 			activePiece.moveRight(grid);
-			drawPiece();
-		} 
-		else if (key == KeyEvent.VK_UP) {
-			if (activePiece == null)
-				return;		
-			hidePiece();
-			activePiece.rotate(grid);
-			drawPiece();
-		}
-		else if (key == KeyEvent.VK_DOWN) {
-			if (activePiece == null)
-				return;		
-			hidePiece();
-			activePiece.scroll(grid);
-			drawPiece();
+			grid.setCellImage(activePiece.getLoc(), TEST_IMG);
 		}
 	}
 	
 	// Missing randomization
 	// update game state to reflect adding in new cells in the right-most column 
 	public void addPiece() {
-		// Randomize color
-		int r = rand.nextInt(8);
-		Color piececolor = Color.BLACK;
-		if (r == 0)
-			piececolor = Color.BLUE;
-		else if (r == 1)
-			piececolor = Color.CYAN;
-		else if (r == 2)
-			piececolor = Color.GREEN;
-		else if (r == 3)
-			piececolor = Color.MAGENTA;
-		else if (r == 4)
-			piececolor = Color.ORANGE;
-		else if (r == 5)
-			piececolor = Color.PINK;
-		else if (r == 6)
-			piececolor = Color.RED;
-		else if (r == 7)
-			piececolor = Color.YELLOW;
-
-		//Randomize location
-		r = rand.nextInt(grid.getNumCols() - 3);
-		Location pieceloc = new Location(0, r);
-
-		// Randomize piece
-		r = rand.nextInt(4);
-		if (r == 0)
-			activePiece = new L(pieceloc, piececolor);
-		else if (r == 1)
-			activePiece = new Square(pieceloc, piececolor);
-		else if (r == 2)
-			activePiece = new Cobra(pieceloc, piececolor);
-		else if (r == 3)
-			activePiece = new Worm(pieceloc, piececolor);
-		drawPiece();	
-	}
-
-	public void hidePiece(){
-		if (activePiece != null){
-			for (int i = 0; i < activePiece.getLocs().length; i++ ) {
-				grid.setCellImage(activePiece.getLocs()[i], null);
-				grid.setColor(activePiece.getLocs()[i], null);
-			}
-		}
-	}
-
-	public void drawPiece(){
-		if (activePiece != null) {
-			for (int i = 0; i < activePiece.getLocs().length; i++ ) {
-				grid.setCellImage(activePiece.getLocs()[i], TEST_IMG);
-				grid.setColor(activePiece.getLocs()[i], activePiece.getColor());
-			}
-		}
+		activePiece = new Piece(new Location(0,2), Color.BLACK);
+		grid.setCellImage(activePiece.getLoc(), TEST_IMG);	
 	}
 	
 	// updates the game state to reflect scrolling left by one column 
 	public void scrollDown() {
-		//grid.setCellImage(activePiece.getLoc(), null);	
-		hidePiece();
-		if (!activePiece.scroll(grid)) {
-			drawPiece();
+		grid.setCellImage(activePiece.getLoc(), null);	
+		if (!activePiece.scroll(grid)){
+			grid.setCellImage(activePiece.getLoc(), TEST_IMG);
+			if (activePiece.getLoc().getRow() == 0)
+				gameOver = true;	
 			activePiece = null;
+			// Every time a piece is stopped, check for columns to clear
+			// and if game is over
 			checkRows();
-			gameOver = checkEndGame();
 		} else
-			drawPiece();
+			grid.setCellImage(activePiece.getLoc(), TEST_IMG);	
 	}
 
 	public void checkRows(){
 		// Iterate through each col
 		for (int row = 0; row < grid.getNumRows(); row++) {
-			// For each row, check if it is full and if so clear it and add points
-			// After clearing, lower all blocks above and call CheckRows() again
-			if (checkFullRow(row)){
+			// For each row, check if it is full and if so clear it
+			if (checkFullRow(row))
 				clearRow(row);
-				addScore(grid.getNumCols());
-				lowerBlocks(row);
-				checkRows();
-				break;
-			}
 		}
 	}
 
@@ -279,28 +203,18 @@ public class CaioBrighentiGame {
 	public void clearRow(int rownumber){
 		for (int col = 0; col < grid.getNumCols(); col++) {
 			grid.setCellImage(new Location(rownumber, col), null);
-			grid.setColor(new Location(rownumber, col), null);
 		}
 	}
 
-	// Method to have blocks above a cleared row "fall"
-	public void lowerBlocks(int startrow){
-		for (int r = startrow - 1; r > 0; r--) {
-			for (int c = 0; c < grid.getNumCols(); c++) {
-				grid.setColor(new Location(r + 1, c), grid.getColor(new Location(r,c)));
-				grid.setCellImage(new Location(r + 1, c), grid.getCellImage(new Location(r,c)));
-				grid.setColor(new Location(r,c), null);
-				grid.setCellImage(new Location(r,c), null);
+	public void checkEndGame(){
+		// Iterate through each col
+		for (int row = 0; row < grid.getNumRows(); row++) {
+			// For each row, check if it is full and if so clear it
+			if (checkFullRow(row)){
+				gameOver = true;
+				break;
 			}
 		}
-	}
-
-	public boolean checkEndGame(){
-		for (int i = 0; i < grid.getNumCols(); i++) {
-			if (grid.getCellImage(new Location(0, i)) == TEST_IMG)
-				return true;
-		}
-		return false;
 	}
 
 	public boolean checkFullCol(int rownumber){
@@ -318,17 +232,13 @@ public class CaioBrighentiGame {
 	
 	// return the "score" of the game 
 	public int getScore() {
-		return gameScore;    //dummy for now
-	}
-
-	public void addScore(int points){
-		gameScore+=points;
+		return 0;    //dummy for now
 	}
 	
 	
 	// update the title bar of the game window 
 	public void updateTitle() {
-		grid.setTitle("Tetris:  " + getScore());
+		grid.setTitle("Scrolling Game:  " + getScore());
 	}
 	
    // return true if the game is finished, false otherwise

@@ -1,8 +1,7 @@
 import java.awt.event.KeyEvent;
 import java.util.Random;
-import java.awt.Color;
 
-public class CaioBrighentiGame {
+public class ScrollingGame {
 	
 	// set DEMO to false to use your code (true uses DemoGame.class)
 	private static final boolean DEMO = false;           
@@ -10,10 +9,10 @@ public class CaioBrighentiGame {
 	// Game window should be wider than tall:  H_DIM < W_DIM   
 	// (more effectively using space)
 	// # of cells vertically by default: height of game
-	private static final int H_DIM = 25; 
+	private static final int H_DIM = 5; 
 	// # of cells horizontally by default: width of game
 	private static final int W_DIM = 10;  
-	// default location of asdadthe user at the start of the game
+	// default location of the user at the start of the game
 	private static final int U_ROW = 0;
 	
 	private static final int FACTOR = 3;      // you might change that this
@@ -22,8 +21,6 @@ public class CaioBrighentiGame {
 	                           
 	                           
 	private final String USER_IMG = "user.gif";    //ADD others
-	private final String TEST_IMG = "piece.png";
-	private final String BG_IMG = "background.jpg";
 	                        
 	private static Random rand = new Random();  //USE ME 
 	                                          // don't instantiate me every frame
@@ -37,19 +34,14 @@ public class CaioBrighentiGame {
 	private int timerClicks;	// used to space animation and key presses
 	private int pauseTime;		// to control speed of game
 
-	private Piece activePiece = null;
-
-	private boolean gameOver = false;
-
-	private int gameScore;
-
 	
-	public CaioBrighentiGame() {
+	public ScrollingGame() {
 		this(H_DIM, W_DIM, U_ROW);
 	}
 	
-	public CaioBrighentiGame(int hdim, int wdim, int urow) {
+	public ScrollingGame(int hdim, int wdim, int urow) {
 		// to be filled
+		
 		init(hdim, wdim, urow);
 	}
 	
@@ -76,11 +68,9 @@ public class CaioBrighentiGame {
 
 		// store and initialize user position
 		userRow = urow;
-		//grid.setCellImage(new Location(userRow, 0), USER_IMG);
+		grid.setCellImage(new Location(userRow, 0), USER_IMG);
 		
 		updateTitle();
-
-		grid.setGameBackground(BG_IMG);
 		
 	}
 	
@@ -101,20 +91,13 @@ public class CaioBrighentiGame {
 			
 			if (timerClicks % FACTOR == 0) {  // if it's the FACTOR timer tick
 				                            // constant 3 initially
-				//populateRightEdge();
-				if (activePiece ==  null)
-					addPiece();
-				else
-				scrollDown();
-
-
+				scrollLeft();
+				populateRightEdge();
 			}
 			
 			updateTitle();
 			msElapsed += pauseTime;
 		}
-
-		System.out.println("GET FUCKED YOU LOST");
 	}
 	
 	public void handleMouseClick() {
@@ -123,7 +106,6 @@ public class CaioBrighentiGame {
 		
 		if (loc != null)
 			System.out.println("You clicked on a square " + loc);
-			//System.out.println(grid.getCellImage(loc));
 	
 	}
 
@@ -149,192 +131,39 @@ public class CaioBrighentiGame {
 			boolean interval =  (timerClicks % FACTOR == 0);
 			System.out.println("pauseTime " + pauseTime + " msElapsed reset " + 
 				msElapsed + " interval " + interval);
-		} 
-		else if (key == KeyEvent.VK_LEFT) {
-			// Avoid run time error by checking if piece exists
-			if (activePiece == null)
-				return;		
-			hidePiece();
-			activePiece.moveLeft(grid);
-			drawPiece();
-		}
-		else if (key == KeyEvent.VK_RIGHT){
-			// Avoid run time error by checking if piece exists
-			if (activePiece == null)
-				return;		
-			hidePiece();
-			activePiece.moveRight(grid);
-			drawPiece();
-		} 
-		else if (key == KeyEvent.VK_UP) {
-			if (activePiece == null)
-				return;		
-			hidePiece();
-			activePiece.rotate(grid);
-			drawPiece();
-		}
-		else if (key == KeyEvent.VK_DOWN) {
-			if (activePiece == null)
-				return;		
-			hidePiece();
-			activePiece.scroll(grid);
-			drawPiece();
 		}
 	}
 	
-	// Missing randomization
 	// update game state to reflect adding in new cells in the right-most column 
-	public void addPiece() {
-		// Randomize color
-		int r = rand.nextInt(8);
-		Color piececolor = Color.BLACK;
-		if (r == 0)
-			piececolor = Color.BLUE;
-		else if (r == 1)
-			piececolor = Color.CYAN;
-		else if (r == 2)
-			piececolor = Color.GREEN;
-		else if (r == 3)
-			piececolor = Color.MAGENTA;
-		else if (r == 4)
-			piececolor = Color.ORANGE;
-		else if (r == 5)
-			piececolor = Color.PINK;
-		else if (r == 6)
-			piececolor = Color.RED;
-		else if (r == 7)
-			piececolor = Color.YELLOW;
-
-		//Randomize location
-		r = rand.nextInt(grid.getNumCols() - 3);
-		Location pieceloc = new Location(0, r);
-
-		// Randomize piece
-		r = rand.nextInt(4);
-		if (r == 0)
-			activePiece = new L(pieceloc, piececolor);
-		else if (r == 1)
-			activePiece = new Square(pieceloc, piececolor);
-		else if (r == 2)
-			activePiece = new Cobra(pieceloc, piececolor);
-		else if (r == 3)
-			activePiece = new Worm(pieceloc, piececolor);
-		drawPiece();	
-	}
-
-	public void hidePiece(){
-		if (activePiece != null){
-			for (int i = 0; i < activePiece.getLocs().length; i++ ) {
-				grid.setCellImage(activePiece.getLocs()[i], null);
-				grid.setColor(activePiece.getLocs()[i], null);
-			}
-		}
-	}
-
-	public void drawPiece(){
-		if (activePiece != null) {
-			for (int i = 0; i < activePiece.getLocs().length; i++ ) {
-				grid.setCellImage(activePiece.getLocs()[i], TEST_IMG);
-				grid.setColor(activePiece.getLocs()[i], activePiece.getColor());
-			}
-		}
+	public void populateRightEdge() {
+		
 	}
 	
 	// updates the game state to reflect scrolling left by one column 
-	public void scrollDown() {
-		//grid.setCellImage(activePiece.getLoc(), null);	
-		hidePiece();
-		if (!activePiece.scroll(grid)) {
-			drawPiece();
-			activePiece = null;
-			checkRows();
-			gameOver = checkEndGame();
-		} else
-			drawPiece();
-	}
-
-	public void checkRows(){
-		// Iterate through each col
-		for (int row = 0; row < grid.getNumRows(); row++) {
-			// For each row, check if it is full and if so clear it and add points
-			// After clearing, lower all blocks above and call CheckRows() again
-			if (checkFullRow(row)){
-				clearRow(row);
-				addScore(grid.getNumCols());
-				lowerBlocks(row);
-				checkRows();
-				break;
-			}
-		}
-	}
-
-	public boolean checkFullRow(int rownumber){
-		for (int col = 0; col < grid.getNumCols(); col++) {
-			if (grid.getCellImage(new Location(rownumber, col)) != TEST_IMG)
-				return false;
-		}
-		return true;
-	}
-
-	public void clearRow(int rownumber){
-		for (int col = 0; col < grid.getNumCols(); col++) {
-			grid.setCellImage(new Location(rownumber, col), null);
-			grid.setColor(new Location(rownumber, col), null);
-		}
-	}
-
-	// Method to have blocks above a cleared row "fall"
-	public void lowerBlocks(int startrow){
-		for (int r = startrow - 1; r > 0; r--) {
-			for (int c = 0; c < grid.getNumCols(); c++) {
-				grid.setColor(new Location(r + 1, c), grid.getColor(new Location(r,c)));
-				grid.setCellImage(new Location(r + 1, c), grid.getCellImage(new Location(r,c)));
-				grid.setColor(new Location(r,c), null);
-				grid.setCellImage(new Location(r,c), null);
-			}
-		}
-	}
-
-	public boolean checkEndGame(){
-		for (int i = 0; i < grid.getNumCols(); i++) {
-			if (grid.getCellImage(new Location(0, i)) == TEST_IMG)
-				return true;
-		}
-		return false;
-	}
-
-	public boolean checkFullCol(int rownumber){
-		for (int col = 0; col < grid.getNumCols(); col++) {
-			if (grid.getCellImage(new Location(rownumber, col)) != TEST_IMG)
-				return false;
-		}
-		return true;
-	}
+	public void scrollLeft() {
 		
-	// Only works for single piece currently
+	}
+	
 	public void handleCollision(Location loc) {
 		
 	}
 	
 	// return the "score" of the game 
 	public int getScore() {
-		return gameScore;    //dummy for now
-	}
-
-	public void addScore(int points){
-		gameScore+=points;
+		return 0;    //dummy for now
 	}
 	
 	
 	// update the title bar of the game window 
 	public void updateTitle() {
-		grid.setTitle("Tetris:  " + getScore());
+		grid.setTitle("Scrolling Game:  " + getScore());
 	}
+	
 	
    // return true if the game is finished, false otherwise
 	//      used by play() to terminate the main game loop 
 	public boolean isGameOver() {
-		return gameOver;
+		return false;
 	}
 	
 	public static void run() {
@@ -363,12 +192,12 @@ public class CaioBrighentiGame {
 			game.play();
 			
 		} else {
-			System.out.println("Running Caio student game: DEMO=" + DEMO);
+			System.out.println("Running student game: DEMO=" + DEMO);
 			// !DEMO   -> your code should execute those lines when you are
 			// implementing your game
 			
 			//test 1: with parameterless constructor
-			CaioBrighentiGame game = new CaioBrighentiGame();
+			ScrollingGame game = new ScrollingGame();
 			
 			//test 2: with constructor specifying grid size  
 			//IT SHOULD ALSO WORK as long as height < width
