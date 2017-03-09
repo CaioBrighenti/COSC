@@ -1,6 +1,8 @@
 import java.awt.event.KeyEvent;
 import java.util.Random;
 import java.awt.Color;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class CaioBrighentiGame {
 	
@@ -16,7 +18,7 @@ public class CaioBrighentiGame {
 	// default location of asdadthe user at the start of the game
 	private static final int U_ROW = 0;
 	
-	private static final int FACTOR = 3;      // you might change that this
+	private static final int FACTOR = 1;      // you might change that this
 	                           // setting or declaration when working on timing
 	                           // (speed up and down the game)
 	                           
@@ -24,6 +26,8 @@ public class CaioBrighentiGame {
 	private final String USER_IMG = "user.gif";    //ADD others
 	private final String TEST_IMG = "piece.png";
 	private final String BG_IMG = "background.jpg";
+	private final String SPLASH_IMG = "splash.jpg";
+	private final String GAMEOVER_IMG = "gameover.jpg";
 	                        
 	private static Random rand = new Random();  //USE ME 
 	                                          // don't instantiate me every frame
@@ -40,6 +44,8 @@ public class CaioBrighentiGame {
 	private Piece activePiece = null;
 
 	private boolean gameOver = false;
+	private boolean isPaused = true;
+	private boolean linesToggled = false;
 
 	private int gameScore;
 
@@ -66,6 +72,7 @@ public class CaioBrighentiGame {
 				first extension)
 		*/
 		grid = new GameGrid(hdim, wdim);   
+		grid.setSplash(SPLASH_IMG);
 		
 		/* initialize other aspects of game state */
 
@@ -99,7 +106,7 @@ public class CaioBrighentiGame {
 			                         // click & read the console output 
 			
 			
-			if (timerClicks % FACTOR == 0) {  // if it's the FACTOR timer tick
+			if (timerClicks % FACTOR == 0 && !isPaused) {  // if it's the FACTOR timer tick
 				                            // constant 3 initially
 				//populateRightEdge();
 				if (activePiece ==  null)
@@ -112,9 +119,16 @@ public class CaioBrighentiGame {
 			
 			updateTitle();
 			msElapsed += pauseTime;
-		}
 
-		System.out.println("GET FUCKED YOU LOST");
+			if (msElapsed >= 7500) {
+				grid.setSplash(null);
+				isPaused = false;
+			}
+		}
+		grid.pause(3500); 
+		grid.setSplash(GAMEOVER_IMG);
+		grid.pause(7500);
+		System.exit(0);
 	}
 	
 	public void handleMouseClick() {
@@ -139,8 +153,11 @@ public class CaioBrighentiGame {
 		if (key == KeyEvent.VK_Q)
 			System.exit(0);
 		
-		else if (key == KeyEvent.VK_S)
-			System.out.println("could save the screen: add the call");
+		// S for saving screenshot
+		else if (key == KeyEvent.VK_S){
+			String timeStamp = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new Date());
+			grid.save("Screenshot " + timeStamp +".jpg");
+		}	
 		
 		/* To help you with step 9: 
 		   use the 'T' key to help you with implementing speed up/slow down/pause
@@ -150,7 +167,9 @@ public class CaioBrighentiGame {
 			System.out.println("pauseTime " + pauseTime + " msElapsed reset " + 
 				msElapsed + " interval " + interval);
 		} 
-		else if (key == KeyEvent.VK_LEFT) {
+
+		// Moves piece left
+		else if (key == KeyEvent.VK_LEFT && !isPaused) {
 			// Avoid run time error by checking if piece exists
 			if (activePiece == null)
 				return;		
@@ -158,7 +177,9 @@ public class CaioBrighentiGame {
 			activePiece.moveLeft(grid);
 			drawPiece();
 		}
-		else if (key == KeyEvent.VK_RIGHT){
+
+		// Moves piece right
+		else if (key == KeyEvent.VK_RIGHT && !isPaused){
 			// Avoid run time error by checking if piece exists
 			if (activePiece == null)
 				return;		
@@ -166,30 +187,55 @@ public class CaioBrighentiGame {
 			activePiece.moveRight(grid);
 			drawPiece();
 		} 
-		else if (key == KeyEvent.VK_UP) {
+
+		// Rotates piece
+		else if (key == KeyEvent.VK_UP && !isPaused) {
 			if (activePiece == null)
 				return;		
 			hidePiece();
 			activePiece.rotate(grid);
 			drawPiece();
 		}
-		else if (key == KeyEvent.VK_DOWN) {
+
+		// Moves piece down;
+		else if (key == KeyEvent.VK_DOWN && !isPaused) {
 			if (activePiece == null)
 				return;		
 			hidePiece();
 			activePiece.scroll(grid);
 			drawPiece();
 		}
+
+		// Pauses game
+		else if (key == KeyEvent.VK_P){
+			isPaused = !isPaused;
+		}
+
+		// Draws grid lines
+		else if (key == KeyEvent.VK_D){
+			if (!linesToggled)
+				grid.setLineColor(Color.WHITE);
+			else
+				grid.setLineColor(null);
+			linesToggled = !linesToggled;
+		}
+
+		else if (key == KeyEvent.VK_COMMA)
+			pauseTime+=35;
+
+		else if (key == KeyEvent.VK_PERIOD){
+			if (pauseTime > 35)
+				pauseTime-= 35;
+		}
 	}
 	
-	// Missing randomization
-	// update game state to reflect adding in new cells in the right-most column 
+	// Adds a new random piece to the game
 	public void addPiece() {
 		// Randomize color
-		int r = rand.nextInt(8);
+		int r = rand.nextInt(7);
 		Color piececolor = Color.BLACK;
 		if (r == 0)
-			piececolor = Color.BLUE;
+			piececolor = Color.YELLOW;
 		else if (r == 1)
 			piececolor = Color.CYAN;
 		else if (r == 2)
@@ -202,8 +248,6 @@ public class CaioBrighentiGame {
 			piececolor = Color.PINK;
 		else if (r == 6)
 			piececolor = Color.RED;
-		else if (r == 7)
-			piececolor = Color.YELLOW;
 
 		//Randomize location
 		r = rand.nextInt(grid.getNumCols() - 3);
@@ -219,6 +263,8 @@ public class CaioBrighentiGame {
 			activePiece = new Cobra(pieceloc, piececolor);
 		else if (r == 3)
 			activePiece = new Worm(pieceloc, piececolor);
+
+		// Draw the piece on the board
 		drawPiece();	
 	}
 
@@ -232,12 +278,18 @@ public class CaioBrighentiGame {
 	}
 
 	public void drawPiece(){
+		boolean collision = false;
 		if (activePiece != null) {
 			for (int i = 0; i < activePiece.getLocs().length; i++ ) {
-				grid.setCellImage(activePiece.getLocs()[i], TEST_IMG);
-				grid.setColor(activePiece.getLocs()[i], activePiece.getColor());
+				if (!(grid.getCellImage(activePiece.getLocs()[i]) == TEST_IMG)){
+					grid.setCellImage(activePiece.getLocs()[i], TEST_IMG);
+					grid.setColor(activePiece.getLocs()[i], activePiece.getColor());
+				} else
+					collision = true;
 			}
 		}
+		if (collision)
+			gameOver = true;
 	}
 	
 	// updates the game state to reflect scrolling left by one column 
@@ -303,22 +355,9 @@ public class CaioBrighentiGame {
 		return false;
 	}
 
-	public boolean checkFullCol(int rownumber){
-		for (int col = 0; col < grid.getNumCols(); col++) {
-			if (grid.getCellImage(new Location(rownumber, col)) != TEST_IMG)
-				return false;
-		}
-		return true;
-	}
-		
-	// Only works for single piece currently
-	public void handleCollision(Location loc) {
-		
-	}
-	
-	// return the "score" of the game 
+	// return the score of the game 
 	public int getScore() {
-		return gameScore;    //dummy for now
+		return gameScore;   
 	}
 
 	public void addScore(int points){
