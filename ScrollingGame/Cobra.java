@@ -1,3 +1,9 @@
+/* COSC 102 - Scrolling Game
+ * Caio Brighenti
+ * Spring '17
+ * Cobra.java File (March 2017)
+ */ 
+
 import java.awt.Color;
 
 public class Cobra extends Piece{
@@ -18,6 +24,9 @@ public class Cobra extends Piece{
  		return locs;
  	}
 
+ 	// Piece has four different rotation states
+ 	// each rotation is different based on the state
+ 	// for each rotation, change each location and update the rotation state
  	public void rotate(GameGrid grid){
  		if (rotationState == 1) {
  			Location loc1 = new Location(locs[0].getRow() + 1, locs[0].getCol() + 1);

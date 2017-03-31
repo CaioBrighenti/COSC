@@ -1,3 +1,9 @@
+/* COSC 102 - Scrolling Game
+ * Caio Brighenti
+ * Spring '17
+ * Square.java File (March 2017)
+ */ 
+
 import java.awt.Color;
 
 public class Square extends Piece{

@@ -1,9 +1,15 @@
+/* COSC 102 - Scrolling Game
+ * Caio Brighenti
+ * Spring '17
+ * Piece.java File (March 2017)
+ */ 
+
 import java.awt.Color;
 
 public abstract class Piece {
 
-	protected Location[] locs;
-	private Color col;
+	protected Location[] locs; // Location array to hold the locations occupied by the piece
+	private Color col; // Color of the piece
 
 	public Piece(Location[] tlocs, Color tcolor){
 		locs = tlocs;
@@ -18,6 +24,8 @@ public abstract class Piece {
 		return col;
 	}
 
+	// Scrolls the piece down one row
+	// returns true if the move is possible, false otherwise
 	public boolean scroll(GameGrid grid){
 		// Figure out new proposed positions
 		Location[] newlocs = new Location[locs.length];
@@ -34,6 +42,7 @@ public abstract class Piece {
 		return false;
 	}	
 
+	// Moves the piece left one row
 	public void moveLeft(GameGrid grid){
 		// Figure out new proposed positions
 		Location[] newlocs = new Location[locs.length];
@@ -48,6 +57,7 @@ public abstract class Piece {
 		}
 	}
 
+	// Moves the piece right one row
 	public void moveRight(GameGrid grid){
 		// Figure out new proposed positions
 		Location[] newlocs = new Location[locs.length];
