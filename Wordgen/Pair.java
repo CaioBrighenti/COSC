@@ -1,3 +1,9 @@
+/* COSC 102 - Wordgen
+ * Caio Brighenti
+ * Spring '17
+ * Pair.java File (March 2017)
+ */ 
+
 // A class for binding key/value pairs.
 // Change the file name!
 import java.util.Map;
