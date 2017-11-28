@@ -1,0 +1,20 @@
+// prog2.s
+// computes the expression (8 + 9) - (3 + 11)
+//
+// Caio Brighenti, September 6, 2017
+
+        .text
+        .align  2
+        .global prog2
+        .type   prog2, %function
+
+prog2:
+        mov     x9, 8		
+        mov     x10, 9		
+        mov     x11, 3		
+        mov     x12, 11		
+        add     x13, x9, x10
+        add 	x14, x11, x12
+        sub 	x0, x13, x14	
+
+        br      x30	// x30 is the return address

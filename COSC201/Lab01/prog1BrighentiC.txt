@@ -1,0 +1,18 @@
+// prog1.s
+// computes and returns sum of 8 and 9
+//
+// Chris Nevison, March 22, 2017
+// Modified by Caio Brighenti, September 6, 2017
+
+        .text
+        .align  2
+        .global prog1
+        .type   prog1, %function
+
+//					X9	X10	X0	
+prog1:
+        mov     x9, 8		// x9 = 8, x10 = ?, x0 = ?
+        mov     x10, 9		// x9 = 8, x10 = 9, x0 = ?
+        add     x0, x9, x10	// x9 = 8, x10 = 9, x0 = 17
+
+        br      x30	// x30 is the return address
