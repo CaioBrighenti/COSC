@@ -42,19 +42,21 @@
 	lsl	X9, X0, 3		// multiply length by 8 to make X9 = length in bytes
 	add	X10, X9, X1		// X10 is address after end of array A (so it is address of B[0])
 
-loop:	
-	sub	X10, X10, 8		// k--	, first time through this makes X10 address of A[len-1]
-	ldur	X11, [X10, #0]		// X11 = A[k]
-	add	X12, X10, X9		// X12 = address of B[k]
-	ldur	X13, [X12, #0]		// X13 = B[k]
-	nop
-	add	X13, X13, X11		// X13 = A[k] + B[k]
-	add	X12, X12, X9		// X12 = address of C[k]
-	stur	X13, [X12, #0]		// C[k] = A[k] + B[k]
-
-	sub	X12, X10, X1		// Is X10 at first element of A?
-	nop
-	cbnz	X12, loop		// if not branch to loop
+loop:
+	sub	X10, X10, 32			ldur	X11, [X10, #-8]	  // X11 = 1st A[k]
+	add	X12, X10, X9			nop
+	add X14, x12, X9			ldur	X13, [X12, #24]	  // X13 = 1st B[k]
+	nop							ldur	X15, [X12, #16]	  // X15 = 2nd B[k]
+	add	X13, X13, X11 			ldur	X16, [X10, #16]   // X16 = 2nd A[k]
+	nop							stur	X13, [X14, #24]	  // Store 1st C[k]						
+	nop							ldur	X13, [X12, #8]	  // X13 = 3rd B[k]
+	add	X15, X15, X16			ldur	X11, [X10, #8]	  // X11 = 3rd A[k]
+	nop							stur	X15, [X14, #16]	  // Store 2nd C[k]			
+	nop							ldur	X15, [X12, #0]	  // X15 = 4th B[k]  
+	add	X13, X13, X11			ldur	X16, [X10, #0]	  // X16 = 4th A[k]
+	sub	X12, X10, X1			stur	X13, [X14, #8]	  // Store 3rd C[k]
+	add	X15, X15, X16			nop
+	cbnz	X12, loop			stur	X15, [X14, #0]	  // Store 4th C[k]	
 	stall if taken
 	
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////

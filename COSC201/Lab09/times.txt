@@ -12,3 +12,6 @@
 
 5. Assume that you have a dual pipeline architecture. One pipeline only does load and stores, the other does all other instructions. Accelerated branch and full data forwarding (even across pipelines). Give the best organization of the code with no loop unrolling. Calculate the time, assuming 1000 iterations.(Save as ArraySumD1.s)
 	2 * 200 + 7 * 200 * 1000 - 1 * 200 = 1,400,200 ps = 1400.2 ns
+
+6. Use loop unrolling and register renaming to optimize the code for the dual pipeline described in step 6. Calculate the time, assuming 1000 iterations.(Save as ArraySumD2.s)
+	2 * 200 + 15 * 200 * 250 - 1 * 200 = 750,200 ps = 750.2 ns

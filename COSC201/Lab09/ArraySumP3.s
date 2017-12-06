@@ -1,7 +1,7 @@
 // Arraysum.s
 // Compute the sum of the elements in an array.
 
-// Student:	Your Name		Date
+// Student:	Caio Brighenti		Date 12/06/2017
 
 //	void sumArray(long long int len, long long int[] A)
 //	{
