@@ -1,3 +1,5 @@
+// Student:	Caio Brighenti		Date 12/06/2017
+
 1. Calculate the time for ArraySum.s to execute for a single cycle CPU, assuming 1000 iterations. (cycle time is 800 ps)
 	2* 800 + 9*800*1000 = 7,201,600 ps = 7201.6 ns
 
