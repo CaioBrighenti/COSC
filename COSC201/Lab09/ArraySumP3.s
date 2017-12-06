@@ -46,28 +46,21 @@ loop:
 	sub	X10, X10, 32		// k--	, first time through this makes X10 address of A[len-1]
 	add	X12, X10, X9		// X12 = address of B[k]
 
-	// Unroll 1
 	ldur	X11, [X10, #24]		// X11 = A[k]
 	ldur	X13, [X12, #24]		// X13 = B[k]
 	add X14, x12, X9		// X14 = address of C[k]
 	add	X13, X13, X11		// X13 = A[k] + B[k]
 	stur	X13, [X14, #24]		// C[k] = A[k] + B[k]
 
-	// Unroll 2
 	ldur	X11, [X10, #16]		// X11 = A[k]
 	ldur	X13, [X12, #16]		// X13 = B[k]
-	nop
+	ldur	X15, [X10, #8]		// X15 = 3rd A[k]
+	ldur	X16, [X12, #8]		// X16 = 3rd B[k]
 	add	X13, X13, X11		// X13 = A[k] + B[k]
 	stur	X13, [X14, #16]		// C[k] = A[k] + B[k]
+	add	X16, X16, X15		// X16 = A[k] + B[k]
+	stur	X16, [X14, #8]		// C[k] = A[k] + B[k]
 
-	// Unroll 3
-	ldur	X11, [X10, #8]		// X11 = A[k]
-	ldur	X13, [X12, #8]		// X13 = B[k]
-	nop
-	add	X13, X13, X11		// X13 = A[k] + B[k]
-	stur	X13, [X14, #8]		// C[k] = A[k] + B[k]
-
-	// Unroll 4
 	ldur	X11, [X10, #0]		// X11 = A[k]
 	ldur	X13, [X12, #0]		// X13 = B[k]
 	sub	X12, X10, X1		// Is X10 at first element of A?
