@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6500 64-bit) (preloaded format=pdflatex 2018.1.27)  27 JAN 2018 15:30
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6500 64-bit) (preloaded format=pdflatex 2018.1.27)  28 JAN 2018 15:58
 entering extended mode
 **./main.tex
 (main.tex
@@ -1005,22 +1005,23 @@ AED: lastpage setting LastPage
 Here is how much of TeX's memory you used:
  14466 strings out of 493312
  268872 string characters out of 3138006
- 321265 words of memory out of 3000000
+ 324265 words of memory out of 3000000
  17700 multiletter control sequences out of 15000+200000
- 12676 words of font info for 49 fonts, out of 3000000 for 9000
+ 12816 words of font info for 49 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
  61i,11n,75p,887b,241s stack positions out of 5000i,500n,10000p,200000b,50000s
 <D:/Program Files (x86)/MiKTeX/fonts/type1/public/amsfonts/cm/cmb
 x12.pfb><D:/Program Files (x86)/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pf
-b><D:/Program Files (x86)/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><D:/P
-rogram Files (x86)/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb><D:/Program 
-Files (x86)/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><D:/Program Files 
-(x86)/MiKTeX/fonts/type1/public/amsfonts/cm/cmti10.pfb><D:/Program Files (x86)/
-MiKTeX/fonts/type1/public/amsfonts/cm/cmti12.pfb><D:/Program Files (x86)/MiKTeX
-/fonts/type1/public/amsfonts/cm/cmtt10.pfb>
-Output written on main.pdf (5 pages, 96156 bytes).
+b><D:/Program Files (x86)/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi7.pfb><D:/P
+rogram Files (x86)/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><D:/Program 
+Files (x86)/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb><D:/Program Files (
+x86)/MiKTeX/fonts/type1/public/amsfonts/cm/cmr7.pfb><D:/Program Files (x86)/MiK
+TeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><D:/Program Files (x86)/MiKTeX/fo
+nts/type1/public/amsfonts/cm/cmti10.pfb><D:/Program Files (x86)/MiKTeX/fonts/ty
+pe1/public/amsfonts/cm/cmti12.pfb>
+Output written on main.pdf (5 pages, 110904 bytes).
 PDF statistics:
- 53 PDF objects out of 1000 (max. 8388607)
+ 57 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  13 words of extra memory for PDF output out of 10000 (max. 10000000)
 
