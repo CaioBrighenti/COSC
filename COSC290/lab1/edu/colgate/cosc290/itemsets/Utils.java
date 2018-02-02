@@ -17,21 +17,32 @@ public class Utils {
      * @return the set of all subsets of input set s
      */
     public static <E> Set<Set<E>> allSubsets(Set<E> s) {
-      Set<E> testset = new HashSet<>();
-      testset.add("a");
-      System.out.println(subsetRecursiveHelper(testset));
+        List<E> setlist = new ArrayList();
+        setlist.addAll(s);
+        List<Set<E>> returnlist = subsetRecursiveHelper(setlist);
+        Set<Set<E>> returnset = new HashSet(returnlist);
+        return returnset;
     }
 
-    public static <E> Set<Set<E>> subsetRecursiveHelper(Set<E> s) {
-        if (s.size() == 1) {
-          Set<E> emptyset = new HashSet<>();
-          Set<E> singleset = new HashSet<>();
-          singleset.add(s);
-          Set<Set<E>> tempset = new HashSet<>();
-          tempset.add(emptyset);
-          tempset.add(singleset);
-          return
+    public static <E> List<Set<E>> subsetRecursiveHelper(List<E> l) {
+      List<Set<E>> templist = new ArrayList<>();
+      // base case, return emptyset and set of singleton
+      if (l.size() == 0) {
+        Set<E> emptyset = new HashSet<>();
+        templist.add(emptyset);
+      } else {
+        E element = l.get(l.size() - 1);
+        l.remove(element);
+        List<Set<E>> recurlist = subsetRecursiveHelper(l);
+        List<Set<E>> recurlistcopy = new ArrayList();
+        for (Set<E> set_el : recurlist) {
+          recurlistcopy.add(new HashSet(set_el));
+          set_el.add(element);
         }
+        templist.addAll(recurlist);
+        templist.addAll(recurlistcopy);
+      }
+      return templist;
     }
 
     /**
@@ -43,7 +54,13 @@ public class Utils {
      * @return all subsets of size k from set s
      */
     public static <E> Set<Set<E>> allSubsetsOfSize(Set<E> s, int k) {
-        throw new UnsupportedOperationException("implement me!");
+        Set<Set<E>> fullset = allSubsets(s);
+        Set<Set<E>> newset = new HashSet<>();
+        for (Set<E> subset: fullset) {
+          if (subset.size() == k)
+            newset.add(subset);
+        }
+        return newset;
     }
 
     /**
