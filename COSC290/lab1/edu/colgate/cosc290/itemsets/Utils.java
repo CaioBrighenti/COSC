@@ -17,32 +17,30 @@ public class Utils {
      * @return the set of all subsets of input set s
      */
     public static <E> Set<Set<E>> allSubsets(Set<E> s) {
-        List<E> setlist = new ArrayList();
-        setlist.addAll(s);
-        List<Set<E>> returnlist = subsetRecursiveHelper(setlist);
-        Set<Set<E>> returnset = new HashSet(returnlist);
+        Set<Set<E>> returnset = subsetRecursiveHelper(s);
         return returnset;
     }
 
-    public static <E> List<Set<E>> subsetRecursiveHelper(List<E> l) {
-      List<Set<E>> templist = new ArrayList<>();
+    public static <E> Set<Set<E>> subsetRecursiveHelper(Set<E> s) {
+      Set<Set<E>> tempset = new HashSet<>();
       // base case, return emptyset and set of singleton
-      if (l.size() == 0) {
+      if (s.size() == 0) {
         Set<E> emptyset = new HashSet<>();
-        templist.add(emptyset);
+        tempset.add(emptyset);
       } else {
-        E element = l.get(l.size() - 1);
-        l.remove(element);
-        List<Set<E>> recurlist = subsetRecursiveHelper(l);
-        List<Set<E>> recurlistcopy = new ArrayList();
-        for (Set<E> set_el : recurlist) {
-          recurlistcopy.add(new HashSet(set_el));
+        Iterator<E> it = s.iterator();
+        E element = it.next();
+        s.remove(element);
+        Set<Set<E>> recurset = subsetRecursiveHelper(s);
+        Set<Set<E>> recursetcopy = new HashSet<>();
+        for (Set<E> set_el : recurset) {
+          recursetcopy.add(new HashSet<>(set_el));
           set_el.add(element);
         }
-        templist.addAll(recurlist);
-        templist.addAll(recurlistcopy);
+        tempset.addAll(recurset);
+        tempset.addAll(recursetcopy);
       }
-      return templist;
+      return tempset;
     }
 
     /**
@@ -95,7 +93,7 @@ public class Utils {
 
     public static void main(String[] args) {
         // a little demonstration of the methods
-        Set<String> S = Utils.makeSet("a", "b");
+        Set<String> S = Utils.makeSet("a", "b", "c");
         System.out.println("S = " + S);
 
         Set<Set<String>> powersetS = Utils.makeSetOfSets(new String[][]{

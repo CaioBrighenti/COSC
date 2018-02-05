@@ -1,0 +1,64 @@
+\usepackage[utf8]{inputenc}
+\usepackage[margin=1in]{geometry}
+\usepackage{fancyhdr}
+\usepackage{extramarks}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amsfonts}
+\usepackage{xspace}
+\usepackage{lastpage}
+\usepackage{parskip}
+\usepackage{titlesec}
+\newcommand{\sectionbreak}{\clearpage}  % page break in each section
+
+\newcommand{\psetClass}{COSC 290 \xspace}
+\newcommand{\psetSemester}{Spring 2018 \xspace}
+
+
+\pagestyle{fancy}
+\lhead{\@psetAuthor}
+\chead{\textit{\psetClass \psetSemester}}
+\rhead{{Problem Set \@psetNumber}}
+% \lfoot{\lastxmark}
+\cfoot{\thepage\ of \pageref{LastPage}}
+
+\def\psetAuthor#1{\gdef\@psetAuthor{#1}}
+\def\@psetAuthor{\@latex@warning@no@line{No \noexpand\psetAuthor given}}
+
+\def\psetNumber#1{\gdef\@psetNumber{#1}}
+\def\@psetNumber{\@latex@warning@no@line{No \noexpand\psetNumber given}}
+
+% \def\psetSources#1{\gdef\@psetSources{#1}}
+% \def\@psetSources{The work being submitted is my own.  I did not discuss this assignment with other students or use any outside sources.}
+
+
+\title{
+    \vspace{2in}
+    \textmd{\textbf{Problem Set \@psetNumber}}\\
+    {\large \textit{COSC 290 Spring 2018}}
+}
+
+\author{\@psetAuthor}
+\date{\today}
+
+
+\usepackage{tcolorbox}
+\tcbset{colback=blue!5!white,colframe=blue!75!black,halign=left,leftrule=3mm}
+
+
+\usepackage{mathtools}
+\usepackage{braket}
+\usepackage{bbm}
+\usepackage{algorithm}
+\usepackage[noend]{algpseudocode}
+\usepackage{amssymb}
+\usepackage{amsthm}
+
+% general stuff
+\usepackage{soul}
+
+% algorithms
+\usepackage{algorithm}
+\usepackage[noend]{algpseudocode}
+\renewcommand{\algorithmicrequire}{\textbf{Input:}}
+\renewcommand{\algorithmicensure}{\textbf{Output:}}
