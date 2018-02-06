@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6500 64-bit) (preloaded format=pdflatex 2018.1.27)  3 FEB 2018 18:08
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6500 64-bit) (preloaded format=pdflatex 2018.1.27)  6 FEB 2018 11:07
 entering extended mode
 **./pset2.tex
 (pset2.tex
@@ -864,8 +864,7 @@ Package: soul 2003/11/17 v2.4 letterspacing/underlining (mf)
 \SOUL@ttwidth=\dimen173
 \SOUL@uldp=\dimen174
 \SOUL@ulht=\dimen175
-))
-No file pset2.aux.
+)) (pset2.aux)
 \openout1 = `pset2.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 7.
@@ -880,6 +879,7 @@ LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 7.
 LaTeX Font Info:    ... okay on input line 7.
 LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 7.
 LaTeX Font Info:    ... okay on input line 7.
+
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
 *geometry* verbose mode - [ preamble ] result:
@@ -990,61 +990,37 @@ LaTeX Font Info:    Try loading font information for U+msb on input line 7.
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ) [1
 
-{C:/Users/Caio Brighenti/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}]
+{C:/Users/Caio Brighenti/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}] [1
 
-LaTeX Warning: Reference `LastPage' on page 1 undefined on input line 22.
+] [2
 
-[1
-
-]
-
-LaTeX Warning: Reference `LastPage' on page 2 undefined on input line 26.
-
-[2
+] [3
 
 ]
-
-LaTeX Warning: Reference `LastPage' on page 3 undefined on input line 30.
-
-[3
-
-]
-
-Package lastpage Warning: Rerun to get the references right on input line 35.
-
 
 AED: lastpage setting LastPage
-
-LaTeX Warning: Reference `LastPage' on page 4 undefined on input line 35.
-
 [4
 
-] (pset2.aux)
-
-LaTeX Warning: There were undefined references.
-
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
- ) 
+] (pset2.aux) ) 
 Here is how much of TeX's memory you used:
- 14456 strings out of 493312
- 268706 string characters out of 3138006
- 320253 words of memory out of 3000000
- 17693 multiletter control sequences out of 15000+200000
- 11285 words of font info for 42 fonts, out of 3000000 for 9000
+ 14468 strings out of 493312
+ 268903 string characters out of 3138006
+ 325265 words of memory out of 3000000
+ 17701 multiletter control sequences out of 15000+200000
+ 12984 words of font info for 50 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
  61i,11n,75p,888b,241s stack positions out of 5000i,500n,10000p,200000b,50000s
-<D:/Program Files (x86)/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx10.pfb><D:/
-Program Files (x86)/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx12.pfb><D:/Progra
-m Files (x86)/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><D:/Program Files
- (x86)/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb><D:/Program Files (x86)/
-MiKTeX/fonts/type1/public/amsfonts/cm/cmti10.pfb><D:/Program Files (x86)/MiKTeX
-/fonts/type1/public/amsfonts/cm/cmti12.pfb><D:/Program Files (x86)/MiKTeX/fonts
-/type1/public/amsfonts/cm/cmtt10.pfb>
-Output written on pset2.pdf (5 pages, 86228 bytes).
+<D:/Program Files (x86)/MiKTeX/fonts/type1/public/amsfonts/cm/cm
+bx12.pfb><D:/Program Files (x86)/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.p
+fb><D:/Program Files (x86)/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><D:/
+Program Files (x86)/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb><D:/Program
+ Files (x86)/MiKTeX/fonts/type1/public/amsfonts/cm/cmr7.pfb><D:/Program Files (
+x86)/MiKTeX/fonts/type1/public/amsfonts/cm/cmti10.pfb><D:/Program Files (x86)/M
+iKTeX/fonts/type1/public/amsfonts/cm/cmti12.pfb><D:/Program Files (x86)/MiKTeX/
+fonts/type1/public/amsfonts/cm/cmtt10.pfb>
+Output written on pset2.pdf (5 pages, 95153 bytes).
 PDF statistics:
- 49 PDF objects out of 1000 (max. 8388607)
+ 53 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  13 words of extra memory for PDF output out of 10000 (max. 10000000)
 
