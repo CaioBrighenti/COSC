@@ -1,4 +1,4 @@
-#Colgate University Computer Science Coursework
+# Colgate University Computer Science Coursework
 
 I am Caio Brighenti, a student at Colgate University.
 
