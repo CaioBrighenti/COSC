@@ -38,20 +38,66 @@ $x_0$
 
 \subsection{DLN 3.30} 
 
-\(((x_0\lor x_1)\land \lnot(x_2\lor x_3)) \lor (x_0 \land x_3 \land \lnot x_2 \land \lnot x_1)\)
+\(((x_0\lor x_1)\land \lnot(x_2\lor x_3)) \lor (x_0 \land \lnot x_1 \land \lnot x_2 \land x_3)\)
+
+\subsection{DLN 3.31} 
+
+\((x_0 \land x_2 \land x_3) \lor (\lnot x_0 \land x_1 \land \lnot x_2 \land x_3)\)
+
+\subsection{DLN 3.32} 
+
+\(((x_1 \oplus x_2) \land \lnot(x_0 \lor x_3)) \lor  (\lnot(x_1 \lor x_2) \land x_0 \land x_3)\)
 
 
 \section{Problem 2: More binary numbers}
 
-Replace this with your answer to problem 2.  Use \verb|\subsection{}| to separate your answer into parts.
+\subsection{DLN 3.33} 
+
+\( ((x_0 \land y_0) \lor \lnot(x_0 \lor y_0)) \land ((x_1 \land y_1) \lor \lnot(x_1 \lor y_1)) \land ((x_2 \land y_2) \lor \lnot(x_2\lor y_2)) \land ((x_3 \land y_3) \lor \lnot(x_3 \lor y_3))    \)
+
+\subsection{DLN 3.34} 
+
+\( (y_0 \land \lnot x_0) \lor (y_1 \land \lnot(x_0 \lor x_1)) \lor (y_2 \land \lnot(x_0 \lor x_1 \lor x_2)) \lor (y_3 \land \lnot(x_0 \lor x_1 \lor x_2 \lor x_3))    \)
 
 \section{Problem 3: Circuits}
 
-Replace this with your answer to problem 2.  Use \verb|\subsection{}| to separate your answer into parts.
+\subsection{DLN 3.84} 
+
+\( (q \lor r) \land \lnot p \)
+
+\subsection{DLN 3.85} 
+
+\( p \land (q \lor r) \)
+
+\subsection{DLN 3.86} 
+
+\( (p \land q) \land \lnot r \)
+
+\subsection{DLN 3.87} 
+
+\( \lnot (p \lor r) \)
 
 \section{Problem 4: More circuits}
 
-Replace this with your answer to problem 2.  Use \verb|\subsection{}| to separate your answer into parts.
+\subsection{DLN 3.88} 
+
+There are two propositions that cannot be expressed using only two gates. These are the exclusive or and not exclusive or propositions. The truth table for each of these is below. $\phi _1$ represents exclusive or, and $\phi _2$ represents not exclusive or.
+
+\begin{center}
+\begin{tabular}{c c|c|c}
+\textbf{$p$} & \textbf{$q$} & \textbf{$\phi _1$} & \textbf{$\phi _2$} \\ \hline
+\(0\) & \(0\) & \(0\) & \(1\) \\
+\(0\) & \(1\) & \(1\) & \(0\) \\
+\(1\) & \(0\) & \(1\) & \(0\) \\
+\(1\) & \(1\) & \(0\) & \(1\) \\
+\end{tabular}
+\end{center}
+
+The shortest propositions for $\phi _1$ and $\phi _2$ would be:
+
+\( \phi _1 = (p \lor q) \land \lnot(p \land q)\)
+
+\( \phi _2 = \lnot (p \lor q) \lor (p \land q)\)
 
 
 \end{document}

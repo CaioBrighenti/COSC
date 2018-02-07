@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6500 64-bit) (preloaded format=pdflatex 2018.1.27)  6 FEB 2018 18:57
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6500 64-bit) (preloaded format=pdflatex 2018.1.27)  6 FEB 2018 22:52
 entering extended mode
 **./pset2.tex
 (pset2.tex
@@ -1003,11 +1003,11 @@ AED: lastpage setting LastPage
 
 ] (pset2.aux) ) 
 Here is how much of TeX's memory you used:
- 14468 strings out of 493312
- 268903 string characters out of 3138006
+ 14466 strings out of 493312
+ 268882 string characters out of 3138006
  326265 words of memory out of 3000000
- 17701 multiletter control sequences out of 15000+200000
- 12984 words of font info for 50 fonts, out of 3000000 for 9000
+ 17700 multiletter control sequences out of 15000+200000
+ 12816 words of font info for 49 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
  61i,11n,75p,888b,241s stack positions out of 5000i,500n,10000p,200000b,50000s
 <D:/Program Files (x86)/MiKTeX/fonts/type1/public/amsfonts/cm/cm
@@ -1017,11 +1017,10 @@ Program Files (x86)/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb><D:/Program
  Files (x86)/MiKTeX/fonts/type1/public/amsfonts/cm/cmr7.pfb><D:/Program Files (
 x86)/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><D:/Program Files (x86)/M
 iKTeX/fonts/type1/public/amsfonts/cm/cmti10.pfb><D:/Program Files (x86)/MiKTeX/
-fonts/type1/public/amsfonts/cm/cmti12.pfb><D:/Program Files (x86)/MiKTeX/fonts/
-type1/public/amsfonts/cm/cmtt10.pfb>
-Output written on pset2.pdf (5 pages, 103402 bytes).
+fonts/type1/public/amsfonts/cm/cmti12.pfb>
+Output written on pset2.pdf (5 pages, 97149 bytes).
 PDF statistics:
- 57 PDF objects out of 1000 (max. 8388607)
+ 53 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  13 words of extra memory for PDF output out of 10000 (max. 10000000)
 
