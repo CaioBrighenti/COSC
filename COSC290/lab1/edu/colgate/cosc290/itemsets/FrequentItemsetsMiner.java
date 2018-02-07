@@ -109,7 +109,11 @@ public class FrequentItemsetsMiner<E> {
      * @return a set of items, which one occurring in at least threshold fraction of the transactions
      */
     public Set<E> frequentItems(int minSupport) {
-        throw new UnsupportedOperationException("implement me!");
+      Set<E> return_set = new HashSet<>();
+      for (Set<E> s : transactions) {
+        System.out.println(s);
+      }
+      return null;
     }
 
     /**

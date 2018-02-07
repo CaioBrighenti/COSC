@@ -56,10 +56,10 @@ public class Utils {
 
       Set<E> empty_set = new HashSet<>();
       Set<E> s_copy = new HashSet<>(s);
-      return allSubsetsRecurHelper(s_copy, empty_set, k);
+      return allSubsetsOfSizeRecurHelper(s_copy, empty_set, k);
     }
 
-    public static <E> Set<Set<E>> allSubsetsRecurHelper(Set<E> s, Set<E> curr_set, Integer k){
+    public static <E> Set<Set<E>> allSubsetsOfSizeRecurHelper(Set<E> s, Set<E> curr_set, Integer k){
       // Prepare variables
       Set<Set<E>> return_set = new HashSet<>();
       Set<E> curr_set_copy = new HashSet<>(curr_set);
@@ -79,9 +79,9 @@ public class Utils {
       Iterator<E> it = s_copy.iterator();
       E element = it.next();
       s_copy.remove(element);
-      Set<Set<E>> recur_set1 = allSubsetsRecurHelper(s_copy, curr_set_copy, k);
+      Set<Set<E>> recur_set1 = allSubsetsOfSizeRecurHelper(s_copy, curr_set_copy, k);
       curr_set_copy.add(element);
-      Set<Set<E>> recur_set2 = allSubsetsRecurHelper(s_copy, curr_set_copy, k);
+      Set<Set<E>> recur_set2 = allSubsetsOfSizeRecurHelper(s_copy, curr_set_copy, k);
 
       // Return sets from both recursive calls
       if (recur_set1 != null)
