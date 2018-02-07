@@ -52,13 +52,11 @@ public class Utils {
      * @return all subsets of size k from set s
      */
     public static <E> Set<Set<E>> allSubsetsOfSize(Set<E> s, int k) {
-        Set<Set<E>> fullset = allSubsets(s);
-        Set<Set<E>> newset = new HashSet<>();
-        for (Set<E> subset: fullset) {
-          if (subset.size() == k)
-            newset.add(subset);
-        }
-        return newset;
+
+    }
+
+    public static <E> Set<Set<E>> allSubsetsRecurHelper(Set<E> s, Boolean[] b, Integer currLen, Integer start, Integer k){
+    
     }
 
     /**
