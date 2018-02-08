@@ -17,7 +17,8 @@ public class Utils {
      * @return the set of all subsets of input set s
      */
     public static <E> Set<Set<E>> allSubsets(Set<E> s) {
-        Set<Set<E>> returnset = subsetRecursiveHelper(s);
+        Set<E> s_copy = new HashSet<>(s);
+        Set<Set<E>> returnset = subsetRecursiveHelper(s_copy);
         return returnset;
     }
 
@@ -53,10 +54,41 @@ public class Utils {
      */
     public static <E> Set<Set<E>> allSubsetsOfSize(Set<E> s, int k) {
 
+      Set<E> empty_set = new HashSet<>();
+      Set<E> s_copy = new HashSet<>(s);
+      return allSubsetsOfSizeRecurHelper(s_copy, empty_set, k);
     }
 
-    public static <E> Set<Set<E>> allSubsetsRecurHelper(Set<E> s, Boolean[] b, Integer currLen, Integer start, Integer k){
-    
+    public static <E> Set<Set<E>> allSubsetsOfSizeRecurHelper(Set<E> s, Set<E> curr_set, Integer k){
+      // Prepare variables
+      Set<Set<E>> return_set = new HashSet<>();
+      Set<E> curr_set_copy = new HashSet<>(curr_set);
+
+      // Check first base case
+      if (curr_set_copy.size() == k){
+        return_set.add(curr_set_copy);
+        return return_set;
+      }
+
+      // Check second base case
+      if (s.size() <= 0)
+        return null;
+
+      // Make recursive calls
+      Set<E> s_copy = new HashSet<>(s);
+      Iterator<E> it = s_copy.iterator();
+      E element = it.next();
+      s_copy.remove(element);
+      Set<Set<E>> recur_set1 = allSubsetsOfSizeRecurHelper(s_copy, curr_set_copy, k);
+      curr_set_copy.add(element);
+      Set<Set<E>> recur_set2 = allSubsetsOfSizeRecurHelper(s_copy, curr_set_copy, k);
+
+      // Return sets from both recursive calls
+      if (recur_set1 != null)
+        return_set.addAll(recur_set1);
+      if (recur_set2 != null)
+        return_set.addAll(recur_set2);
+      return return_set;
     }
 
     /**
@@ -91,7 +123,7 @@ public class Utils {
 
     public static void main(String[] args) {
         // a little demonstration of the methods
-        Set<String> S = Utils.makeSet("a", "b", "c");
+        Set<String> S = Utils.makeSet("a", "b");
         System.out.println("S = " + S);
 
         Set<Set<String>> powersetS = Utils.makeSetOfSets(new String[][]{
