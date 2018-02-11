@@ -99,8 +99,23 @@ public class FrequentItemsetsMiner<E> {
      * @param itemsToAdd a set of items to add to each set in currItemSets
      * @return a set of itemsets
      */
-    public Set<Set<E>> generateCandidates(Set<Set<E>> currItemsets, Set<E> itemsToAdd) {
-        throw new UnsupportedOperationException("implement me!");
+    public Set<Set<E>> generateCandidates(Set<Set<E>> currItemSets, Set<E> itemsToAdd) {
+      // initialize return variable
+      Set<Set<E>> return_set = new HashSet<>();
+
+      // iterate through sets and create all possible itemsets
+      for (Set<E> s : currItemSets ) {
+        for (E element : itemsToAdd) {
+          if (!s.contains(element)){
+            Set<E> temp_set = new HashSet<>(s);
+            temp_set.add(element);
+            return_set.add(temp_set);
+          }
+        }
+      }
+
+      // identify and remove itemsets without minimum support
+      return return_set;
     }
 
     /**
@@ -109,11 +124,24 @@ public class FrequentItemsetsMiner<E> {
      * @return a set of items, which one occurring in at least threshold fraction of the transactions
      */
     public Set<E> frequentItems(int minSupport) {
+      // initialize varaibles
       Set<E> return_set = new HashSet<>();
+      Map<E, Integer> count_map = new HashMap<E, Integer>();
+
+      // iterate through each element in each set and keep track of frequency in a hashmap
       for (Set<E> s : transactions) {
-        System.out.println(s);
+        for (E element : s ) {
+          if (count_map.containsKey(element)){
+            count_map.put(element, count_map.get(element) + 1);
+            // if count matches support, add to return set
+            if (count_map.get(element) == minSupport)
+              return_set.add(element);
+          }
+          else
+            count_map.put(element, 1);
+        }
       }
-      return null;
+      return return_set;
     }
 
     /**
