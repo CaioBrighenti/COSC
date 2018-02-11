@@ -114,7 +114,16 @@ public class FrequentItemsetsMiner<E> {
         }
       }
 
-      // identify and remove itemsets without minimum support
+      // iterate through created itemsets and ensure validity
+      Set<Set<E>> temp_set = new HashSet<>(return_set);
+      for (Set<E> s : temp_set) {
+        Set<Set<E>> subsets = Utils.allSubsetsOfSize(s, s.size() - 1);
+        for (Set<E> ss : subsets) {
+          if (!currItemSets.contains(ss))
+            return_set.remove(s);
+        }
+      }
+      
       return return_set;
     }
 
