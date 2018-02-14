@@ -8,6 +8,7 @@ import java.util.stream.Collectors;
  * Version 0.1,  2017
  *
  * @author Michael Hay
+ * Edited by Caio Brighenti
  */
 public class FrequentItemsetsMiner<E> {
 
@@ -44,6 +45,7 @@ public class FrequentItemsetsMiner<E> {
      * @return a set of sets, each of which is a frequent itemset
      */
     public Set<Set<E>> getFrequentItemsets() {
+        execute();
         if (!resultsComputed) {
             throw new RuntimeException("Must first call execute method to generate results!");
         }
@@ -87,7 +89,42 @@ public class FrequentItemsetsMiner<E> {
      * method should compute the same result as executeSLOW but in a more efficient manner.
      */
     public void execute() {
-        throw new UnsupportedOperationException("implement me!");
+        // obtain frequent items
+        Set<E> freq_items = frequentItems(minSupport);
+        // add each to a singleton set
+        Set<Set<E>> freq_sets = new HashSet<>();
+        for (E el : freq_items) {
+          Set<E> temp_set = new HashSet<>();
+          temp_set.add(el);
+          freq_sets.add(temp_set);
+        }
+        // generate candidates until no candidates are found
+        while (freq_sets.size() > 0) {
+          // add freq items of k-1 size to set of frequent itemsets
+          F.addAll(freq_sets);
+          Set<Set<E>> candidates = generateCandidates(freq_sets, freq_items);
+          freq_sets.clear();
+          // for each candidate size, only keep those with minimum minimum support
+          for (Set<E> cand : candidates) {
+            if (calcSupport(cand) >= minSupport)
+              freq_sets.add(cand);
+          }
+        }
+        resultsComputed = true;
+    }
+
+    /**
+    * Calculates the support of a given itemset
+    * @param itemset the itemset for which to calculate the support
+    * @return an Integer support value
+    */
+    public Integer calcSupport(Set<E> itemset){
+      int support = 0;
+      for (Set<E> t : transactions) {
+        if (t.containsAll(itemset))
+          support++;
+      }
+      return support;
     }
 
     /**
@@ -123,7 +160,7 @@ public class FrequentItemsetsMiner<E> {
             return_set.remove(s);
         }
       }
-      
+
       return return_set;
     }
 
