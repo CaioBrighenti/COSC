@@ -1,0 +1,54 @@
+\documentclass[titlepage]{article}
+\usepackage{hw}  % leave this line
+
+\psetAuthor{Caio Brighenti}  % replace with your name
+\psetNumber{3}  % replace with pset number
+
+\begin{document} \maketitle
+
+\section{Problem 1: Translating natural language into logic}
+
+
+\subsection{DLN 3.145} 
+
+\( \forall t \in T: [ \forall j \in J :\left( scheduledAt(j,t) \implies \exists k \in J - j : scheduledAt(k,t)   \right) ] \)
+
+\subsection{DLN 3.146} 
+
+\( \forall j \in J:[ \exists t \in T: scheduledAt(j,t)] \)
+
+\subsection{DLN 3.147} 
+
+\subsection{DLN 3.148} 
+
+\( \exists t \in T:[scheduledAt(B,t) \land \exists x \in T - t:[scheduledAt(B,x) \land \exists y \in T - t - x:scheduledAt(B,y)]] \)
+
+\subsection{DLN 3.149} 
+
+
+\subsection{DLN 3.150} 
+
+\( \exists t \in T: \left[ scheduledAt(D, t) \land \exists k \in T: \left[ scheduledAt(E, k) \land \forall n \in T:\left[ scheduledAt(E, n) \implies n <= k \right] \land t > k  \right] \right] \)
+
+\subsection{DLN 3.151}
+
+\( \exists t \in T: \left[ scheduledAt(   \right] \)
+
+\subsection{DLN 3.152} 
+
+
+
+\section{Problem 2: More binary numbers}
+
+Replace this with your answer to problem 2.  Use \verb|\subsection{}| to separate your answer into parts.
+
+\section{Problem 3: Circuits}
+
+Replace this with your answer to problem 2.  Use \verb|\subsection{}| to separate your answer into parts.
+
+\section{Problem 4: More circuits}
+
+Replace this with your answer to problem 2.  Use \verb|\subsection{}| to separate your answer into parts.
+
+
+\end{document}
