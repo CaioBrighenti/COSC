@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6500 64-bit) (preloaded format=pdflatex 2018.1.27)  20 FEB 2018 12:05
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6500 64-bit) (preloaded format=pdflatex 2018.1.27)  20 FEB 2018 21:12
 entering extended mode
 **./main.tex
 (main.tex
@@ -991,7 +991,7 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ) [1
 
 {C:/Users/Caio Brighenti/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}]
-Overfull \hbox (17.55118pt too wide) in paragraph at lines 31--32
+Overfull \hbox (17.55118pt too wide) in paragraph at lines 34--35
 $\OMS/cmsy/m/n/10 9\OML/cmm/m/it/10 t \OMS/cmsy/m/n/10 2 \OML/cmm/m/it/10 T \OT
 1/cmr/m/n/10 : []$ 
  []
@@ -1000,9 +1000,11 @@ $\OMS/cmsy/m/n/10 9\OML/cmm/m/it/10 t \OMS/cmsy/m/n/10 2 \OML/cmm/m/it/10 T \OT
 
 ] [2
 
+] [3
+
 ] 
 AED: lastpage setting LastPage
-[3
+[4
 
 ] (main.aux) ) 
 Here is how much of TeX's memory you used:
@@ -1017,13 +1019,14 @@ Here is how much of TeX's memory you used:
 x12.pfb><D:/Program Files (x86)/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pf
 b><D:/Program Files (x86)/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><D:/P
 rogram Files (x86)/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb><D:/Program 
-Files (x86)/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><D:/Program Files 
-(x86)/MiKTeX/fonts/type1/public/amsfonts/cm/cmti10.pfb><D:/Program Files (x86)/
-MiKTeX/fonts/type1/public/amsfonts/cm/cmti12.pfb><D:/Program Files (x86)/MiKTeX
-/fonts/type1/public/amsfonts/cm/cmtt10.pfb>
-Output written on main.pdf (4 pages, 99112 bytes).
+Files (x86)/MiKTeX/fonts/type1/public/amsfonts/cm/cmr7.pfb><D:/Program Files (x
+86)/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><D:/Program Files (x86)/Mi
+KTeX/fonts/type1/public/amsfonts/cm/cmti10.pfb><D:/Program Files (x86)/MiKTeX/f
+onts/type1/public/amsfonts/cm/cmti12.pfb><D:/Program Files (x86)/MiKTeX/fonts/t
+ype1/public/amsfonts/cm/cmtt10.pfb>
+Output written on main.pdf (5 pages, 107613 bytes).
 PDF statistics:
- 50 PDF objects out of 1000 (max. 8388607)
+ 57 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  13 words of extra memory for PDF output out of 10000 (max. 10000000)
 

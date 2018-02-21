@@ -11,7 +11,7 @@
 
 \subsection{DLN 3.145} 
 
-\( \forall t \in T: [ \forall j \in J :\left( scheduledAt(j,t) \implies \exists k \in J - j : scheduledAt(k,t)   \right) ] \)
+\( \forall t \in T: [ \forall j_1, j_2 \in J :[At(j_1, t) \land At(j_2, t) \implies j_1 = j_2 ] ]\)
 
 \subsection{DLN 3.146} 
 
@@ -19,12 +19,15 @@
 
 \subsection{DLN 3.147} 
 
+\( \forall t \in T:[ At(A, t) \implies \lnot (At(A, t +1) \lor At(A, t+2))] \)
+
 \subsection{DLN 3.148} 
 
-\( \exists t \in T:[scheduledAt(B,t) \land \exists x \in T - t:[scheduledAt(B,x) \land \exists y \in T - t - x:scheduledAt(B,y)]] \)
+\( \exists t_1, t_2, t_3 \in T:[At(B, t_1) \land At(B, t_2) \land At(B, t_3) \land (t_1 \neq t_2 \neq t_3)] \)
 
 \subsection{DLN 3.149} 
 
+\( \forall t_1, t_2, t_3 \in T: [(At(B, t_1) \land At(B, t_2) \land (t_1 \neq t_2 \neq t_3)) \ \implies \lnot At(B, t_3)] \)
 
 \subsection{DLN 3.150} 
 
@@ -36,7 +39,7 @@
 
 \subsection{DLN 3.152} 
 
-
+.
 
 \section{Problem 2: More binary numbers}
 
