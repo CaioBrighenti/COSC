@@ -37,7 +37,10 @@ public class Literal {
      */
     @Override
     public String toString() {
-        throw new UnsupportedOperationException("implement me!");
+      if (isPositive)
+        return variable.toString();
+      else
+        return "~" + variable.toString();
     }
 
     // ---- implementations of equals and hashcode so that this object can be put into hash sets/maps/etc.

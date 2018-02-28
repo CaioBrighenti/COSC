@@ -33,7 +33,12 @@ public class CNFF {
      * @return a collection of Variable objects
      */
     public Collection<Variable> getVariables() {
-        throw new UnsupportedOperationException("implement me!");
+      // initialize return set
+      Set<Variable> return_vars = new HashSet<>();
+      for (Clause clause : clauses) {
+        return_vars.addAll(clause.getVariables());
+      }
+      return return_vars;
     }
 
     public static void main(String[] args) {

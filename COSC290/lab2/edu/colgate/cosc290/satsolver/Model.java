@@ -79,7 +79,21 @@ public class Model {
      * @return true of the clause is *necessarily* true
      */
     public boolean isTrue(Clause c) {
-        throw new UnsupportedOperationException("implement me!");
+        // grab true and false vars in the clause
+        Collection<Variable> true_vars = c.getPositiveVariables();
+        Collection<Variable> false_vars = c.getNegativeVariables();
+        // iterate through map
+        // return true for true assignments in true vars or false assignments in false_vars
+        for (Map.Entry<Variable,Boolean> entry : assignment.entrySet()) {
+          Variable key = entry.getKey();
+          Boolean value = entry.getValue();
+          if (value && true_vars.contains(key))
+            return true;
+          else if (!value && false_vars.contains(key))
+            return true;
+        }
+        // if condition is never met in foreach loop, clause must be false
+        return false;
     }
 
     /**
@@ -90,7 +104,25 @@ public class Model {
      * @return true of the clause is *necessarily* false
      */
     public boolean isFalse(Clause c) {
-        throw new UnsupportedOperationException("implement me!");
+      // grab true and false vars in the clause
+      Collection<Variable> true_vars = c.getPositiveVariables();
+      Collection<Variable> false_vars = c.getNegativeVariables();
+      // ensure all true variables are both in the mapping and mapped to false
+      for (Variable true_var : true_vars) {
+        if (!assignment.containsKey(true_var))
+          return false;
+        if (assignment.get(true_var))
+          return false;
+      }
+      // ensure all false variables are both in the mapping and mapped to true
+      for (Variable false_var : false_vars) {
+        if (!assignment.containsKey(false_var))
+          return false;
+        if (!assignment.get(false_var))
+          return false;
+      }
+      // if condition is never met in foreach loop, clause must be false
+      return true;
     }
 
     @Override

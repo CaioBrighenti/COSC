@@ -26,21 +26,34 @@ public class Clause {
         // follow the DRY principle and avoid repeating yourself with these three methods that get variables
         // hint: create a helper method that takes in a parameter that tells it whether to get all variables, or
         // only positive ones, or only negative ones.
-        throw new UnsupportedOperationException("implement me!");
+        return getVariablesHelper(true, true);
     }
 
     public Collection<Variable> getPositiveVariables() {
         // follow the DRY principle and avoid repeating yourself with these three methods that get variables
         // hint: create a helper method that takes in a parameter that tells it whether to get all variables, or
         // only positive ones, or only negative ones.
-        throw new UnsupportedOperationException("implement me!");
+        return getVariablesHelper(false, true);
     }
 
     public Collection<Variable> getNegativeVariables() {
         // follow the DRY principle and avoid repeating yourself with these three methods that get variables
         // hint: create a helper method that takes in a parameter that tells it whether to get all variables, or
         // only positive ones, or only negative ones.
-        throw new UnsupportedOperationException("implement me!");
+        return getVariablesHelper(true, false);
+    }
+
+    public Collection<Variable> getVariablesHelper(boolean negative, boolean positive) {
+      // init set to return
+      Set<Variable> return_vars = new HashSet<>();
+      // loop through all literals and add them to the return set according to params
+      for (Literal lit : literals) {
+        if (lit.isPositive() && positive)
+          return_vars.add(lit.getVariable());
+        else if (!lit.isPositive() && negative)
+          return_vars.add(lit.getVariable());
+      }
+      return return_vars;
     }
 
     // ---- implementation of toString to make debugging easier

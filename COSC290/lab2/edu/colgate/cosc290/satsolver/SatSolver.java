@@ -49,7 +49,11 @@ public class SatSolver {
 
     private boolean isSatisfiableHelper(Set<Clause> clauses, Model model) {
         numRecursiveCalls++;   // please leave this line
-        throw new UnsupportedOperationException("implement me!");
+        for (Clause c : clauses ) {
+          if (model.isFalse(c))
+            return false;
+        }
+        return true;
     }
 
     /**
