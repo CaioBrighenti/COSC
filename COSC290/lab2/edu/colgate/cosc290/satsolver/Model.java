@@ -125,6 +125,13 @@ public class Model {
       return true;
     }
 
+    public Variable chooseVar(){
+      for (Variable v : unassigned ) {
+        return v;
+      }
+      return null;
+    }
+
     @Override
     public String toString() {
         List<String> pairs = new ArrayList<>(assignment.size());

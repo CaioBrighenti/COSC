@@ -49,26 +49,44 @@ public class SatSolver {
 
     private boolean isSatisfiableHelper(Set<Clause> clauses, Model model) {
         numRecursiveCalls++;   // please leave this line
-        // formula is satisfiable if it is true for this model
+        // base cases, fail fast
         if (isTrueForModel(clauses, model))
           return true;
-        // if formula is not true for this model, try a different one
-        // I can definitely refactor bools declaration
-        Set<Boolean> bools = new HashSet<>();
-        bools.add(true);
-        bools.add(false);
-        for (Boolean bool : bools) {
-          System.out.println(bool);
+        if (isFalseForModel(clauses, model))
+          return false;
+        // recursive case
+        Variable var = model.chooseVar();
+        model.assign(var, true);
+        if (isSatisfiableHelper(clauses, model)){
+          model.unassign(var);
+          return true;
         }
-        return true;
+        model.unassign(var);
+        model.assign(var, false);
+        if (isSatisfiableHelper(clauses, model)){
+          model.unassign(var);
+          return true;
+        }
+        model.unassign(var);
+        return false;
     }
 
+    // Checks if the formula is true for this model assignment
     private boolean isTrueForModel(Set<Clause> clauses, Model model) {
       for (Clause c : clauses) {
         if (!model.isTrue(c))
           return false;
       }
       return true;
+    }
+
+    // Checks if the frmula is false for this model assignment
+    private boolean isFalseForModel(Set<Clause> clauses, Model model) {
+      for (Clause c : clauses) {
+        if (model.isFalse(c))
+          return true;
+      }
+      return false;
     }
 
     /**
