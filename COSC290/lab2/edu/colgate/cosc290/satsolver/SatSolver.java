@@ -9,6 +9,7 @@ import java.util.*;
  * Version 0.1,  2017
  *
  * @author Michael Hay
+ * edited by Caio Brighenti
  */
 public class SatSolver {
 
@@ -54,7 +55,7 @@ public class SatSolver {
           return true;
         if (isFalseForModel(clauses, model))
           return false;
-        // recursive case
+        // recursive cases
         Variable var = model.chooseVar();
         model.assign(var, true);
         if (isSatisfiableHelper(clauses, model)){

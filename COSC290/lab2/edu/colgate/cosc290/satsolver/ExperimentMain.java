@@ -7,6 +7,7 @@ package edu.colgate.cosc290.satsolver;
  * Version 0.1,  2017
  *
  * @author Michael Hay
+* edited by Caio Brighenti
  */
 public class ExperimentMain {
 
@@ -21,16 +22,6 @@ public class ExperimentMain {
         double[] ratios = new double[] { 1, 2, 3, 4, 5, 6, 7, 8};  // ratio r = # clauses / # variables
         boolean findPureVariables = true;
         boolean findUnitClauses = true;
-
-        // for each ratio r in ratios:
-        //     repeat numTrials times:
-        //         - generate a random CNF formula with given n variables, having k variables per clause, and m
-        //           clauses where m = r*n
-        //         - check whether the formula is satisfiable
-        //         - find out how many recursive calls were made (search cost)
-        //     print out: ratio r, what fraction of formulas were satisfiable, average search cost
-        //     Example: "ratio r=4.0, fraction sat=0.95, avg. cost=1743.0"
-
         // run experiment for each ratio
         for (double r : ratios) {
           // initialize variables

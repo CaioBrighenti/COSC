@@ -9,6 +9,7 @@ import java.util.*;
  * Version 0.1,  2017
  *
  * @author Michael Hay
+* edited by Caio Brighenti
  */
 public class Model {
 
