@@ -59,13 +59,11 @@ public class SatSolver {
         Variable var = model.chooseVar();
         model.assign(var, true);
         if (isSatisfiableHelper(clauses, model)){
-          model.unassign(var);
           return true;
         }
         model.unassign(var);
         model.assign(var, false);
         if (isSatisfiableHelper(clauses, model)){
-          model.unassign(var);
           return true;
         }
         model.unassign(var);
