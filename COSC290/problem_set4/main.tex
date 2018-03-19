@@ -1,0 +1,69 @@
+\documentclass[titlepage]{article}
+\usepackage{hw}  % leave this line
+
+\psetAuthor{Caio Brighenti}  % replace with your name
+\psetNumber{4}  % replace with pset number
+
+\begin{document} \maketitle
+
+\section{Problem 1: Direct proof and proof by contrapositive}
+
+\subsection{DLN 4.45}  % make a new part
+
+\textbf{Claim:} \(A $ x $ B = B $ x $ A \iff (A= \varnothing) \lor (B= \varnothing) \lor (A=B)\)
+
+This proof will be subdivided into two smaller proofs. The first being a direct proof of the $\implies$
+and the second a contrapositive of $\Longleftarrow$. If both are proved true, then the overall claim must be true by mutual implication.
+
+\textbf{Proof 1} will directly show that \(A $ x $ B = B $ x $ A \implies (A= \varnothing) \lor (B= \varnothing) \lor (A=B)\).\\
+\textbf{Given} that \(A $ x $ B = B $ x $ A \) is true.\\
+\textbf{Want to show that} \((A= \varnothing) \lor (B= \varnothing) \lor (A=B)\) is true.
+
+This proof can exist in two cases: either one of A or B contains no elements and is an empty set, or both sets contain at least one element and are equal. The product of \(A $ x $ B\) produces the Cartesian product of the sets, defined by:
+\begin{center}
+\(A $ x $ B = P\{(a,b)|a \in A, b \in B\} \)
+\end{center}
+If either $A$ or $B$ is equal to $\emptyset$, the Cartesian product $A $ x $B$ will also be $\emptyset$, as there cannot be any $(a,b)$ pair as defined above, because either $A$, $B$ or both contain no elements to begin with.\\
+The other way in which $A$ and $B$ can exist is if neither are equal to $\emptyset$, and thus contain at least one element. In this situation, $A$ must equal $B$ as both the Cartesian products of $A$ and $B$ are given as equal. This is because if \(A $ x $ B = B $ x $ A \), then every $(a,b)$ pair must exactly equal one $(b,a)$ pair, without exception. If $A$ and $B$ contained different elements, there would exist $(a,b)$ pairs that would not match any $(b,a)$ pairs. Thus, given \(A $ x $ B = B $ x $ A \), $A$ and $B$ must either exist such that at least one of them is equal to $\emptyset$, or they must be equal.
+
+\textbf{Proof 2} will show that \(A $ x $ B = B $ x $ A \Longleftarrow (A= \varnothing) \lor (B= \varnothing) \lor (A=B)\) by the contrapositive. The contrapositive claim is thus \(\lnot (A $ x $ B = B $ x $ A) \implies \lnot(A= \varnothing) \land \lnot (B= \varnothing) \land \lnot (A=B)\)\\
+\textbf{Given} that \(\lnot (A $ x $ B = B $ x $ A)\) is true.\\
+\textbf{Want to show that} \(\lnot(A= \varnothing) \land \lnot (B= \varnothing) \land \lnot (A=B)\) is true.
+
+In this case, neither $A$ nor $B$ can equal $\emptyset$, as the Cartesian products of $A$ and $B$ are known to not be equal. Per the definition of Cartesian products shown in proof 1, if either of the operands in a Cartesian product are equal to $\emptyset$, the result will also be equal to $\emptyset$. As it is given that \(\lnot (A $ x $ B = B $ x $ A)\), then neither $A$ or $B$ can be $\emptyset$. As such, \(\lnot(A= \varnothing) \land \lnot (B= \varnothing)\) must be true.\\
+It is also not possible that $A$ is equal to $B$. If $A$ and $B$ were equal, there would be no distinction between elements $a \in A$ and elements $b \in B$, as we would have $A \equiv B$. Thus, there would be no difference between the ordered pairs $(a,b)$ and $(b,a)$, and consequently no difference between the products $A$ x $B$ and  $B$ x $A$. As such, \(\lnot (A=B)\) must be true, thus proving our contrapositive claim, and subsequently the original claim of \textbf{Proof 2}.
+
+As \textbf{Proof 1} proves the $\implies$ aspect of the original claim, and \textbf{Proof 2} proves the $\longleftarrow$ side of it, then the original claim \(A $ x $ B = B $ x $ A \iff (A= \varnothing) \lor (B= \varnothing) \lor (A=B)\) must be true by mutual implication.
+
+\section{Problem 2: Proof by contradiction}
+
+\subsection{DLN 4.60}  % make a new part
+
+\textbf{Claim: } For any array $A[1 ... n]$, $A$ contains at most one strictly majority element.\\
+\textbf{Proof by contradiction: } Assume the claim is false, and that there are \textit{two} distinc elements $x$ and $y$ in $A$ such that both $x$ and $y$ are strictly majority elements.
+
+The definition of a strictly majority element is:
+\begin{center}
+\(|{i \in \{1,2,...,n\}:A[i]=x}|>\frac{n}{2}\)
+\end{center}
+In natural language, this states that the cardinality of set $X$, where $X$ contains all elements $i$ in $A$ such that $A[i] = x$, is more than half of the cardinality of set A where $n$ is that cardinality, meaning more than half the elements are equal to $x$. As assume both $x$ and $y$ are strictly majority elements, then there exists two sets $X$ and $Y$ such that each contain all elements equal to $x$ and $y$ respectively, in the same manner defined above. By the definition of strictly majority, it must be true that:
+\begin{center}
+\( |X| > \frac{n}{2} \)
+
+\( |Y| > \frac{n}{2} \)
+\end{center}
+As $x$ and $y$ are distinct elements, there are no elements $i$ in $A$ that fulfill both $A[i]=x$ and $A[i]=y$, thus $A \cap B = \emptyset$, meaning each element in $X$ and $Y$ is unique to the set it belongs to. Therefore:
+\begin{center}
+\( |X| + |Y| > \frac{n}{2} + \frac{n}{2} \)\\
+\( |X| + |Y| > 2(\frac{n}{2})\)\\
+\( |X| + |Y| > n\)\\
+\end{center}
+This statement is inherently contradictory, as it states that the sum of the cardinality of two unique subsets of $n$ is greater than the cardinality of $n$. In the case that every element in $A$ was in either $X$ or $Y$, it would hold that \( |X| + |Y| = n\), and subsequently $n > n$, an obviously contradictory statement. Thus, the claim that for any array A only a single strictly majority element can exist must be true.
+
+\section{Problem 3: Proof analysis}
+
+\subsection{DLN 4.101}  % make a new part
+
+\subsection{DLN 4.102}  % make a new part
+
+\end{document}
