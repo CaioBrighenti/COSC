@@ -26,7 +26,7 @@ public class Neg extends Proposition {
 
     @Override
     public String toString() {
-        throw new UnsupportedOperationException("implement me!");
+        return "~" + phi.toString();
     }
 
     @Override

@@ -37,7 +37,7 @@ public class BinOp extends Proposition {
 
     @Override
     public String toString() {
-        throw new UnsupportedOperationException("implement me!");
+        return "(" + phi_1.toString() + " " + op.toString() + " " + phi_2.toString() + ")";
     }
 
     @Override

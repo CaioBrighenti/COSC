@@ -14,6 +14,13 @@ public class LogicMain {
      * @param args
      */
     public static void main(String[] args) {
-        throw new UnsupportedOperationException("implement me!");
+        Build builder = new Build();
+        Variable p = new Variable("p");
+        Variable q = new Variable("q");
+        Variable r = new Variable("r");
+        Proposition phi_1 = builder.disj(p, q);
+        Proposition neg = builder.neg(r);
+        Proposition phi_2 = builder.conj(phi_1, neg);
+        System.out.println(phi_2);
     }
 }

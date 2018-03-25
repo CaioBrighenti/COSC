@@ -15,7 +15,7 @@ public class Variable extends Proposition {
 
     @Override
     public String toString() {
-        throw new UnsupportedOperationException("implement me!");
+        return this.symbol;
     }
 
     @Override
