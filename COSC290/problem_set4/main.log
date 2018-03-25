@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6500 64-bit) (preloaded format=pdflatex 2018.1.27)  19 MAR 2018 12:49
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6500 64-bit) (preloaded format=latex 2018.1.27)  19 MAR 2018 15:44
 entering extended mode
 **./main.tex
 (main.tex
@@ -521,10 +521,10 @@ Package: trig 2016/01/03 v1.10 sin cos tan (DPC)
 ("D:\Program Files (x86)\MiKTeX\tex\latex\graphics-cfg\graphics.cfg"
 File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
 )
-Package graphics Info: Driver file: pdftex.def on input line 99.
+Package graphics Info: Driver file: dvips.def on input line 99.
 
-("D:\Program Files (x86)\MiKTeX\tex\latex\graphics-def\pdftex.def"
-File: pdftex.def 2017/06/24 v1.0g Graphics/color driver for pdftex
+("D:\Program Files (x86)\MiKTeX\tex\latex\graphics-def\dvips.def"
+File: dvips.def 2017/06/20 v3.1d Graphics/color driver for dvips
 ))
 \Gin@req@height=\dimen127
 \Gin@req@width=\dimen128
@@ -561,20 +561,21 @@ tex"
  ("D:\Program Files (x86)\MiKTeX\tex\generic\pgf\systemlayer\pgf.cfg"
 File: pgf.cfg 2008/05/14  (rcs-revision 1.7)
 )
-Driver file for pgf: pgfsys-pdftex.def
+Driver file for pgf: pgfsys-dvips.def
 
-("D:\Program Files (x86)\MiKTeX\tex\generic\pgf\systemlayer\pgfsys-pdftex.def"
-File: pgfsys-pdftex.def 2014/10/11  (rcs-revision 1.35)
+("D:\Program Files (x86)\MiKTeX\tex\generic\pgf\systemlayer\pgfsys-dvips.def"
+File: pgfsys-dvips.def 2014/07/09  (rcs-revision 1.25)
 
-("D:\Program Files (x86)\MiKTeX\tex\generic\pgf\systemlayer\pgfsys-common-pdf.d
-ef"
-File: pgfsys-common-pdf.def 2013/10/10  (rcs-revision 1.13)
+("D:\Program Files (x86)\MiKTeX\tex\generic\pgf\systemlayer\pgfsys-common-posts
+cript.def"
+File: pgfsys-common-postscript.def 2008/10/01  (rcs-revision 1.22)
+\pgf@objectcount=\count106
 )))
 ("D:\Program Files (x86)\MiKTeX\tex\generic\pgf\systemlayer\pgfsyssoftpath.code
 .tex"
 File: pgfsyssoftpath.code.tex 2013/09/09  (rcs-revision 1.9)
-\pgfsyssoftpath@smallbuffer@items=\count106
-\pgfsyssoftpath@bigbuffer@items=\count107
+\pgfsyssoftpath@smallbuffer@items=\count107
+\pgfsyssoftpath@bigbuffer@items=\count108
 )
 ("D:\Program Files (x86)\MiKTeX\tex\generic\pgf\systemlayer\pgfsysprotocol.code
 .tex"
@@ -585,9 +586,8 @@ Package: xcolor 2016/05/11 v2.12 LaTeX color extensions (UK)
 ("D:\Program Files (x86)\MiKTeX\tex\latex\graphics-cfg\color.cfg"
 File: color.cfg 2016/01/02 v1.6 sample color configuration
 )
-Package xcolor Info: Driver file: pdftex.def on input line 225.
+Package xcolor Info: Driver file: dvips.def on input line 225.
 Package xcolor Info: Model `cmy' substituted by `cmy0' on input line 1348.
-Package xcolor Info: Model `hsb' substituted by `rgb' on input line 1352.
 Package xcolor Info: Model `RGB' extended on input line 1364.
 Package xcolor Info: Model `HTML' substituted by `rgb' on input line 1366.
 Package xcolor Info: Model `Hsb' substituted by `hsb' on input line 1367.
@@ -604,7 +604,7 @@ Package: pgfcore 2010/04/11 v3.0.1a (rcs-revision 1.7)
 ("D:\Program Files (x86)\MiKTeX\tex\generic\pgf\math\pgfmathutil.code.tex")
 ("D:\Program Files (x86)\MiKTeX\tex\generic\pgf\math\pgfmathparser.code.tex"
 \pgfmath@dimen=\dimen137
-\pgfmath@count=\count108
+\pgfmath@count=\count109
 \pgfmath@box=\box30
 \pgfmath@toks=\toks38
 \pgfmath@stack@operand=\toks39
@@ -629,7 +629,7 @@ e.tex")
 ("D:\Program Files (x86)\MiKTeX\tex\generic\pgf\math\pgfmathfunctions.integerar
 ithmetics.code.tex")))
 ("D:\Program Files (x86)\MiKTeX\tex\generic\pgf\math\pgfmathfloat.code.tex"
-\c@pgfmathroundto@lastzeros=\count109
+\c@pgfmathroundto@lastzeros=\count110
 ))
 ("D:\Program Files (x86)\MiKTeX\tex\generic\pgf\basiclayer\pgfcorepoints.code.t
 ex"
@@ -667,7 +667,7 @@ File: pgfcorescopes.code.tex 2015/05/08  (rcs-revision 1.46)
 \pgfpic=\box31
 \pgf@hbox=\box32
 \pgf@layerbox@main=\box33
-\pgf@picture@serial@count=\count110
+\pgf@picture@serial@count=\count111
 )
 ("D:\Program Files (x86)\MiKTeX\tex\generic\pgf\basiclayer\pgfcoregraphicstate.
 code.tex"
@@ -702,7 +702,7 @@ File: pgfcorearrows.code.tex 2015/05/14  (rcs-revision 1.43)
 x"
 File: pgfcoreshade.code.tex 2013/07/15  (rcs-revision 1.15)
 \pgf@max=\dimen161
-\pgf@sys@shading@range@num=\count111
+\pgf@sys@shading@range@num=\count112
 )
 ("D:\Program Files (x86)\MiKTeX\tex\generic\pgf\basiclayer\pgfcoreimage.code.te
 x"
@@ -756,15 +756,15 @@ Package: trimspaces 2009/09/17 v1.1 Trim spaces around a token list
 ))
 ("D:\Program Files (x86)\MiKTeX\tex\latex\etoolbox\etoolbox.sty"
 Package: etoolbox 2017/11/22 v2.5 e-TeX tools for LaTeX (JAW)
-\etb@tempcnta=\count112
+\etb@tempcnta=\count113
 )
 \tcb@titlebox=\box36
 \tcb@upperbox=\box37
 \tcb@lowerbox=\box38
 \tcb@phantombox=\box39
-\c@tcbbreakpart=\count113
-\c@tcblayer=\count114
-\tcolorbox@number=\count115
+\c@tcbbreakpart=\count114
+\c@tcblayer=\count115
+\tcolorbox@number=\count116
 \tcb@temp=\box40
 \tcb@temp=\box41
 \tcb@temp=\box42
@@ -777,15 +777,15 @@ Package: mathtools 2018/01/08 v1.21 mathematical typesetting tools
 
 ("D:\Program Files (x86)\MiKTeX\tex\latex\tools\calc.sty"
 Package: calc 2014/10/28 v4.3 Infix arithmetic (KKT,FJ)
-\calc@Acount=\count116
-\calc@Bcount=\count117
+\calc@Acount=\count117
+\calc@Bcount=\count118
 \calc@Adimen=\dimen164
 \calc@Bdimen=\dimen165
 \calc@Askip=\skip60
 \calc@Bskip=\skip61
 LaTeX Info: Redefining \setlength on input line 80.
 LaTeX Info: Redefining \addtolength on input line 81.
-\calc@Ccount=\count118
+\calc@Ccount=\count119
 \calc@Cskip=\skip62
 )
 ("D:\Program Files (x86)\MiKTeX\tex\latex\mathtools\mhsetup.sty"
@@ -795,7 +795,7 @@ LaTeX Info: Thecontrolsequence`\('isalreadyrobust on input line 129.
 LaTeX Info: Thecontrolsequence`\)'isalreadyrobust on input line 129.
 LaTeX Info: Thecontrolsequence`\['isalreadyrobust on input line 129.
 LaTeX Info: Thecontrolsequence`\]'isalreadyrobust on input line 129.
-\g_MT_multlinerow_int=\count119
+\g_MT_multlinerow_int=\count120
 \l_MT_multwidth_dim=\dimen166
 \origjot=\skip63
 \l_MT_shortvdotswithinadjustabove_dim=\dimen167
@@ -819,7 +819,7 @@ nment
 
 ("D:\Program Files (x86)\MiKTeX\tex\latex\float\float.sty"
 Package: float 2001/11/08 v1.3d Float enhancements (AL)
-\c@float@type=\count120
+\c@float@type=\count121
 \float@exts=\toks43
 \float@box=\box44
 \@float@everytoks=\toks44
@@ -829,7 +829,7 @@ Package: float 2001/11/08 v1.3d Float enhancements (AL)
 Package: ifthen 2014/09/29 v1.1c Standard LaTeX ifthen package (DPC)
 )
 \@float@every@algorithm=\toks45
-\c@algorithm=\count121
+\c@algorithm=\count122
 )
 ("D:\Program Files (x86)\MiKTeX\tex\latex\algorithmicx\algpseudocode.sty"
 Package: algpseudocode 
@@ -838,15 +838,15 @@ Package: algpseudocode
 Package: algorithmicx 2005/04/27 v1.2 Algorithmicx
 
 Document Style algorithmicx 1.2 - a greatly improved `algorithmic' style
-\c@ALG@line=\count122
-\c@ALG@rem=\count123
-\c@ALG@nested=\count124
+\c@ALG@line=\count123
+\c@ALG@rem=\count124
+\c@ALG@nested=\count125
 \ALG@tlm=\skip64
 \ALG@thistlm=\skip65
-\c@ALG@Lnr=\count125
-\c@ALG@blocknr=\count126
-\c@ALG@storecount=\count127
-\c@ALG@tmpcounter=\count128
+\c@ALG@Lnr=\count126
+\c@ALG@blocknr=\count127
+\c@ALG@storecount=\count128
+\c@ALG@tmpcounter=\count129
 \ALG@tmplength=\skip66
 )
 Document Style - pseudocode environments for use with the `algorithmicx' style
@@ -881,9 +881,9 @@ LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 7.
 LaTeX Font Info:    ... okay on input line 7.
 
 *geometry* driver: auto-detecting
-*geometry* detected driver: pdftex
+*geometry* detected driver: dvips
 *geometry* verbose mode - [ preamble ] result:
-* driver: pdftex
+* driver: dvips
 * paper: <default>
 * layout: <same size as paper>
 * layoutoffset:(h,v)=(0.0pt,0.0pt)
@@ -918,67 +918,6 @@ Package lastpage Info: Please have a look at the pageslts package at
 (lastpage)             https://www.ctan.org/pkg/pageslts
 (lastpage)             ! on input line 7.
 ABD: EveryShipout initializing macros
-("D:\Program Files (x86)\MiKTeX\tex\context\base\supp-pdf.mkii"
-[Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count129
-\scratchdimen=\dimen176
-\scratchbox=\box46
-\nofMPsegments=\count130
-\nofMParguments=\count131
-\everyMPshowfont=\toks51
-\MPscratchCnt=\count132
-\MPscratchDim=\dimen177
-\MPnumerator=\count133
-\makeMPintoPDFobject=\count134
-\everyMPtoPDFconversion=\toks52
-) ("D:\Program Files (x86)\MiKTeX\tex\latex\oberdiek\epstopdf-base.sty"
-Package: epstopdf-base 2016/05/15 v2.6 Base part for package epstopdf
-
-("D:\Program Files (x86)\MiKTeX\tex\generic\oberdiek\infwarerr.sty"
-Package: infwarerr 2016/05/16 v1.4 Providing info/warning/error messages (HO)
-)
-("D:\Program Files (x86)\MiKTeX\tex\latex\oberdiek\grfext.sty"
-Package: grfext 2016/05/16 v1.2 Manage graphics extensions (HO)
-
-("D:\Program Files (x86)\MiKTeX\tex\generic\oberdiek\kvdefinekeys.sty"
-Package: kvdefinekeys 2016/05/16 v1.4 Define keys (HO)
-
-("D:\Program Files (x86)\MiKTeX\tex\generic\oberdiek\ltxcmds.sty"
-Package: ltxcmds 2016/05/16 v1.23 LaTeX kernel commands for general use (HO)
-)))
-("D:\Program Files (x86)\MiKTeX\tex\latex\oberdiek\kvoptions.sty"
-Package: kvoptions 2016/05/16 v3.12 Key value format for package options (HO)
-
-("D:\Program Files (x86)\MiKTeX\tex\generic\oberdiek\kvsetkeys.sty"
-Package: kvsetkeys 2016/05/16 v1.17 Key value parser (HO)
-
-("D:\Program Files (x86)\MiKTeX\tex\generic\oberdiek\etexcmds.sty"
-Package: etexcmds 2016/05/16 v1.6 Avoid name clashes with e-TeX commands (HO)
-
-("D:\Program Files (x86)\MiKTeX\tex\generic\oberdiek\ifluatex.sty"
-Package: ifluatex 2016/05/16 v1.4 Provides the ifluatex switch (HO)
-Package ifluatex Info: LuaTeX not detected.
-)
-Package etexcmds Info: Could not find \expanded.
-(etexcmds)             That can mean that you are not using pdfTeX 1.50 or
-(etexcmds)             that some package has redefined \expanded.
-(etexcmds)             In the latter case, load this package earlier.
-)))
-("D:\Program Files (x86)\MiKTeX\tex\generic\oberdiek\pdftexcmds.sty"
-Package: pdftexcmds 2017/03/19 v0.25 Utility functions of pdfTeX for LuaTeX (HO
-)
-Package pdftexcmds Info: LuaTeX not detected.
-Package pdftexcmds Info: \pdf@primitive is available.
-Package pdftexcmds Info: \pdf@ifprimitive is available.
-Package pdftexcmds Info: \pdfdraftmode found.
-)
-Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
-38.
-Package grfext Info: Graphics extension search list:
-(grfext)             [.pdf,.png,.jpg,.mps,.jpeg,.jbig2,.jb2,.PDF,.PNG,.JPG,.JPE
-G,.JBIG2,.JB2,.eps]
-(grfext)             \AppendGraphicsExtensions on input line 456.
-)
 LaTeX Font Info:    Try loading font information for U+msa on input line 7.
 
 ("D:\Program Files (x86)\MiKTeX\tex\latex\amsfonts\umsa.fd"
@@ -990,7 +929,7 @@ LaTeX Font Info:    Try loading font information for U+msb on input line 7.
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ) [1
 
-{C:/Users/Caio Brighenti/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}] [1
+] [1
 
 ] [2
 
@@ -999,33 +938,14 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 AED: lastpage setting LastPage
 [3
 
-] (main.aux)
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
- ) 
+] (main.aux) ) 
 Here is how much of TeX's memory you used:
- 14465 strings out of 493312
- 268857 string characters out of 3138006
- 326265 words of memory out of 3000000
- 17699 multiletter control sequences out of 15000+200000
+ 13614 strings out of 493313
+ 255263 string characters out of 3138032
+ 319279 words of memory out of 3000000
+ 16887 multiletter control sequences out of 15000+200000
  12816 words of font info for 49 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
  61i,11n,75p,887b,240s stack positions out of 5000i,500n,10000p,200000b,50000s
-<D:/Program Files (x86)/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx10.pfb><D:/
-Program Files (x86)/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx12.pfb><D:/Progra
-m Files (x86)/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><D:/Program File
-s (x86)/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi7.pfb><D:/Program Files (x86)
-/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><D:/Program Files (x86)/MiKTeX
-/fonts/type1/public/amsfonts/cm/cmr12.pfb><D:/Program Files (x86)/MiKTeX/fonts/
-type1/public/amsfonts/cm/cmr7.pfb><D:/Program Files (x86)/MiKTeX/fonts/type1/pu
-blic/amsfonts/cm/cmsy10.pfb><D:/Program Files (x86)/MiKTeX/fonts/type1/public/a
-msfonts/cm/cmti10.pfb><D:/Program Files (x86)/MiKTeX/fonts/type1/public/amsfont
-s/cm/cmti12.pfb><D:/Program Files (x86)/MiKTeX/fonts/type1/public/amsfonts/symb
-ols/msbm10.pfb>
-Output written on main.pdf (4 pages, 127441 bytes).
-PDF statistics:
- 62 PDF objects out of 1000 (max. 8388607)
- 0 named destinations out of 1000 (max. 500000)
- 13 words of extra memory for PDF output out of 10000 (max. 10000000)
 
+Output written on main.dvi (4 pages, 16368 bytes).

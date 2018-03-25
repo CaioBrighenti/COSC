@@ -23,36 +23,36 @@ This proof can exist in two cases: either one of A or B contains no elements and
 \begin{center}
 \(A $ x $ B = P\{(a,b)|a \in A, b \in B\} \)
 \end{center}
-If either $A$ or $B$ is equal to $\emptyset$, the Cartesian product $A $ x $B$ will also be $\emptyset$, as there cannot be any $(a,b)$ pair as defined above, because either $A$, $B$ or both contain no elements to begin with.\\
+If either $A$ or $B$ is equal to $\emptyset$, the Cartesian products $A $ x $B$ and $B$ x $A$ will also be $\emptyset$, as there cannot be any $(a,b)$ pair as defined above, because either $A$, $B$ or both contain no elements to begin with.\\
 The other way in which $A$ and $B$ can exist is if neither are equal to $\emptyset$, and thus contain at least one element. In this situation, $A$ must equal $B$ as both the Cartesian products of $A$ and $B$ are given as equal. This is because if \(A $ x $ B = B $ x $ A \), then every $(a,b)$ pair must exactly equal one $(b,a)$ pair, without exception. If $A$ and $B$ contained different elements, there would exist $(a,b)$ pairs that would not match any $(b,a)$ pairs. Thus, given \(A $ x $ B = B $ x $ A \), $A$ and $B$ must either exist such that at least one of them is equal to $\emptyset$, or they must be equal.
 
-\textbf{Proof 2} will show that \(A $ x $ B = B $ x $ A \Longleftarrow (A= \varnothing) \lor (B= \varnothing) \lor (A=B)\) by the contrapositive. The contrapositive claim is thus \(\lnot (A $ x $ B = B $ x $ A) \implies \lnot(A= \varnothing) \land \lnot (B= \varnothing) \land \lnot (A=B)\)\\
+\textbf{Proof 2} will show that \(A $ x $ B = B $ x $ A \Longleftarrow (A= \varnothing) \lor (B= \varnothing) \lor (A=B)\) by the contrapositive. The contrapositive claim is: \(\lnot (A $ x $ B = B $ x $ A) \implies \lnot(A= \varnothing) \land \lnot (B= \varnothing) \land \lnot (A=B)\)\\
 \textbf{Given} that \(\lnot (A $ x $ B = B $ x $ A)\) is true.\\
 \textbf{Want to show that} \(\lnot(A= \varnothing) \land \lnot (B= \varnothing) \land \lnot (A=B)\) is true.
 
 In this case, neither $A$ nor $B$ can equal $\emptyset$, as the Cartesian products of $A$ and $B$ are known to not be equal. Per the definition of Cartesian products shown in proof 1, if either of the operands in a Cartesian product are equal to $\emptyset$, the result will also be equal to $\emptyset$. As it is given that \(\lnot (A $ x $ B = B $ x $ A)\), then neither $A$ or $B$ can be $\emptyset$. As such, \(\lnot(A= \varnothing) \land \lnot (B= \varnothing)\) must be true.\\
-It is also not possible that $A$ is equal to $B$. If $A$ and $B$ were equal, there would be no distinction between elements $a \in A$ and elements $b \in B$, as we would have $A \equiv B$. Thus, there would be no difference between the ordered pairs $(a,b)$ and $(b,a)$, and consequently no difference between the products $A$ x $B$ and  $B$ x $A$. As such, \(\lnot (A=B)\) must be true, thus proving our contrapositive claim, and subsequently the original claim of \textbf{Proof 2}.
+It is also not possible that $A$ is equal to $B$. If $A$ and $B$ were equal, there would be no distinction between elements $a \in A$ and elements $b \in B$, as we would have $A \equiv B$. Thus, there would be no difference between the ordered pairs $(a,b)$ and $(b,a)$, and consequently no difference between the products $A$ x $B$ and  $B$ x $A$. As such, \(\lnot (A=B)\) must be true, proving our contrapositive claim, and subsequently the original claim of \textbf{Proof 2}.
 
-As \textbf{Proof 1} proves the $\implies$ aspect of the original claim, and \textbf{Proof 2} proves the $\longleftarrow$ side of it, then the original claim \(A $ x $ B = B $ x $ A \iff (A= \varnothing) \lor (B= \varnothing) \lor (A=B)\) must be true by mutual implication.
+As \textbf{Proof 1} proves the $\implies$ aspect of the original claim, and \textbf{Proof 2} proves the $\Longleftarrow$ side of it, then the original claim \(A $ x $ B = B $ x $ A \iff (A= \varnothing) \lor (B= \varnothing) \lor (A=B)\) must be true by mutual implication.
 
 \section{Problem 2: Proof by contradiction}
 
 \subsection{DLN 4.60}  % make a new part
 
 \textbf{Claim: } For any array $A[1 ... n]$, $A$ contains at most one strictly majority element.\\
-\textbf{Proof by contradiction: } Assume the claim is false, and that there are \textit{two} distinc elements $x$ and $y$ in $A$ such that both $x$ and $y$ are strictly majority elements.
+\textbf{Proof by contradiction: } Assume the claim is false, and that there are \textit{two} distinct elements $x$ and $y$ in $A$ such that both $x$ and $y$ are strictly majority elements.
 
 The definition of a strictly majority element is:
 \begin{center}
 \(|{i \in \{1,2,...,n\}:A[i]=x}|>\frac{n}{2}\)
 \end{center}
-In natural language, this states that the cardinality of set $X$, where $X$ contains all elements $i$ in $A$ such that $A[i] = x$, is more than half of the cardinality of set A where $n$ is that cardinality, meaning more than half the elements are equal to $x$. As assume both $x$ and $y$ are strictly majority elements, then there exists two sets $X$ and $Y$ such that each contain all elements equal to $x$ and $y$ respectively, in the same manner defined above. By the definition of strictly majority, it must be true that:
+In natural language, this states that the cardinality of set $X$, where $X$ contains all elements $i$ in $A$ such that $A[i] = x$, is more than half of the cardinality of set A where $n$ is that cardinality, meaning more than half the elements are equal to $x$. As we assume both $x$ and $y$ are strictly majority elements, then there exists two sets $X$ and $Y$ such that each contain all elements equal to $x$ and $y$ respectively, in the same manner defined above. By the definition of strictly majority, it must be true that:
 \begin{center}
 \( |X| > \frac{n}{2} \)
 
 \( |Y| > \frac{n}{2} \)
 \end{center}
-As $x$ and $y$ are distinct elements, there are no elements $i$ in $A$ that fulfill both $A[i]=x$ and $A[i]=y$, thus $A \cap B = \emptyset$, meaning each element in $X$ and $Y$ is unique to the set it belongs to. Therefore:
+As $x$ and $y$ are distinct elements, there are no elements $A[i]$ such that $A[i] = x \land A[i] = y$, thus $A \cap B = \emptyset$, meaning each element in $X$ and $Y$ is unique to the set it belongs to. Therefore:
 \begin{center}
 \( |X| + |Y| > \frac{n}{2} + \frac{n}{2} \)\\
 \( |X| + |Y| > 2(\frac{n}{2})\)\\
@@ -64,6 +64,11 @@ This statement is inherently contradictory, as it states that the sum of the car
 
 \subsection{DLN 4.101}  % make a new part
 
+The error in the proof lies at the very end of the second part of the proof. The proof states that because $r < 12$, adding $r^2$ to a number divisible by 12 will always result in a number \textit{not} divisible by 12. While that would be true for simply adding $r$, as a number smaller than 12 cannot be divisible by 12, but raising $r$ to the 2nd power creates the possibility of resulting in a number divisible by 12. For instance, if $r = 6$, then $r^2=36$. Adding 36 to a multiple of 12 would not make it no longer a multiple of 12, and thus the statement that adding $r^2$ always results in a number not divisible by 12 is false.
+
 \subsection{DLN 4.102}  % make a new part
+
+The clearest way to disprove the claim that \( 12|n \iff 12|n^2 \) is to provide a counterexample. The proof represents a number $n$ not divisible by 12 as $n = 12k + r$, where $k$ is an integer and $r$ is an integer belonging to ${1,2,...,11}$. $n^2$ would thus be equal to $12(12k^2 + 2kr) + r^2$. If there is a $k,r$ pair such that $\lnot 12|n$ and $12|n^2$, the claim would be disproved. \\
+One such example is $k=1$ and $r=6$. In this case, $n=12+6$, thus being not divisible, as a number not divisible by 12 is being added to a multiple of 12. On the other hand, $n^2=12(...)+r^2=12(...)+36$. The contents of the parentheses have been omitted for simplicity as they are irrelevant. For $n^2$, a number divisible by 12 is being added to another multiple of 12, resulting in $12|n^2$. This means that \( 12|n^2 \implies 12|n \) is false, as the left hand side is true while the right hand side is false, thus making the overall claim \( 12|n \iff 12|n^2 \) false.
 
 \end{document}
