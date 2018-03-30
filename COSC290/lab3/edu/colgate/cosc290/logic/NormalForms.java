@@ -16,7 +16,48 @@ public class NormalForms {
      * @return psi, a proposition with only & and ~ connectives and logically equivalent to phi
      */
     public static Proposition simplify(Proposition phi) {
-        throw new UnsupportedOperationException("implement me!");
+      // base case
+      if (phi.isVariable())
+        return phi;
+
+      // case if phi is a negation
+      if (phi.isNotProposition()){
+        Build builder = new Build();
+        phi = builder.neg(simplify(phi.getFirst()));
+        return phi;
+      }
+
+      // case if phi is a binary op
+      if (phi.isBinaryProposition()) {
+        Build builder = new Build();
+        if (phi.getConnective().toString() == "&") {
+          phi = builder.conj(simplify(phi.getFirst()),simplify(phi.getSecond()));
+          return phi;
+        }
+        // get rid of & by using (p & q) = ~(~p | ~q)
+        if (phi.getConnective().toString() == "|") {
+          Proposition first_neg;
+          Proposition second_neg;
+          // check if propositions are aready negation to avoid double negative
+          if (phi.getFirst().isNotProposition()){
+            first_neg = phi.getFirst().getFirst();
+          } else {
+            first_neg = builder.neg(phi.getFirst());
+          }
+          if (phi.getSecond().isNotProposition()){
+            second_neg = phi.getSecond().getFirst();
+          } else {
+            second_neg = builder.neg(phi.getSecond());
+          }
+
+          // build conj
+          phi = builder.conj(simplify(first_neg),simplify(second_neg));
+          phi = builder.neg(phi);
+          return phi;
+        }
+      }
+
+      return phi;
     }
 
     /**
@@ -31,7 +72,17 @@ public class NormalForms {
      * @throws IllegalPropositionException if phi contains a connective that is not in the set {&, ~}.
      */
     public static Proposition toNNF(Proposition phi) {
-        throw new UnsupportedOperationException("implement me!");
+        // base case
+        if (phi.isVariable())
+          return phi;
+
+        if (phi.isNotProposition()) {
+           if (phi.getFirst().isVariable()) {
+             return phi;
+           }
+
+          
+        }
     }
 
     /**

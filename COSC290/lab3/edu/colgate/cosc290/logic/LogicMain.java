@@ -22,5 +22,6 @@ public class LogicMain {
         Proposition neg = builder.neg(r);
         Proposition phi_2 = builder.conj(phi_1, neg);
         System.out.println(phi_2);
+        System.out.println(NormalForms.simplify(phi_2));
     }
 }
