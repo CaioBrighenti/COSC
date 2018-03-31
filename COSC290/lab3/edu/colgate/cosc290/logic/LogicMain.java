@@ -18,7 +18,7 @@ public class LogicMain {
         Variable p = new Variable("p");
         Variable q = new Variable("q");
         Variable r = new Variable("r");
-        Proposition phi_1 = builder.disj(p, q);
+        Proposition phi_1 = builder.implies(p, q);
         Proposition neg = builder.neg(r);
         Proposition phi_2 = builder.disj(phi_1, neg);
         System.out.println(phi_2);

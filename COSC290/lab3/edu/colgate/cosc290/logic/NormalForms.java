@@ -16,25 +16,22 @@ public class NormalForms {
      * @return psi, a proposition with only & and ~ connectives and logically equivalent to phi
      */
     public static Proposition simplify(Proposition phi) {
+      Build builder = new Build();
+
       // base case
       if (phi.isVariable())
         return phi;
 
       // case if phi is a negation
       if (phi.isNotProposition()){
-        Build builder = new Build();
-        if (phi.getFirst().isNotProposition())
-          phi = phi.getFirst().getFirst();
-        else
-          phi = builder.neg(simplify(phi.getFirst()));
+        phi = builder.neg(simplify(phi.getFirst()));
         return phi;
       }
 
       // case if phi is a binary op
       if (phi.isBinaryProposition()) {
-        Build builder = new Build();
 
-        // if no |, make recursive call
+        // if &, make recursive call
         if (phi.getConnective().toString() == "&") {
           phi = builder.conj(simplify(phi.getFirst()),simplify(phi.getSecond()));
           return phi;
@@ -44,8 +41,15 @@ public class NormalForms {
         if (phi.getConnective().toString() == "|") {
           Proposition first_neg = builder.neg(phi.getFirst());
           Proposition second_neg = builder.neg(phi.getSecond());
-          phi = builder.conj(simplify(first_neg),simplify(second_neg));
-          phi = builder.neg(phi);
+          phi = builder.neg(builder.conj(simplify(first_neg),simplify(second_neg)));
+          return phi;
+        }
+
+        // get rid of => by using (p => q) = ~(p & ~q)
+        if (phi.getConnective().toString() == "=>") {
+          Proposition first = phi.getFirst();
+          Proposition second_neg = builder.neg(phi.getSecond());
+          phi = builder.neg(builder.conj(simplify(first),simplify(second_neg)));
           return phi;
         }
       }
