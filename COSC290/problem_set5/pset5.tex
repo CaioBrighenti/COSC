@@ -1,0 +1,51 @@
+\documentclass[titlepage]{article}
+\usepackage{hw}  % leave this line
+
+\psetAuthor{Joe Student}  % replace with your name
+\psetNumber{9999}  % replace with pset number
+
+\begin{document} \maketitle
+
+\section{Problem 1: $G_n$ and $F_n$}
+
+There is a \verb|\section| for each problem.  The example proof is at the end.  Please delete this remark and the example before you turn it in.
+
+\section{Problem 2: $G_n$ lower bound}
+
+\section{Problem 3: lower bound on height balanced binary trees}
+
+\section{Problem 4: false lower bound on binary trees}
+
+\section{Problem 5: bound on height}
+
+\section{Example of proof by induction}
+
+\emph{This is an example proof, provided in LaTeX so that you may copy its basic formatting.}
+
+\textbf{Claim}: Let $P(n) := \sum_{i=1}^n i = \frac{n(n+1)}{2}$.  The claim is that $\forall n \in \mathrm{Z}^{\geq 1}: P(n)$.
+
+\begin{proof}
+We will prove by weak induction on $n$.
+
+\textbf{Base case}: $n=1$.  In this case $\sum_{i=1}^n i = \sum_{i=1}^1 i = 1$ and $\frac{n(n+1)}{2} = \frac{1 \times (1+1)}{2} = 1$.  Thus $P(1)$ is true.
+
+
+\textbf{Inductive case}: Let $n \geq 2$.  We will show $P(n-1) \implies P(n)$.
+\begin{itemize}
+\item \emph{Given}: Assume $P(n-1)$ is true.
+\item \emph{Want to show}: $P(n)$ is true.
+\end{itemize}
+Since $P(n-1)$ is true, we have
+$$\sum_{i=1}^{n-1} i = \frac{(n-1)((n-1)+1)}{2}$$
+
+We will use this fact to show $P(n)$:
+\begin{align*}
+\sum_{i=1}^{n} i &= \left( \sum_{i=1}^{n-1} i \right) + n & \text{definition of summation} \\
+&= \frac{(n-1)((n-1)+1)}{2} + n & \text{inductive hypothesis} \\
+&= \frac{(n-1)n + 2n}{2} & \text{rearanging/simplifying terms} \\
+&= \frac{n^2 - n + 2n}{2} = \frac{n^2 + n}{2}  & \text{algebra} \\
+&= \frac{n(n + 1)}{2}  & \square
+\end{align*}
+\end{proof}
+
+\end{document}

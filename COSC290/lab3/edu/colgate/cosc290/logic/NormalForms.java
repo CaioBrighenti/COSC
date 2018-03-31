@@ -23,34 +23,27 @@ public class NormalForms {
       // case if phi is a negation
       if (phi.isNotProposition()){
         Build builder = new Build();
-        phi = builder.neg(simplify(phi.getFirst()));
+        if (phi.getFirst().isNotProposition())
+          phi = phi.getFirst().getFirst();
+        else
+          phi = builder.neg(simplify(phi.getFirst()));
         return phi;
       }
 
       // case if phi is a binary op
       if (phi.isBinaryProposition()) {
         Build builder = new Build();
+
+        // if no |, make recursive call
         if (phi.getConnective().toString() == "&") {
           phi = builder.conj(simplify(phi.getFirst()),simplify(phi.getSecond()));
           return phi;
         }
-        // get rid of & by using (p & q) = ~(~p | ~q)
-        if (phi.getConnective().toString() == "|") {
-          Proposition first_neg;
-          Proposition second_neg;
-          // check if propositions are aready negation to avoid double negative
-          if (phi.getFirst().isNotProposition()){
-            first_neg = phi.getFirst().getFirst();
-          } else {
-            first_neg = builder.neg(phi.getFirst());
-          }
-          if (phi.getSecond().isNotProposition()){
-            second_neg = phi.getSecond().getFirst();
-          } else {
-            second_neg = builder.neg(phi.getSecond());
-          }
 
-          // build conj
+        // get rid of | by using (p | q) = ~(~p & ~q)
+        if (phi.getConnective().toString() == "|") {
+          Proposition first_neg = builder.neg(phi.getFirst());
+          Proposition second_neg = builder.neg(phi.getSecond());
           phi = builder.conj(simplify(first_neg),simplify(second_neg));
           phi = builder.neg(phi);
           return phi;
@@ -81,8 +74,10 @@ public class NormalForms {
              return phi;
            }
 
-          
+
         }
+
+        return null;
     }
 
     /**

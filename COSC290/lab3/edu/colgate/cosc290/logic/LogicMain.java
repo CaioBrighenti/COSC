@@ -20,7 +20,7 @@ public class LogicMain {
         Variable r = new Variable("r");
         Proposition phi_1 = builder.disj(p, q);
         Proposition neg = builder.neg(r);
-        Proposition phi_2 = builder.conj(phi_1, neg);
+        Proposition phi_2 = builder.disj(phi_1, neg);
         System.out.println(phi_2);
         System.out.println(NormalForms.simplify(phi_2));
     }

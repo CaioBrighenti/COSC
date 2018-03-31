@@ -14,6 +14,9 @@ public class Build {
      * @return proposition that is ~p
      */
     public static Proposition neg(Proposition p) {
+      if (p.isNotProposition())
+        return p.getFirst();
+      else
         return new Neg(p);
     }
 
@@ -45,6 +48,6 @@ public class Build {
      */
     public static Proposition implies(Proposition p, Proposition q) {
         // look at the other examples above for tips on how to write this
-        throw new UnsupportedOperationException("implement me!");
+        return new BinOp(LogicalConnective.IF, p, q);
     }
 }
