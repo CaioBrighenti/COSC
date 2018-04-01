@@ -1,16 +1,81 @@
 \documentclass[titlepage]{article}
 \usepackage{hw}  % leave this line
 
-\psetAuthor{Joe Student}  % replace with your name
-\psetNumber{9999}  % replace with pset number
+\psetAuthor{Caio Brighenti}  % replace with your name
+\psetNumber{5}  % replace with pset number
 
 \begin{document} \maketitle
 
 \section{Problem 1: $G_n$ and $F_n$}
 
-There is a \verb|\section| for each problem.  The example proof is at the end.  Please delete this remark and the example before you turn it in.
+\textbf{Claim}: Let $P(n) := G_n = F_{n+3} - 1$.  The claim is that $\forall n \in \mathrm{N}^{\geq -1}: P(n)$.
+
+\begin{proof}
+We will prove by strong induction on $n$.
+
+\textbf{Base cases}: $n=-1$ and $n=0$.  For the first case, $G_{-1} = F_{2}-1$, and by the definition of $F_n$ and $G_n$, $F_2 = 1$ and $G_{-1} = 0$, giving us $0 = 1 - 1$, thus the case is true for $n=-1$. For the second case, $G_0 = F_3 - 1$, so $1 = 2 - 1$, thus the second case is also true.
+
+
+\textbf{Inductive case}: Let $n \geq 1$.  We will show $[P(-1) \land P(0) \land ... \land P(n)] \implies P(n+1)$.
+\begin{itemize}
+\item \emph{Given}: Assume $P(-1) \land ... \land P(n-1) \land P(n)$ is true.
+\item \emph{Want to show}: $P(n+1)$ is true.
+\end{itemize}
+Since $P(n-1)$ is true, we have
+$G_{n} = F_{n+2} - 1$.
+Since $P(n)$ is true, we have
+$G_{n-1} = F_{n+3} - 1$.
+
+We will use this fact to show $P(n+1)$:
+\begin{align*}
+P(n) := G_{n} &= F_{n+3} - 1 & \text{definition of P(n)} \\
+P(n+1) := G_{n+1} &= F_{n+4} - 1 & \text{inductive hypothesis} \\
+G_{n+1} &= G_n + G_{n-1} + 1 & \text{definition of G} \\
+F_{n+4} &= F_{n+3} + F_{n+2} & \text{definition of F} \\
+P(n+1) := G_n + G_{n-1}&= F_{n+3} + F_{n+2} - 2 & \text{substituting/rearranging terms} \\
+\end{align*}
+By the claim, the following are given to be true:\\
+\begin{align*}
+P(n) := G_{n} = F_{n+3} - 1 \\ 
+P(n-1) := G_{n-1} = F_{n+2} - 1
+\end{align*}
+By adding the two, we get:\\
+\begin{align*}
+G_n + G_{n-1}= F_{n+3} + F_{n+2} - 2
+\end{align*}
+This is exactly equal to the rearranged inductive hypothesis for $P(n+1)$. Thus, the inductive hypothesis must be true.
+\end{proof}
 
 \section{Problem 2: $G_n$ lower bound}
+
+\textbf{Claim}: Let $P_2(h) := G_h \geq 2^{h/2}$.  The claim is that $\forall n \in \mathrm{N}^{\geq 0}: P_2(h)$.
+
+\begin{proof}
+We will prove by strong induction on $h$.
+
+\textbf{Base cases}: $h=0$ and $h=1$.  For the first case, $G_{0} = 1$, and $2^{0/2} = 1$, giving us $1 \geq 1$ and thus the first case is true. For the second case, $G_1 = 2$, and $2^{1/2} = \sqrt{2}$, giving us $2 \geq \sqrt{2}$, thus the second case is also true. 
+
+
+\textbf{Inductive case}: Let $h \geq 2$.  We will show $[P_2(0) \land P_2(1) \land ... \land P_2(h-2) \land P_2(h-1)] \implies P_2(h)$.
+\begin{itemize}
+\item \emph{Given}: Assume $P_2(-1) \land ... \land P_2(h-2) \land P_2(h-1)$ is true.
+\item \emph{Want to show}: $P_2(h)$ is true.
+\end{itemize}
+Since $P_2(h-2)$ is true, we have
+$G_{h-2} \geq 2^{(h-2)/2}$.
+Since $P_2(h-1)$ is true, we have
+$G_{h-1} \geq 2^{(h-1)/2}$.
+
+We will use this fact to show $P_2(h)$:
+\begin{align*}
+P_2(h) := G_{h} &\geq 2^{h/2} & \text{definition of $P_2$(h)} \\
+G_{h} &= G_{h-2} + G_{h-1} + 1 & \text{definition of G} \\
+\end{align*}
+By substituting $G_{h-2}$ and $G_{h-1}$ with the given cases, we get:\\
+\begin{align*}
+G_h \geq 2^{(h-2)/2} + 2^{(h-1)/2} + 1
+\end{align*}
+\end{proof}
 
 \section{Problem 3: lower bound on height balanced binary trees}
 

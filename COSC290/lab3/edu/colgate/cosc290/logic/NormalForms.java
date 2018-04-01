@@ -69,16 +69,27 @@ public class NormalForms {
      * @throws IllegalPropositionException if phi contains a connective that is not in the set {&, ~}.
      */
     public static Proposition toNNF(Proposition phi) {
+        Build builder = new Build();
         // base case
         if (phi.isVariable())
           return phi;
 
         if (phi.isNotProposition()) {
+          // negated variable is already in NNF
            if (phi.getFirst().isVariable()) {
              return phi;
+           } else if (phi.getFirst().isBinaryProposition()) {
+             Proposition first_neg = toNNF(builder.neg(phi.getFirst().getFirst()));
+             Proposition second_neg = toNNF(builder.neg(phi.getFirst().getSecond()));
+             return builder.disj(first_neg, second_neg);
            }
+        }
 
-
+        if (phi.isBinaryProposition()) {
+          if (phi.getConnective().toString() == "&")
+            return builder.conj(toNNF(phi.getFirst()), toNNF(phi.getSecond()));
+          else
+            return builder.disj(toNNF(phi.getFirst()), toNNF(phi.getSecond()));
         }
 
         return null;
@@ -93,7 +104,28 @@ public class NormalForms {
      * @throws IllegalPropositionException if phi is not in NNF
      */
     public static Proposition fromNNFtoCNF(Proposition phi) {
-        throw new UnsupportedOperationException("implement me!");
+      System.out.println("ITERATING");
+        Build builder = new Build();
+        // base case
+        if (phi.isVariable())
+          return phi;
+
+        if (phi.isNotProposition())
+          return fromNNFtoCNF(phi);
+
+
+        if (phi.isBinaryProposition() && phi.getConnective.OR) {
+          first = phi.getFirst();
+          second = phi.getSecond();
+
+          if (second.getConnective.AND) {
+            Proposition disj1 = first
+          }
+
+        }
+
+        System.out.println("OH NO");
+        return null;
     }
 
     /**
