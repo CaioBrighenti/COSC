@@ -104,27 +104,39 @@ public class NormalForms {
      * @throws IllegalPropositionException if phi is not in NNF
      */
     public static Proposition fromNNFtoCNF(Proposition phi) {
-      System.out.println("ITERATING");
         Build builder = new Build();
         // base case
         if (phi.isVariable())
           return phi;
 
+        // negation must be literal since in NNF
         if (phi.isNotProposition())
-          return fromNNFtoCNF(phi);
+          return phi;
 
+        if (phi.isBinaryProposition()) {
+          Proposition first = fromNNFtoCNF(phi.getFirst());
+          Proposition second = fromNNFtoCNF(phi.getSecond());
 
-        if (phi.isBinaryProposition() && phi.getConnective.OR) {
-          first = phi.getFirst();
-          second = phi.getSecond();
+          // α ∧ β is OK if α and β are in CNF
+          if (phi.isAndProposition())
+            return builder.conj(first, second);
 
-          if (second.getConnective.AND) {
-            Proposition disj1 = first
+          // case if or proposition
+          if (phi.isOrProposition()) {
+            if (first.isAndProposition()) {
+              Proposition disj1 = builder.disj(first.getFirst(), second);
+              Proposition disj2 = builder.disj(first.getSecond(), second);
+              return builder.conj(disj1, disj2);
+            }
+            if (second.isAndProposition()) {
+              Proposition disj1 = builder.disj(second.getFirst(), first);
+              Proposition disj2 = builder.disj(second.getSecond(), first);
+              return builder.conj(disj1, disj2);
+            }
+            return builder.disj(first, second);
           }
-
         }
 
-        System.out.println("OH NO");
         return null;
     }
 
