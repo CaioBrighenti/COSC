@@ -1,6 +1,7 @@
 // Colgate University COSC 290 Labs
 // Version 0.1,  2017
 // Author: Michael Hay
+// Edited by: Caio Brighenti
 package edu.colgate.cosc290.logic;
 
 /**
@@ -134,6 +135,7 @@ public class NormalForms {
 
           // case if or proposition
           if (phi.isOrProposition()) {
+            // distribute & over |
             if (first.isAndProposition()) {
               Proposition disj1 = builder.disj(first.getFirst(), second);
               Proposition disj2 = builder.disj(first.getSecond(), second);

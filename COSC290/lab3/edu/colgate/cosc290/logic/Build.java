@@ -1,6 +1,7 @@
 // Colgate University COSC 290 Labs
 // Version 0.1,  2017
 // Author: Michael Hay
+// Edited by: Caio Brighenti
 package edu.colgate.cosc290.logic;
 
 /**
@@ -14,6 +15,7 @@ public class Build {
      * @return proposition that is ~p
      */
     public static Proposition neg(Proposition p) {
+      // use ~(~p) ≡ p to avoid double negations
       if (p.isNotProposition())
         return p.getFirst();
       else

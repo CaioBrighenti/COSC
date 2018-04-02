@@ -1,6 +1,7 @@
 // Colgate University COSC 290 Labs
 // Version 0.1,  2017
 // Author: Michael Hay
+// Edited by: Caio Brighenti
 package edu.colgate.cosc290.logic;
 
 /**
@@ -36,6 +37,10 @@ public class LogicMain {
         Proposition phiCNF = NormalForms.toCNF(phi);
         System.out.println("phiCNF := NormalForms.toCNF(phi)");
         System.out.println("phiCNF := " + phiCNF);
+        boolean isTautology = TautologyChecker.isTautology(phiCNF);
+        System.out.println("isTautology := TautologyChecker.isTautology(phiCNF)");
+        System.out.println("isTautology := " + isTautology);
+        System.out.println();
 
         System.out.println("---- TEST 2 -----");
         phi = builder.implies(builder.neg(q), builder.neg(p));
@@ -54,6 +59,10 @@ public class LogicMain {
         phiCNF = NormalForms.toCNF(phi);
         System.out.println("phiCNF := NormalForms.toCNF(phi)");
         System.out.println("phiCNF := " + phiCNF);
+        isTautology = TautologyChecker.isTautology(phiCNF);
+        System.out.println("isTautology := TautologyChecker.isTautology(phiCNF)");
+        System.out.println("isTautology := " + isTautology);
+        System.out.println();
 
         System.out.println("---- TEST 3 -----");
         phi = builder.conj(q, r);
@@ -71,5 +80,8 @@ public class LogicMain {
         phiCNF = NormalForms.toCNF(phi);
         System.out.println("phiCNF := NormalForms.toCNF(phi)");
         System.out.println("phiCNF := " + phiCNF);
+        isTautology = TautologyChecker.isTautology(phiCNF);
+        System.out.println("isTautology := TautologyChecker.isTautology(phiCNF)");
+        System.out.println("isTautology := " + isTautology);
     }
 }
