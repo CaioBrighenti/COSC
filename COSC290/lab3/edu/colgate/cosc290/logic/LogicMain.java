@@ -24,13 +24,17 @@ public class LogicMain {
         phi = builder.conj(p, phi);
         phi = builder.implies(phi, q);
         System.out.println("phi := " + phi);
-        Proposition phiSimplify = NormalForms.simplify(phi);
-        System.out.println("phiSimplified := " + phiSimplify);
-        Proposition phiNNF = NormalForms.toNNF(phiSimplify);
+        Proposition phiSimplified = NormalForms.simplify(phi);
+        System.out.println("phiSimplified := NormalForms.simplify(phi)");
+        System.out.println("phiSimplified := " + phiSimplified);
+        Proposition phiNNF = NormalForms.toNNF(phiSimplified);
+        System.out.println("phiNNF := NormalForms.toNNF(phiSimplified)");
         System.out.println("phiNNF := " + phiNNF);
         Proposition phiDistributed = NormalForms.fromNNFtoCNF(phiNNF);
-        System.out.println("distributed := " + phiDistributed);
+        System.out.println("phiDistributed := NormalForms.fromNNFtoCNF(phiNNF)");
+        System.out.println("phiDistributed := " + phiDistributed);
         Proposition phiCNF = NormalForms.toCNF(phi);
+        System.out.println("phiCNF := NormalForms.toCNF(phi)");
         System.out.println("phiCNF := " + phiCNF);
 
         System.out.println("---- TEST 2 -----");
@@ -38,22 +42,34 @@ public class LogicMain {
         phi = builder.conj(p, phi);
         phi = builder.implies(phi, q);
         System.out.println("phi := " + phi);
-        phi = NormalForms.simplify(phi);
-        System.out.println("phiSimplified := " + NormalForms.simplify(phi));
-        phi = NormalForms.toNNF(phi);
-        System.out.println("phiNNF := " + NormalForms.toNNF(phi));
-        phi = NormalForms.fromNNFtoCNF(phi);
-        System.out.println("distributed := " + phi);
+        phiSimplified = NormalForms.simplify(phi);
+        System.out.println("phiSimplified := NormalForms.simplify(phi)");
+        System.out.println("phiSimplified := " + phiSimplified);
+        phiNNF = NormalForms.toNNF(phiSimplified);
+        System.out.println("phiNNF := NormalForms.toNNF(phiSimplified)");
+        System.out.println("phiNNF := " + phiNNF);
+        phiDistributed = NormalForms.fromNNFtoCNF(phiNNF);
+        System.out.println("phiDistributed := NormalForms.fromNNFtoCNF(phiNNF)");
+        System.out.println("phiDistributed := " + phiDistributed);
+        phiCNF = NormalForms.toCNF(phi);
+        System.out.println("phiCNF := NormalForms.toCNF(phi)");
+        System.out.println("phiCNF := " + phiCNF);
 
         System.out.println("---- TEST 3 -----");
         phi = builder.conj(q, r);
         phi = builder.implies(p, phi);
         System.out.println("phi := " + phi);
-        phi = NormalForms.simplify(phi);
-        System.out.println("phiSimplified := " + NormalForms.simplify(phi));
-        phi = NormalForms.toNNF(phi);
-        System.out.println("phiNNF := " + NormalForms.toNNF(phi));
-        phi = NormalForms.fromNNFtoCNF(phi);
-        System.out.println("distributed := " + phi);
+        phiSimplified = NormalForms.simplify(phi);
+        System.out.println("phiSimplified := NormalForms.simplify(phi)");
+        System.out.println("phiSimplified := " + phiSimplified);
+        phiNNF = NormalForms.toNNF(phiSimplified);
+        System.out.println("phiNNF := NormalForms.toNNF(phiSimplified)");
+        System.out.println("phiNNF := " + phiNNF);
+        phiDistributed = NormalForms.fromNNFtoCNF(phiNNF);
+        System.out.println("phiDistributed := NormalForms.fromNNFtoCNF(phiNNF)");
+        System.out.println("phiDistributed := " + phiDistributed);
+        phiCNF = NormalForms.toCNF(phi);
+        System.out.println("phiCNF := NormalForms.toCNF(phi)");
+        System.out.println("phiCNF := " + phiCNF);
     }
 }

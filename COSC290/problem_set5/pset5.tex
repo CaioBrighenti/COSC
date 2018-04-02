@@ -48,7 +48,7 @@ This is exactly equal to the rearranged inductive hypothesis for $P(n+1)$. Thus,
 
 \section{Problem 2: $G_n$ lower bound}
 
-\textbf{Claim}: Let $P_2(h) := G_h \geq 2^{h/2}$.  The claim is that $\forall n \in \mathrm{N}^{\geq 0}: P_2(h)$.
+\textbf{Claim}: Let $P_2(h) := G_h \geq 2^{h/2}$.  The claim is that $\forall h \in \mathrm{N}^{\geq 0}: P_2(h)$.
 
 \begin{proof}
 We will prove by strong induction on $h$.
@@ -75,8 +75,21 @@ By substituting $G_{h-2}$ and $G_{h-1}$ with the given cases, we get:\\
 \begin{align*}
 G_h \geq 2^{(h-2)/2} + 2^{(h-1)/2} + 1
 \end{align*}
-\end{proof}
 
+It also follows that $2^{(h-2)/2} + 2^{(h-1)/2} + 1 > 2^{h/2}$, for all $h \geq 1$. This is because $2^{(h-2)/2}$ is equal to exactly half of $2^{h/2}$, and because $2^{(h-1)/2} > 2^{(h-2)/2}$. Thus $2^{h/2}$ must be smaller than $2^{(h-2)/2} + 2^{(h-1)/2} + 1$, as it is a number exactly half of  $2^{h/2}$ being added to a number bigger than half of $2^{h/2}$, plus one. Thus, if:
+\begin{align*}
+2^{(h-2)/2} + 2^{(h-1)/2} + 1 > 2^{h/2}
+\end{align*}
+And:
+\begin{align*}
+G_h \geq 2^{(h-2)/2} + 2^{(h-1)/2} + 1
+\end{align*}
+It follows that:
+\begin{align*}
+G_{h} \geq 2^{h/2}
+\end{align*}
+Thus, the claim must be true.
+\end{proof}
 \section{Problem 3: lower bound on height balanced binary trees}
 
 \section{Problem 4: false lower bound on binary trees}
