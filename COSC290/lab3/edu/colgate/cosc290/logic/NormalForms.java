@@ -147,6 +147,6 @@ public class NormalForms {
      * @return psi, a proposition in CNF that is logically equivalent to phi
      */
     public static Proposition toCNF(Proposition phi) {
-        throw new UnsupportedOperationException("implement me!");
+        return fromNNFtoCNF(toNNF(simplify(phi)));
     }
 }
