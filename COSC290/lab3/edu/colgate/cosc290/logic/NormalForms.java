@@ -129,8 +129,8 @@ public class NormalForms {
               return builder.conj(disj1, disj2);
             }
             if (second.isAndProposition()) {
-              Proposition disj1 = builder.disj(second.getFirst(), first);
-              Proposition disj2 = builder.disj(second.getSecond(), first);
+              Proposition disj1 = builder.disj(first, second.getFirst());
+              Proposition disj2 = builder.disj(first, second.getSecond());
               return builder.conj(disj1, disj2);
             }
             return builder.disj(first, second);
