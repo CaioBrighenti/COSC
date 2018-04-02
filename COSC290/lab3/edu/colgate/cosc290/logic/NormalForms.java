@@ -69,30 +69,32 @@ public class NormalForms {
      * @throws IllegalPropositionException if phi contains a connective that is not in the set {&, ~}.
      */
     public static Proposition toNNF(Proposition phi) {
-        Build builder = new Build();
-        // base case
-        if (phi.isVariable())
-          return phi;
+      // catch IllegalPropositionException if or or implies is passed
+      if (phi.isOrProposition() || phi.isIfProposition())
+        throw new IllegalPropositionException();
 
-        if (phi.isNotProposition()) {
-          // negated variable is already in NNF
-           if (phi.getFirst().isVariable()) {
-             return phi;
-           } else if (phi.getFirst().isBinaryProposition()) {
-             Proposition first_neg = toNNF(builder.neg(phi.getFirst().getFirst()));
-             Proposition second_neg = toNNF(builder.neg(phi.getFirst().getSecond()));
-             return builder.disj(first_neg, second_neg);
-           }
+      Build builder = new Build();
+      // base case
+      if (phi.isVariable())
+        return phi;
+
+      if (phi.isNotProposition()) {
+        // negated variable is already in NNF
+        if (phi.getFirst().isVariable()) {
+            return phi;
+        } else if (phi.getFirst().isBinaryProposition()) {
+          // push in negations using DeMorgan's law
+          Proposition first_neg = toNNF(builder.neg(phi.getFirst().getFirst()));
+          Proposition second_neg = toNNF(builder.neg(phi.getFirst().getSecond()));
+          return builder.disj(first_neg, second_neg);
         }
+      }
 
-        if (phi.isBinaryProposition()) {
-          if (phi.getConnective().toString() == "&")
-            return builder.conj(toNNF(phi.getFirst()), toNNF(phi.getSecond()));
-          else
-            return builder.disj(toNNF(phi.getFirst()), toNNF(phi.getSecond()));
-        }
+      // if & make recursive call
+      if (phi.isAndProposition())
+        return builder.conj(toNNF(phi.getFirst()), toNNF(phi.getSecond()));
 
-        return null;
+      return null;
     }
 
     /**
@@ -109,10 +111,19 @@ public class NormalForms {
         if (phi.isVariable())
           return phi;
 
-        // negation must be literal since in NNF
-        if (phi.isNotProposition())
-          return phi;
+        // negation must be literal since in NNF, else throw exception
+        if (phi.isNotProposition()){
+          if (phi.getFirst().isVariable())
+            return phi;
+          else
+            throw new IllegalPropositionException();
+        }
 
+        // can't be NNF if has =>
+        if (phi.isIfProposition())
+          throw new IllegalPropositionException();
+
+        // make recursive call if binary prop
         if (phi.isBinaryProposition()) {
           Proposition first = fromNNFtoCNF(phi.getFirst());
           Proposition second = fromNNFtoCNF(phi.getSecond());
