@@ -92,6 +92,38 @@ Thus, the claim must be true.
 \end{proof}
 \section{Problem 3: lower bound on height balanced binary trees}
 
+\textbf{Claim}: For any height balanced binary tree $T$, $nodes(T) \geq G_{h(T)}$.
+
+\begin{proof}
+We will prove by structural induction on $h(T)$.
+
+\textbf{Base cases}: $n=1$.  There are two base cases. The first base case is an empty tree. For an empty tree, $h(T) = -1$, and $nodes(T)=0$. Thus, $G_{h(t)}=0$, and since $0\geq0$, the claim is true for this base case. The second base case is a tree with a single node, and two empty subtrees. For this tree, $h(T) = 1 + max\{h(T_l), h(T_r)\} = 1 + -1 = 0$, and so $G_{h(T)} = 1$. In this case, $nodes(T)=1$, and since $1\geq1$, the claim is also true for this base case.
+
+
+\textbf{Inductive case}: The inductive case is a height balanced binary tree $T$ that contains \textit{at least} one non-empty subtree.
+\begin{itemize}
+\item \emph{Given}: Assume the claim is true for the subtrees $T_l$ and $T_r$ of tree $T$.
+\item \emph{Want to show}: The claim must be true for T.
+\end{itemize}
+By the definition of a binary tree, we have
+$$nodes(T) = 1 + nodes(T_l) + nodes(T_r)$$
+and,
+$$h(T) = 1 + max\{h(T_l) + h(T_r)\}$$
+By rearranging the second, we have
+$$max\{h(T_l) + h(T_r)\} = h(T) - 1$$
+Since the tree is height balanced, $h(Tl)$ and $h(Tr)$ differ by at most 1, thus the smaller of the two must be equal to $h(T) - 2$. It is irrelevant which one of the two the larger one. Thus, we can rearrange the definition of $G_h$ to have the following
+$$G_{h(T)}= G_{h(T)-2} + G_{h(T)-1} + 1$$
+$$G_{h(T)}= G_{h(T_l)} + G_{h(T_r)} + 1$$\\
+
+We will use this fact to show that the claim is true for T:
+\begin{align*}
+nodes(T) &\geq G_{h(T)} & \text{claim} \\
+nodes(T) &\geq G_{h(T_l)} + G_{h(T_r)} + 1 & \text{substituting terms} \\
+1 + nodes(T_l) + nodes(T_r) &\geq G_{h(T_l)} + G_{h(T_r)} + 1 & \text{definition of nodes(T)}\\
+nodes(T_l) + nodes(T_r) &\geq G_{h(T_l)} + G_{h(T_r)}& \text{algebra}
+\end{align*}
+\end{proof}
+
 \section{Problem 4: false lower bound on binary trees}
 
 \section{Problem 5: bound on height}
