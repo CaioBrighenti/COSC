@@ -111,7 +111,7 @@ and,
 $$h(T) = 1 + max\{h(T_l) + h(T_r)\}$$
 By rearranging the second, we have
 $$max\{h(T_l) + h(T_r)\} = h(T) - 1$$
-Since the tree is height balanced, $h(Tl)$ and $h(Tr)$ differ by at most 1, thus the smaller of the two must be equal to $h(T) - 2$. It is irrelevant which one of the two the larger one. Thus, we can rearrange the definition of $G_h$ to have the following
+Since the tree is height balanced, $h(Tl)$ and $h(Tr)$ differ by at most 1, thus they can both be equal to each other, or the smaller of the two must be $max\{h(T_l) + h(T_r)\} -1 = h(T) - 2$. We will first focus on the case where the height of the subtrees are \textit{not} equal. It is irrelevant which one of the two the larger one. Using these terms, we can rearrange the definition of $G_h$ to have the following
 $$G_{h(T)}= G_{h(T)-2} + G_{h(T)-1} + 1$$
 $$G_{h(T)}= G_{h(T_l)} + G_{h(T_r)} + 1$$\\
 
@@ -119,43 +119,67 @@ We will use this fact to show that the claim is true for T:
 \begin{align*}
 nodes(T) &\geq G_{h(T)} & \text{claim} \\
 nodes(T) &\geq G_{h(T_l)} + G_{h(T_r)} + 1 & \text{substituting terms} \\
-1 + nodes(T_l) + nodes(T_r) &\geq G_{h(T_l)} + G_{h(T_r)} + 1 & \text{definition of nodes(T)}\\
+1 + nodes(T_l) + nodes(T_r) &\geq G_{h(T_l)} + G_{h(T_r)} + 1 & \text{definition of $nodes(T)$}\\
 nodes(T_l) + nodes(T_r) &\geq G_{h(T_l)} + G_{h(T_r)}& \text{algebra}
 \end{align*}
+By the assumption, the claim is true for $T_l$ and $T_r$, thus
+$$nodes(T_l) \geq G_{h(T_l)}$$
+and
+$$nodes(T_r) \geq G_{h(T_r)}$$
+are both true. By adding both sides these, we have
 \end{proof}
+$$nodes(T_l) + nodes(T_r) \geq G_{h(T_l)} + G_{h(T_r)}$$
+This is exactly equal to the rearranged claim for $T$ above. Thus, if the claim is true for the subtrees of $T$ and $T$ is height balanced, the claim must be true for $T$. There is also the case where $h(T_l) = h(T_r)$. In this scenario, the claim $nodes(T) \geq G_{h(T)}$ would still be true, as this change would only increase the left hand side of the expression. As the right hand side is a function of $h(T)$, which is defined by the maximum of the two subtree heights, it is irrelevant whether they are equal or one is smaller.
 
 \section{Problem 4: false lower bound on binary trees}
 
+In order to disprove the claim that for any binary tree $T$, $nodes(T)\geq G_{h(T)}$ we must simply provide a counterexample where the claim is false. A simple example of this is a scenario where the right subtree has a height of 2, and the left subtree is empty. We have
+$$h(T_l) = -1$$
+and
+$$h(T_r) = 2$$
+The height of this tree $T$ would be defined as
+\begin{align*}
+h(T) &= 1 + max\{h(T_l), h(T_r)\}  & \text{definition of $h(T)$} \\
+&= 1 + 2 & \text{substituting terms} \\
+&= 3 & \text{algebra} \\
+\end{align*}
+For the nodes, we would have
+$$nodes(T_l) = 0$$
+and
+$$nodes(T_r) = 3$$
+Since $T_l$ is empty, it must have 0 nodes. For $T_r$, there are multiple valid amounts of nodes. This specific tree has 3 nodes in the subtree $T_r$. The total nodes for $T$ would be
+\begin{align*}
+nodes(T) &= 1 + nodes(T_l) + nodes(T_r)  & \text{definition of $nodes(T)$} \\
+&= 1 + 0 + 3 & \text{substituting terms} \\
+&= 4 & \text{algebra} \\
+\end{align*}
+By the definition of $G_h$, and by substituting in the value above for $h(T)$, we have
+$$G_{h(T)} = G_3 = 7$$
+We will use these facts to show that the claim is not true for this $T$:
+\begin{align*}
+nodes(T) &\geq G_{h(T)}  & \text{claim} \\
+4 &\geq 7 & \text{substituting terms} \\
+\end{align*}
+This statement is clearly false, as 4 is \textit{not} greater than or equal to 7. The claim is then false for this tree $T$, and thus disproven.
 \section{Problem 5: bound on height}
 
-\section{Example of proof by induction}
-
-\emph{This is an example proof, provided in LaTeX so that you may copy its basic formatting.}
-
-\textbf{Claim}: Let $P(n) := \sum_{i=1}^n i = \frac{n(n+1)}{2}$.  The claim is that $\forall n \in \mathrm{Z}^{\geq 1}: P(n)$.
+\textbf{Claim}: The claim is that any non-empty height balanced tree with $n$ nodes has a height of at most $2log_2n$. In mathematical terms this is represented as $2log2n \geq h(T)$, where $n = nodes(T)$ and $T$ is a non-empty height balanced binary tree.
 
 \begin{proof}
-We will prove by weak induction on $n$.
+We will prove by direct proof.\\
 
-\textbf{Base case}: $n=1$.  In this case $\sum_{i=1}^n i = \sum_{i=1}^1 i = 1$ and $\frac{n(n+1)}{2} = \frac{1 \times (1+1)}{2} = 1$.  Thus $P(1)$ is true.
-
-
-\textbf{Inductive case}: Let $n \geq 2$.  We will show $P(n-1) \implies P(n)$.
-\begin{itemize}
-\item \emph{Given}: Assume $P(n-1)$ is true.
-\item \emph{Want to show}: $P(n)$ is true.
-\end{itemize}
-Since $P(n-1)$ is true, we have
-$$\sum_{i=1}^{n-1} i = \frac{(n-1)((n-1)+1)}{2}$$
-
-We will use this fact to show $P(n)$:
+By the previous proofs on $G_h$ and on height balanced binary trees, we have that
+$$n \geq G_{h(T)}$$
+And
+$$G_h \geq 2^{h/2}$$
+We can use these facts to prove the claim
 \begin{align*}
-\sum_{i=1}^{n} i &= \left( \sum_{i=1}^{n-1} i \right) + n & \text{definition of summation} \\
-&= \frac{(n-1)((n-1)+1)}{2} + n & \text{inductive hypothesis} \\
-&= \frac{(n-1)n + 2n}{2} & \text{rearanging/simplifying terms} \\
-&= \frac{n^2 - n + 2n}{2} = \frac{n^2 + n}{2}  & \text{algebra} \\
-&= \frac{n(n + 1)}{2}  & \square
+G_h(T) &\geq 2^{(h(T)/2)}  & \text{substituting $h(T)$ in for $h$} \\
+n &\geq 2^{(h(T)/2)} & \text{transitive property} \\
+log_2(n) &\geq h(T)/2 & \text{algebra} \\
+2log_2(n) &\geq h(T) & \text{algebra} \\
 \end{align*}
-\end{proof}
+This is exactly equal to the claim, thus the claim must be true.
 
+\end{proof}
 \end{document}
