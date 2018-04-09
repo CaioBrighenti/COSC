@@ -8,6 +8,30 @@ package edu.colgate.cosc290.closure;
  */
 public class Relations {
 
+    public static void main(String[] args) {
+      System.out.println("---- TEST 1 -----");
+      boolean[][] testRelation = {{false,false,false,false},{false,false,false,true},{false,true,false,false},{false,false,false,false}};
+      boolean[][] testRelation2 = {{false,false,false,false},{false,false,false,true},{false,true,false,false},{false,false,false,false}};
+      System.out.println("S = " + relationToString(testRelation));
+      System.out.println("R = " + relationToString(testRelation2));
+      System.out.println("S U R = " + relationToString(union(testRelation,testRelation2)));
+      System.out.println("S o R = " + relationToString(compose(testRelation,testRelation2)));
+      System.out.println("---- TEST 2 -----");
+      boolean[][] testRelation3 = {{false,false,false,true},{false,false,false,false},{false,false,false,false},{false,false,false,false}};
+      boolean[][] testRelation4 = {{false,false,false,false},{false,false,false,false},{false,false,false,false},{true,false,false,false}};
+      System.out.println("S = " + relationToString(testRelation3));
+      System.out.println("R = " + relationToString(testRelation4));
+      System.out.println("S U R = " + relationToString(union(testRelation3,testRelation4)));
+      System.out.println("S o R = " + relationToString(compose(testRelation3,testRelation4)));
+      System.out.println("---- TEST 3 -----");
+      boolean[][] testRelation5 = {{false,true,true,true},{false,false,false,false},{true,true,false,true},{true,true,true,false}};
+      boolean[][] testRelation6 = {{false,true,false,false},{false,false,false,false},{false,true,false,false},{false,true,false,false}};
+      System.out.println("S = " + relationToString(testRelation5));
+      System.out.println("R = " + relationToString(testRelation6));
+      System.out.println("S U R = " + relationToString(union(testRelation5,testRelation6)));
+      System.out.println("S o R = " + relationToString(compose(testRelation5,testRelation6)));
+    }
+
     /**
      * Returns composition of R and S, denoted S ° R.  Returns relation T such that if (i, j) in R and (j, k) in S then
      * (i, k) in T.
@@ -30,7 +54,21 @@ public class Relations {
         if (n2 != n3) {
             throw new UnsupportedOperationException("Number of columns of R must match number of rows of S");
         }
-        throw new UnsupportedOperationException("implement me!");
+        boolean[][] tempMatrix = new boolean[n1][n4];
+        // iterate through each row, column pair
+        for (int i = 0; i < n1; i++) {
+          for (int j = 0; j < n2 ; j++ ) {
+              // (i,j) pair present in R
+              if (R[i][j]){
+                // search for (j,k) pairs
+                for (int k = 0; k < n2 ; k++ ) {
+                  if (S[j][k])
+                    tempMatrix[i][k] = true;
+                }
+              }
+          }
+        }
+        return tempMatrix;
     }
 
     /**
@@ -51,7 +89,15 @@ public class Relations {
         if (n1 != n3 || n2 != n4) {
             throw new UnsupportedOperationException("array dimensions must match!");
         }
-        throw new UnsupportedOperationException("implement me!");
+        boolean[][] tempMatrix = new boolean[n1][n2];
+        // iterate through each row, column pair
+        for (int r = 0; r < n1; r++) {
+          for (int c = 0; c < n2 ; c++ ) {
+              if (R[r][c] || S[r][c])
+                tempMatrix[r][c] = true;
+          }
+        }
+        return tempMatrix;
     }
 
     /**
@@ -103,7 +149,7 @@ public class Relations {
                 }
             }
         }
-        return "{" + sb.substring(0, sb.length()-2) + "}, a subset of " + descriptor;
+        return "{" + sb.substring(0, Math.max(sb.length()-2,0)) + "}, a subset of " + descriptor;
     }
 
     /**
