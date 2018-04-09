@@ -16,7 +16,7 @@ We will prove by strong induction on $n$.
 \textbf{Base cases}: $n=-1$ and $n=0$.  For the first case, $G_{-1} = F_{2}-1$, and by the definition of $F_n$ and $G_n$, $F_2 = 1$ and $G_{-1} = 0$, giving us $0 = 1 - 1$, thus the case is true for $n=-1$. For the second case, $G_0 = F_3 - 1$, so $1 = 2 - 1$, thus the second case is also true.
 
 
-\textbf{Inductive case}: Let $n \geq 1$.  We will show $[P(-1) \land P(0) \land ... \land P(n)] \implies P(n+1)$.
+\textbf{Inductive case}: Let $n \geq 1$.  We will show $P(-1) \land ... \land P(n-1) \land P(n) \implies P(n+1)$.
 \begin{itemize}
 \item \emph{Given}: Assume $P(-1) \land ... \land P(n-1) \land P(n)$ is true.
 \item \emph{Want to show}: $P(n+1)$ is true.
@@ -86,7 +86,7 @@ G_h \geq 2^{(h-2)/2} + 2^{(h-1)/2} + 1
 \end{align*}
 By the transitive property it follows that:
 \begin{align*}
-G_{h} > 2^{h/2}
+G_{h} \geq 2^{h/2}
 \end{align*}
 Thus, the claim must be true.
 \end{proof}
@@ -179,7 +179,7 @@ n &\geq 2^{(h(T)/2)} & \text{transitive property} \\
 log_2(n) &\geq h(T)/2 & \text{algebra} \\
 2log_2(n) &\geq h(T) & \text{algebra} \\
 \end{align*}
-This is exactly equal to the claim, thus the claim must be true.
+This is exactly equal to the claim, thus given the previous proofs and the definition of $G_h$, the claim must be true.
 
 \end{proof}
 \end{document}
