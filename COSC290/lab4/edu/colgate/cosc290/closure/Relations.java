@@ -16,6 +16,7 @@ public class Relations {
       System.out.println("R = " + relationToString(testRelation2));
       System.out.println("S U R = " + relationToString(union(testRelation,testRelation2)));
       System.out.println("S o R = " + relationToString(compose(testRelation,testRelation2)));
+      System.out.println("transitiveClosure = " + relationToString(transitiveClosure(testRelation)));
       System.out.println("---- TEST 2 -----");
       boolean[][] testRelation3 = {{false,false,false,true},{false,false,false,false},{false,false,false,false},{false,false,false,false}};
       boolean[][] testRelation4 = {{false,false,false,false},{false,false,false,false},{false,false,false,false},{true,false,false,false}};
@@ -23,6 +24,7 @@ public class Relations {
       System.out.println("R = " + relationToString(testRelation4));
       System.out.println("S U R = " + relationToString(union(testRelation3,testRelation4)));
       System.out.println("S o R = " + relationToString(compose(testRelation3,testRelation4)));
+      System.out.println("transitiveClosure = " + relationToString(transitiveClosure(testRelation3)));
       System.out.println("---- TEST 3 -----");
       boolean[][] testRelation5 = {{false,true,true,true},{false,false,false,false},{true,true,false,true},{true,true,true,false}};
       boolean[][] testRelation6 = {{false,true,false,false},{false,false,false,false},{false,true,false,false},{false,true,false,false}};
@@ -30,6 +32,7 @@ public class Relations {
       System.out.println("R = " + relationToString(testRelation6));
       System.out.println("S U R = " + relationToString(union(testRelation5,testRelation6)));
       System.out.println("S o R = " + relationToString(compose(testRelation5,testRelation6)));
+      System.out.println("transitiveClosure = " + relationToString(transitiveClosure(testRelation6)));
     }
 
     /**
@@ -62,8 +65,9 @@ public class Relations {
               if (R[i][j]){
                 // search for (j,k) pairs
                 for (int k = 0; k < n2 ; k++ ) {
-                  if (S[j][k])
+                  if (S[j][k]){
                     tempMatrix[i][k] = true;
+                  }
                 }
               }
           }
@@ -111,7 +115,36 @@ public class Relations {
         if (R[0].length != n) {
             throw new UnsupportedOperationException("expecting an n by n boolean double array!");
         }
-        throw new UnsupportedOperationException("implement me!");
+        boolean[][] R_prime = R;
+        while(true){
+          boolean[][] R_new = compose(R, R);
+          // new - R'
+          for (int r = 0; r < n; r++) {
+            for (int c = 0; c < n ; c++ ) {
+                if (R_prime[r][c])
+                  R_new[r][c] = false;
+              }
+          }
+          // R' U new
+          R_prime = union(R_prime, R_new);
+          // if no new elements, done looping
+          if (getCardinality(R_new) == 0)
+            break;
+        }
+        return R_prime;
+    }
+
+    // Gets the cardinality of a relation
+    public static int getCardinality(boolean[][] R){
+      int n = R.length;
+      int total = 0;
+      for (int r = 0; r < n; r++) {
+        for (int c = 0; c < n ; c++ ) {
+            if (R[r][c])
+              total++;
+        }
+      }
+      return total;
     }
 
     // --- useful tools for debugging are provided below  ---
