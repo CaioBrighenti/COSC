@@ -1,6 +1,7 @@
 // Colgate University COSC 290 Labs
 // Version 0.1,  2017
 // Author: Michael Hay
+// Edited by: Caio Brighenti
 package edu.colgate.cosc290.closure;
 
 /**
@@ -16,7 +17,8 @@ public class Relations {
       System.out.println("R = " + relationToString(testRelation2));
       System.out.println("S U R = " + relationToString(union(testRelation,testRelation2)));
       System.out.println("S o R = " + relationToString(compose(testRelation,testRelation2)));
-      System.out.println("transitiveClosure = " + relationToString(transitiveClosure(testRelation)));
+      System.out.println("transitiveClosure = " + relationToString(transitiveClosure(testRelation2)));
+      System.out.println("Warshall Closure = " + relationToString(Warshall.transitiveClosure(testRelation2)));
       System.out.println("---- TEST 2 -----");
       boolean[][] testRelation3 = {{false,false,false,true},{false,false,false,false},{false,false,false,false},{false,false,false,false}};
       boolean[][] testRelation4 = {{false,false,false,false},{false,false,false,false},{false,false,false,false},{true,false,false,false}};
@@ -24,7 +26,8 @@ public class Relations {
       System.out.println("R = " + relationToString(testRelation4));
       System.out.println("S U R = " + relationToString(union(testRelation3,testRelation4)));
       System.out.println("S o R = " + relationToString(compose(testRelation3,testRelation4)));
-      System.out.println("transitiveClosure = " + relationToString(transitiveClosure(testRelation3)));
+      System.out.println("transitiveClosure = " + relationToString(transitiveClosure(testRelation4)));
+      System.out.println("Warshall Closure = " + relationToString(Warshall.transitiveClosure(testRelation4)));
       System.out.println("---- TEST 3 -----");
       boolean[][] testRelation5 = {{false,true,true,true},{false,false,false,false},{true,true,false,true},{true,true,true,false}};
       boolean[][] testRelation6 = {{false,true,false,false},{false,false,false,false},{false,true,false,false},{false,true,false,false}};
@@ -33,6 +36,16 @@ public class Relations {
       System.out.println("S U R = " + relationToString(union(testRelation5,testRelation6)));
       System.out.println("S o R = " + relationToString(compose(testRelation5,testRelation6)));
       System.out.println("transitiveClosure = " + relationToString(transitiveClosure(testRelation6)));
+      System.out.println("Warshall Closure = " + relationToString(Warshall.transitiveClosure(testRelation6)));
+      System.out.println("---- TEST 4 -----");
+      boolean[][] testRelation7 = {{false,true,false,false},{false,false,true,false},{false,false,false,true},{false,false,false,false}};
+      boolean[][] testRelation8 = {{false,true,false,false},{false,false,false,true},{false,false,false,false},{true,false,true,false}};
+      System.out.println("S = " + relationToString(testRelation7));
+      System.out.println("R = " + relationToString(testRelation8));
+      System.out.println("S U R = " + relationToString(union(testRelation7,testRelation8)));
+      System.out.println("S o R = " + relationToString(compose(testRelation7,testRelation8)));
+      System.out.println("transitiveClosure = " + relationToString(transitiveClosure(testRelation8)));
+      System.out.println("Warshall Closure = " + relationToString(Warshall.transitiveClosure(testRelation8)));
     }
 
     /**
@@ -115,9 +128,9 @@ public class Relations {
         if (R[0].length != n) {
             throw new UnsupportedOperationException("expecting an n by n boolean double array!");
         }
-        boolean[][] R_prime = R;
+        boolean[][] R_prime = copyRelation(R);
         while(true){
-          boolean[][] R_new = compose(R, R);
+          boolean[][] R_new = compose(R, R_prime);
           // new - R'
           for (int r = 0; r < n; r++) {
             for (int c = 0; c < n ; c++ ) {
@@ -134,7 +147,7 @@ public class Relations {
         return R_prime;
     }
 
-    // Gets the cardinality of a relation
+    // returns the cardinality of a relation
     public static int getCardinality(boolean[][] R){
       int n = R.length;
       int total = 0;
@@ -145,6 +158,21 @@ public class Relations {
         }
       }
       return total;
+    }
+
+    // returns a copy of the input relation
+    public static boolean[][] copyRelation(boolean[][] R){
+      int n1 = R.length;
+      int n2 = R[0].length;
+      boolean[][] newMatrix = new boolean[n1][n2];
+      // iterate through each row, column pair
+      for (int r = 0; r < n1; r++) {
+        for (int c = 0; c < n2 ; c++ ) {
+            if (R[r][c])
+              newMatrix[r][c] = true;
+        }
+      }
+      return newMatrix;
     }
 
     // --- useful tools for debugging are provided below  ---
