@@ -29,7 +29,7 @@ Since the relation $R_1$ is reflexive, symmetric, and transitive, it is an equiv
 
 \subsection{DLN 8.111} 
 
-$R_1$ is an equivalence relationship if and only if it is reflexive, symmetric, and transitive. $P = \mathcal{P}(\{0,1,2,3\})$. 
+$R_2$ is an equivalence relationship if and only if it is reflexive, symmetric, and transitive. $P = \mathcal{P}(\{0,1,2,3\})$. 
 \begin{itemize}
 \item \emph{Reflexivity}: The sum of the items in $A$ will always equal the sum of items in $A$. Thus, for every $A \in P, \langle A,A \rangle \in R_2$. Therefore, the relation is reflexive.
 \item \emph{Symmetry}: If the sum of items in $A$ equals the sum of items in $B$, the reverse must also be true. Therefore, for every $A,B \in P$, if $\langle A,B \rangle \in R_2$, then $\langle B,A \rangle \in R_2$. This means that $R_2$ is symmetric. 
@@ -49,7 +49,11 @@ Since the relation $R_1$ is reflexive, symmetric, and transitive, it is an equiv
 
 \subsection{DLN 8.113} 
 
-Etc.
+$R_4$ is an equivalence relationship if and only if it is reflexive, symmetric, and transitive. $P = \mathcal{P}(\{0,1,2,3\})$. 
+\begin{itemize}
+\item \emph{Reflexivity}: For any $A \in P$, all items present in $A$ are also present in $A$. However, if $A = \emptyset$, $A \cap A$ will result in $\emptyset$, and thus $\langle A,A\rangle \notin R_4$ by the definition of $R_4$. This means that $R_4$ is not reflexive, as there is an $A \in P$ that does not satisfy $\langle A,A\rangle \in R_4$.
+\end{itemize}
+As an equivalence relationship depends on reflexivity, symmetry, and transitivity, proving that one of these three properties is not met is enough to show the relationship is not an equivalence relationship. Therefore, since $R_4$ is not reflexive, it is not an equivalence relationship.
 
 \section{Problem 2: DLN 8.84}
 
