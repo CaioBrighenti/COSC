@@ -15,23 +15,28 @@ public class CompareAlgorithms {
      * @param args
      */
     public static void main(String[] args) {
-        System.out.println("Comparing runtime of two algorithms for transitive closure on a 'chain' relation on the set {1..n}.");
+        System.out.println("Comparing runtime of three algorithms for transitive closure on a 'chain' relation on the set {1..n}.");
         System.out.println("(Runtimes are reported in milliseconds.)");
         int n = 0;
         long slow_time = 0;
         long fast_time = 0;
+        long warshall_slow = 0;
         for (int k = 1; k <= 15; k++) {
           n = 20 * k;
           boolean[][] chain = Relations.makeChain(n);
           // store runtime for slow transitive closure
           slow_time = System.currentTimeMillis();
-          boolean[][] slowTrans = Relations.transitiveClosure(chain);
+          Relations.transitiveClosure(chain);
           slow_time = System.currentTimeMillis() - slow_time;
           // store runtime for Warshall transitive closure
           fast_time = System.currentTimeMillis();
-          boolean[][] warshallTrans = Warshall.transitiveClosure(chain);
+          Warshall.transitiveClosure(chain);
           fast_time = System.currentTimeMillis() - fast_time;
-          System.out.println("n = " + n + " regular = " + slow_time + " Warshall = " + fast_time);
+          // store runtime for slower Warshall transitive closure
+          warshall_slow = System.currentTimeMillis();
+          Warshall.transitiveClosureSlow(chain);
+          warshall_slow = System.currentTimeMillis() - warshall_slow;
+          System.out.println("n = " + n + " regular = " + slow_time + " Warshall slow = " + warshall_slow + " Warshall = " + fast_time );
         }
     }
 }

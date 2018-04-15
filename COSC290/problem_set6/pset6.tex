@@ -1,0 +1,61 @@
+\documentclass[titlepage]{article}
+\usepackage{hw}  % leave this line
+
+\psetAuthor{Caio Brighenti}  % replace with your name
+\psetNumber{6}  % replace with pset number
+
+\begin{document} \maketitle
+
+\section{Problem 1: Equivalence classes}
+
+% Use \verb|\subsection{}| to separate your answer into parts, such as...
+
+\subsection{DLN 8.110}  % make a new part
+
+$R_1$ is an equivalence relationship if and only if it is reflexive, symmetric, and transitive.
+\begin{itemize}
+\item \emph{Reflexivity}: If $A$ is an empty set, then the $A = A = \emptyset$, so $\langle A,A \rangle \in R_1$. If $A$ is not an empty set, then the greatest element in $A$ will equal the greatest element in $A$, because $A=A$, thus $\langle A,A \rangle \in R_1$. Therefore $R_1$ is reflexive.
+\item \emph{Symmetry}: In the case that $A = \emptyset$ and $\langle A,B\rangle \in R_1$, then by the second condition $B = \emptyset$. Therefore, also by the second condition, $\langle B,A\rangle \in R_1$. In the case that $\langle A,B\rangle \in R_1$ and $A \neq \emptyset$, the greatest element in $A$ must equal the greatest element in $B$. This means that the greatest element of $B$ must equal the largest element in $A$, and so $\langle B,A\rangle \in R_1$, making $R_1$ symmetric.
+\item \emph{Transitivity}: If $\langle A,B \rangle \in R_1$ and $\langle B,C \rangle \in R_1$, and $A = \emptyset$, then $A=B=\emptyset$, and thus $B=C=\emptyset$. Therefore, if $A$,$B$, and $C$ are all empty sets, then $A=C=\emptyset$, and so $\langle A,C \rangle \in R_1$. In the case that $A$ is not an empty set, then the greatest element in $A$ must equal the greatest element in $B$. Since $\langle B,C \rangle \in R_1$, then the greatest element in $B$ must equal the greatest element in $C$. Thus, the greatest element in $A$ must equal the greatest element in $C$, therefore $\langle A,C \rangle \in R_1$. This means that the relation must be transitive.
+\end{itemize}
+Since the relation $R_1$ is reflexive, symmetric, and transitive, it is an equivalence relationship. The equivalence clauses are as follows:
+\begin{itemize}
+\item $\{ \emptyset\} $
+\item $\{ \{0\}\} $
+\item $\{ \{1\}, \{0,1\}\} $
+\item $\{ \{2\}, \{0,2\}, \{1,2\}, \{0,1,2\}\} $
+\item $\{ \{3\}, \{0,3\}, \{1,3\}, \{2,3\}, \{0,1,3\}, \{0,2,3\}, \{1,2,3\}, \{0,1,2,3\}\} $
+\end{itemize}
+
+\subsection{DLN 8.111} 
+
+And so on...
+
+\subsection{DLN 8.113} 
+
+Etc.
+
+\section{Problem 2: DLN 8.84}
+
+\textbf{Claim}: The claim is that for any relation $R \subseteq A \times A$ that is both irreflexive and transitive, $R$ must also be asymmetric. 
+
+\begin{proof}
+We will prove by assuming the claim is false and showing a contradiction.
+
+\begin{itemize}
+\item \emph{Given}: Assume a relation $R \subseteq A \times A$ is irreflexive, transitive, and not asymmetric.  
+\item \emph{Want to show}: The assumption leads to a contradiction.
+\end{itemize}
+By the definition of asymmetry, since $R$ is not asymmetric there must be one pair $\langle a,b\rangle \in R$ such that $\langle b,a\rangle \in R$. By the definition of transitivity, if $\langle a,b \rangle \in R$, and $\langle b,a\rangle \in R$, then $\langle a,a\rangle \in R$. Thus, if $R$ is not asymmetric and transitive, then we must have $\langle a,a \rangle \in R$.
+\\
+\\
+By the definition of irreflexivity, for every $a \in A, \langle a,a\rangle \notin R$. By the assumption, $R$ is not asymmetric and is transitive, thus $\langle a,a \rangle \in R$, and is also irreflexive, thus for every $a \in A, \langle a,a\rangle \notin R$. These two statements are in direct contradiction, therefore if $R$ is both irreflexive and transitive, it must be asymmetric, proving the claim.
+
+
+\end{proof}
+
+\section{Problem 3: DLN 8.130}
+
+Replace this with your answer to problem 3.
+
+\end{document}

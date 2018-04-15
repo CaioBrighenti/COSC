@@ -72,11 +72,10 @@ public class Relations {
         }
         boolean[][] tempMatrix = new boolean[n1][n4];
         // iterate through each row, column pair
+        // when (i,j) pair present in R, search for (j,k) in S
         for (int i = 0; i < n1; i++) {
           for (int j = 0; j < n2 ; j++ ) {
-              // (i,j) pair present in R
               if (R[i][j]){
-                // search for (j,k) pairs
                 for (int k = 0; k < n2 ; k++ ) {
                   if (S[j][k]){
                     tempMatrix[i][k] = true;
