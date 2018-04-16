@@ -76,6 +76,33 @@ By the definition of irreflexivity, for every $a \in A, \langle a,a\rangle \noti
 
 \section{Problem 3: DLN 8.130}
 
-Replace this with your answer to problem 3.
+\textbf{Claim}: Let $P(k)$ if there are no non-trivial cycles of length $k$ in any relationship $R$ that is both transitive and antisymmetric. The claim is that $\forall k \in \mathrm{Z}^{\geq 2}: P(k)$. 
+
+\begin{proof}
+We will prove by weak induction on $k$.
+
+\textbf{Base case}: The base case is that $k=2$, and thus $P(2)$. The definition of a non-trivial cycle is that $R$ contains a sequence of distinct elements $a_0,a_1,...a_{k-1}$ such that $\langle a_i, a_{(i+1)mod(k)}\rangle \in R$ for each $i \in \{0,1,...k-1\}$, and $k \geq 2$. Since $k=2$, the cycle would consist of pairs $\langle a_0, a_1 \rangle$, and $\langle a_1, a_0\rangle$. By antisymmetry, since $\langle a_0, a_1 \rangle \in R$ and $\langle a_1, a_0 \rangle \in R$, $a_0 = a_b$. However, the definition of non-trivial cycles holds that all elements in the cycle must be distinct, which is contradiction to this, therefore no non-trivial cycles of length $k=2$ can exist.
+
+
+\textbf{Inductive case}: Let $k \geq 3$.  We will show $P(k-1) \implies P(k)$.
+\begin{itemize}
+\item \emph{Given}: Assume $P(k-1)$ is true, and that relationship $R$ is transitive and antisymmetric.
+\item \emph{Want to show}: $P(k)$ is true.
+\end{itemize}
+By the definition of a cycle, and by using $i=k-1$, we have the following:
+$$\langle a_{k-1},a_{(k)mod(k)} \rangle \in R$$
+By the definition of the mod operator, this can be simplified to:
+$$\langle a_{k-1},a_0 \rangle \in R$$
+This means that the last item in the sequence ($a_{k-1}$) will always be paired with the first ($a_0$) if there is a non-trivial cycle present. 	
+\\
+Again by the definition of non-trivial cycles, we have:
+$$\langle a_{i},a_{(i+1)mod(k)} \rangle \in R$$
+As the upper bound for $i$ is $k-1$, for all other values of $i$ we have $i < k-1$. This means that the expression $a_{(i+1)mod(k)}$, can be simplified to $a_{i+1}$, as since $i < k-1$, $i + 1$ must always be smaller than $k$. Using this simplification, we have:
+$$\langle a_{i},a_{i+1} \rangle \in R$$
+This means that for every $i \in \{0,1,...k-1\}$, $i$ is paired with $i+1$. This creates a chain from $a_0$ to $a_{k-1}$ by using the transitive property, meaning that $\langle a_0, a_{k-1}\rangle \in R$. We now have that both:
+$$\langle a_0, a_{k-1}\rangle \in R$$
+$$\langle a_{k-1},a_0 \rangle \in R$$
+Since $R$ is antisymmetric, $a_0 = a_{k-1}$. However, the definition of non-trivial cycles holds that all elements in the cycle are distinct, therefore this \emph{cannot} be a non-trivial cycle. Thus, we have $P(k)$, proving the claim.
+\end{proof}
 
 \end{document}
