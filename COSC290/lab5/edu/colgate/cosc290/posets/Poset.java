@@ -12,6 +12,8 @@ import java.util.*;
 public class Poset {
 
     private int n;  // size (number of elements) in this partially ordered set
+    private Map<Integer, List<Integer>> hasse; // hasse diagram
+    private Map<Integer, List<Integer>> invHasse; // hasse diagram
 
     /**
      * Initialize partially order set (posets) based on a Hasse diagram.
@@ -22,17 +24,48 @@ public class Poset {
     public Poset(Map<Integer, List<Integer>> H) {
         n = H.size();
         checkInput(H);
-        throw new UnsupportedOperationException("implement me!");
+        hasse = H;
+        invHasse = invertHasse(H);
     }
 
-
+    /**
+     * @param H Hasse diagram in adjacency list format
+     * @return an inverted copy of the Hasse diagram
+     */
+    public Map<Integer, List<Integer>> invertHasse(Map<Integer, List<Integer>> H){
+      Map<Integer, List<Integer>> returnH = new HashMap<>();
+      // iterate through each node in the Hasse diagram
+      for (Map.Entry<Integer,List<Integer>> entry : H.entrySet()) {
+        Integer ancestor = entry.getKey();
+        List<Integer> successors = entry.getValue();
+        // add this node to new list if not yet present
+        if (returnH.get(ancestor) == null)
+          returnH.put(ancestor, new LinkedList<>());
+        // iterate through each succesor for that node
+        for (Integer succ: successors) {
+          // add this node to new list if not yet present
+          if (returnH.get(succ) == null)
+            returnH.put(succ, new LinkedList<>());
+          returnH.get(succ).add(ancestor);
+        }
+      }
+      return returnH;
+    }
 
     /**
      * Returns the set of maximal elements.
      * @return the set of maximal elements
      */
     public Set<Integer> maximal() {
-        throw new UnsupportedOperationException("implement me!");
+      Set<Integer> returnSet = new HashSet<>();
+      // iterate through the inverted Hasse diagram
+      for (Map.Entry<Integer,List<Integer>> entry : hasse.entrySet()) {
+        Integer ancestor = entry.getKey();
+        List<Integer> successors = entry.getValue();
+        if (successors.isEmpty())
+          returnSet.add(ancestor);
+      }
+      return returnSet;
     }
 
     /**
@@ -40,7 +73,11 @@ public class Poset {
      * @return the maximum element or -1 if no such element exists
      */
     public int maximum() {
-        throw new UnsupportedOperationException("implement me!");
+      Set<Integer> maximalSet = maximal();
+      if (maximalSet.size() == 1)
+        return maximalSet.iterator().next();
+      else
+        return -1;
     }
 
     /**
@@ -48,7 +85,15 @@ public class Poset {
      * @return the set of minimal elements
      */
     public Set<Integer> minimal() {
-        throw new UnsupportedOperationException("implement me!");
+      Set<Integer> returnSet = new HashSet<>();
+      // iterate through the inverted Hasse diagram
+      for (Map.Entry<Integer,List<Integer>> entry : invHasse.entrySet()) {
+        Integer succesor = entry.getKey();
+        List<Integer> ancestors = entry.getValue();
+        if (ancestors.isEmpty())
+          returnSet.add(succesor);
+      }
+      return returnSet;
     }
 
     /**
@@ -56,7 +101,11 @@ public class Poset {
      * @return the minimum element or -1 if no such element exists
      */
     public int minimum() {
-        throw new UnsupportedOperationException("implement me!");
+      Set<Integer> minimalSet = minimal();
+        if (minimalSet.size() == 1)
+          return minimalSet.iterator().next();
+        else
+          return -1;
     }
 
     /**
@@ -122,13 +171,18 @@ public class Poset {
         // 0 ≤ 3
         // 1 ≤ 4
         // 2 ≤ 4
-        H.put(0, Arrays.asList(2, 3));  // edges: 0 -> 2 and 0 -> 3
+        H.put(0, Arrays.asList(2, 3, 1));  // edges: 0 -> 2 and 0 -> 3
         H.put(1, Arrays.asList(4));     // edges: 1 -> 4
         H.put(2, Arrays.asList(4));     // edges: 2 -> 4
         H.put(3, new LinkedList<>());   // 3 has no outgoing edges
         H.put(4, new LinkedList<>());   // 4 has no outgoing edges
+        //System.out.println(H);
         Poset poset = new Poset(H);
         // Write a main method that demonstrates the correctness of your implementation.
+        System.out.println("poset.minimal(): " + poset.minimal());
+        System.out.println("poset.maximal(): " + poset.maximal());
+        System.out.println("poset.minimum(): " + poset.minimum());
+        System.out.println("poset.maximum(): " + poset.maximum());
     }
 
     /**
