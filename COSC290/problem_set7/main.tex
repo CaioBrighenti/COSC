@@ -1,0 +1,51 @@
+\documentclass[titlepage]{article}
+\usepackage{hw}  % leave this line
+
+\psetAuthor{Caio Brighenti}  % replace with your name
+\psetNumber{7}  % replace with pset number
+
+\begin{document} \maketitle
+
+\section{Problem 1: Using induction to prove algorithm correctness, DLN 5.71}
+
+\textbf{Claim}: Let $P(n)$ if for a sorted array $A[1...n]$ of length $n$, $binarySearch(A, x) \iff x \in A$ .  The claim is that $\forall n \in \mathrm{Z}^{\geq 0}: P(n)$.
+
+\begin{proof}
+We will prove by strong induction on $n$.
+
+\textbf{Base cases}: The base cases are $n=0$ and $n=1$. Both $P(0)$ and $P(1)$ are true, as any array of length 0 or 1 is sorted.
+
+
+\textbf{Inductive case}: Let $n \geq 2$.  We will show $P(n-1) \implies P(n)$.
+\begin{itemize}
+\item \emph{Given}: Assume $P(n-1)$ is true.
+\item \emph{Want to show}: $P(n)$ is true.
+\end{itemize}
+Since $P(n-1)$ is true, we have
+$$\sum_{i=1}^{n-1} i = \frac{(n-1)((n-1)+1)}{2}$$
+
+We will use this fact to show $P(n)$:
+\begin{align*}
+\sum_{i=1}^{n} i &= \left( \sum_{i=1}^{n-1} i \right) + n & \text{definition of summation} \\
+&= \frac{(n-1)((n-1)+1)}{2} + n & \text{inductive hypothesis} \\
+&= \frac{(n-1)n + 2n}{2} & \text{rearanging/simplifying terms} \\
+&= \frac{n^2 - n + 2n}{2} = \frac{n^2 + n}{2}  & \text{algebra} \\
+&= \frac{n(n + 1)}{2}  & \square
+\end{align*}
+\end{proof}
+
+\section{Problem 2: proving a relation is a partial order}
+
+\subsection{DLN 8.131}
+
+\emph{replace with your answer}
+
+\subsection{DLN 8.132}
+
+\emph{replace with your answer}
+
+\section{Problem 3: an equivalence relation and a partial order? DLN 8.155}
+
+\emph{replace with your answer}
+
+\end{document}

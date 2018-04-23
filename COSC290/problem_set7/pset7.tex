@@ -1,0 +1,51 @@
+\documentclass[titlepage]{article}
+\usepackage{hw}  % leave this line
+
+\psetAuthor{Caio Brighenti}  % replace with your name
+\psetNumber{7}  % replace with pset number
+
+\begin{document} \maketitle
+
+\section{Problem 1: Using induction to prove algorithm correctness, DLN 5.71}
+
+\textbf{Claim}: Let $P(n)$ if for a sorted array $A[1...n]$ of length $n$, $binarySearch(A, x) \iff x \in A$ .  The claim is that $\forall n \in \mathrm{Z}^{\geq 0}: P(n)$.
+
+\begin{proof}
+We will prove by strong induction on $n$.
+
+\textbf{Base cases}: The base cases are $n=0$ and $n=1$. Both $P(0)$ and $P(1)$ are true, as any array of length 0 or 1 is sorted.
+
+\textbf{Inductive case}: Let $n \geq 2$.  We will show $P(0) \land ... \land P(n-1) \iff P(n)$.
+\begin{itemize}
+\item \emph{Given}: Assume $P(0) \land ... \land P(n-1)$ is true.
+\item \emph{Want to show}: $P(n)$ is true.
+\end{itemize}
+We proceed by cases. There are three ways in which $x$ can exist with relation to $A[1...n]$ and $middle$. These cases are as such: 
+\begin{align*}
+A[1...x=middle...n] \\
+A[1...x...middle...n] \\
+A[1...middle...x...n] \\
+\end{align*}
+In Case 1, we have that $x = middle$. In Case 2, we have that $1 \leq x < middle \leq n$. In Case 3, we have that $1 \leq middle < x \leq n$.
+
+\emph{Case 1}: In the first case, the algorithm successfully found the item $x$ it was searching for. Thus, the function returns true. \\
+\emph{Case 2}: In the second case, the function will be called recursively on $A[1...middle-1]$. From there\\
+\emph{Case 3}: In the third case, the function will be called recursively on $A[middle+1...n]$. From there\\
+
+\end{proof}
+
+\section{Problem 2: proving a relation is a partial order}
+
+\subsection{DLN 8.131}
+
+\emph{replace with your answer}
+
+\subsection{DLN 8.132}
+
+\emph{replace with your answer}
+
+\section{Problem 3: an equivalence relation and a partial order? DLN 8.155}
+
+\emph{replace with your answer}
+
+\end{document}
