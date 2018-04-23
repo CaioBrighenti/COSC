@@ -38,14 +38,35 @@ In Case 1, we have that $x = middle$. In Case 2, we have that $1 \leq x < middle
 
 \subsection{DLN 8.131}
 
-\emph{replace with your answer}
+A relation is a total order if it is a partial order where every pair is comparable ($\langle a,b \rangle \in R$ or $\langle b,a \rangle \in R$). To demonstrate that it is not a total order, we must simply identify an $(a,b)$ pair that does not satisfy the total order condition. An example is as follows.\\
+The pair $\langle \langle 1,2 \rangle , \langle 2,2 \rangle \rangle$ would be in $R$ as it meets the condition of the relation. Additionally, the pair $\langle \langle 2,1 \rangle , \langle 2,2 \rangle \rangle$ would also be in $R$. However, neither $\langle \langle 2,1 \rangle , \langle 1,2 \rangle \rangle$ nor $\langle \langle 1,2 \rangle , \langle 2,1 \rangle \rangle$ would be in $R$, as neither meet the condition. Thus, this relation $R$ does not meet the definition of a total order, and thus is not a total order.
 
 \subsection{DLN 8.132}
 
-\emph{replace with your answer}
+For $R$ to be a partial order, it must be reflexive, antisymmetric, and transitive. We will show that relation $R$ meets each of these properties.
+ 
+\begin{itemize}
+\item \textbf{Reflexivity:} $\langle \langle a,b \rangle , \langle x,y \rangle \rangle \in R$ if $a \leq x$ and $b \leq y$. Thus $\langle \langle a,b \rangle , \langle a,b \rangle \rangle \in R$ as $a \leq a$ and $b \leq b$. Therefore this relation is reflexive, as for any $(a,b)$ pair $A$, $\langle A,A \rangle \in R$.
+\item \textbf{Antisymmetry:} The antisymmetry property is only present if $\langle A,B \rangle \in R \land \langle B,A \rangle \in R \implies (A=B)$, where $A$ is the pair $(a,b)$ and $B$ is the pair $(x,y)$. If $\langle A,B \rangle \in R \land \langle B,A \rangle \in R$, then by the definition of $R$, $(a \leq x) \land (b \leq y)$ as well as $(x \leq a) \land (y \leq b)$. This is only possible if $a=x$ and $b=y$, as it is not possible to have $a < x < a$ or $b < y < b$. Additionally, if $a=x$ and $b=y$, then we must have $A=B$, and thus the relation $R$ is antisymmetric. 
+\item \textbf{Transitivity:} The property of transitivity holds that if $\langle A,B \rangle \in R \land \langle B,C \rangle \in R$, then we must have that $\langle A,C \rangle \in R$. We have that $A$ is the pair $(a,b)$ and $B$ is the pair $(x,y)$, and $C$ is the pair $(c,d)$. If we have $\langle A,B \rangle \in R \land \langle B,C \rangle \in R$, then it must be that $(a \leq x) \land (b \leq y)$, as well as $(x \leq c) \land (y \leq d)$. It also holds that $(a \leq c) \land (b \leq d)$, and thus $\langle A,C \rangle \in R$, fulfilling the property of transitivity.
+\end{itemize}
+
+As the relation $R$ is reflexive, antisymmetric, and transitive, it is a partial order. 
 
 \section{Problem 3: an equivalence relation and a partial order? DLN 8.155}
 
-\emph{replace with your answer}
+\textbf{Claim}: There exists a relation $\preceq$ on the set $A$ that is both an equivalence relation and a partial order.
+
+\begin{proof}
+We will prove by direct proof, by showing an example of a relation that fits both the definition of an equivalence relation and a partial order.
+\\
+A relation is an equivalence relation if it is reflexive, symmetric, and transitive. A relation is a partial order if it is reflexive, antisymmetric, and transitive. Thus for a relation to be both, it must be reflexive, symmetric, transitive, and antisymmetric simultaneously. We will show that the relation $R$ fits all of these properties. The relationship $R$ is defined as such: with relation to $A[1...n]$, $\langle a,b \rangle \in R$ if $a=b$. We will show that each property holds individually.
+\begin{itemize}
+\item \textbf{Reflexivity:} As for any element $a \in A[1...n]$ , $a=a$, then $\forall a \in A$, $\langle a,a \rangle \in R$. This is exactly the definition of reflexivity, and thus the relationship $R$ is reflexive.
+\item \textbf{Symmetry:} The property of symmetry exists if $\forall \langle a,b \rangle \in R$, we must have $\langle b,a \rangle \in R$. Since we have $\langle a,b \rangle \in R$, it must be that $a=b$, and that $b=a$. Thus, it holds that $\langle b,a \rangle \in R$. Therefore, the relationship $R$ is symmetric. 
+\item \textbf{Antisymmetry:}
+\item \textbf{Transitivity:}
+\end{itemize}
+\end{proof} 
 
 \end{document}
