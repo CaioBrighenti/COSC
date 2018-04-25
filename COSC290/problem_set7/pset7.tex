@@ -8,16 +8,16 @@
 
 \section{Problem 1: Using induction to prove algorithm correctness, DLN 5.71}
 
-\textbf{Claim}: Let $P(n)$ if for a sorted array $A[1...n]$ of length $n$, $binarySearch(A, x) \iff x \in A$ .  The claim is that $\forall n \in \mathrm{Z}^{\geq 0}: P(n)$.
+\textbf{Claim}: Let $P(n)$ if for a sorted array $A[1...n]$ of length $n$, $binarySearch(A, x) \iff x \in A$ .  The claim is that $\forall n \in \mathrm{Z}^{\geq 1}: P(n)$.
 
 \begin{proof}
 We will prove by strong induction on $n$.
 
-\textbf{Base cases}: The base cases are $n=0$ and $n=1$. Both $P(0)$ and $P(1)$ are true, as any array of length 0 or 1 is sorted.
+\textbf{Base cases}: The base case is $n=1$. $P(1)$ must be true, as an array with length 1 will only have a single element. That element will be $x$ if $x$ is present, in which case the $chooseRandom(1,n)$ call will choose $x$, thus returning true. If $x$ is not present, the recursive call will be made with an array of length 0, thus returning false. This means that the function will only return true if and only if $x$ is present, thus we have $P(1)$.
 
-\textbf{Inductive case}: Let $n \geq 2$.  We will show $P(0) \land ... \land P(n-1) \iff P(n)$.
+\textbf{Inductive case}: Let $n \geq 2$.  We will show $P(1) \land ... \land P(n-1) \iff P(n)$.
 \begin{itemize}
-\item \emph{Given}: Assume $P(0) \land ... \land P(n-1)$ is true.
+\item \emph{Given}: Assume $P(1) \land ... \land P(n-1)$ is true.
 \item \emph{Want to show}: $P(n)$ is true.
 \end{itemize}
 We proceed by cases. There are three ways in which $x$ can exist with relation to $A[1...n]$ and $middle$. These cases are as such: 
@@ -27,10 +27,12 @@ A[1...x...middle...n] \\
 A[1...middle...x...n] \\
 \end{align*}
 In Case 1, we have that $x = middle$. In Case 2, we have that $1 \leq x < middle \leq n$. In Case 3, we have that $1 \leq middle < x \leq n$.
-
-\emph{Case 1}: In the first case, the algorithm successfully found the item $x$ it was searching for. Thus, the function returns true. \\
-\emph{Case 2}: In the second case, the function will be called recursively on $A[1...middle-1]$. From there\\
-\emph{Case 3}: In the third case, the function will be called recursively on $A[middle+1...n]$. From there\\
+\begin{itemize}
+\item {Case 1}: In the first case, the algorithm successfully found the item $x$ it was searching for. Thus, the function returns true, acting correctly as $x$ is present.
+\item {Case 2}: In the second case, the function will be called recursively on $A[1...middle-1]$. The length of $A[1...middle-1]$ \emph{must} be smaller than the length of $A[1...n]$, and thus by the assumption of the inductive case we must have that $P(n')$, where $n'$ is the length of $A[1...middle-1]$. Therefore, in the second case the function returns correctly. 
+\item {Case 3}: In the second case, the function will be called recursively on $A[middle+1...n]$. The length of $A[middle+1...n]$ \emph{must} be smaller than the length of $A[1...n]$, and thus by the assumption of the inductive case we must have that $P(n')$, where $n'$ is the length of $A[middle-1...n]$. Therefore, in the third case the function returns correctly.
+\end{itemize}
+As in all three cases we have that the function returns correctly, we have that $\forall n \in \mathrm{Z}^{\geq 1}: P(n)$, thus proving the claim.
 
 \end{proof}
 
@@ -60,13 +62,15 @@ As the relation $R$ is reflexive, antisymmetric, and transitive, it is a partial
 \begin{proof}
 We will prove by direct proof, by showing an example of a relation that fits both the definition of an equivalence relation and a partial order.
 \\
+\\
 A relation is an equivalence relation if it is reflexive, symmetric, and transitive. A relation is a partial order if it is reflexive, antisymmetric, and transitive. Thus for a relation to be both, it must be reflexive, symmetric, transitive, and antisymmetric simultaneously. We will show that the relation $R$ fits all of these properties. The relationship $R$ is defined as such: with relation to $A[1...n]$, $\langle a,b \rangle \in R$ if $a=b$. We will show that each property holds individually.
 \begin{itemize}
 \item \textbf{Reflexivity:} As for any element $a \in A[1...n]$ , $a=a$, then $\forall a \in A$, $\langle a,a \rangle \in R$. This is exactly the definition of reflexivity, and thus the relationship $R$ is reflexive.
 \item \textbf{Symmetry:} The property of symmetry exists if $\forall \langle a,b \rangle \in R$, we must have $\langle b,a \rangle \in R$. Since we have $\langle a,b \rangle \in R$, it must be that $a=b$, and that $b=a$. Thus, it holds that $\langle b,a \rangle \in R$. Therefore, the relationship $R$ is symmetric. 
-\item \textbf{Antisymmetry:}
-\item \textbf{Transitivity:}
+\item \textbf{Antisymmetry: }The property of symmetry exists if for any $(a,b)$ pair where $\langle a,b \rangle \in R$ and $\langle b,a \rangle \in R$, we must have that $a=b$. By the definition of $R$, if we have $\langle a,b \rangle \in R$, then we will have $a=b$, fulfilling the property of antisymmetry, as this will always be true, and thus true when $\langle b,a \rangle \in R$.
+\item \textbf{Transitivity:} The transitivity property states that if you have $\langle a,b \rangle \in R$ and $\langle b,c \rangle \in R$, you must have that $\langle a,c \rangle \in R$. Given the conditions, we would have that $a=b$ and that $b=c$. As the $=$ comparator is transitive, we would have that $a=c$, and by the definition of $R$, $\langle a,c \rangle \in R$. Thus, the relation $R$ is transitive. 
 \end{itemize}
+As we have shown that relation $R$ is simultaneously reflexive, symmetric, transitive, and antisymmetric, we can conclude that $R$ is both an equivalence relation and a partial order. Thus, we have directly proven the claim by showing an example.
 \end{proof} 
 
 \end{document}
