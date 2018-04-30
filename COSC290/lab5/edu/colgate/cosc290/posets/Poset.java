@@ -58,7 +58,7 @@ public class Poset {
      */
     public Set<Integer> maximal() {
       Set<Integer> returnSet = new HashSet<>();
-      // iterate through the inverted Hasse diagram
+      // iterate through the Hasse diagram
       for (Map.Entry<Integer,List<Integer>> entry : hasse.entrySet()) {
         Integer ancestor = entry.getKey();
         List<Integer> successors = entry.getValue();
@@ -85,13 +85,32 @@ public class Poset {
      * @return the set of minimal elements
      */
     public Set<Integer> minimal() {
+      return minimal(hasse.keySet());
+    }
+
+    /**
+     * Returns the set of minimal elements of a subset S⊆ P
+     * @param S subset S⊆ P
+     * @return the set of minimal elements of a subset S⊆ P
+     */
+    public Set<Integer> minimal(Set<Integer> S) {
       Set<Integer> returnSet = new HashSet<>();
-      // iterate through the inverted Hasse diagram
-      for (Map.Entry<Integer,List<Integer>> entry : invHasse.entrySet()) {
-        Integer succesor = entry.getKey();
-        List<Integer> ancestors = entry.getValue();
+      // iterate through each item in S and check if it has any ancestors
+      for (Integer succesor : S) {
+        List<Integer> ancestors = invHasse.get(succesor);
+        // if no ancestors, must be minimal
         if (ancestors.isEmpty())
           returnSet.add(succesor);
+        else {
+          // check if ancestors are in subset S⊆ P
+          boolean flag = true;
+          for (Integer ancestor : ancestors) {
+            if (S.contains(ancestor))
+              flag = false;
+          }
+          if (flag)
+            returnSet.add(succesor);
+        }
       }
       return returnSet;
     }
@@ -101,7 +120,16 @@ public class Poset {
      * @return the minimum element or -1 if no such element exists
      */
     public int minimum() {
-      Set<Integer> minimalSet = minimal();
+      return minimum(hasse.keySet());
+    }
+
+    /**
+     * Returns the minimum element of a subset S⊆ P or -1 if no such element exists.
+     * @param S subset S⊆ P
+     * @return the minimum element of a subset S⊆ P or -1 if no such element exists.
+     */
+    public int minimum(Set<Integer> S) {
+      Set<Integer> minimalSet = minimal(S);
         if (minimalSet.size() == 1)
           return minimalSet.iterator().next();
         else
@@ -114,7 +142,16 @@ public class Poset {
      * @return true if it is consistent, false otherwise
      */
     public boolean consistent(List<Integer> totalOrder) {
-        throw new UnsupportedOperationException("implement me!");
+        // ensure each item in total order is minimal in the partial order with respect
+        // to its successors in the total order
+        for (int i = 0; i < totalOrder.size(); i++) {
+          Integer node = totalOrder.get(i);
+          Set<Integer> subset = new HashSet<Integer>(totalOrder.subList(i, totalOrder.size()));
+          Set<Integer> minimalSet = minimal(subset);
+          if (!minimalSet.contains(node))
+            return false;
+        }
+        return true;
     }
 
     /**
@@ -123,7 +160,15 @@ public class Poset {
      * order, then the index of x should be less than the index of y in the returned list)
      */
     public List<Integer> topoSort() {
-        throw new UnsupportedOperationException("implement me!");
+        List<Integer> topoList = new ArrayList<Integer>();
+        Set<Integer> tempSet = hasse.keySet();
+        // iteratively add a minimal element to the topo order, then re-obtain the minimal elements
+        while (!tempSet.isEmpty()){
+          Set<Integer> minimalSet = minimal(tempSet);
+          topoList.addAll(minimalSet);
+          tempSet.removeAll(minimalSet);
+        }
+        return topoList;
     }
 
     /**
@@ -179,10 +224,20 @@ public class Poset {
         //System.out.println(H);
         Poset poset = new Poset(H);
         // Write a main method that demonstrates the correctness of your implementation.
+        System.out.println("------------- TEST 1 -------------");
+        Integer arr[] = { 1,2,3,4 };
+        Set<Integer> subset = new HashSet<>(Arrays.asList(arr));
+        System.out.println("H: " + H);
+        System.out.println("invertHasse(H): " + poset.invHasse);
         System.out.println("poset.minimal(): " + poset.minimal());
-        System.out.println("poset.maximal(): " + poset.maximal());
         System.out.println("poset.minimum(): " + poset.minimum());
+        System.out.println("poset.minimal({1,2,3,4}): " + poset.minimal(subset));
+        System.out.println("poset.maximal(): " + poset.maximal());
         System.out.println("poset.maximum(): " + poset.maximum());
+        Integer arr2[] = { 0,1,2,3,4 };
+        List<Integer> totalOrd = new ArrayList<>(Arrays.asList(arr2));
+        System.out.println("poset.consistent({ 0,1,2,3,4 }): " + poset.consistent(totalOrd));
+        System.out.println("poset.topoSort(): " + poset.topoSort());
     }
 
     /**
