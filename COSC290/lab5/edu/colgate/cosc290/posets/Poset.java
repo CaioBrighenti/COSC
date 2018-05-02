@@ -184,11 +184,11 @@ public class Poset {
     }
 
     /**
-     * Returns a topological sort of this posets.
+     * Returns a topological sort of this posets using a less efficient algorithm.
      * @return a list containing all of the elements in the set in ascending order (if x ≤ y according to the partial
      * order, then the index of x should be less than the index of y in the returned list)
      */
-    public List<Integer> topoSort() {
+    public List<Integer> topoSortSlow() {
         List<Integer> topoList = new ArrayList<Integer>();
         Set<Integer> tempSet = new HashSet<Integer>();
         tempSet.addAll(hasse.keySet());
@@ -206,17 +206,25 @@ public class Poset {
      * @return a list containing all of the elements in the set in ascending order (if x ≤ y according to the partial
      * order, then the index of x should be less than the index of y in the returned list)
      */
-    public List<Integer> topoSortDFS() {
-        List<Integer> topoList = new ArrayList<Integer>();
-        Set<Integer> tempSet = new HashSet<Integer>();
-        tempSet.addAll(hasse.keySet());
-        // iteratively add a minimal element to the topo order, then re-obtain the minimal elements
-        while (!tempSet.isEmpty()){
-          Set<Integer> minimalSet = minimal(tempSet);
-          topoList.addAll(minimalSet);
-          tempSet.removeAll(minimalSet);
-        }
-        return topoList;
+    public List<Integer> topoSort() {
+      Set<Integer> minimals = minimal();
+      List<Integer> returnOrder = new LinkedList<>();
+      boolean[] marked = new boolean[hasse.keySet().size()];
+      Arrays.fill(marked, false);
+      for (int minimal : minimals) {
+        if (!marked[minimal])
+          topoDFSHelper(minimal, marked, returnOrder);
+      }
+      return returnOrder;
+    }
+
+    public void topoDFSHelper(int x, boolean[] marked, List<Integer> order){
+      marked[x] = true;
+      for (int y : hasse.get(x)) {
+        if (!marked[y])
+          topoDFSHelper(y, marked, order);
+      }
+      order.add(0, x);
     }
 
     /**
@@ -364,6 +372,7 @@ public class Poset {
         List<Integer> totalOrd = new ArrayList<>(Arrays.asList(arr2));
         System.out.println("poset.consistent({ 0,1,2,3,4 }): " + poset.consistent(totalOrd));
         System.out.println("poset.topoSort(): " + poset.topoSort());
+        System.out.println("poset.topoSortSlow(): " + poset.topoSortSlow());
         Integer arr3[] = { 0,1,2 };
         Set<Integer> subset2 = new HashSet<>(Arrays.asList(arr3));
         System.out.println("poset.upperBound({0,1,2}): " + poset.upperBound(subset2));
