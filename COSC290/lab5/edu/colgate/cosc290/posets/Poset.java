@@ -355,7 +355,6 @@ public class Poset {
         H.put(2, Arrays.asList(4));     // edges: 2 -> 4
         H.put(3, new LinkedList<>());   // 3 has no outgoing edges
         H.put(4, new LinkedList<>());   // 4 has no outgoing edges
-        //System.out.println(H);
         Poset poset = new Poset(H);
         // Write a main method that demonstrates the correctness of your implementation.
         System.out.println("------------- TEST 1 -------------");
@@ -365,12 +364,11 @@ public class Poset {
         System.out.println("invertHasse(H): " + poset.invHasse);
         System.out.println("poset.minimal(): " + poset.minimal());
         System.out.println("poset.minimum(): " + poset.minimum());
-        System.out.println("poset.minimal({1,2,3,4}): " + poset.minimal(subset));
         System.out.println("poset.maximal(): " + poset.maximal());
         System.out.println("poset.maximum(): " + poset.maximum());
-        Integer arr2[] = { 0,1,2,3,4 };
+        Integer arr2[] = { 3,1,2,0,4 };
         List<Integer> totalOrd = new ArrayList<>(Arrays.asList(arr2));
-        System.out.println("poset.consistent({ 0,1,2,3,4 }): " + poset.consistent(totalOrd));
+        System.out.println("poset.consistent({ 3,1,2,0,4 }): " + poset.consistent(totalOrd));
         System.out.println("poset.topoSort(): " + poset.topoSort());
         System.out.println("poset.topoSortSlow(): " + poset.topoSortSlow());
         Integer arr3[] = { 0,1,2 };
@@ -381,7 +379,68 @@ public class Poset {
         Set<Integer> subset3 = new HashSet<>(Arrays.asList(arr4));
         System.out.println("poset.lowerBound({2,4}): " + poset.lowerBound(subset3));
         System.out.println("poset.GLB({2,4}): " + poset.GLB(subset3));
-    }
+        System.out.println("----------------------------------");
+        Map<Integer, List<Integer>> H2 = new HashMap<>();
+        H2.put(0, Arrays.asList(1, 2, 3));
+        H2.put(1, Arrays.asList(4));
+        H2.put(2, Arrays.asList(4));
+        H2.put(3, Arrays.asList(4));
+        H2.put(4, new LinkedList<>());
+        H2.put(5, Arrays.asList(7));
+        H2.put(6, new LinkedList<>());
+        H2.put(7, new LinkedList<>());
+        Poset poset2 = new Poset(H2);
+        System.out.println("------------- TEST 2 -------------");
+        System.out.println("H: " + H2);
+        System.out.println("invertHasse(H): " + poset2.invHasse);
+        System.out.println("poset.minimal(): " + poset2.minimal());
+        System.out.println("poset.minimum(): " + poset2.minimum());
+        System.out.println("poset.maximal(): " + poset2.maximal());
+        System.out.println("poset.maximum(): " + poset2.maximum());
+        Integer arr7[] = { 3,1,2,0,4 };
+        List<Integer> totalOrd2 = new ArrayList<>(Arrays.asList(arr7));
+        System.out.println("poset.consistent({ 1,2,3,4,5,6,7 }): " + poset2.consistent(totalOrd2));
+        System.out.println("poset.topoSort(): " + poset2.topoSort());
+        System.out.println("poset.topoSortSlow(): " + poset2.topoSortSlow());
+        Integer arr5[] = { 0,1,2 };
+        Set<Integer> subset4 = new HashSet<>(Arrays.asList(arr5));
+        System.out.println("poset.upperBound({0,1,2}): " + poset2.upperBound(subset4));
+        System.out.println("poset.LUB({0,1,2}): " + poset2.LUB(subset4));
+        Integer arr6[] = { 2,4 };
+        Set<Integer> subset5 = new HashSet<>(Arrays.asList(arr6));
+        System.out.println("poset.lowerBound({2,4}): " + poset2.lowerBound(subset5));
+        System.out.println("poset.GLB({2,4}): " + poset2.GLB(subset5));
+        System.out.println("----------------------------------");
+        Map<Integer, List<Integer>> H3 = new HashMap<>();
+        H3.put(0, Arrays.asList(1));
+        H3.put(1, Arrays.asList(2));
+        H3.put(2, Arrays.asList(5,6));
+        H3.put(3, Arrays.asList(2,4));
+        H3.put(4, Arrays.asList(7));
+        H3.put(5, Arrays.asList(7));
+        H3.put(6, Arrays.asList(7));
+        H3.put(7, new LinkedList<>());
+        Poset poset3 = new Poset(H3);
+        System.out.println("------------- TEST 3 -------------");
+        System.out.println("H: " + H3);
+        System.out.println("invertHasse(H): " + poset3.invHasse);
+        System.out.println("poset.minimal(): " + poset3.minimal());
+        System.out.println("poset.minimum(): " + poset3.minimum());
+        System.out.println("poset.maximal(): " + poset3.maximal());
+        System.out.println("poset.maximum(): " + poset3.maximum());
+        Integer arr8[] = { 3,1,2,0,4 };
+        List<Integer> totalOrd3 = new ArrayList<>(Arrays.asList(arr8));
+        System.out.println("poset.consistent({ 5,6,7,3,1,2,0,4 }): " + poset3.consistent(totalOrd3));
+        System.out.println("poset.topoSort(): " + poset3.topoSort());
+        System.out.println("poset.topoSortSlow(): " + poset3.topoSortSlow());
+        Integer arr9[] = { 0,1,2 };
+        Set<Integer> subset6 = new HashSet<>(Arrays.asList(arr9));
+        System.out.println("poset.upperBound({0,1,2}): " + poset3.upperBound(subset6));
+        System.out.println("poset.LUB({0,1,2}): " + poset3.LUB(subset4));
+        Integer arr10[] = { 2,4 };
+        Set<Integer> subset7 = new HashSet<>(Arrays.asList(arr10));
+        System.out.println("poset.lowerBound({2,4}): " + poset3.lowerBound(subset7));
+        System.out.println("poset.GLB({2,4}): " + poset3.GLB(subset5));    }
 
     /**
      * Makes sure that every item in map is a number between 0 and n-1 where n is the size of the map.
