@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6500 64-bit) (preloaded format=pdflatex 2018.1.27)  7 MAY 2018 09:44
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6500 64-bit) (preloaded format=pdflatex 2018.1.27)  7 MAY 2018 14:19
 entering extended mode
 **./pset8.tex
 (pset8.tex
@@ -1005,14 +1005,10 @@ File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 36.
+ [2
 
-Underfull \hbox (badness 10000) in paragraph at lines 46--49
+]
 
- []
-
-[2
-
-] 
 AED: lastpage setting LastPage
 [3
 
@@ -1020,7 +1016,7 @@ AED: lastpage setting LastPage
 Here is how much of TeX's memory you used:
  14483 strings out of 493312
  269174 string characters out of 3138006
- 326265 words of memory out of 3000000
+ 329265 words of memory out of 3000000
  17714 multiletter control sequences out of 15000+200000
  12816 words of font info for 49 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
@@ -1037,7 +1033,7 @@ ype1/public/amsfonts/cm/cmsy10.pfb><D:/Program Files (x86)/MiKTeX/fonts/type1/p
 ublic/amsfonts/cm/cmsy7.pfb><D:/Program Files (x86)/MiKTeX/fonts/type1/public/a
 msfonts/cm/cmti10.pfb><D:/Program Files (x86)/MiKTeX/fonts/type1/public/amsfont
 s/cm/cmti12.pfb>
-Output written on pset8.pdf (4 pages, 142163 bytes).
+Output written on pset8.pdf (4 pages, 143963 bytes).
 PDF statistics:
  66 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)

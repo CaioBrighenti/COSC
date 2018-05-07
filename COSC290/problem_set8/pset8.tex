@@ -26,15 +26,16 @@ For this problem, the order matters, and repetition is not allowed, thus the gen
 
 \section{Problem 2: Counting bit strings, DLN 9.166}
 
-\textbf{Claim}: Let $P(n)$ if the number of bit strings without any adjacent ones with $n$ zeroes and $k$ ones is ${n+1}\choose{k}$.  The claim is that $\forall n \in \mathrm{Z}^{\geq 0}: P(n)$.
+\textbf{Claim}: Let $S_{n,k}$ be the set of all bitstrings with $n$ zeroes and $k$ ones without any adjacent ones. Let $P(n)$ if $|S_{n,k}| = {{n+1}\choose{k}}$.  The claim is that $\forall n \in \mathrm{Z}^{\geq 0}: P(n)$.
 
 \begin{proof}
 We will prove by weak induction on $n$.
 
 \textbf{Base cases}: 
 \begin{itemize}
-\item \emph{$n = 0$}: If we have no zeroes, the only valid bit string will be $\langle 1 \rangle$, as it would be impossible to have another one as it would have to be adjacent. So, ${{0+1}\choose{1}}=1$, and thus $P(0)$ must be true.
-\item \emph{$n = 1$}: For a single zero, $k \in K\{0,1,2\}$. If $k=0$, the only bit string will be $\langle 0 \rangle$, and since ${{1+1}\choose{0}}=1$ the claim holds for $k=0$. For $k=1$, the valid bit strings will be $\{\langle 0,1 \rangle , \langle 1,0 \rangle\}$, and since ${{1+1}\choose{1}}=2$, the claim holds for $k=1$. Finally, when $k=2$, we have the possible bit string $\langle 1,0,1 \rangle$, and since ${{1+1}\choose{2}}=1$, the claim holds for $k=2$. Thus, we have that $P(1)$.
+\item For any value of $n$ (including the cases below), there is the case that $k > n+1$. By the definition of the binomial coeficient, in this case ${n+1}\choose{k}$ will always equal $0$. This fits the claim, as if $k > n+1$ we have $S_{n,k} = \emptyset$.
+\item \emph{$n = 0$}: If we have no zeroes, we have the cases $k \in \{0,1\}$. For $k=1$, the only bitstring will be $\langle 1 \rangle$. Since ${{0+1}\choose{1}}=1$, this holds. For $k=0$, we have ${{0}\choose{0}}=1$. This is true, as the only valid bitstring with no zeroes or ones will be $\emptyset$. Thus, $S_{0,0} = \{\emptyset\}$ and therefore $|S_{0,0}|=1$, giving us $P(0)$.
+\item \emph{$n = 1$}: For a single zero, we have the cases $k \in \{0,1,2\}$. If $k=0$, the only bit string will be $\langle 0 \rangle$, and since ${{1+1}\choose{0}}=1$ the claim holds for $k=0$. For $k=1$, the valid bit strings will be $\{\langle 0,1 \rangle , \langle 1,0 \rangle\}$, and since ${{1+1}\choose{1}}=2$, the claim holds for $k=1$. Finally, when $k=2$, we have the possible bit string $\langle 1,0,1 \rangle$, and since ${{1+1}\choose{2}}=1$, the claim holds for $k=2$. Thus, we have that $P(1)$. 
 \end{itemize}
 
 
@@ -43,14 +44,27 @@ We will prove by weak induction on $n$.
 \item \emph{Given}: Assume $P(n-1)$ is true.
 \item \emph{Want to show}: $P(n)$ is true.
 \end{itemize}
-Since we have that $P(n-1)$ is true, we must have that the number of bit strings without any adjacent ones with $n-1$ zeroes is ${n}\choose{k}$. Form here, we can proceed by cases, with one case where the leftmost bit is a $0$, and a case where the leftmost bit is a $1$.\\
-\\
-\textbf{Case 1:} If the leftmost bit is a 0, the next bit added can be either $0$ or $1$ without breaking the rules. These will be shown in subcases.
-\begin{itemize}
-\item \emph{Subcase 1.1:} In subcase 1.1, we add a zero to the end of the bitstring, thus incrementing $n$ by 1. By the base case, we know that $P(1)$ is true. By the inductive hypothesis, we have that $P(n-1)$.
-\item \emph{Subcase 1.2:} In subcase 1.1, we add a one to the end of the bitstring
-\end{itemize}
-\textbf{Case 1:} If the leftmost bit is a 1, the next bit added must be a 0, in order to follow the rules requiring no adjacent ones.
+If the number of zeroes is $n$, and the number of ones is $k$, the length of the resulting bitstring must be $n+k$. This bitstring can exist in two ways: either beginning with a $0$ or a $1$. In the case that the bitstring begins with a $0$, the length of the remaining bitstring will be equal to $n-1+k$. We will call the set of all possible bitstrings in this case $A$. This case is illustrated below.
+\begin{center}
+  \begin{tabular}{ | c | c |}
+    \hline
+    $0$ & $n-1+k$  \\ \hline
+  \end{tabular}
+\end{center}
+Alternatively, if the bitstring begins with $1$, the following digit must be $0$ according to the rule that no two $1$s may be adjacent. From there, the length of the remaining bitstring would be $n-1+k-1$. We will call the set of all possible bitstrings in this case $B$. This case is illustrated below:
+\begin{center}
+  \begin{tabular}{ | c | c | c |}
+    \hline
+    $1$ & $0$ & $n-1+k-1$  \\ \hline
+  \end{tabular}
+\end{center}
+As $A$ represents all valid bitstrings of length $n+k$ starting with a 0, and $B$ represents those starting with $1$, the two sets are disjoint. Aditionally, it holds that $S_{n,k} = A+B$. By the inductive hypothesis, we have that $P(n-1)$, thus $|A|={{n}\choose{k}}$ and that $|B|={{n}\choose{k-1}}$. We will use these facts to prove that $P(n)$.
+\begin{align*}
+|S_{n,k}| &= |A|+|B| & \text{sum rule for disjoint sets} \\
+&= {{n}\choose{k}}+{{n}\choose{k-1}} & \text{inductive hypothesis} \\
+&= {{n+1}\choose{k}} & \text{Pascal's rule}\\
+\end{align*}
+Thus, the claim is true.
 \end{proof}
 
 \section{Problem 3: Combinatorial proof DLN 9.168}
