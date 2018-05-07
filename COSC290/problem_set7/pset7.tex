@@ -20,7 +20,7 @@ We will prove by strong induction on $n$.
 \item \emph{Given}: Assume $P(1) \land ... \land P(n-1)$ is true.
 \item \emph{Want to show}: $P(n)$ is true.
 \end{itemize}
-We proceed by cases. There are three ways in which $x$ can exist with relation to $A[1...n]$ and $middle$. These cases are as such: 
+We proceed by cases. There are three ways in which $x$ can exist with relation to $A[1...n]$ and $middle$. These cases are as such:
 \begin{align*}
 A[1...x=middle...n] \\
 A[1...x...middle...n] \\
@@ -29,7 +29,7 @@ A[1...middle...x...n] \\
 In Case 1, we have that $x = middle$. In Case 2, we have that $1 \leq x < middle \leq n$. In Case 3, we have that $1 \leq middle < x \leq n$.
 \begin{itemize}
 \item {Case 1}: In the first case, the algorithm successfully found the item $x$ it was searching for. Thus, the function returns true, acting correctly as $x$ is present.
-\item {Case 2}: In the second case, the function will be called recursively on $A[1...middle-1]$. The length of $A[1...middle-1]$ \emph{must} be smaller than the length of $A[1...n]$, and thus by the assumption of the inductive case we must have that $P(n')$, where $n'$ is the length of $A[1...middle-1]$. Therefore, in the second case the function returns correctly. 
+\item {Case 2}: In the second case, the function will be called recursively on $A[1...middle-1]$. The length of $A[1...middle-1]$ \emph{must} be smaller than the length of $A[1...n]$, and thus by the assumption of the inductive case we must have that $P(n')$, where $n'$ is the length of $A[1...middle-1]$. Therefore, in the second case the function returns correctly.
 \item {Case 3}: In the second case, the function will be called recursively on $A[middle+1...n]$. The length of $A[middle+1...n]$ \emph{must} be smaller than the length of $A[1...n]$, and thus by the assumption of the inductive case we must have that $P(n')$, where $n'$ is the length of $A[middle+1...n]$. Therefore, in the third case the function returns correctly.
 \end{itemize}
 As in all three cases we have that the function returns correctly, we have that $\forall n \in \mathrm{Z}^{\geq 1}: P(n)$, thus proving the claim.
@@ -46,14 +46,14 @@ The pair $\langle \langle 1,2 \rangle , \langle 2,2 \rangle \rangle$ would be in
 \subsection{DLN 8.132}
 
 For $R$ to be a partial order, it must be reflexive, antisymmetric, and transitive. We will show that relation $R$ meets each of these properties.
- 
+
 \begin{itemize}
 \item \textbf{Reflexivity:} We have $\langle \langle a,b \rangle , \langle x,y \rangle \rangle \in R$ when $a \leq x$ and $b \leq y$. Thus $\langle \langle a,b \rangle , \langle a,b \rangle \rangle \in R$ as $a \leq a$ and $b \leq b$. Therefore this relation is reflexive, as for any $(a,b)$ pair $A$, $\langle A,A \rangle \in R$.
-\item \textbf{Antisymmetry:} The antisymmetry property is only present if $\langle A,B \rangle \in R \land \langle B,A \rangle \in R \implies (A=B)$, where $A$ is the pair $(a,b)$ and $B$ is the pair $(x,y)$. If $\langle A,B \rangle \in R \land \langle B,A \rangle \in R$, then by the definition of $R$, $(a \leq x) \land (b \leq y)$ as well as $(x \leq a) \land (y \leq b)$. This is only possible if $a=x$ and $b=y$, as it is not possible to have $a < x < a$ or $b < y < b$. Additionally, if $a=x$ and $b=y$, then we must have $A=B$, and thus the relation $R$ is antisymmetric. 
+\item \textbf{Antisymmetry:} The antisymmetry property is only present if $\langle A,B \rangle \in R \land \langle B,A \rangle \in R \implies (A=B)$, where $A$ is the pair $(a,b)$ and $B$ is the pair $(x,y)$. If $\langle A,B \rangle \in R \land \langle B,A \rangle \in R$, then by the definition of $R$, $(a \leq x) \land (b \leq y)$ as well as $(x \leq a) \land (y \leq b)$. This is only possible if $a=x$ and $b=y$, as it is not possible to have $a < x < a$ or $b < y < b$. Additionally, if $a=x$ and $b=y$, then we must have $A=B$, and thus the relation $R$ is antisymmetric.
 \item \textbf{Transitivity:} The property of transitivity holds that if $\langle A,B \rangle \in R \land \langle B,C \rangle \in R$, then we must have that $\langle A,C \rangle \in R$. We have that $A$ is the pair $(a,b)$ and $B$ is the pair $(x,y)$, and $C$ is the pair $(c,d)$. If we have $\langle A,B \rangle \in R \land \langle B,C \rangle \in R$, then it must be that $(a \leq x) \land (b \leq y)$, as well as $(x \leq c) \land (y \leq d)$. It also holds that $(a \leq c) \land (b \leq d)$, and thus $\langle A,C \rangle \in R$, fulfilling the property of transitivity.
 \end{itemize}
 
-As the relation $R$ is reflexive, antisymmetric, and transitive, it is a partial order. 
+As the relation $R$ is reflexive, antisymmetric, and transitive, it is a partial order.
 
 \section{Problem 3: an equivalence relation and a partial order? DLN 8.155}
 
@@ -66,11 +66,11 @@ We will prove by direct proof, by showing an example of a relation that fits bot
 A relation is an equivalence relation if it is reflexive, symmetric, and transitive. A relation is a partial order if it is reflexive, antisymmetric, and transitive. Thus for a relation to be both, it must be reflexive, symmetric, transitive, and antisymmetric simultaneously. We will show that the relation $R$ fits all of these properties. The relationship $R$ is defined as such: with relation to $A[1...n]$, $\langle a,b \rangle \in R$ if $a=b$. We will show that each property holds individually.
 \begin{itemize}
 \item \textbf{Reflexivity:} As for any element $a \in A[1...n]$ , $a=a$, then $\forall a \in A$, $\langle a,a \rangle \in R$. This is exactly the definition of reflexivity, and thus the relationship $R$ is reflexive.
-\item \textbf{Symmetry:} The property of symmetry exists if $\forall \langle a,b \rangle \in R$, we must have $\langle b,a \rangle \in R$. Since we have $\langle a,b \rangle \in R$, it must be that $a=b$, and that $b=a$. Thus, it holds that $\langle b,a \rangle \in R$. Therefore, the relationship $R$ is symmetric. 
+\item \textbf{Symmetry:} The property of symmetry exists if $\forall \langle a,b \rangle \in R$, we must have $\langle b,a \rangle \in R$. Since we have $\langle a,b \rangle \in R$, it must be that $a=b$, and that $b=a$. Thus, it holds that $\langle b,a \rangle \in R$. Therefore, the relationship $R$ is symmetric.
 \item \textbf{Antisymmetry: }The property of symmetry exists if for any $(a,b)$ pair where $\langle a,b \rangle \in R$ and $\langle b,a \rangle \in R$, we must have that $a=b$. By the definition of $R$, if we have $\langle a,b \rangle \in R$, then we will have $a=b$, fulfilling the property of antisymmetry, as this will always be true, and thus true when $\langle b,a \rangle \in R$.
-\item \textbf{Transitivity:} The transitivity property states that if you have $\langle a,b \rangle \in R$ and $\langle b,c \rangle \in R$, you must have that $\langle a,c \rangle \in R$. Given the conditions, we would have that $a=b$ and that $b=c$. As the $=$ comparator is transitive, we would have that $a=c$, and by the definition of $R$, $\langle a,c \rangle \in R$. Thus, the relation $R$ is transitive. 
+\item \textbf{Transitivity:} The transitivity property states that if you have $\langle a,b \rangle \in R$ and $\langle b,c \rangle \in R$, you must have that $\langle a,c \rangle \in R$. Given the conditions, we would have that $a=b$ and that $b=c$. As the $=$ comparator is transitive, we would have that $a=c$, and by the definition of $R$, $\langle a,c \rangle \in R$. Thus, the relation $R$ is transitive.
 \end{itemize}
 As we have shown that relation $R$ is simultaneously reflexive, symmetric, transitive, and antisymmetric, we can conclude that $R$ is both an equivalence relation and a partial order. Thus, we have directly proven the claim by showing an example.
-\end{proof} 
+\end{proof}
 
 \end{document}

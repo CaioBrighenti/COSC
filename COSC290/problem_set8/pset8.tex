@@ -1,0 +1,73 @@
+\documentclass[titlepage]{article}
+\usepackage{hw}  % leave this line
+
+\psetAuthor{Caio Brighenti}  % replace with your name
+\psetNumber{8}  % replace with pset number
+
+\begin{document} \maketitle
+
+\section{Problem 1: Counting alignments}
+
+\subsection{DLN 9.153}
+
+For this problem, the order is irrelevant, and repetition is allowed, thus the general formula is ${n+k-1}\choose{k}$. In the case, $n=2n$, and $k=n$. Therefore, we have that ${3n-1}\choose{n}$.
+
+\subsection{DLN 9.154}
+
+For this problem, the order is irrelevant, and repetition is not allowed, thus the general formula is ${n}\choose{k}$. In the case, $n=2n$, and $k=n$. Therefore, we have that ${2n}\choose{n}$.
+
+\subsection{DLN 9.155}
+
+For this problem, the order matters, and repetition is allowed, thus the general formula is $n^k$. In the case, $n=2n$, and $k=n$. Therefore, we have that ${2n}^n$.
+
+\subsection{DLN 9.156}
+
+For this problem, the order matters, and repetition is not allowed, thus the general formula is $\frac{n!}{(n-k)!}$. In the case, $n=2n$, and $k=n$. Therefore, we have that $\frac{2n!}{n!}$.
+
+\section{Problem 2: Counting bit strings, DLN 9.166}
+
+\textbf{Claim}: Let $P(n)$ if the number of bit strings without any adjacent ones with $n$ zeroes and $k$ ones is ${n+1}\choose{k}$.  The claim is that $\forall n \in \mathrm{Z}^{\geq 0}: P(n)$.
+
+\begin{proof}
+We will prove by weak induction on $n$.
+
+\textbf{Base cases}: 
+\begin{itemize}
+\item \emph{$n = 0$}: If we have no zeroes, the only valid bit string will be $\langle 1 \rangle$, as it would be impossible to have another one as it would have to be adjacent. So, ${{0+1}\choose{1}}=1$, and thus $P(0)$ must be true.
+\item \emph{$n = 1$}: For a single zero, $k \in K\{0,1,2\}$. If $k=0$, the only bit string will be $\langle 0 \rangle$, and since ${{1+1}\choose{0}}=1$ the claim holds for $k=0$. For $k=1$, the valid bit strings will be $\{\langle 0,1 \rangle , \langle 1,0 \rangle\}$, and since ${{1+1}\choose{1}}=2$, the claim holds for $k=1$. Finally, when $k=2$, we have the possible bit string $\langle 1,0,1 \rangle$, and since ${{1+1}\choose{2}}=1$, the claim holds for $k=2$. Thus, we have that $P(1)$.
+\end{itemize}
+
+
+\textbf{Inductive case}: Let $n \geq 2$.  We will show $ P(n-1) \implies P(n)$.
+\begin{itemize}
+\item \emph{Given}: Assume $P(n-1)$ is true.
+\item \emph{Want to show}: $P(n)$ is true.
+\end{itemize}
+Since we have that $P(n-1)$ is true, we must have that the number of bit strings without any adjacent ones with $n-1$ zeroes is ${n}\choose{k}$. Form here, we can proceed by cases, with one case where the leftmost bit is a $0$, and a case where the leftmost bit is a $1$.\\
+\\
+\textbf{Case 1:} If the leftmost bit is a 0, the next bit added can be either $0$ or $1$ without breaking the rules. These will be shown in subcases.
+\begin{itemize}
+\item \emph{Subcase 1.1:} In subcase 1.1, we add a zero to the end of the bitstring, thus incrementing $n$ by 1. By the base case, we know that $P(1)$ is true. By the inductive hypothesis, we have that $P(n-1)$.
+\item \emph{Subcase 1.2:} In subcase 1.1, we add a one to the end of the bitstring
+\end{itemize}
+\textbf{Case 1:} If the leftmost bit is a 1, the next bit added must be a 0, in order to follow the rules requiring no adjacent ones.
+\end{proof}
+
+\section{Problem 3: Combinatorial proof DLN 9.168}
+
+\textbf{Claim}: The claim is that $k \cdot {{n}\choose{k}} = n \cdot {{n-1}\choose{k-1}}$. 
+\begin{proof} We will first prove the claim algebraically, then provide a combinatorial proof to support the algebra.
+\begin{align*}
+n \cdot {{n-1}\choose{k-1}} &= n \cdot \frac{(n-1)!}{(k-1)!(n-k)!} & \text{definition of binomial coeficient} \\
+&= \frac{n(n-1)!}{(k-1)!(n-k)!} & \text{rearranging} \\
+&= \frac{n!}{(k-1)!(n-k)!} & n(n-1)! = n \\
+&= \frac{k \cdot n!}{k(k-1)!(n-k)!} & \text{multiply by $\frac{k}{k}$} \\
+&= k \cdot \frac{n!}{k!(n-k)!} & k(k-1)! = k \\
+&= k \cdot {{n}\choose{k}} & \text{definition of binomial coeficient} \\
+\end{align*}
+Thus, the claim is true algebraically. We will now show the same combinatorially. \\
+A person is packing for a business trip with a flight leaving later that day. They can only take $k$ number of shirts with them, which must be selected from their $n$ number of shirts. After selecting all their shirts, they must select one of these to wear during the flight. The number of choices of which shirts to take can be represented as ${n}\choose{k}$. After selecting $k$ number of shirts, the number of options for the shirt to wear is $k$. Thus, the total amount of choices is $k \cdot {{n}\choose{k}}$.\\
+Alternatively, the person could have first chosen what they were going to wear, before packing the rest of their shirts. Thus, the choice for what shirt to wear would be $n$, as they have $n$ shirts. From there, they have $n-1$ shirts left to choose from, and can take $k-1$ more shirts. Their choices would be ${n-1}\choose{k-1}$, making their total choices equal to $n \cdot {{n-1}\choose{k-1}}$. \\
+Since the two scenarios are equal, the number of choices in each is equal, and thus the claim is true.
+\end{proof}
+\end{document}

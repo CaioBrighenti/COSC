@@ -1,7 +1,7 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6500 64-bit) (preloaded format=pdflatex 2018.1.27)  30 APR 2018 12:40
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6500 64-bit) (preloaded format=pdflatex 2018.1.27)  6 MAY 2018 15:01
 entering extended mode
-**./pset7.tex
-(pset7.tex
+**./studyguide.tex
+(studyguide.tex
 LaTeX2e <2017-04-15>
 Babel <3.15> and hyphenation patterns for 75 language(s) loaded.
 ("D:\Program Files (x86)\MiKTeX\tex\latex\base\article.cls"
@@ -864,8 +864,8 @@ Package: soul 2003/11/17 v2.4 letterspacing/underlining (mf)
 \SOUL@ttwidth=\dimen173
 \SOUL@uldp=\dimen174
 \SOUL@ulht=\dimen175
-)) (pset7.aux)
-\openout1 = `pset7.aux'.
+)) (studyguide.aux)
+\openout1 = `studyguide.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 7.
 LaTeX Font Info:    ... okay on input line 7.
@@ -991,48 +991,49 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ) [1
 
 {C:/Users/Caio Brighenti/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}]
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 20.
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 15.
 
 ("D:\Program Files (x86)\MiKTeX\tex\latex\base\omscmr.fd"
 File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 20.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 15.
  [1
 
-] [2
-
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 63--67
+Underfull \hbox (badness 10000) in paragraph at lines 52--53
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 54--67
 
  []
 
 
 AED: lastpage setting LastPage
-[3
+[2
 
-] (pset7.aux) ) 
+] (studyguide.aux) ) 
 Here is how much of TeX's memory you used:
- 14483 strings out of 493312
- 269174 string characters out of 3138006
+ 14500 strings out of 493312
+ 269501 string characters out of 3138006
  325265 words of memory out of 3000000
- 17714 multiletter control sequences out of 15000+200000
- 12816 words of font info for 49 fonts, out of 3000000 for 9000
+ 17731 multiletter control sequences out of 15000+200000
+ 16856 words of font info for 65 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 61i,11n,75p,888b,221s stack positions out of 5000i,500n,10000p,200000b,50000s
-<D:/Program Files (x86)/MiKTeX/fonts/type1/public/amsfonts/cm/cm
-bx10.pfb><D:/Program Files (x86)/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx12.p
-fb><D:/Program Files (x86)/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><D:
-/Program Files (x86)/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><D:/Progra
-m Files (x86)/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb><D:/Program Files
- (x86)/MiKTeX/fonts/type1/public/amsfonts/cm/cmr7.pfb><D:/Program Files (x86)/M
-iKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><D:/Program Files (x86)/MiKTeX/
-fonts/type1/public/amsfonts/cm/cmsy7.pfb><D:/Program Files (x86)/MiKTeX/fonts/t
-ype1/public/amsfonts/cm/cmti10.pfb><D:/Program Files (x86)/MiKTeX/fonts/type1/p
-ublic/amsfonts/cm/cmti12.pfb>
-Output written on pset7.pdf (4 pages, 133342 bytes).
+ 61i,11n,75p,893b,219s stack positions out of 5000i,500n,10000p,200000b,50000s
+<D:/Program Files (x86)/MiKTeX/fonts/type1/public/amsfonts/
+cm/cmbx10.pfb><D:/Program Files (x86)/MiKTeX/fonts/type1/public/amsfonts/cm/cmb
+x12.pfb><D:/Program Files (x86)/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pf
+b><D:/Program Files (x86)/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><D:/P
+rogram Files (x86)/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb><D:/Program 
+Files (x86)/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><D:/Program Files 
+(x86)/MiKTeX/fonts/type1/public/amsfonts/cm/cmti10.pfb><D:/Program Files (x86)/
+MiKTeX/fonts/type1/public/amsfonts/cm/cmti12.pfb>
+Output written on studyguide.pdf (3 pages, 113604 bytes).
 PDF statistics:
- 58 PDF objects out of 1000 (max. 8388607)
+ 47 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  13 words of extra memory for PDF output out of 10000 (max. 10000000)
 

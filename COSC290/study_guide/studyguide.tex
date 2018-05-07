@@ -1,0 +1,71 @@
+\documentclass[titlepage]{article}
+\usepackage{hw}  % leave this line
+
+\psetAuthor{Caio Brighenti}  % replace with your name
+\psetNumber{Final Study Guide}  % replace with pset number
+
+\begin{document} \maketitle
+
+\section{Data Structures}
+\label{sec:introduction}
+
+\subsection{Sets}
+\emph{Definition: }A set is an unordered collection of objects.
+\begin{itemize}
+  \item  $Fruits := \{banana, apple, pear\}$
+  \item Membership: $apple \in Fruits$ is True
+  \item Subset: $\{ banana, pear \} \subset Fruits$
+  \item Cardinality: $|Fruits| = 3$
+  \item Enumeration: $SingleDigitOdds := \{1, 3, 5, 7, 9\}$
+  \item Abstraction: $SingleDigitOdds := \{ 2x + 1 : x \in Z$ and $0 \leq x \leq 4 \}$
+\end{itemize}
+\emph{Powerset: }The powerset of a set $S$ is the set of all subsets of $S$
+
+\subsection{Sequences}
+\emph{Definition: }A sequence is an ordered collection of objects. (Also known as lists
+or tuples.)
+\begin{itemize}
+  \item Example: MWF course schedule $\langle$COSC 290, Math 260, CORE 151 D$\rangle$.
+  \item Order matters, can have duplicates, represented using angle brackets.
+\end{itemize}
+\textbf{Cartesian Product: } Takes two sets and generates a set of ordered pairs (sequences of length two).
+\begin{itemize}
+  \item $A \bigtimes B := \{ \langle a, b \rangle : a \in A$ and $b \in B \}$
+  \item $A \bigtimes B \bigtimes C := \{ \langle a, b, c\rangle : a \in A$ and $b \in B$ and $c \in C \}$
+\end{itemize}
+\subsection{Functions}
+\emph{Definition: }A function $f$ from $X$ to $Y$, written $f : X \rightarrow Y$, assigns each input value
+$x \in X$ to a unique output value $y \in Y$.
+\begin{itemize}
+  \item All $x \in X$ must be mapped to a $y$, and no $x$ can be mapped to more than one $y$.
+  \item One-to-one: for every $y \in Y$, there is at most one $x \in X$ such that $f(x) = y$.
+  \item Onto: for every $y \in Y$, there is at least one $x \in X$ such that $f(x) = y$.
+  \item Bijective: both one-to-one and onto.
+\end{itemize}
+
+\section{Logic}
+\subsection{Propositions}
+\emph{Definition: }A proposition is a sentence that is either true or false.
+\begin{itemize}
+  \item 3 + 4 = 6
+  \item My middle name is Gerald or my dog's name is Rufus.
+  \item A single proposition is called an \textbf{atomic proposition}, while a \textbf{compound proposition} is made up of several atomic propositions.\\
+\end{itemize}
+\begin{tabular}{c|c|c}
+\textbf{$Name$} & \textbf{$Symbol$} & \textbf{$Meaning$} \\ \hline
+Negation & $\lnot p$ & "not p" \\
+Conjunction & $p \land q$ & "p and q" \\
+Disjunction & $p \lor q$ & "p or q" \\
+Exclusive or & $p \oplus q$ & "p or q, but not both" \\
+Implies & $p \implies q$ & "if p, then q" \\
+Mutual implication & $p \iff q$ & "p if and only q" \\
+\end{tabular}
+\\
+\\Two sentences are \textbf{logically equivalent} if they have identical truth tables.  
+\\A proposition is a \textbf{tautology} if it is true under every assignment of its variables. 
+\\A \textbf{literal} is an atomic proposition or the negation of an atomic proposition (either $p$ or $\lnot p$ for some variable $p$).
+\section{Counting and Combinations}
+
+\section{Probability}
+
+\end{document}
