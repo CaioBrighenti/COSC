@@ -1,0 +1,820 @@
+\documentclass{article}
+\usepackage{amsmath} %This allows me to use the align functionality.
+                     %If you find yourself trying to replicate
+                     %something you found online, ensure you're
+                     %loading the necessary packages!
+\usepackage{amsfonts}%Math font
+\usepackage{graphicx}%For including graphics
+\usepackage{hyperref}%For Hyperlinks
+\usepackage{listings}
+\usepackage{natbib}        %For the bibliography
+\bibliographystyle{apalike}%For the bibliography
+\usepackage[margin=1.0in]{geometry}
+\usepackage{float}
+\usepackage{Sweave}
+\begin{document}
+\input{studyguide-concordance}
+%set the size of the graphs to fit nicely on a 8.5x11 sheet
+\noindent \textbf{Caio Brighenti }\\
+\noindent \textbf{MA 354: Data Analysis I -- Fall 2018}\\%\\ gives you a new line
+\noindent \textbf{Exam 1 Study Guide}\vspace{1em}\\
+\\ This study guide provides a \emph{short} overview of each topic covered in class. It is to serve as a quick revision guide and organized source of reference code in R, not as an in depth explanation of any material. The course lecture slides on Moodle are the best resource for that. For the sake of brevity, graphs and code outputs are ommited.
+\section{Basic Statistics}
+  \begin{itemize}
+    \item \textbf{Statistic} - a fact or piece of data from a study of a large quantity of numerical data.
+    \item \textbf{Parameter} - a numerical characteristic of a population, as distinct from a statistic of a sample.
+  \end{itemize}
+  \begin{table}[H]
+	  \begin{center}
+		  \begin{tabular} {|c|c|c|} \hline
+			    Letter & Statistic or Parameter? & Represents\\\hline\hline
+			    n & ....... & Sample size \\\hline
+			    $\bar{x}$ & Statistic & Sample mean \\\hline
+			    \mu_x & Parameter & Population average \\\hline
+			    \mu_\hat{p} & Parameter & Mean of all possible sample proporitons \\\hline
+			    \mu_\bar{x} & Parameter & Mean of all possible sample means \\\hline
+			    $p$ & Parameter & Population proportion \\\hline
+			    $\hat{p}$ & Statistic & Sample proportion \\\hline
+			    $s$ & Statistic & Sample standard deviation \\\hline
+			    s^2 & Statistic & Sample variance \\\hline
+			    \sigma_x & Parameter & Population standard deviation \\\hline
+			    \sigma^{2}_{x} & Parameter & Population variance \\\hline
+			    \sigma_{\hat{p}} & Parameter & Standard deviation of all possible sample proportions \\\hline
+			    \sigma_{\bar{x}} & Parameter & Standard deviation of all possible sample means \\\hline
+		  \end{tabular}
+		  \caption{Table of statistics symbols.}\label{psim}
+	  \end{center}
+  \end{table}
+\section{Probability and Sampling Distributions}
+  \begin{center}
+    \includegraphics[scale=.5]{dists}
+  \end{center}
+  \begin{enumerate}
+    \item \textbf{Binomial Distribution} - discrete distribution used for
+the random variable, $X$, which represents the number of
+"successes" in $n$ identical and independent trials with binary
+output.
+    \item \textbf{Negative Binomial Distribution} -  discrete distribution
+used for the random variable, $X$, which represents the number
+of trials needed to achieve in $n$ successes in identical and
+independent trials with binary output.
+    \item \textbf{Poisson Distribution} - discrete distribution used for the random variable, $X$, which represents the number of times a
+specific event occurs in a given amount of time or space
+(independent). The parameter of the model, $\lambda$, denotes the
+expected number of events in each unit of time or space.
+    \item \textbf{Normal Distribution} -  used for a random variable, $X$, which can take on real values. The Gaussian distribution is unimodal with a peak and line of symmetric at the mean which intimates that observations often occur near the mean and less often occur the further away from the mean.
+    \item \textbf{Log Normal Distribution} - is used for a random variable, $X$, for which $ln(X)$ has a normal distribution.
+  \end{enumerate}
+  The \textbf{sampling distribution} of a statistic tells us (a) what values the statistic will have in repeated samples from the same
+population and (b) how often it takes those values, just like the
+population distributions. \\
+  Using the \textbf{Central Limit Theorem}, we can treat other sampling distributions as normal if the sample size is large enough. By large enough, we typically mean $n>=30$. For more detail, see Problem 2 on Homework 1.
+  \\ \emph{All} statistics calculated on a sample change from sample to sample and have their own distribution. To make the distinction we call the distributions of these statistics \textbf{sampling distributions} and the distributions of singular observations \textbf{population distributions}. We focus on three sampling distributions:
+  \begin{enumerate}
+    \item the sampling distribution of the sample proportion ($\hat{p}$)
+    \item the sampling distribution of the sample mean ($\bar{x}$)
+    \item the sampling distribution of the sample median ($\hat{m}$)
+  \end{enumerate}
+  \\ To make inferences about population parameters using sample statistics and sample distributions, we use both \textbf{hypothesis testing} and \textbf{confidence intervals}.
+  \begin{enumerate}
+    \item \textbf{Hypothesis Tests}
+      \\ Hypothesis testing is widely used because it appears to be
+"objective proof," and they are easy to calculate with software. For hypothesis tests, we have a \emph{null hypothesis} and al \emph{alternative hypothesis}. The hypothesis test returns information on whether we should reject or keep the null hypothesis, but does not give us a range or numerical measure of where the population parameter may lie.
+    \item \textbf{Confidence Intervals}
+      \\ A confidence interval is an interval that contains a population
+parameter with a prescribed level of confidence. A confidence interval is calculated from a sample (usually
+from a simple random sample). Because a confidence interval is written to describe the
+potential values of a population parameter, using it is a
+form of statistical inference; i.e., what does the information in the sample say about the
+population?
+  \end{enumerate}
+\section{Inference about a population proportions} \label{pop-prop}
+\\ For inference about the population proportion, we assume normality of the sampling distribution, by invoking CLT. There are two assumptions that must be met for CLT to apply.
+  \begin{enumerate}
+    \item $np \geq 15$
+    \item $n(1-p) \geq 15$
+  \end{enumerate}
+  \begin{itemize}
+    \item \textbf{Hypothesis Testing}
+      \begin{enumerate}
+        \item \emph{Develop a hypothesis}
+          \\The null hypothesis ($H_0$) is always $p=p_0$. The alternate hypothesis ($H_a$) can be $p<p_0$, $p>p_0$, $p\neq p_0$.
+        \item \emph{Check assumptions}
+          \begin{enumerate}
+            \item The variable of interest is categorical when doing a test for the population proportion, and continuous when testing the population mean or median.
+            \item The sample size is generalizable to the population of interest.
+            \item The sample size requirements for CLT are met for the sampling distribution.
+          \end{enumerate}
+          \item \emph{Calculate the \textbf{test statistic}.}
+          \\ This calculation depends on the test you choose to do.
+          \item \emph{Calculate the \textbf{$p$ value}}
+          \\ The $p$-value provides the probability of seeing the observed data (the test statistic), or more extreme, when the null hypothesis is true.
+          \item \emph{Interpret}
+          \\ We reject the null hypothesis in favor of the alternate when the observed data is unusual under $H_0$. A prespecified significance level of $\alpha = 0.05$ dictates that we reject the null hypothesis when the probability of the observed data or more extreme under $H_0$ is less than $\alpha$. We call the range of values past $\alpha$ the rejection region.
+      \end{enumerate}
+      \textbf{In R:}
+\begin{Schunk}
+\begin{Sinput}
+> ####Score Test
+> prop.test(x=36,n=10000,p=0.0033,alternative="greater", conf.level=0.95,correct=TRUE)
+> ####Exact Test
+> binom.test(x=36,n=10000,p=0.0033,alternative="greater",conf.level=0.95)
+\end{Sinput}
+\end{Schunk}
+    \item \textbf{Confidence Intervals}
+      \\ A level $(1 - \sigma) \times 100$\% confidence interval is an interval that is guaranteed to capture the population parameter in $(1 - \sigma) \times 100$\% of all samples as depicted. Confidence intervals take the form:
+      $$\underbrace{\hat{p}}_\text{point estimate}\pm \underbrace{z_{(1-\sigma /2)}\sqrt{\frac{\hat{p}(1-\hat{p})}{n}}}_\text{margin of error}   $$,
+      \\where $z(1-\sigma /2)$ is a critical value which depends on the confidence level.
+      \\ \textbf{In R:}
+\begin{Schunk}
+\begin{Sinput}
+> install.packages("binom")
+> library("binom")
+> binom.confint(x=125,n=999,conf.level=0.95,methods="asymptotic")
+> binom.confint(x=125,n=999,conf.level=0.95,methods="agresti")
+> binom.confint(x=125,n=999,conf.level=0.95,methods="wilson")
+> binom.confint(x=125,n=999,conf.level=0.95,methods="all")
+\end{Sinput}
+\end{Schunk}
+\\ Generally, we use the Wilson test. See Homework 1 Problem 3 for more information on which CI to use.
+  \end{itemize}
+\section{Inference about a population mean}
+  \\ For the population mean, we can still use hypothesis testing and confidence intervals in mostly the same way as with the population proportion.
+  \begin{itemize}
+    \item \textbf{Hypothesis Testing}
+    \\ The main distinction in hypothesis testing in this case is that we use the $t^*$ statistic. The $t^*$ statistic is an approximation of the $z^*$ statistic using the student T distribution. We avoid the Z-Test as it assumed we know the standard deviation, but it is unreasonable to assume we would know the standard deviation and not the mean. The T distribution is approximately normal and the $t^*$ statistic is calculated as follows:
+    $$t^* = \frac{\bar{x}-\mu_0}{s/\sqrt{n}}$$
+    \\ All else is the same. See section \ref{pop-prop} for a step-by-step of hypothesis testing.
+    \\ \textbf{In R:}
+\begin{Schunk}
+\begin{Sinput}
+> t.test(x = seq(0,68),mu = 34,alternative = "two-sided",conf.level = 0.95)
+\end{Sinput}
+\end{Schunk}
+\\ This line of code gives us both the confidence interval and the hypothesis test.
+    \item \textbf{Confidence Intervals}
+    \\ A \textbf{level} $(1-\sigma)\times 100\%$ \textbf{confidence interval} for the population mean $\mu$ is
+    $$\underbrace{\bar{x}}_\text{point estimate}\pm \underbrace{z_{(1-\sigma /2)}(\frac{\sigma_x}{\sqrt{n}})}_\text{margin of error}$$
+    \\ For the same reason as in the hypothesis test, we instead use the T distribution as follows.
+    $$\underbrace{\bar{x}}_\text{point estimate}\pm \underbrace{z_{(1-\sigma /2,n-1)}(\frac{s}{\sqrt{n}})}_\text{margin of error}$$
+    \\ \textbf{In R:}
+\begin{Schunk}
+\begin{Sinput}
+> t.test(x = seq(0,68),mu = 34,alternative = "two-sided",conf.level = 0.95)
+\end{Sinput}
+\end{Schunk}
+  \end{itemize}
+\section{Inference about a population median}
+    \\ For the population median, we can still use hypothesis testing mostly in the same way, but confidence intervals are somewhat different.
+    \begin{itemize}
+      \item \textbf{Hypothesis Testing}
+        \\ Hypothesis testing still works in the same way. For a step-by-step guide see section \ref{pop-prop}. The only difference is the test statistic is as follows.
+        $$b^*=\sum_{n}_{i=1}I(x_i>M_0)$$
+        \\\textbf{In R:}
+\begin{Schunk}
+\begin{Sinput}
+> library("BSDA")
+> SIGN.test(x = seq(0,100),md=50,alternative="greater",conf.level=0.95)
+\end{Sinput}
+\end{Schunk}
+      \item \textbf{Bootstrap Confidence Interval}
+        \\ We cannot calculate a confidence interval for the population median in the same way as for population proportion and mean. Instead, we use a \textbf{bootstrap confidence interval}. A percentile bootstrap confidence interval uses estimates about the sampling distribution of $M^*$, the sample medians produced from R repeated random samples from the original data. We take a 95\% confidence interval to be:
+        $$(m^{*}_i,m^{*}_j)$$
+        \\ Where $m^{*}_i$ is the $2.5^{th}$ percentile of the $R$ differences, and $m^{*}_j$ is the $97.5^{th}$ percentile of the $R$ differences.
+        \\ \textbf{In R:}
+\begin{Schunk}
+\begin{Sinput}
+> library("boot")
+> boot.median<-function(data,indices){
++   d<-data[indices]#	allows	boot	to	select	sample 
++   return(median(d))
++ }
+> x<-seq(1,100)
+> R=1000
+> xboot<-boot(x,R=R,statistic=boot.median)
+> boot.ci(boot.out=xboot,conf=.95,type="perc")
+\end{Sinput}
+\end{Schunk}
+    \end{itemize}
+\section{Pearson Correlations}
+  \begin{itemize}
+    \item \textbf{Association} - Two variables are \textbf{positively} or \textbf{negatively related} if changes in an increase in one tends to accompany a change in the other.
+    \item \textbf{Correlation} - A numerical summary that describes the strength and direction of the relationship between two variables. The following are several facts about correlation.
+      \begin{enumerate}
+        \item A positive correlation indicates a positive relationship, and a negative correlation indicates a negative correlation.
+        \item The correlation is always between -1 and 1.
+        \item The correlation $r$ is \textbf{unitless}.
+        \item The correlation between $X$ and $Y$ is the same as between $Y$ and $X$.
+        \item The correlation measures strength (magnitude) and direction (sign) of the relationship between two variables.
+        \item The value of correlation is vulnerable to \textbf{outliers}.
+      \end{enumerate}
+      \item \textbf{Scatterplot} - A graphical display of the relationship between \underline{two quantitative variables} measured on the same individuals. When looking at scatterplots we look for the following.
+        \begin{enumerate}
+          \item \emph{Form:} Are there straight-line patterns or curved patterns? Clusters?
+          \item \emph{Direction:} Are the variables positively or negatively related?
+          \item \emph{Strength:} Is the relationship strong, moderate, mild, or nonexistent?
+          \item \emph{Outliers:} Are there deviations from the pattern?
+        \end{enumerate}
+        \item \textbf{Pearson's Correlation}
+        \\ The Pearson correlation ($r$) is a numerical summary that describes the strength and direction of the straight-line (linear) relationship between two quantitative variables.
+        \\ \textbf{In R:}
+\begin{Schunk}
+\begin{Sinput}
+> cor(seq(0,100),seq(100,200),method = "pearson")
+\end{Sinput}
+\begin{Soutput}
+[1] 1
+\end{Soutput}
+\end{Schunk}
+        \\ To make inferences about the \textbf{Population Pearson Correlation} we can use both hypothesis testing and confidence intervals. For both of these, we have the following assumptions:
+            \begin{enumerate}
+              \item The two variables are continuous
+              \item There is a linear relationship
+              \item There are no outliers
+              \item The two variables should be approximately bivariate normally distributed. We check for this in R.
+\begin{Schunk}
+\begin{Sinput}
+> filt.rate<-c(125.3,98.2,201.4,147.3,145.9,124.7,112.2,120.2,161.2,178.9,
++              159.5,145.8,75.1,151.4,144.2,125,198.8,132.5,159.6,110.7)
+> moisture<-c(77.9,76.8,81.5,79.8,78.2,78.3,77.5,77,80.1,80.2,
++             79.9,79,76.7,78.2,79.5,78.1,81.5,77,79,78.6)
+> library("energy")
+> mvnorm.etest(x=cbind(filt.rate,moisture),R=1000)
+\end{Sinput}
+\end{Schunk}
+              \item Pairs of observations are independent.
+              \item Sample is generalizable.
+            \end{enumerate}
+          \item \textbf{Hypothesis Testing}
+            \\ In order to use hypothesis testing, the data must be normally distributed. In this case, the \textbf{null hypothesis} is that two continuous variables are independent.
+            \begin{itemize}
+              \item$H_0:\rho = 0 \rightarrow \text{the two continuous variables are independent}$
+            \end{itemize}
+            \\ The \textbf{alternative hypotheses} is that the variables are dependent.
+            \begin{itemize}
+            \item $H_a:\rho < 0 \rightarrow \text{the two continuous variables are negatively correlated}$
+            \item $H_a:\rho > 0 \rightarrow \text{the two continuous variables are positively correlated}$
+            \item $H_a:\rho \neq 0 \rightarrow \text{the two continuous variables are dependent}$
+            \end{itemize}
+          \\ The test statistic is calculated as follows:
+          $$t^*=\frac{r\sqrt{n-2}}{\sqrt{1-r^2}}$$
+          \textbf{In R:}
+\begin{Schunk}
+\begin{Sinput}
+> cor.test(seq(0,100),seq(200,300),method = "pearson",alternative = "greater")
+\end{Sinput}
+\end{Schunk}
+          \item \textbf{Confidence Interval}
+            \\ We can also calculate a  $(1 - \sigma) \times 100\%$ confidence interval for the population Pearson correlation by finding the upper and lower bounds as follows.
+            $$z_l=z_r-z_1-\sigma /2\sqrt{\frac{1}{n-3}$$
+            $$z_u=z_r+z_1-\sigma /2\sqrt{\frac{1}{n-3}$$
+            \\ and transform back to $r$ using:
+            $$z_r=\frac{1}{2}ln(\frac{1+r}{1-r})$$
+            \\ \textbf{In R:}
+\begin{Schunk}
+\begin{Sinput}
+> cor.test(seq(0,100),seq(200,300),method = "pearson")
+\end{Sinput}
+\end{Schunk}
+  \end{itemize}
+\section{Linear Regression}
+  \\ A \textbf{regression line} is a straight line that describes how a response variable $y$ changes as an explanatory variable $x$ changes. We often use a regression line to \textbf{predict} the value of $y$ for a given value of $x$. 
+  \\ We numerically assess the linear relationship between variables in a sample as:
+  $$\hat{y_i}=b_0+b_1x_i+e_i$$
+  \\ We create a \textbf{linear model} taking the form
+  $$Y_i=\beta_0+\beta_1 X_i+\epsilon_i$$
+  \\where,
+  \begin{itemize}
+    \item $Y_i$ is the value of the response variable in the $i$th trial
+    \item $\beta_0$ and $\beta_1$ are parameters
+    \item $X_i$ is the value of the predictor variable in the $i$th trial
+    \item $\epsilon_i$ is the error term
+  \end{itemize}
+  \\ \textbf{In R:}
+\begin{Schunk}
+\begin{Sinput}
+> x<-seq(0,100)
+> y<-x*3+10
+> plot(x,y)
+> lm(y~x)
+\end{Sinput}
+\end{Schunk}
+  \\ We can use both \textbf{categorical} and \textbf{quantitative} variables. Mathematically, we include categorical variables in our model by introducing \textbf{indicator functions}. For instance:
+  $$\hat{y}_i=b_0+b_1I(x_i=6)+b_2I(x_i=8)+e_i$$
+  \\ In this example, we have a categorical variable that takes three different values. It is important to note that the first category, either the minimum value or first aphabetically, is \textbf{subsumed} into the intercept.
+  \\ \textbf{In R:}
+\begin{Schunk}
+\begin{Sinput}
+> x<- data.frame("y"=rep(0,100),"x1"=seq(1,100),"x2"=floor(runif(100, 0, 2)))
+> x$y<-x$x1*ifelse(x$x2==0,100,1)
+> lm(y~x1+as.factor(x2), data=x)
+\end{Sinput}
+\end{Schunk}
+  \\ We fit the model in R easily, but we must also be able to interpret it. Generally, we look at the following three things.
+  \begin{itemize}
+    \item \textbf{Coeficients} - Each predictor will have its own coeficient. The higher the magnitude of the coeficient, the higher the \textbf{impact level} of that predictor on the model. Mathematically, the coeficient represents the unit change expected in response variable $y$ from a unit change in predictor variable $x$. The intercept coeficient represents what the expected value of $y$ would be if each continous predictor was equal to zero, and each categorical predictor set to the first category, alphabetically or numerically.
+    \item \textbf{R-squared} - The $R^2$ value is the proportion of variability in our response variable explained by our model. For more detail on how this is calculated, see section \ref{ols}. 
+    \item \textbf{Significance levels} - The significance level, or \textbf{p-value} indicates the likelihood that we see the calculated estimate for the coeficient when the actual coeficient is 0. Thus, small significance levels indicate the predictor is a good addition to the model, and is likely to actually affect it. Typically we take p-values of under $0.05$ to indicate significance.
+  \end{itemize}
+  \\ We can ask for all of these in R simply with one line.
+\begin{Schunk}
+\begin{Sinput}
+> summary(mod)
+\end{Sinput}
+\end{Schunk}
+  \\ We can also consider \textbf{interactions} between predictors. Two predictors are said to have an interaction if a change in one affects how the other impacts the response variable. 
+  \\ \textbf{In R:}
+\begin{Schunk}
+\begin{Sinput}
+> x<-data.frame("y"=rep(0,100),"x1"=seq(1,100),"x2"=floor(runif(100,0,2)))
+> x$y<-10*x$x1-100*(x$x1*x$x2)
+> ## interaction between x1 and x2
+> mod<-lm(x$y~(x$x1*x$x2))
+\end{Sinput}
+\end{Schunk}
+  \\ By default, using \lstinline{x$x1*x$x2} will also include \lstinline{x1} and \lstinline{x2} as single predictors. To avoid this, we use \lstinline{x$x1:x$x2}.
+\section{Sums of Squares} \label{ols}
+  \\ We cannot have a line that "fits perfectly" so we must instead find a good model. The \textbf{least-squares regression line} is the line that minimizes the sum of squared vertical distances from the data points to the line. We say this is the "best fit" for the data.
+  \\ The distance between a true $y_i$ and the regression line estimate is
+  $$e_i=y_i-(b_0+b_1x_i)$$
+  \\ Thus, we want to minimize
+  $$Q=\sum_{i=1}^{n}e^2_i=\sum_{i=1}^{n}(y_i-(b_0+b_1x_i))^2$$
+  \\ for a simple regression line. We use the sum of squares and not sum of errors as, given the presence of negative errors, the sum of errors is expected to be 0.
+  \\ The formal regression equation is thus:
+  $$$$
+  \begin{equation}
+  \begin{split}
+    \pmb{Y} & =\pmb{X\beta +\epsilon} \\
+    & = \beta_0+\beta_1 X_1 + \cdots + \beta_1 X_k
+  \end{split}
+  \end{equation}
+  \\ Where,
+    \begin{equation}
+    \begin{split}
+      \pmb{Y} & = \text{a } n \times 1 \text{ vector} \\
+      \pmb{X} & = \text{a } n \times k \text{ matrix, first collumn all 1s} \\
+      \pmb{\beta} & = \text{a } k \times 1 \text{ vector} \\
+      \pmb{\epsilon} & = \text{a } n \times 1 \text{ vector}
+    \end{split}
+    \end{equation}
+  \\ Leveraging linear algebra, the coefficients are calculated by
+  $$\pmb{b}=(\pmb{X^\prime X})^{-1}\pmb{XY^\prime}$$
+  \\ There are several useful OLS estimators. These are as follows.
+  \begin{itemize}
+    \item \textbf{Sums of Squared Errors}
+    \\ The sum of squared errors is
+      $$\text{SSE} = \sum_{n}^{i=1}(e_i-0)^2=\sum_{i=1}^{n}(y_i-\hat{y}_i)^2$$
+    \item \textbf{Means Squared Error}
+    \\ The "mean" of squared errors is
+      $$\text{MSE}=\frac{\text{SSE}}{n-k}=\frac{\sum_{i=1}^{n}(y_i-\hat{y}_i)^2}{n-k}=\frac{\sum_{i=1}^{n}e^2_i}{n-k}$$
+    \\ The MSE has the property that $E(\text{MSE})=\sigma^2_\epsilon$, making the MSE an unbiased estimate for the parameter $\sigma^2_\epsilon$ if the errors are distributed $\epsilon \sim N(0,\sigma^2_\epsilon)$.
+    \\ We estimate the standard deviation of errors with $\text{RMSE} = \sqrt{\frac{\text{SSE}}{n-k}}$
+    \item \textbf{Sums of Squared Regression}
+    \\ The explained sums of squares is
+    $$\text{SSR}=\sum_{i=1}^{n}(\hat{y}_i-\bar{y})^2$$
+    \item \textbf{Sums of Total}
+    \\ The total sum of squares
+    $$\text{SST}=\sum_{i=1}^{n}(y_i-\bar{y})^2=SSR+SSE$$
+    \\ This yields
+    $$R^2=\frac{SSR}{SST}= \text{ Proportion of Variance Explained by Model}$$
+  \end{itemize}
+\section{Eight items to check about a linear model}
+  \\ In order to properly use a linear model, we must always check all \textbf{8} assumptions of OLS regression. For 
+  \begin{enumerate}
+    \item \textbf{Valid model}
+      \\ We check for validity by thinking about whether it makes sense that the predictors in the model would estimate the output $y$. Does our model map to the research question?
+    \item \textbf{Linearity of relationship}
+      \\ For univariate regression, we simply check the scatter plot of $x$ and $y$ for a linear pattern. We can also check the Pearson correlation. For multivariate regression, we create a plot of $e$ and $\hat{y}$ and check for a horizontal band of points.
+      \\ \textbf{In R:}
+\begin{Schunk}
+\begin{Sinput}
+> ## UNIVARIATE LINEARITY CHECK
+> x<-seq(0,100)
+> y<-seq(100,200)
+> plot(x,y)
+> ## MULTIVARIATE LINEARITY CHECK
+> x2<-x*3
+> mod<-lm(y~x+x2)
+> res<-residuals(mod)
+> pred<-fitted(mod)
+> plot(pred,res,xlab="Predicted Values", ylab="Residuals")
+> abline(h=0,lty=2)
+\end{Sinput}
+\end{Schunk}
+    \item \textbf{Errors are independent}
+      \\ We want to show errors do not have relationship with
+      \begin{itemize}
+        \item \textbf{time:} error grows or shrinks as we take more measurements
+        \item \textbf{predicted value:} error is higher or lower for larger predictions
+      \end{itemize}
+      \\ To check for independence, we can create plots of both $e$ against its index, and $e$ against the predicted value. In neither plot should there be a visible pattern. There are also three statistical tests for this assumption.
+      \\ \textbf{In R:}
+\begin{Schunk}
+\begin{Sinput}
+> ## RESIDUALS VS. INDEX
+> plot(res)
+> ## RESIDUALS VS. PREDICTED
+> plot(pred,res,xlab="Predicted Values", ylab="Residuals")
+> abline(h=0,lty=2)
+> ###BREUSCH-GODFERY TEST
+> library("lmtest")
+> #use type="F" for smaller sample sizes
+> #testing for 1-5th order serial correlation
+> bgtest(mod,order = 1,type="F")
+> bgtest(mod,order = 2,type="F")
+> bgtest(mod,order = 3,type="F")
+> bgtest(mod,order = 4,type="F")
+> bgtest(mod,order = 5,type="F")
+> ###DURBIN-WATSON EST
+> library("lmtest")
+> dwtest(mod)
+> ###LJUNG-BOX TEST
+> #testing for 1-5th order serial correlation
+> Box.test(x = res,lag = 1,type = "Ljung-Box")
+> Box.test(x = res,lag = 2,type = "Ljung-Box")
+> Box.test(x = res,lag = 3,type = "Ljung-Box")
+> Box.test(x = res,lag = 4,type = "Ljung-Box")
+> Box.test(x = res,lag = 5,type = "Ljung-Box")
+\end{Sinput}
+\end{Schunk}
+    \item \textbf{Errors are normally distributed}
+    \\ We must show that the errors $e$ are normally distributed. We can do this through a histogram with an overlayed density estimate and normal curve, a Q-Q plot, a boxplot, or a CDF plot. There are also two statistical tests for this method.
+    \\ \textbf{In R:}
+\begin{Schunk}
+\begin{Sinput}
+> res <- residuals(mod)
+> ###Histogram
+> hist(res,xlab="Residuals",col="lightblue",probability=T,breaks=10,
++      ylim=c(0,0.05),main="Estimating the Distribution of Residuals")
+> ##add density estimate
+> lines(density(res),lwd=2,col="blue") #density estimate
+> ##add normal curve
+> x<-seq(-30,80,0.01)
+> rse <- sqrt( sum(res^2) / (length(age)-2) ) 
+> f<-dnorm(x=x,mean=0,sd=rse)
+> lines(x,f,lwd=2,col="red")
+> #add legend
+> legend("topright", legend=c("Normal Assumption","Density Estimate"),
++        lty=c(2,2),col=c("red","blue"))
+> ###Histogram
+> boxplot(res,xlab="Residuals",col="lightblue",main="Boxplot of Model Residuals")
+> ###CDF
+> zi<-(res-mean(res))/sd(res)
+> ec<-ecdf(zi)##Empirical Distribution
+> plot(ec,xlim=c(-5,5), main="CDF of Errors")
+> #Normal Distribution
+> z<-seq(-5,5,0.01)
+> fnorm<-pnorm(z)
+> lines(z,fnorm,lwd=2,col="red")
+> legend("topleft", legend=c("Normal CDF","Empirical CDF"), lwd=c(2,2),
++        col=c("red","black"),pch=c(NA,16))
+> ###QQPLOT
+> plot(mod)
+> #1. fitted vs. residuals
+> #2. QQplot
+> #3. fitted vs. root standardized residuals
+> #4. leverage plot
+> 
+> ###Shapiro Wilkes Test
+> shapiro.test(res)
+> ###Kolmogorov Smirnov Test
+> ks.test(res, "pnorm")
+\end{Sinput}
+\end{Schunk}
+    \item \textbf{Errors have constant variance}
+    \\ We want to ensure \textbf{homoskedacity}, meaning they have constant varaince. To check this assumption, we use either a plot of residuals against predicted values, or one of two statistical tests. In the plot method, we look for a cone shape to indicate we do \emph{not} have constant variance.
+    \\ \textbf{In R:}
+\begin{Schunk}
+\begin{Sinput}
+> ###Plot yhat vs e
+> res<-mod$residuals
+> plot(res, main="",ylab="Residuals")
+> abline(h=0,lty=2)
+> ###Breusch-Pagan Test
+> install.packages("lmtest")
+> library("lmtest")
+> bptest(mod,studentize = FALSE)
+\end{Sinput}
+\end{Schunk}
+  \\ The second test for constant variance, the Brown-Forsythe test, is not included as there is no package for it in R. For a hand-coded implementation see \href{https://moodle.colgate.edu/pluginfile.php/375154/mod_resource/content/0/4\%20--\%20Check\%20if\%20Errors\%20are\%20homoskedastic\%20\%28Brown-Forsythe\%29\%20--\%20age\%20vs\%20SBP.R}{here}.
+    \item \textbf{No outliers}
+    \\ We want to see if there are any outlying observations that affect model fit. Note that we should not remove an outlier unless it is due to a data entry error or a measurement error. We keep \textbf{representative} outliers. In univariate regression, we simply check a plot of $x$ and $y$ and look for visually outlying observations. For multivariate and univariate regression, we consider any observations where $e_i>4$ as outlying.
+\begin{Schunk}
+\begin{Sinput}
+> ## UNIVARIATE CHECK
+> x<-seq(0,100)
+> y<-seq(100,200)
+> y[40]<-100
+> plot(x,y)
+> mod<-lm(y~x)
+> abline(mod,lwd=2,col="red")
+> points(x[40], y[40], col="blue", pch = 19)
+> ## MULTIVARIATE CHECK
+> which(abs(rstudent(mod))>4)
+\end{Sinput}
+\end{Schunk}
+    \item \textbf{No missing predictors}
+    \\ To see if we are missing any predictors we consider $R^2$. Large $R^2$ indicates that we've captured more of the variability, small $R^2$ indicates that we may need new/different predictors. With data, we can see if adding a variable would be a good idea by considering the scatterplot of the new predictor and e.
+    \\ \textbf{In R:}
+\begin{Schunk}
+\begin{Sinput}
+> x<-seq(0,100)
+> y<-seq(100,200)
+> mod<-lm(y~x)
+> summary(mod)[9]
+\end{Sinput}
+\end{Schunk}
+    \item \textbf{Predictors aren't correlated (no multicolinearity)}
+    \\ When we have more than one predictor, we want to ensure they are not strongly correlated. Graphically, we can check for this with a scatterplot matrix of the predictors. This assumption is more easily by calculating the VIF. Predictors with VIF>10 are considered to be too correlated with another predictor.
+\begin{Schunk}
+\begin{Sinput}
+> x<- data.frame("y"=rep(0,100),"x1"=seq(1,100),"x2"=rep(c(1,2,3,4,5,6,7,8,9,10),10), 
++                "x3"=runif(100,0,100))
+> x$y<-x$x1*x$x2+x$x3
+> mod<-lm(x$y~x$x1+x$x2+x$x3)
+> ## SCATTERPLOT MATRIX OF ALL PREDICTORS
+> plot(x)
+> ## CHECK VIF
+> library("car")
+> vif(mod)
+\end{Sinput}
+\end{Schunk}
+  \end{enumerate}
+\section{Overall F Test}
+  \\ As the $R^2$ value of any model increases as predictors are added, we must use another method to quantify improvements in the model that also takes the complexity of the model into account. First, we recall the notation of regression models with k coefficients (including the intercept) meaning there are (k-1) predictors.
+  $$y_i=b_0+b_1x_{1i}+b_2x_{2i}+\cdots + b_{k-1}x_{k-1}+ e_i$$
+  \\ We use a \textbf{likelihood ratio test} to determine whether a
+subset of predictors in a full model can be dropped. The test is based on two likelihood calculations which indicates the likelihood the data are observed under each model.
+  \\ One method of this is the overall \textbf{F test}. In the $F$ test, we test:
+  $$H_0:\beta_1 = \beta_2 = \beta_{k-1} = 0$$
+  \\ versus
+  $$H_a : \text{at least one} \beta_i \text{ is non-zero.}$$
+  \\ The \textbf{full model} is the final model with $k$ coeficients (unrestricted model). The \textbf{reduced model} is the boring model(restricted model) as follows:
+  $$y=\beta_0 + \epsilon$$
+  \\ In other words, the overall $F$ test tells whether \emph{at least} one of our predictors is statistically significant. The test statistic is calculated as follows:
+  $$F^*=\frac{\text{SSE}_R-\text{SSE}_F}{\text{df}_R-\text{df}_F}/\frac{\text{SSE}_F}{\text{df}_F}$$
+  \\ As is typical with hypothesis tests, we reject the null hypothesis if the $p$-value is under $0.05$.
+  \\ \textbf{In R:}
+\begin{Schunk}
+\begin{Sinput}
+> summary(mod)
+\end{Sinput}
+\end{Schunk}
+\end{itemize}
+\section{Model Selection}
+\subsection{General Linear F-Test}
+\\ Tests whether subset of a model is better than the full model. Null hypothesis = full model and reduced model fit similarly. Alternate hypothesis, full model fits better.
+\begin{Schunk}
+\begin{Sinput}
+> library("lmtest")
+> waldtest(reduced.model,full.model)  ## F
+\end{Sinput}
+\end{Schunk}
+\subsection{Best Subsets}
+\\ Finds best possible subset of predictors. Can use either BIC (bigger penalty for complexity) or AIC.
+\begin{Schunk}
+\begin{Sinput}
+> library("bestglm")
+> y=mb.df$SalesRevenue
+> xfactors<-model.matrix(SalesRevenue~.,data = mb.df)[, -1]
+> Xy<-data.frame(xfactors,y)
+> best.model_AIC<-bestglm(Xy, IC="AIC")
+> summary(best.model_AIC$BestModel)
+> best.model_BIC<-bestglm(Xy, IC="BIC")
+> summary(best.model_BIC$BestModel)
+\end{Sinput}
+\end{Schunk}
+\subsection{Stepwise}
+\begin{Schunk}
+\begin{Sinput}
+> #install.packages("MASS",repos = "http://cloud.r-project.org/")
+> library("MASS")
+> # AIC
+> step.model_AIC <- stepAIC(full.model, direction="forward", trace = FALSE)
+> step.model_AIC <- stepAIC(full.model, direction="backward", trace = FALSE)
+> step.model_AIC <- stepAIC(full.model, direction="both", trace = FALSE)
+> summary(step.model_AIC)
+> # BIC
+> step.model_BIC <- stepAIC(full.model, k=log(nrow(mb.df)), direction="forward", trace = FALSE)
+> step.model_BIC <- stepAIC(full.model, k=log(nrow(mb.df)), direction="backward", trace = FALSE)
+> step.model_BIC <- stepAIC(full.model, k=log(nrow(mb.df)), direction="both", trace = FALSE)
+> summary(step.model_BIC)
+\end{Sinput}
+\end{Schunk}
+\subsection{Lasso}
+\\ The Lasso model selection tries to reduce the complexity of the model by lowering coeficients to 0.
+\begin{Schunk}
+\begin{Sinput}
+> library(glmnet)
+> y=as.matrix(mb.df$SalesRevenue)
+> xfactors <- model.matrix(SalesRevenue~.,data = mb.df)[, -1]
+> x <- as.matrix(data.frame(xfactors))
+> lasso <- cv.glmnet(x=x,y=y,alpha = 1)
+> coef(lasso)
+> # fit model
+> lasso.df<-data.frame(SalesRevenue=mb.df$SalesRevenue,AvgHourlyTemp=mb.df$AvgHourlyTemp,Yearfrom2013=mb.df$Yearfrom2013)
+> lasso.df$Fiscal_Qtr4<-rep(0,nrow(lasso.df))
+> mod.lasso<-lm(SalesRevenue~.,data=lasso.df)
+> summary(mod.lasso)
+\end{Sinput}
+\end{Schunk}
+\section{Robust Regression}
+\\ Robust regression can help fix heteroskedasticity (IRLS), outliers (IRLS/Quantile), and multicolinearity (Ridge).
+\subsection{Iteratively Reweighted Least Squares}
+\begin{enumerate}
+\item Choose weight function
+\item Fit OLS and obtain residuals
+\item Iteratively fit IRlS until process converges
+\end{enumerate}
+\textbf{Weights}
+\begin{itemize}
+\item Huber Weight Function
+  \\ Weights don't decline until $|e_i|\geq 1.345$, decrease more rapidly than Bisquare initially, weights are same as OLS for $|e_i|\leq 1.345$
+\item Bisquare Weight Function
+  \\ Leveling off of weights as $e_i$ increases. Weights are smaller than OLS for $|e_i|>0$, weights decline eventually levels off for $|e_i|>4.684$.
+\end{itemize}
+\textbf{In R:}
+\begin{Schunk}
+\begin{Sinput}
+> library(MASS)
+> # bisquare
+> mod_irls<-rlm(y~x*x2,data=dat,psi=psi.bisquare)
+> # huber
+> mod_irls<-rlm(y~x*x2,data=dat,psi=psi.huber)
+\end{Sinput}
+\end{Schunk}
+\subsection{Quantile Regression}
+\\ Helps with outliers. Quantile regression models the median, not the mean. Does not assume normality of the error terms nor homoskedacity.
+\\ \textbf{In R:}
+\begin{Schunk}
+\begin{Sinput}
+> library("quantreg")
+> mod_quant<-rq(y~x*x2,data=dat) #models the 50^th percentile
+> summary(mod_quant, se="ker")
+\end{Sinput}
+\end{Schunk}
+\subsection{Ridge Regression}
+\textbf{In R:}
+\begin{Schunk}
+\begin{Sinput}
+> library(glmnet)
+> y=as.matrix(dat$predy)
+> xfactors <- model.matrix(predy ~ .,data = College)[, -1]
+> x <- as.matrix(data.frame(xfactors))
+> lambdas <- 10^ seq (10,-2, length =100)
+> #find optimal lambda using cross validation
+> mod_ridge <- cv.glmnet(x, y, alpha = 0, lambda = lambdas)
+> #lowest point of the curve
+> opt_lambda <- mod_ridge$lambda.min
+> fit<-glmnet(x,y,alpha=0,lambda = opt_lambda)
+> coef(fit)
+\end{Sinput}
+\end{Schunk}
+\section{Categorical Tests}
+\subsection{Chi-Square Independence Test}
+\\ Assess whether or not two categorical variables are independent using their observation frequencies. Assumes the variables are categorical, observations are independent, sample size is at least the number of cells multiplied by 5, 80\% of the expected counts are greater than 5, and none of the expected counts are less than one. We use the Yates' continuity correction.
+\\ \textbf{In R:}
+\begin{Schunk}
+\begin{Sinput}
+> chisq.test(table(data_wb$race,data_wb$frisked))
+\end{Sinput}
+\end{Schunk}
+\subsection{ANOVA}
+\\ ANOVA tests whether the population means are equal across groups. Assumptions are that the k random samples are independent, k population distributions are normal, and the population distributions have the same variance. 
+\\ \textbf{In R:}
+\begin{Schunk}
+\begin{Sinput}
+> ###Normality Holds --> ANOVA
+> mean(height_frisked,na.rm=TRUE)
+> mean(height_nfrisked,na.rm=TRUE)
+> summary(aov(height~frisked,data=data_wb))
+\end{Sinput}
+\end{Schunk}
+\subsection{Non-Parametric Alternatives}
+\\ If the normality assumption does not hold, we can use either the \textbf{Kruskal Wallis} test or the \textbf{Mood's Median Test}.
+\\ \textbf{In R:}
+\begin{Schunk}
+\begin{Sinput}
+> ###Normality does not hold --> Kruskal Wallis
+> mean(age_frisked,na.rm=TRUE)
+> mean(age_nfrisked,na.rm=TRUE)
+> kruskal.test(age~frisked,data=data_wb)
+> ###Normality does not hold --> Mood's median
+> library(RVAideMemoire)
+> median(age_frisked,na.rm=TRUE)
+> median(age_nfrisked,na.rm=TRUE)
+> mood.medtest(age~frisked,data=data_wb)
+\end{Sinput}
+\end{Schunk}
+\section{Logistic Regression}
+\\ The goal of logistic regression is to model a response $Y_i$ that takes on values of zero or one. Instead of modeling the ${0, 1}$ outcome we model the log odds the event $Y_i = 1$. We use either the \textbf{logit} or \textbf{probit} models.
+\begin{itemize}
+\item \textbf{Logit}
+$$log(\frac{P(Y_i=1)}{1-P(Y_i=1)})=\beta_0+\beta_1X_1_\cdot+\beta_{k-1}X_{(k-1)_i}+e_i$$
+\item \textbf{Probit}
+Probit uses the inverse normal cumulative distribution function
+$$\phi^{-1}(P(Y_i=1))=\beta_0+\beta_1X_1_\cdot+\beta_{k-1}X_{(k-1)_i}+e_i$$
+\end{itemize}
+ We predict class $y_i = 1$ when $P(Y_i = 1) > 0.50$ and $y_i = 0$ when $P(Yi = 1) ??? 0.50$. We assume tht we have a binary response variable, random and independent observations, approximately linear relationship between the log-odds and the predictors,a large sample size, and little to no multicolinearity.
+\\ \textbf{In R:}
+\begin{Schunk}
+\begin{Sinput}
+> mod_logit<-glm(frisked~race*othpers+height*weight+race*height+age+sex,
++                data=data_mod,family = binomial(link = "logit"))
+> summary(mod_logit)
+> ###Plots
+> par(mfrow=c(1,3))
+> logOdds<-predict(mod_logit)
+> plot(data_mod$height,logOdds)
+> plot(data_mod$weight,logOdds)
+> plot(data_mod$age,logOdds)
+\end{Sinput}
+\end{Schunk}
+ \\ To evaluate a logistic regression model, we calculate \textbf{McFadenn's $R^2$}. A value greater than 0.20 represents a great fit.
+\\ \textbf{In R:}
+\begin{Schunk}
+\begin{Sinput}
+> #install.packages("pscl")
+> library(pscl)
+> pR2(mod_logit)
+\end{Sinput}
+\end{Schunk}
+\\ We can also evaluate the model using a \textbf{confusion matrix}.
+\begin{Schunk}
+\begin{Sinput}
+> predictions<-ifelse(fitted(mod_logit)<0.50,0,1)
+> truevals<-data_mod$frisked
+> (tab<-table(predictions,truevals))
+> (tab[1,1]+tab[2,2])/nrow(data_mod) #accuracy
+> prop.table(tab,margin = 1) 
+\end{Sinput}
+\end{Schunk}
+\\ We interpret the model coeficients by taking the exponent, and subtracting it from 1.
+\\ \textbf{In R:}
+\begin{Schunk}
+\begin{Sinput}
+> library("margins")
+> margins(mod_logit)
+> 1- exp(c(0.008693,0.0005394,-0.00306,-0.1271,-0.01745,0.1972,0.0703))
+\end{Sinput}
+\end{Schunk}
+\\ There are other statistics we can calculate to evaluate the model discrimination.
+\begin{itemize}
+\item  \textbf{Sensitivity} is the proportion of correctly predicted $Y_i=1$ observations. 
+\item \textbf{Specificity} is the proportion of correctly predicted $Y_i=0$ observations.
+\item \textbf{Accuracy} is the proportion of correctly predicted observations (overall).
+\end{itemize}
+\\ \textbf{In R:}
+\begin{Schunk}
+\begin{Sinput}
+> predictions<-ifelse(fitted(mod_logit)<0.50,0,1)
+> truevals<-ifelse(data_mod$frisked=="Y",1,0)
+> ntruePos<-length(which(predictions==truevals  & truevals==1))
+> nfalsePos<-length(which(predictions!=truevals & truevals==0))
+> ntrueNeg<-length(which(predictions==truevals  & truevals==0))
+> nfalseNeg<-length(which(predictions!=truevals & truevals==1))
+> ntruePos/(ntruePos+nfalseNeg) #sensitivity
+> ntrueNeg/(ntrueNeg+nfalsePos) #specificity
+> ntruePos/nrow(data_mod)             #truePos
+> ntrueNeg/nrow(data_mod)             #trueNeg
+> nfalsePos/nrow(data_mod)            #falsePos
+> nfalseNeg/nrow(data_mod)            #falseNeg
+> (ntrueNeg+ntruePos)/nrow(data_mod)  #accuracy
+\end{Sinput}
+\end{Schunk}
+\\ While we typically use a cutoff value of 0.50, we can use the above statistics to choose a better cutoff. We iterate through each cutoff, calculate the statistics, and choose the cutoff value that best fits the statistics.
+\\ \textbf{In R:}
+\begin{Schunk}
+\begin{Sinput}
+> ###Check for other cutoffs
+> cutoff<-seq(0,1,0.0001)
+> sensitivity<-rep(NA,length(cutoff))
+> specificity<-rep(NA,length(cutoff))
+> truePos<-rep(NA,length(cutoff))
+> trueNeg<-rep(NA,length(cutoff))
+> falsePos<-rep(NA,length(cutoff))
+> falseNeg<-rep(NA,length(cutoff))
+> accuracy<-rep(NA,length(cutoff))
+> for(i in 1:length(cutoff)){
++ # repeat code from last code block
++ }
+> cutoff[which(accuracy==max(accuracy))]
+> cutoff[which((specificity+sensitivity)==max(specificity+sensitivity))]
+> cutoff[which(abs(specificity-sensitivity)==min(abs(specificity-sensitivity)))]
+\end{Sinput}
+\end{Schunk}
+\\ Another way to evaluate this is to create a \textbf{receiver operating characteristic (ROC)} curve, including all possible decision thresholds. The curve is a plot of the sensitivity versus 1 - specificity. \textbf{AUC} is the area under the ROC curve. An AUC of 0 indicates a perfectly innacurate test, 0.5 suggests no discrimination 0.7-0.8 is acceptable, and above that is excellent.
+\textbf{In R:}
+\begin{Schunk}
+\begin{Sinput}
+> ###ROC
+> plot(1-specificity,sensitivity,xlab="1-Specificity",ylab="Sensitivity")
+> abline(a=0,b=1)
+> ###AUC -- uses values from checking for other cutoffs
+> xx<-1-specificity
+> yy<-sensitivity
+> f <- approxfun(xx, yy)
+> integrate(f, min(xx), max(xx))$value
+\end{Sinput}
+\end{Schunk}
+\end{document}
