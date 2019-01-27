@@ -19,7 +19,29 @@
 \noindent \textbf{Lab 2}\vspace{1em}\\
 \begin{enumerate}
 \setcounter{enumi}{4}
-\item test
+\item Find a constant $c<1$ such that $F_n \leq 2^{cn}$ for all $n\geq 0$.
+\\ We proceed by induction. We select the constant $c=0.9$. First, we show that the base cases are correct. As this problem pertains to the Fibonacci sequence, our base cases are $n=0$ and $n=1$. 
+\\ \textbf{Base case 1 - $n=0$}\\
+$F_0=0\leq 2^{0.9\cdot0}=1$ \\
+As the expression with the constant evaluates to 1, and we know $F_0$ to be 0, the first base case holds.
+\\ \textbf{Base case 2 - $n-1$}\\
+$F_1=1\leq 2^{0.9\cdot1}\approx1.86$ \\
+As the expression with the constant evaluates to approximately 1.86, and we know $F_1$ to be 1, the second base case holds.
+\\
+\\ \textbf{Inductive hypothesis}
+\\ Through the inductive hypothesis, we assume that the claim is true for all values from $0$ to $n+2$. In other words, we assume the claim is true for $n$ and $n+1$, and we proceed by showing that it is thus true for $n+2$.
+\begin{align}
+	F_{n+2}&=F_{n}+F_{n+1} && \text{definition of Fibonacci} \\
+	&\leq 2^{0.9n}+2^{0.9n+0.9} && \text{inductive hypothesis} \\
+	&\leq 2^{0.9n}(1+2^{0.9}) && \text{common factor} \\
+	&\leq \frac{2^{1.8}(2^{0.9n}(1+2^{0.9}))}{2^{1.8}} && \text{multiply by 1, note 1.8 = 2c} \\
+	&\leq 2^{0.9(n+2)}\frac{(1+2^{0.9})}{2^1.8}\approx 0.82(2^{0.9(n+2)}) && \text{exponent rules}	
+\end{align}
+Thus, we have shown that: \\
+$F_{n+2}\approx 0.82(2^{0.9(n+2)})$ \\
+and therefore that: \\
+$F_{n+2}\leq2^{c(n+2)}$ \\
+where $c=0.9$. Thus, the claim is true for a constant $c$ of $0.9$.
 \end{enumerate}
 
 
