@@ -19,7 +19,28 @@
 \noindent \textbf{Lab 2}\vspace{1em}\\
 \begin{enumerate}
 \setcounter{enumi}{4}
-\item Find a constant $c<1$ such that $F_n \leq 2^{cn}$ for all $n\geq 0$.
+\item Claim: For all $n\geq 6$, $F_n\geq 2^{0.5n}$ where $F_n$ is the Fibonacci sequence for $n$.
+\\ We proceed by induction. First, we show that the base cases are correct. As our lower bound is 6, we use the base cases $n=6$ and $n=7$.
+\\ \textbf{Base case 1 - $n=6$} \\
+$F_6 = 8 \geq 2^{0.5\cdot 6}= 8$ \\
+By the definition of the Fibonacci sequence, we have that $F_6 = 8$, and since the right hand side of the inequality evaluates to 8, the claim holds for the first base case.
+\\ \textbf{Base case 2 - $n=7$} \\
+$F_7 = 13 \geq 2^{0.5\cdot 7}\approx 11.3 $
+By the definition of the Fibonacci sequence, we have that $F_7 = 13$, and since the right side of the inequality evaluates to approximately 11.3, the claim holds for the second base case. \\
+\\
+\textbf{Inductive Hypothesis}
+\\ Through the inductive hypothesis, we assume that the claim is true for all values from 6 to $n+2$. In other words, we assume that the claim is true for $n$ and $+1$, and we proceed by showing that it is thus true for $n+2$.
+\begin{align}
+	F_{n+2} &= F_{n+1} + F_n && \text{definition of Fibonacci sequence} \\
+	&\geq 2^{0.5n} + 2^{0.5n+0.5} && \text{substitution of inductive hypothesis} \\
+	&\geq 2^{0.5n}(1+2^{0.5}) && \text{common factor} \\
+	&\geq 2^{0.5n+1} \frac{1+2^{0.5}}{2} && \text{multiply by $\frac{2}{2}$} \\
+	&\geq 2^{0.5(n+2)}\frac{1+2^{0.5}}{2}\approx1.2(2^{0.5(n+2)}) && \text{simplify and evaluate, note $0.5n+1 = 0.5(n+2)$} \\
+	F_{n+2} &\geq 2^{0.5(n+2)} 
+\end{align}
+As we can arrange the left hand side of the inequality to result approximately $1.2(2^{0.5(n+2)})$, we can conclude that the left hand side, $F_{n+2}$ is certainly greater than or equal to $2^{0.5(n+2)}$. We conclude this through the approximate factor of 1.2, showing that the left hand side is greater by at least that factor. Thus, the claim is true.
+\item I accidentally did this problem instead of the one I was assigned initially so I figured I'd just include it too. The one I'm assigned is the one above, problem 5. 
+\\Find a constant $c<1$ such that $F_n \leq 2^{cn}$ for all $n\geq 0$.
 \\ We proceed by induction. We select the constant $c=0.9$. First, we show that the base cases are correct. As this problem pertains to the Fibonacci sequence, our base cases are $n=0$ and $n=1$. 
 \\ \textbf{Base case 1 - $n=0$}\\
 $F_0=0\leq 2^{0.9\cdot0}=1$ \\
