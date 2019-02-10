@@ -32,9 +32,14 @@ My assigned problem was \#1. Problems 6,7, and 9 are my other three problems com
 				log(f(n))&\leq log(c_2 g(n)) && \text{log both sides} \\
 				&\leq log(c_2)+log(g(n))&& \text{log properties} 
 			\end{align}
-			Let $c_3=log(c_2)$. Thus, \\
-			$log(f(n))\leq c_3 log(g(n))$ \\
-			As this is precisely the definition of $log(f(n))=O(log(g(n)))$, the claim must be true.
+			We now must find a constant $d$ such that 
+			$log(f(n))\leq d log(g(n))$ \\
+			As we have that $f(n)\leq log(c_2)+log(g(n))$ we look for a $d$ such that \\
+			$log(c_2)+log(g(n))\leq dlog(g(n))$. \\
+			For this, since $g(n)\geq1$, we can have $d=log(c)+1$. Thus, we have:\\
+			$f(n)\leq log(c_2)+log(g(n))\leq dlog(g(n))$. \\ \\
+			
+			As this is meets the definition of $log(f(n))=O(log(g(n)))$, the claim must be true.
 	\end{enumerate}
 	\setcounter{enumi}{5}
 	\item \textbf{Give definitions for $\Omega(g(n,m))$ and $\Theta(g(n,m))$} \\

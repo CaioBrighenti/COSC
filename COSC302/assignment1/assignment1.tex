@@ -18,10 +18,34 @@
 \noindent \textbf{COSC 302 - Analysis of Algorithms -- Spring 2019}\\%\\ gives you a new line
 \noindent \textbf{Assignment 1}\vspace{1em}\\
 \begin{enumerate}
+	\item 
+	Simply put, an algorithm is a way to solve a problem. In other words, it is a specific, well-defined step-by-step process to solve not just a single problem, but a category of similar problems. Algorithms must take some form of input, and must correctly use this input to solve its defined category of problems.
+	\item 
+	An example of a problem that cannot be solved is an algorithm that for any given input problem could output an efficient algorithmic solution to it. A similar scenario is NP-complete problems -- neither an algorithm nor a human has determined whether there are efficient solutions to this class of problems. There are plenty of problems for which we do not know efficient solutions, such as the Halting problem. An example of a non-algorithmic solution an algorithmically solvable problem would be the tallest student problem. We could simply look at the class and see quickly which student is the tallest, without systematically going one by one and comparing to the currently tallest -- we have an innate sense of things like this, and can process multiple pieces of information simultaneously, something a computer cannot do.
+	\item The book defines analyzing an algorithm as predicting the resources that the algorithm requires, such as memory space, communication bandwith, or disk storage. Most commonly, it refers to analyzing the rate of growth of the algorithm's runtime, also known as time complexity.
+	\item Each of the following are things that can be considered part of analyzing an algorithm \begin{itemize}
+		\item 1 - Showing correctness
+		\item 2 - Measuring time complexity
+		\item 3 - Finding the worst case
+		\item 4 - Finding the best case
+		\item 5 - Finding the average case
+		\item 6 - Measuring space complexity
+		\item 7 - Is it efficient? Can it be better?
+		\item 8 - Does it terminate?
+		\item 9 - What is the actual runtime, in real measured time?
+		\item 10 - What counts as a computer step?
+		\item 11 - Is the time complexity different for the best case?
+		\item 12 - What are the total computer steps, as a function of the input size?
+		\item 13 - Does the algorithm depend on any other variables?
+		\item 14 - Is the order of growth determined a tight or not tight bound?
+	\end{itemize}
+	\item The running time of an algorithm is a function that counts the number of steps the algorithm must execute as a function of the size of the input.
+	\item The order of growth results from a simplification of the runtime. The order of growth relates to how the running time grows as a function of n, but we simplify and keep only the largest, dominating term, and we place all functions with the same simplified order of growth into a category. We can say that running time relates to an algorithm, while order of growth represents a category of algorithms.
+	\item We typically use big-O more than other asymptotic notations for two reasons. Firstly, it provides us with information about the upper bound of the algorithm, meaning the maximum time it can take to run. This information is more important than the lower bound, as we would like to know what the slowest our algorithm can run is. Secondly, it is easier to determine big-O than Theta, as it provides information about only one bound, not both the upper and lower.
+	\item We say that an efficient algorithm is anything better than an exponential runtime, so typically polynomial or better. Of course, this measure is subjective, and it is possible that although we have an efficient solution for a problem, we might not have the most efficient solution.
+	\item Not necessarily. If $f(n)$ is equal to $g(n)$, then the first part of the claim would be true, but $f(n)$ would not be asymptotically smaller than $g(n)$.
+	
 \end{enumerate}
-	\item \\
-	Simply put, an algorithm is a way to solve a problem. In other words, it is a specific, well-defined step-by-strep process to solve not just a single problem, but a category of similar problems. Algorithms must take some form of input, and must correctly use this input to solve its defined category of problems.
-	\item \\
 	
 
 \end{document}

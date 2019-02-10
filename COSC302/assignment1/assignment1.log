@@ -1,7 +1,7 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6500 64-bit) (preloaded format=pdflatex 2018.2.6)  6 FEB 2019 21:31
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6500 64-bit) (preloaded format=pdflatex 2018.2.6)  9 FEB 2019 18:27
 entering extended mode
-**./lab3.tex
-(lab3.tex
+**./assignment1.tex
+(assignment1.tex
 LaTeX2e <2017-04-15>
 Babel <3.15> and hyphenation patterns for 75 language(s) loaded.
 ("C:\Program Files\MiKTeX 2.9\tex\latex\base\article.cls"
@@ -279,8 +279,8 @@ Package: float 2001/11/08 v1.3d Float enhancements (AL)
 \float@box=\box30
 \@float@everytoks=\toks23
 \@floatcapt=\box31
-) (lab3.aux)
-\openout1 = `lab3.aux'.
+) (assignment1.aux)
+\openout1 = `assignment1.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 15.
 LaTeX Font Info:    ... okay on input line 15.
@@ -338,9 +338,9 @@ LaTeX Info: Redefining \ref on input line 15.
 LaTeX Info: Redefining \pageref on input line 15.
 LaTeX Info: Redefining \nameref on input line 15.
 
-(lab3.out) (lab3.out)
+(assignment1.out) (assignment1.out)
 \@outlinefile=\write3
-\openout3 = `lab3.out'.
+\openout3 = `assignment1.out'.
 
 \c@lstlisting=\count129
 
@@ -378,120 +378,43 @@ LaTeX Info: Redefining \nameref on input line 15.
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-LaTeX Font Info:    Try loading font information for U+msa on input line 24.
-("C:\Program Files\MiKTeX 2.9\tex\latex\amsfonts\umsa.fd"
-File: umsa.fd 2013/01/14 v3.01 AMS symbols A
+
+Underfull \hbox (badness 10000) in paragraph at lines 17--20
+
+ []
+
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 27.
+("C:\Program Files\MiKTeX 2.9\tex\latex\base\omscmr.fd"
+File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 24.
-
-("C:\Program Files\MiKTeX 2.9\tex\latex\amsfonts\umsb.fd"
-File: umsb.fd 2013/01/14 v3.01 AMS symbols B
-)
-Underfull \hbox (badness 10000) in paragraph at lines 24--26
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 24--26
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 26--28
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 26--28
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 28--30
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 34--41
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 34--41
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 45--52
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 45--52
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 52--60
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 60--65
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 60--65
-
- []
-
-[1
+LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 27.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 46.
+ [1
 
 {C:/Users/Caio Laptop/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}]
-Underfull \hbox (badness 10000) in paragraph at lines 65--67
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 67--70
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 70--72
-
- []
-
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 78.
-[2]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 78.
- (lab3.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 78.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 78.
-Package rerunfilecheck Info: File `lab3.out' has not changed.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 46.
+ (assignment1.aux)
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 46.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 46.
+Package rerunfilecheck Info: File `assignment1.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 78.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 46.
  ) 
 Here is how much of TeX's memory you used:
- 7638 strings out of 493312
- 110257 string characters out of 3138880
- 212425 words of memory out of 3000000
+ 7621 strings out of 493312
+ 110178 string characters out of 3138880
+ 208439 words of memory out of 3000000
  11117 multiletter control sequences out of 15000+200000
- 5647 words of font info for 23 fonts, out of 3000000 for 9000
+ 3948 words of font info for 15 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 28i,10n,32p,233b,415s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 28i,4n,32p,867b,322s stack positions out of 5000i,500n,10000p,200000b,50000s
 <C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Pr
-ogram Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Program Fi
-les/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi5.pfb><C:/Program Files/MiKTe
-X 2.9/fonts/type1/public/amsfonts/cm/cmmi7.pfb><C:/Program Files/MiKTeX 2.9/fon
-ts/type1/public/amsfonts/cm/cmr10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/
-public/amsfonts/cm/cmr5.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/ams
-fonts/cm/cmr7.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/c
-msy10.pfb>
-Output written on lab3.pdf (2 pages, 96023 bytes).
+ogram Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Program Fil
+es/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb>
+Output written on assignment1.pdf (1 page, 47719 bytes).
 PDF statistics:
- 60 PDF objects out of 1000 (max. 8388607)
- 13 named destinations out of 1000 (max. 500000)
+ 27 PDF objects out of 1000 (max. 8388607)
+ 6 named destinations out of 1000 (max. 500000)
  1 words of extra memory for PDF output out of 10000 (max. 10000000)
 
