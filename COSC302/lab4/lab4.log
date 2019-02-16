@@ -1,7 +1,7 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6500 64-bit) (preloaded format=pdflatex 2018.2.6)  16 FEB 2019 17:15
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6500 64-bit) (preloaded format=pdflatex 2018.2.6)  13 FEB 2019 21:04
 entering extended mode
-**./assignment1.tex
-(assignment1.tex
+**./lab4.tex
+(lab4.tex
 LaTeX2e <2017-04-15>
 Babel <3.15> and hyphenation patterns for 75 language(s) loaded.
 ("C:\Program Files\MiKTeX 2.9\tex\latex\base\article.cls"
@@ -279,8 +279,8 @@ Package: float 2001/11/08 v1.3d Float enhancements (AL)
 \float@box=\box30
 \@float@everytoks=\toks23
 \@floatcapt=\box31
-) (assignment1.aux)
-\openout1 = `assignment1.aux'.
+) (lab4.aux)
+\openout1 = `lab4.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 15.
 LaTeX Font Info:    ... okay on input line 15.
@@ -338,9 +338,9 @@ LaTeX Info: Redefining \ref on input line 15.
 LaTeX Info: Redefining \pageref on input line 15.
 LaTeX Info: Redefining \nameref on input line 15.
 
-(assignment1.out) (assignment1.out)
+(lab4.out) (lab4.out)
 \@outlinefile=\write3
-\openout3 = `assignment1.out'.
+\openout3 = `lab4.out'.
 
 \c@lstlisting=\count129
 
@@ -383,91 +383,42 @@ Underfull \hbox (badness 10000) in paragraph at lines 17--20
 
  []
 
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 27.
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 24.
 ("C:\Program Files\MiKTeX 2.9\tex\latex\base\omscmr.fd"
 File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 27.
- [1
-
-{C:/Users/Caio Laptop/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}]
-LaTeX Font Info:    Try loading font information for U+msa on input line 46.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 24.
+LaTeX Font Info:    Try loading font information for U+msa on input line 25.
 
 ("C:\Program Files\MiKTeX 2.9\tex\latex\amsfonts\umsa.fd"
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 46.
+LaTeX Font Info:    Try loading font information for U+msb on input line 25.
 
 ("C:\Program Files\MiKTeX 2.9\tex\latex\amsfonts\umsb.fd"
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
-)
-Underfull \hbox (badness 10000) in paragraph at lines 49--58
+) [1
 
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 49--58
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 58--62
-
- []
-
-[2]
-Underfull \hbox (badness 10000) in paragraph at lines 114--120
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 114--120
-
- []
-
-[3]
-<12pt1.png, id=57, 192.72pt x 128.48pt>
-File: 12pt1.png Graphic file (type png)
-<use 12pt1.png>
-Package pdftex.def Info: 12pt1.png  used on input line 129. on input line 129.
-Package pdftex.def Info: Requested size: 134.90306pt x 89.93538pt on input line
- 129.
-<12pt2.png, id=59, 192.72pt x 128.48pt>
-File: 12pt2.png Graphic file (type png)
-<use 12pt2.png>
-Package pdftex.def Info: 12pt2.png  used on input line 130. on input line 130.
-Package pdftex.def Info: Requested size: 134.90306pt x 89.93538pt on input line
- 130.
-
-Underfull \hbox (badness 10000) in paragraph at lines 124--136
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 136--139
-
- []
-
-[4 <./12pt1.png> <./12pt2.png>] [5]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 200.
- [6]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 200.
- (assignment1.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 200.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 200.
-Package rerunfilecheck Info: File `assignment1.out' has not changed.
+{C:/Users/Caio Laptop/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}] [2]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 105.
+ [3]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 105.
+ (lab4.aux)
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 105.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 105.
+Package rerunfilecheck Info: File `lab4.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 200.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 105.
  ) 
 Here is how much of TeX's memory you used:
- 7735 strings out of 493312
- 111498 string characters out of 3138880
- 215439 words of memory out of 3000000
- 11139 multiletter control sequences out of 15000+200000
+ 7665 strings out of 493312
+ 110683 string characters out of 3138880
+ 216425 words of memory out of 3000000
+ 11131 multiletter control sequences out of 15000+200000
  5647 words of font info for 23 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 28i,13n,32p,867b,489s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 28i,10n,32p,644b,427s stack positions out of 5000i,500n,10000p,200000b,50000s
 <C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Pr
 ogram Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Program Fi
 les/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi5.pfb><C:/Program Files/MiKTe
@@ -477,9 +428,9 @@ public/amsfonts/cm/cmr5.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/ams
 fonts/cm/cmr7.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/c
 msy10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy7.pfb
 >
-Output written on assignment1.pdf (6 pages, 134070 bytes).
+Output written on lab4.pdf (3 pages, 112522 bytes).
 PDF statistics:
- 164 PDF objects out of 1000 (max. 8388607)
- 82 named destinations out of 1000 (max. 500000)
- 11 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 78 PDF objects out of 1000 (max. 8388607)
+ 23 named destinations out of 1000 (max. 500000)
+ 1 words of extra memory for PDF output out of 10000 (max. 10000000)
 
