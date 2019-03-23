@@ -39,8 +39,8 @@ maxSubarray(array A){
 		if (currmax > max)
 			max = currmax
 		
-		}				
-		return max
+	}				
+	return max
 }
 	\end{lstlisting}
 	This algorithm runs in linear time, as it visits each element in the array $A$ once. Next, we briefly explain the algorithm's functionality.
@@ -73,6 +73,30 @@ maxSubarray(array A){
 	\log k &> \frac{c2}{c1} k && \text{subtract $c_1 \log n$, algebra}
 	\end{align}
 	Thus, using the constant terms from quick sort and insertion sort we would be able to locate a value of $k$ such that this combination of algorithm works more efficiently than simply using quick sort. In practice, we might also find such a $k$ more easily through statistical simulation. That is, we might randomly generate high volumes of arrays to be sorted, and experiment with different values of $k$ to experimentally determine a value that minimizes the runtime.
+\item \textbf{Heap data structure}
+	\begin{enumerate}
+		\item How would you represent a $d$-ary heap in an array?
+\\\\ We consider an array representation indexed by 1, such that the root of the heap is at $A[1]$. As any node will have $d$ children, the children of the root must be in the range $A[2]$ to (inclusive) $A[d+1]$. Each of these $d$ children will have $d$ children themselves, giving the third level $d^2$ children, which will be in the range $A[d+2]$ through $d^2+d+1$. This pattern continues (the next level will have $d^3$ items, the next $d^4$, and so forth.)
+\\ We also need a system to calculate the parent and children of a node using its index $i$. Suppose that we can calculate the parent of a node $i$ with $\lfloor  \frac{i-2}{d+1} \rfloor$ and the children by $d(i-1)+j+1$, where $j$ represents the $j-th$ child of $i$ in the range $1\leq j \leq d$. We can see that this procedure works by choosing any appropriate $i$, $j$, and $d$, and verifying that parent(child(i)) results in $i$.
+		\item What is the height of a $d$-ary heap of $n$ elements in terms of $n$ and $d$?
+\\\\ To find the height, we leverage that each level of the tree contains $d^l$ nodes, where $l$ is the current level, as each node has $d$ children. Thus the total number of nodes is equal to the sum $\sum_{l=0}^{h-1}d^l$, which simplifies to $d^h-1$, where $h$ is the height of the tree. Given that $n$ is the total number of nodes, we have that $d^h=n$, removing the 1 for simplicity as we are considering asymptotic notation. By taking the log of this, we have that $h=\log_dn= \Theta(\frac{\log n}{\log d})$.
+		\item Give an efficient implementation of EXTRACT-MAX in a $d$-ary max-heap. Analyze the running time in term $d$ and $n$.
+\\\\ \textbf{Algorithm:} 
+\\ We consider if the standard efficient procedure for EXTRACT-MAX on page 163 of book 1 for a binary heap works for a $d$-ary heap. In simple terms, that algorithm removes the root of the tree (the max item) and places the last leaf in its place. Then, the algorithm simply calls MAX-HEAPIFY on the whole tree. It is important to note that the procedure of extracting the max and placing the leaf at the top maintains the max heap property of the left and right subtrees. It is left to show that the MAX-HEAPIFY algorithm works also works in the $d$-ary case.
+\\ The MAX-HEAPIFY algorithm available on page 154 also clearly works in the case of a $d$-ary heap. On each recursive call, it simply compares the root to each of it's children, swapping it with the maximum child and recursively proceeding on the new subtree containing the swapped root. The only difference is that this algorithm now makes $d$ comparisons, as opposed to 2. As this part of the overall algorithm works, then clearly the overall EXTRACT-MAX algorithm also works for a $d$-ary heap.
+\\ \textbf{Running time}
+\\ As the EXTRACT-MAX algorithm simply makes an operation in constant time, and then calls MAX-HEAPIFY, its overall running time is the running time of MAX-HEAPIFY plus a constant term. In the binary case, MAX-HEAPIFY has a running time of $O(h)$, where $h$ is the height of the tree (page 156). We have shown the height of tree here to be $\Theta(\frac{\log n}{\log d})$. However, the algorithm also has increased overhead at each recursive call, which must now make $d$ comparisons. Thus, the running time for algorithm is $O(1)+O(d\frac{\log n}{\log d})\in O(d\frac{\log n}{\log d})$.
+		\item Give an efficient implementation of INSERT in a $d$-ary max-heap. Analyze its running time in terms of $d$ and $n$.
+\\\\ \textbf{Algorithm:}
+\\ As in the previous problem, we will use the INSERT algorithm for a typical max heap available in the book, on page 164. In simple terms, this algorithm increases the size of the heap by 1, and adds an infinitely small value to the last index in the array. Then, the algorithm makes a call to INCREASE-KEY to swap the new value to be inserted with the infinitely small value just added. We will assume that INCREASE-KEY works for a $d$-ary heap, as an algorithm for that is precisely what we will provide in the next part of this problem. For now, we assume that it works.
+\\ \textbf{Running time:}
+\\ The running time of INSERT has two parts: the operations within the function, and the running time of the call to INCREASE-KEY. The operations within INSERT are clearly constant, therefore this section is $\Theta(1)$. The INCREASE-KEY function, on the other hand, depends on the height of the tree. This will be explained in more detail in the next problem, but it is clear the algorithm's loop executes one per each level until the appropriate level is found. Therefore, in the worst case it will be $O(h)=O(d\frac{\log n}{\log d})$. As the running time for the first section was constant, than the overall running time will simply be $O(d\frac{\log n}{\log d})$.		
+\item Give an efficient implementation of INCREASE-KEY$(A,i,k)$, which flags an error if $k<A[i]$, but otherwise sets $A[i]=k$ and then updates the d-ary max-heap structure appropriately. Analyze its running time in terms of $d$ and $n$.
+\\\\ As has been the case for our previous algorithms, the algorithm provided in the book works (mostly) unchanged for a $d$-ary heap. In short, this algorithm swaps the given key within the heap with the new value passed to the function, and then moves it up to the appropriate spot. In the case that the new value is lower than the key given, the algorithm returns an error. In order to move the new value up to its appropriate spot, the algorithm performs a while loop, checking in each iteration whether the value's parent is smaller than the value itself and if this condition is met swapping the parent with the value. Interestingly, this procedure works identically in this case as to the binary case, as the number of children has no bearing on the path taken by the new value up to its appropriate position. The only small modification needed is to make sure the parent index is calculated appropriately, but this is simply a constant operation.
+\\ \textbf{Running time:}
+To compute the running time for this algorithm, we consider the constant operations and the while loop in the algorithm. As the algorithm simply checks a condition and then performs one simple operation, this section is clearly $\Theta(1)$. The loop, however, iterates until the appropriate level is found for the new value. In the worst case, this will be the root of the heap. As such, the number of iterations will be equal to the height of the heap, as it must traverse from the bottom to the top. Thus, the overall running time is $\Theta
+(1)+O(h)=\Theta(1)+O(d\frac{\log n}{\log d})\in O(d\frac{\log n}{\log d})$.
+	\end{enumerate}
 \end{enumerate}
 	
 
