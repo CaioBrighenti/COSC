@@ -1,0 +1,49 @@
+\documentclass{article}
+\usepackage{amsmath} %This allows me to use the align functionality.
+                     %If you find yourself trying to replicate
+                     %something you found online, ensure you're
+                     %loading the necessary packages!
+\usepackage{amsfonts}%Math font
+\usepackage{graphicx}%For including graphics
+\usepackage{hyperref}%For Hyperlinks
+\usepackage{listings}
+\usepackage{graphicx}
+\usepackage{natbib}        %For the bibliography
+\bibliographystyle{apalike}%For the bibliography
+\usepackage[margin=1.0in]{geometry}
+\usepackage{float}
+\usepackage{tikz}
+\usetikzlibrary{trees}
+\begin{document}
+%set the size of the graphs to fit nicely on a 8.5x11 sheet
+\noindent \textbf{Caio Brighenti }\\
+\noindent \textbf{COSC 302 - Analysis of Algorithms -- Spring 2019}\\%\\ gives you a new line
+\noindent \textbf{Lab 5}\vspace{1em}\\
+\begin{enumerate}
+	\setcounter{enumi}{2}
+	\item Recursion tree method.
+	\\ The recurrence is $T(n)=T(n-1)+T(n-2)$. Thus, the recursion tree is: \\
+\begin{center}
+	\begin{tikzpicture}[level distance=1.5cm,
+	  level 1/.style={sibling distance=3cm},
+	  level 2/.style={sibling distance=1.5cm}]
+	  \node {n}
+	    child {node {n-1}
+	      child {node {n-2}}
+	      child {node {n-3}}
+	    }
+	    child {node {n-2}
+	    child {node {n-3}}
+	      child {node {n-4}}
+	    };
+	\end{tikzpicture}
+\end{center}
+Note that this tree is not balanced, but we will assume it is since we are showing an upper bound with $O(f(n))$ notation. We can see that the slowest decreasing element of the tree, the leftmost node, decreases by 1 on each level. We will call the total number of levels $i$. We assume the function recurses until 0 -- therefore since $n$ decreases by 1 each level, we will have $n$ levels, thus $i=n$.
+\\ Next, we find the number of nodes per level. We can see that the first level has $2^0$ nodes, the second $2^1$ nodes, and the third $2^2$. Thus, if we let $j$ represent the current level, then the number of nodes for each level is equal to $2^{(j-1)}$. Thus, we can represent the total amount of nodes (or calls) as, since we know we have $i$ levels:
+$$2^0+2^1+2^2 + \cdots + 2^{i-1}$$
+This can be simplified to $2^i-1=2^n-1$. Thus, we solution to the recurrence is:
+$$T(n)=2^n-1=O(2^n)$$
+\end{enumerate}
+
+
+\end{document}
