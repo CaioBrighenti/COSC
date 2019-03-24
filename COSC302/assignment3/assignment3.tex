@@ -13,6 +13,8 @@
 \bibliographystyle{apalike}%For the bibliography
 \usepackage[margin=1.0in]{geometry}
 \usepackage{float}
+\usepackage{tikz}
+\usetikzlibrary{trees}
 \begin{document}
 %set the size of the graphs to fit nicely on a 8.5x11 sheet
 \noindent \textbf{Caio Brighenti }\\
@@ -49,6 +51,89 @@ maxSubarray(array A){
 	\\ At any index $j$, the maximum subarray ending at $j$ must be equal to the maximum subarray ending at $A[j-1]$ plus the value at $A[j]$. In the case that $A[j]$ is positive, it is obvious that this continuous subarray will continue to grow. In the case that $A[j]$ is negative, the subarray will shrink, but if the subarray continues to be positive overall than it is still the greatest subarray up until $A[j]$, and is what is continued to $A[j+1]$. However, if $A[j]$ is sufficiently small, the subarray currmax may become smaller than 0, in which case we empty the subarray, as an empty subarray must a maximum with respect to a negative one. This is equivalent to choosing $A[j+1]$ as the new beginning of the subarray which will now be considered.
 	\\ We have shown the algorithm appropriately calculates the largest subarray ending at each index $j$ in $A$. The algorithm will always set the variable max to be the largest of these subarrays. As a maximum subarray in $A$ must end at an index $j$, than the variable max will have the largest subarray in $A$, and thus the algorithm is correct.
 \item \textbf{Reccurence relations}
+	\begin{enumerate}
+	\item Solve $T(n)=T(\frac{n}{2})+T(\frac{n}{4})+T(\frac{n}{8})+n$ using recursion tree and induction.
+	\\ \\ \textbf{Recursion Tree:}
+	\\ We proceed by recursion tree first by drawing the tree, though here we show only the first two levels.
+\begin{center}
+	\begin{tikzpicture}[level distance=1.5cm,
+	  level 1/.style={sibling distance=3cm},
+	  level 2/.style={sibling distance=1.5cm}]
+	  \node {n}
+	    child {node {$\frac{n}{2}$}
+	    }
+	    child {node {$\frac{n}{4}$}
+	    }
+	    child {node {$\frac{n}{8}$}
+	    };
+	\end{tikzpicture}
+\end{center}
+We can see that each level sums up to $\frac{7}{8}$ of the level before it, as each node separates into that ratio. This may seem an unfounded assumption, but is easy to show using basic multiplication properties. The second level is clearly $\frac{1}{2}+\frac{1}{4}+\frac{1}{8}=\frac{7}{8}$ of $n$, and thus we can see that each of the three children of a node sum up to $\frac{7}{8}$ of that node. Thus we can consider the third level as $\frac{7}{8}\frac{n}{2}+\frac{7}{8}\frac{n}{4}+\frac{7}{8}\frac{n}{8}=\frac{7}{8}(\frac{n}{2}+\frac{n}{4}+\frac{n}{8})=\frac{7}{8}(\frac{7}{8}n)$. This means that we can consider each level as $\frac{7}{8}$ of the previous level.
+\\We might naively assume that each node performs work $n$, given the recurrence has a $n$ term in it. However, the problem becomes progressively smaller. Summing across each level, we instead have that each level performs work $(\frac{7}{8})^in$, where $i$ is the level. Thus, we can find the total work done by the algorithm by summing up each level. This sum takes the form $(\frac{7}{8})^0n + (\frac{7}{8})^1n + \cdots + (\frac{7}{8})^in$. This is a geometric series, therefore we can simplify it to $\frac{1}{1-\frac{7}{8}}n = 8n$ which is plainly in $O(n)$.
+	\\ \\ \textbf{Induction:}
+\\ We proceed by induction, using the guess of $O(n)$ from the recursion tree solution. Formally, we want to show that $T(\frac{n}{2})+T(\frac{n}{4})+T(\frac{n}{8})+n \leq c n$ for all $n \geq n_0$, where $c$ is a positive constant. 
+\\ \textbf{Base case - n=8 :}
+Let us treat $n=8$ as the base case and show that the claim holds. We assume that $T(n)=n$ for all $n<8$, as otherwise the recurrence would proceed to make calls with non-integer parameters. Let $c=2$. Using these values, we have:
+\\ $T(8) = T(4)+T(2)+T(1)+8 = 4+2+1+8=15$
+Thus we have that $T(8) \leq 2 8$, so the base case holds.
+\\ \textbf{Inductive Hypothesis:} Assume the claim holds for all $m$ such that $n_o \leq m < n$. We show that this implies the claim is true for $n$.
+\begin{align}
+	T(n)&=T(\frac{n}{2})+T(\frac{n}{4})+T(\frac{n}{8})+n && \text{reccurence} \\
+	&\leq \frac{2n}{2} + \frac{2n}{4} + \frac{2n}{8} + n && \text{inductive hypothesis} \\
+	&\leq n(1+\frac{1}{2}+\frac{1}{4}+1) && \text{algebra} \\
+	&\leq 2.75 n \leq cn && \text{algebra}
+\end{align}
+Thus, the claim must be true for all $n\geq n_0$ and the positive constant $c=2$. 
+\item Solve $T(n)=5T(\frac{n}{5})+\frac{n}{\log n}$ using recursion and the iteration method.
+\\ \\ \textbf{Recursion tree}
+	\\ We proceed by recursion tree first by drawing the tree, though here we show only the first two levels.
+\begin{center}
+	\begin{tikzpicture}[level distance=1.5cm,
+	  level 1/.style={sibling distance=3cm},
+	  level 2/.style={sibling distance=1.5cm}]
+	  \node {n}
+	    child {node {$\frac{n}{5}$}
+	    }
+	    child {node {$\frac{n}{5}$}
+	    }
+	    child {node {$\frac{n}{5}$}
+	    }
+	    child {node {$\frac{n}{5}$}
+	    }
+	    child {node {$\frac{n}{5}$}
+	    };
+	\end{tikzpicture}
+\end{center}
+Let $i$ be the last level in tree. As at each level $j$ each node is equal to $\frac{n}{5^j}$, then at the last level we have $\frac{n}{5^i}=1$. We can thus solve for $i=\log_5 n$, and we have that $n=5^i$. Both these facts will be useful to us.
+\\ At each level $j$, each node does work $\frac{\frac{n}{5^j}}{\log \frac{n}{5^j}}$. As each level has $5^j$ nodes, then the total work per level is clearly $\frac{n}{\log \frac{n}{5^j}}$. Substituting, we have $\frac{5^i}{log5^{i-j}}$.
+At the final level, the work per node will be $\Theta(1)$. Therefore, we solve for the total amount of work as follows. 
+\begin{align}
+T(n) &= 5^i + \sum_{j=0}^{i-1} \frac{5^i}{log_55^{i-j}} && \text{final level + other levels } \\
+&= n + n \sum_{j=0}^{i-1} \frac{1}{i-j} && \text{$5^i=n$, $log_55^x=x$} \\
+&= n + n \sum_{j=1}^{i} \frac{1}{j} && \text{harmonic series} \\
+&= \Theta(n+n\log i) && \text{asymptotic nature of harmonic series} \\
+&= \Theta(n+n\log \log n) && \text{i= logn}
+\end{align}
+Thus, we have that the recurrence relationship $T(n)=5T(\frac{n}{5})+\frac{n}{\log n}$ solves to $\Theta(n+n\log \log n)$.
+\\ \\ \textbf{Iteration Method:}
+\\ To solve this recurrence using the iteration method, we first have to calculate the total number of calls, then calculate the time per calls. Finally, we multiply the two together to obtain the total running time.
+\\ \textbf{Number of calls}
+\\ Let $j$ represent a level in the tree. At each level, there are $5^i$ recursive calls. Let $i$ be the last level. As each recursive call divides $n$ by 5, it must be that at the last level $\frac{n}{5^i}=1$. We can thus solve for $i=log_5n$. As $i$ is the last level, the total amount of levels must be $i+1$. 
+\\ We can solve for the total number of calls by summing the number of calls per level. This is equal to the series $5^0+5^1+\cdots+ 5^i$, which simplifies to $5^{i+1}-1=5^{\log_5n+1}-1= 5^{\log_55n}-1= 5n-1\approx n$. We now find the time per call.
+\\ \textbf{Time per call}
+\\ We might naively assume that the time per call is simply $\frac{n}{\log n}$, as is the term in the recurrence. However, the problem gets smaller at each level $j$, making the actual time per call equal to $\frac{5^{i-j}}{\log 5^{i-j}}$. This presents a problem for us, as we cannot appropriately remove the $j$ term when multiplying by the number of calls and we are solving for a solution with respect to $n$. Therefore, we will compute the sum across all values of $j$ to obtain the total running time, and which we will then divide by the number of calls to compute the average running time per call. Thankfully, we have already computed this sum in the previous problem and know it to be $\in \Theta(n+n\log \log n)$. This is actually the answer we are looking for, so we have no need to divide and multiply again, but we do so nonetheless for clarity. As the total running time is $\in \Theta(n+n\log \log n)$, then the average running time per call must be $\in \Theta(\frac{n+n\log \log n}{n})=\Theta(1+\log \log n)$, as the total number of calls is $\Theta(n)$.
+\\ \textbf{Overall running time}
+\\ The overall running time is equal to the number of calls multiplied by the expected time per call. As the number of calls is $\in \Theta(n)$ and the time per call is $\in \Theta(1+\log \log n)$, the total running time must be $\Theta(n+n\log \log n)$.
+	\item Using substitution method for the following recurrence prove that $T(n)\in O(n \log n)$ and $T(n) \in \Omega(n \log n)$ and conclude that $T(n)\in \Theta(n \log n)$.
+	\\ We start by showing that $T(n)\in O(n \log n)$ using the substitution method. We repeatedly substitute the recurrence into itself and re-combine as follows.
+	\begin{align}
+	T(n) &= T(n-1) + log(n) \\
+	&= T(n-2) + log(n-1)+log(n)\\
+	&= T(n-3) + log(n-2)+log(n-1)+log(n) \\
+	&= T(n-3) + log((n-2)(n-1)(n)) 
+	\end{align}
+	Eventually, this will reach $T(n) = T(0)+log(n!)$. Using Stirling's approximation, we know this to be $\in O(n \log n)$. Therefore, we have that $T(n) \in O(n \log n)$. Next, we show the lower bound.
+	\end{enumerate}
 \item \textbf{Quick sort}
 	\\ By combining the quick sort algorithm with the insertion sort algorithm, we will have an algorithm composed of two smaller pieces. To show the overall running time for this algorithm, we consider each section separately and then combine the two.
 	\\ \\ \textbf{Quick sort:}
