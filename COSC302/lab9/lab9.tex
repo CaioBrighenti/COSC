@@ -1,0 +1,86 @@
+\documentclass{article}
+\usepackage{amsmath} %This allows me to use the align functionality.
+                     %If you find yourself trying to replicate
+                     %something you found online, ensure you're
+                     %loading the necessary packages!
+\usepackage{amsfonts}%Math font
+\usepackage{graphicx}%For including graphics
+\usepackage{hyperref}%For Hyperlinks
+\usepackage{listings}
+\lstset{
+    numbers=left,
+    backgroundcolor = \color{lightgray},
+    breaklines=true,
+    tabsize=2,
+    basicstyle=\ttfamily,
+    literate={\ \ }{{\ }}1
+}
+\usepackage{fancyvrb}
+\usepackage{graphicx}
+\usepackage{natbib}        %For the bibliography
+\bibliographystyle{apalike}%For the bibliography
+\usepackage[margin=1.0in]{geometry}
+\usepackage{float}
+\usepackage{tikz}
+\usetikzlibrary{trees}
+\begin{document}
+%set the size of the graphs to fit nicely on a 8.5x11 sheet
+\noindent \textbf{Caio Brighenti }\\
+\noindent \textbf{COSC 302 - Analysis of Algorithms -- Spring 2019}\\%\\ gives you a new line
+\noindent \textbf{Lab 9}\vspace{1em}\\
+\begin{enumerate}
+	\setcounter{enumi}{2}
+	\item \textbf{Problem 6-5-3}
+\\ We provide algorithms for each of the following procedures on a min-heap. A min-heap is a heap such that each node is always greater than or equal to its parent. These procedures work very similarly to the procedures for a max-heap, thus the pseudo-code provided is highly similar to that available in textbook 1 chapter 6.
+\begin{lstlisting}
+HEAP-MINIMUM(A){
+	return A[1]
+}
+\end{lstlisting}
+\begin{lstlisting}
+HEAP-EXTRACT-MIN(A){
+	if A.size < 1
+		error "heap underflow"
+	min = A[1]
+	A[1] = A[A.size]
+	A.size--
+	MIN-HEAPIFY(A,1)
+	return min
+}
+\end{lstlisting}
+\begin{lstlisting}[escapeinside={(*}{*)}]
+MIN-HEAPIFY(A,i){
+	l = LEFT(i)
+	r = RIGHT(i)
+	if l (*$\leq$*) A.size and A[l] < A[r]
+		smallest = l
+	else
+		smallest = i
+	if r (*$\leq$*) A.size and A[r] < A[smallest]
+		smallest = r
+	if smallest (*$\neq$*) i
+		exchange A[i] with A[smallest]
+		MIN-HEAPIFY(A,smallest)
+}
+\end{lstlisting}
+\begin{lstlisting}
+HEAP-DECREASE-KEY(A,i,key){
+	if key > A[i]
+		error "new key is larger than current key"
+	A[i] = key
+	while i > 1 and A[PARENT(i)] > A[i]
+		exchange A[i] with A[PARENT(i)]
+		i = PARENT(i)
+}
+\end{lstlisting}
+\begin{lstlisting}[escapeinside={(*}{*)}]
+MIN-HEAP-INSERT(A,key){
+	A.size++
+	A[A.size] = (*$\infty$*)
+	HEAP-DECREASE-KEY(A,A.size,key)
+}
+\end{lstlisting}
+
+\end{enumerate}
+
+\end{document}

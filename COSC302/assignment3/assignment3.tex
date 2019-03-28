@@ -153,7 +153,7 @@ Thus, we have that the recurrence relationship $T(n)=5T(\frac{n}{5})+\frac{n}{\l
 Line 18 of the proof requires more clarity. As this is an inequality, we are free to make the right hand side larger by adding terms of removing negative terms. Based on notice 1, and on the fact that $\log$ is a monotonically increasing function, the negative $\log((n-1)^{c_2})$ term will outweigh the $\log n$ term, thus we can remove both terms. Thus we have that $T(n) \leq c_2n\log n$, and therefore that $T(n) \in O(n\log n)$. 
 \\We also must show that $T(n) \in \Omega(n\log n)$. To do this, we proceed with a slightly different assumption. We instead show that $c_1 n \log n + dn \leq T(n)$. This still advances our claim as $n \log n + n \in Theta(n \log n)$. We start with our base case.
 	\\ \textbf{Base case: $n=1$, $c_2=3$, $d=2$.}
-	\\ We plug in $n$ and $c$ into the claim and obtain $T(1)=T(0)+\log 1= 0$. Next, we compute $c_2 n \log n = 3 \cdot 1 \cdot \log 1 = 0$, and as $0 \geq 0$, the base case holds. We proceed with our inductive hypothesis.
+	\\ We plug in $n$ and $c$ into the claim and obtain $T(1)=T(0)+\log 1= 0$. Next, we compute $c_2 n \log n = 3 \cdot 1 \cdot \log 1 + = 0$, and as $0 \geq 0$, the base case holds. We proceed with our inductive hypothesis.
 
 	\end{enumerate}
 \item \textbf{Quick sort}
