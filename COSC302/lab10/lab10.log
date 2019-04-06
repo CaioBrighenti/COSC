@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6500 64-bit) (preloaded format=pdflatex 2018.1.27)  3 APR 2019 21:28
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6500 64-bit) (preloaded format=pdflatex 2018.1.27)  3 APR 2019 22:22
 entering extended mode
 **./lab10.tex
 (lab10.tex
@@ -684,58 +684,39 @@ Underfull \hbox (badness 10000) in paragraph at lines 28--32
 
  []
 
-<1.jpg, id=6, 1854.93pt x 2172.115pt>
+<1.jpg, id=6, 1310.8975pt x 1535.7375pt>
 File: 1.jpg Graphic file (type jpg)
 <use 1.jpg>
 Package pdftex.def Info: 1.jpg  used on input line 33. on input line 33.
-Package pdftex.def Info: Requested size: 519.37686pt x 608.18806pt on input lin
-e 33.
-
-Overfull \hbox (49.62184pt too wide) in paragraph at lines 33--33
- [] 
- []
-
-[1
-
-{C:/Users/Caio Brighenti/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}]
-<2.jpg, id=14, 1756.5625pt x 2292.565pt>
+Package pdftex.def Info: Requested size: 367.0488pt x 430.00357pt on input line
+ 33.
+<2.jpg, id=7, 1241.63875pt x 1621.05624pt>
 File: 2.jpg Graphic file (type jpg)
 <use 2.jpg>
 Package pdftex.def Info: 2.jpg  used on input line 34. on input line 34.
-Package pdftex.def Info: Requested size: 491.83415pt x 641.91383pt on input lin
+Package pdftex.def Info: Requested size: 347.65648pt x 453.89265pt on input lin
 e 34.
+[1
 
-Overfull \hbox (22.07913pt too wide) in paragraph at lines 34--34
- [][] 
- []
-
-[2 <./1.jpg>]
-<3.jpg, id=19, 1807.75375pt x 2228.325pt>
+{C:/Users/Caio Brighenti/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map} <./
+1.jpg>]
+<3.jpg, id=15, 1277.77374pt x 1575.8875pt>
 File: 3.jpg Graphic file (type jpg)
 <use 3.jpg>
 Package pdftex.def Info: 3.jpg  used on input line 35. on input line 35.
-Package pdftex.def Info: Requested size: 506.1676pt x 623.92676pt on input line
+Package pdftex.def Info: Requested size: 357.77422pt x 441.2455pt on input line
  35.
-
-Overfull \hbox (36.41258pt too wide) in paragraph at lines 35--35
- [][] 
- []
-
-[3 <./2.jpg>]
-<4.jpg, id=24, 2436.10126pt x 1653.17625pt>
+ [2 <./2.jpg>]
+<4.jpg, id=20, 1722.435pt x 1169.36874pt>
 File: 4.jpg Graphic file (type jpg)
 <use 4.jpg>
 Package pdftex.def Info: 4.jpg  used on input line 36. on input line 36.
-Package pdftex.def Info: Requested size: 487.21162pt x 330.6294pt on input line
- 36.
-
-Overfull \hbox (17.4566pt too wide) in paragraph at lines 36--36
- [][] 
- []
-
-[4 <./3.jpg>]
+Package pdftex.def Info: Requested size: 344.4809pt x 233.8696pt on input line 
+36.
+ [3 <./3.jpg>]
 LaTeX Font Info:    Try loading font information for U+msa on input line 44.
- ("D:\Program Files (x86)\MiKTeX\tex\latex\amsfonts\umsa.fd"
+
+("D:\Program Files (x86)\MiKTeX\tex\latex\amsfonts\umsa.fd"
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
 LaTeX Font Info:    Try loading font information for U+msb on input line 44.
@@ -752,11 +733,6 @@ Underfull \hbox (badness 10000) in paragraph at lines 41--49
 
  []
 
-[5 <./4.jpg>]
-Underfull \hbox (badness 10000) in paragraph at lines 54--63
-
- []
-
 
 Underfull \hbox (badness 10000) in paragraph at lines 54--63
 
@@ -767,7 +743,12 @@ Underfull \hbox (badness 10000) in paragraph at lines 54--63
 
  []
 
-[6]
+
+Underfull \hbox (badness 10000) in paragraph at lines 54--63
+
+ []
+
+[4 <./4.jpg>] [5]
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 65.
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 65.
  (lab10.aux)
@@ -778,21 +759,21 @@ Package rerunfilecheck Info: File `lab10.out' has not changed.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 65.
  ) 
 Here is how much of TeX's memory you used:
- 17859 strings out of 493312
- 327283 string characters out of 3138006
- 403547 words of memory out of 3000000
+ 17858 strings out of 493312
+ 327277 string characters out of 3138006
+ 406547 words of memory out of 3000000
  21118 multiletter control sequences out of 15000+200000
  6352 words of font info for 25 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 55i,6n,54p,956b,440s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 55i,6n,54p,956b,412s stack positions out of 5000i,500n,10000p,200000b,50000s
 <D:/Program Files (x86)/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx10.pfb><D:/
 Program Files (x86)/MiKTeX/fonts/type1/public/amsfonts/cm/cmbxti10.pfb><D:/Prog
 ram Files (x86)/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><D:/Program Fi
 les (x86)/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><D:/Program Files (x8
 6)/MiKTeX/fonts/type1/public/amsfonts/cm/cmti10.pfb>
-Output written on lab10.pdf (6 pages, 5544716 bytes).
+Output written on lab10.pdf (5 pages, 5543990 bytes).
 PDF statistics:
- 64 PDF objects out of 1000 (max. 8388607)
- 11 named destinations out of 1000 (max. 500000)
+ 60 PDF objects out of 1000 (max. 8388607)
+ 10 named destinations out of 1000 (max. 500000)
  33 words of extra memory for PDF output out of 10000 (max. 10000000)
 
