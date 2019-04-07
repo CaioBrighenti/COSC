@@ -32,7 +32,7 @@
 	\item \textbf{Articulation points}
 	\begin{enumerate}
 		\item Give an algorithm to find if graph $G$ is connected
-		\\ A connected graph $G$ is a graph for which there exists a between every pair of vertices in the graph. That is to say, every vertex is reachable from a traversal starting at any arbitrary vertex. We leverage this fact to devise a DFS-based algorithm to determine whether a graph $G$ is connected.
+		\\ A connected graph $G$ is a graph for which there exists a path between every pair of vertices in the graph. That is to say, every vertex is reachable from a traversal starting at any arbitrary vertex. We leverage this fact to devise a DFS-based algorithm to determine whether a graph $G$ is connected.
 		\\ \textbf{Algorithm:}
 		\begin{lstlisting}[escapeinside={(*}{*)}]
 isConnected(G){
@@ -58,7 +58,7 @@ This algorithm simply explores the graph $G$ starting at any vertex in $V$, and 
 		\\ We leverage the algorithm provided in the previous problem to devise an algorithm to locate articulation points. In short, this algorithm will, for each vertex, remove that vertex and check if is still a connected graph. This assumes the input $G$ is a connected graph.
 		\\ \textbf{Algorithm:}
 		\begin{lstlisting}[escapeinside={(*}{*)}]
-findArticulationPoints(){
+findArticulationPoints(G){
 	art_points[] = empty array
 	for each vertex v (*$\in$*) G.V:
 		G' = G - v
@@ -81,7 +81,7 @@ findArticulationPoints(){
 	\\ We can therefore come to the overall conclusion that the root of $G'$ is an articulation point $\iff$ it has at least two children.
 	\item Give a biconditional statement for leaves of $G'$ to be an articulation point of $G$.
 	\\ \\ It is definitionally impossible for a leaf of $G'$ to be an articulation point of $G$. In a DFS graph, a leaf is a node from which no new nodes can be explored that have not yet been visited by the search. Consequently, this means that there are no nodes that can only be reached through a path passing through that leaf. Therefore, a articulation point in $G$ \emph{cannot} ever be a leaf in $G'$.
-	\\ We write this in biconditional form as follows. A node $u \in G$ is a leaf in $G'$ and an articulation point in $G \iff false$, as the left side cannot ever be true.
+	\\ We write this in biconditional form as follows. A node $u \in G$ is a leaf in $G'$ and an articulation point in $G \iff false$, as the left side, much like false, cannot ever be true.
 	\item Give a better algorithm for finding articulation points of a connected graph using the biconditional statements in the above problems.
 	\\\\ We leverage the conclusions above to devise an algorithm that checks for articulation points in $G$ as it builds the DFS tree $G'$. This algorithm keeps track of the node with the lowest pre value that can be reached by a direct edge in the subtree of each node.
 	\\ \textbf{Algorithm:}
