@@ -1,0 +1,56 @@
+\documentclass{article}
+\usepackage{amsmath} %This allows me to use the align functionality.
+                     %If you find yourself trying to replicate
+                     %something you found online, ensure you're
+                     %loading the necessary packages!
+\usepackage{amsfonts}%Math font
+\usepackage{graphicx}%For including graphics
+\usepackage{hyperref}%For Hyperlinks
+\usepackage{listings}
+\lstset{
+    numbers=left,
+    backgroundcolor = \color{lightgray},
+    breaklines=true,
+    tabsize=2,
+    basicstyle=\ttfamily,
+    literate={\ \ }{{\ }}1
+}
+\usepackage{fancyvrb}
+\usepackage{graphicx}
+\usepackage{natbib}        %For the bibliography
+\bibliographystyle{apalike}%For the bibliography
+\usepackage[margin=1.0in]{geometry}
+\usepackage{float}
+\usepackage{tikz}
+\usetikzlibrary{trees}
+\begin{document}
+%set the size of the graphs to fit nicely on a 8.5x11 sheet
+\noindent \textbf{Caio Brighenti }\\
+\noindent \textbf{COSC 302 - Analysis of Algorithms -- Spring 2019}\\%\\ gives you a new line
+\noindent \textbf{Lab 11}\vspace{1em}\\
+\begin{enumerate}
+	\setcounter{enumi}{7}
+	\item Show how to find the \emph{maximum} spanning tree of a graph, that is, the spanning tree of largest total weight.
+	\\ We will solve this problem by using a slightly modified version of Kruskal's algorithm. In short, we will first negate the weights, and then apply Kruskal's as usual. 
+	\\ \textbf{Algorithm:}
+	\begin{lstlisting}[escapeinside={(*}{*)}]
+kruskal_max(G, w){
+
+	for all u (*$\in$*) V:
+		w[u] = -w[u]
+		makeset(u)
+		
+	X= {}
+	sort the edges E by weight
+	for all edges {u,v} (*$\in$*) E, in increasing order of weight:
+		if find(u) (*$\neq$*) find(v):
+			add edge {u,v} to X
+			union(u,v)
+}
+	\end{lstlisting}
+	Let us justify why this works. First, we assume that Kruskal's algorithm is understood and works as expected. That is to say, we assume it produces the minimum spanning tree given an input graph and edge weights. We also assume that we are considering a graph containing only positive, non-zero weights. 
+	\\ By negating each of the weights, the order is essentially reversed. A sort in increasing order will now have the precise opposite order as before the negation occurred. This is easily seen by considering absolute values. When considering positive numbers, the largest numbers are those that have the largest absolute values. With negatives, this is the opposite: the larger the absolute value, the smaller the number. 
+	\\ As we can assume that the unmodified Kruskal's algorithm works, then we have that the output of the algorithm is the spanning tree with the smallest possible total weight. As all the weights are negative, each possible total weight is necessarily negative. Thus, the minimum weight will be the weight with the highest absolute value. As we have shown, the weights with maximum absolute value are the largest in the positive case. Thus, the minimum spanning tree with negated edges necessarily has the highest absolute value of all spanning trees, and thus is the maximum spanning tree in the positive case.
+\end{enumerate}
+
+\end{document}
