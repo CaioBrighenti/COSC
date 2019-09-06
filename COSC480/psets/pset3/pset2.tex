@@ -1,0 +1,31 @@
+\documentclass{article}
+\usepackage{amsmath} %This allows me to use the align functionality.
+                     %If you find yourself trying to replicate
+                     %something you found online, ensure you're
+                     %loading the necessary packages!
+\usepackage{amsfonts}%Math font
+\usepackage{graphicx}%For including graphics
+\usepackage{hyperref}%For Hyperlinks
+\usepackage{listings}
+\usepackage{graphicx}
+\usepackage{natbib}        %For the bibliography
+\bibliographystyle{apalike}%For the bibliography
+\usepackage[margin=1.0in]{geometry}
+\usepackage{float}
+\begin{document}
+%set the size of the graphs to fit nicely on a 8.5x11 sheet
+\noindent \textbf{Caio Brighenti }\\
+\noindent \textbf{COSC 480 - Learning From Data}\\%\\ gives you a new line
+\noindent \textbf{Fall 2019}\\%\\ gives you a new line
+\noindent \textbf{Problem Set 3}\vspace{1em}\\
+\begin{enumerate}
+	\item Define $M := \text{min}_i y^{(i)}(w^* \cdot x^{(i)})$. Show that $M > 0$.
+	\\\\ Based on our standard perceptron notation, $i$ represents the $i$th observation, $w^*$ the final set of weights produced by the PLA algorithm that perfectly seperates the data, and $x^{(i)}$ is the data associated with the $i$th observation. Thus, the expression $y^{(i)}(w^* \cdot x^{(i)})$ represents the predicted outcome of this observation using the PLA algorithm multiplied by the actual value of that observation.
+	\\\\ Intuitively, this quantity represents the distance of each observation from the decision boundary, as the decision boundary of a perceptron is technically 0 (the bias term is subsumed into $w^* \cdot x^{(i)})$. Since the final weights perfectly predict for every observation, $w^* \cdot x^{(i)})$ and $y$ \emph{must} have the same sign, which makes the entire quantity always be positive. For this quantity to be negative, the two terms must necessarily have different signs, which would violate the assumption that $w^*$ accurately classifies all predictions. 
+	\\\\ By taking the minimum of these values, we find the observation in the data that is closest to the decision boundary. In other words, we find the data point that is the closest to being incorrectly classified. This quantity is called the \emph{margin}, and it is desirable to have higher values for this.
+	\item Show that for any $ t \geq 1, w(t) \cdot w^* \geq w(t-1) \cdot w^* + M$.
+	\item Use induction to show that $w(t) \cdot w^* \geq tM$.
+\end{enumerate}
+	
+
+\end{document}
