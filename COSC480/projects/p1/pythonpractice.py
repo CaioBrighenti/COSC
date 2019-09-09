@@ -116,6 +116,12 @@ def plot_integration(f, x_low, x_high, num=10):
     plt.xlabel('x')
     plt.ylabel('f(x)')
     plt.title('A simple plot of f(x)')
+    # recalculate x,y for integration partitions
+    x = linspace(x_low,x_high, num)
+    y = []
+    # calculate y values
+    for point in x:
+        y.append(f(point))
     # calculate integrations
     for i in range(len(y)-1):
         plt.fill_between([x[i],x[i+1]], [y[i],y[i+1]], alpha = 0.2, color="b") 
