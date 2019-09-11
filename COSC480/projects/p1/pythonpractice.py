@@ -16,6 +16,7 @@ def eval_polynomial(x, coeffs):
     413.25
     """
     out = coeffs[0]
+    ## loop through each coeficient/x pair and keep track of output
     for i,ele in enumerate(coeffs[1:]): 
         degree = i+1
         coef = ele
