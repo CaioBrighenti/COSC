@@ -17,44 +17,32 @@
 \noindent \textbf{Caio Brighenti }\\
 \noindent \textbf{COSC 480 - Learning From Data}\\%\\ gives you a new line
 \noindent \textbf{Fall 2019}\\%\\ gives you a new line
-\noindent \textbf{Problem Set 4}\vspace{1em}\\
+\noindent \textbf{Problem Set 5}\vspace{1em}\\
 \begin{enumerate}
-	\item Show $||w(t)||^2 \leq ||w(t-1)||^2 + ||x(t-1)||^2$ where $x$ is the misclassified observation.
-	\\\\ We start by defining more clearly the terms we are considering. $w^{new}$ in the PLA algorithm can be defined as $w^{new} = w + y\cdot x$, where $w$ is the current weight, $x$ the misclassified observation, and $y$ the correct label. Given that $x$ is misclassified, we can know for certain the quantity $y \cdot x$ is negative, as $x$ and $y$ must necessarily have different signs. Thus, we can rewrite this definition as an inequality as follows: $w^{new} \leq w + abs(x)$. $y$ is omitted as simply takes the value $1$. 
-	\\\\ We thus know that $w^{new}$ is smaller than or equal to $w$ plus the magnitude of $x$.  Instead of taking the absolute value, we could have used any function that took the magnitude of $x$. Another such example is the norm operation, which squares each component of $x$ and thus cancels out the negatives. Thus, we can rewrite the previous inequality as $||w^{new}||^2 \leq ||w||^2 + ||x||^2$, as taking the norm of each component will still preserve the inequality. Thus we have shown the claim to be true.
-	\item Use induction to show $||w(t)||^2 \leq tR^2$.
-	\\\\ As we are proceeding by induction, we first show a base case and establish an inductive hypothesis.
-	\\\\ \textbf{Base case: } Our base case is that $t=0$. This base is trivial, as when $t=0$ we have:
+	\item Let $X_1$ and $X_2$ be independent random variables. Let $Y = X_1 + X_2$. Show that $V(Y) = V(X_1) + V(X_2)$.
+	\\\\ Before showing $V(Y) = V(X_1) + V(X_2)$, we first start by showing a property that will be helpful in this proof. Let $Z = E[cX_1X_2]$ where $X_1,X_2$ are independent random variables and $c$ is a constant. We would like to show that the constant can be pulled out such that $Z = cE[X_1X_2]$. 
+	\\\\ Let $C$ be a random variable with a single possible outcome: $c$. The probability that $C$ takes on the value of $c$ is 1, and is thus independent from any other possible random variable. We can rewrite $Z$ as $Z = E[CX_1X_2]$, and given that all three variables are independent, we have $Z = CE[X_1X_2]$ and since $C$ is always $c$ we finally have $Z = cE[X_1X_2]$ for all constants c.
+	\\\\ We now proceed with the target claim.
 	\begin{align}
-	||w(0)||^2 &\leq 0\cdot R \\
-	0 &\leq 0
+	V(Y) &= E[Y^2] - (E[Y])^2 && \text{definition of V()} \\
+	     &= E[(X_1+X_2)^2]-(E[X_1+X_2])^2 && \text{definition of Y} \\
+		 &= E[{X_1}^2+2X_1X_2 + {X_2}^2] - (E[X_1]+E[X_2])^2 && \text{expand, $E[X+Y] = E[X] + E[Y]$} \\
+	     &= E[{X_1}^2] + E[2X_1X_2] + E[{X_2}^2]- {E[X_1]}^2 - 2E[X_1]E[X_2]-{E[X_2]}^2 && E[X\cdot Y]=E[X]\cdot E[Y]\text{, expand} \\
+	     &= E[{X_1}^2] + 2E[X_1]E[X_2] + E[{X_2}^2]- {E[X_1]}^2 - 2E[X_1]E[X_2]-{E[X_2]}^2 && \text{property shown above} \\
+	     &= E[{X_1}^2] + E[{X_2}^2] - {E[X_1]}^2 - {E[X_2]}^2 && \text{algebra} \\
+	     &= V(X_1) + V(X_2) && \text{definition of V()} 
 	\end{align}
-	Thus the base case holds.
-	\\ \\ \textbf{Inductive hypothesis: } Assume the claim holds for $t-1$. We will show it then holds for $t$.
+	Therefore we have that $V(Y) = V(X_1) + V(X_2)$, where $X_1,X_2$ are random variables and $Y = X_1 + X_2$.
+	\item Prove the extension of Chebyshev's inequality for sums.
+	\\\\ We proceed by direct proof from the defined variables and Chebyshev's inequality for single random variables. 
 	\begin{align}
-	||w(t)||^2 &\leq ||w||^2 + ||x||^2 && \text{shown in 1} \\
-	&\leq (t-1)R^2 + ||x||^2 && \text{inductive hypothesis} \\
-	&\leq (t-1)R^2 + R^2 && \text{$||x||$ must be at most $R$} \\
-	&\leq tR^2
+	Pr(|Y - \mu| \geq a) &\leq \frac{V(Y)}{a^2} && \text{definition of Chebyshev's} \\
+	&\leq \frac{V(\sum_{i=1}^N \frac{1}{n}X_i)}{a^2} && \text{definition of Y} \\
+	&\leq \frac{\sum_{i=1}^N V(\frac{1}{n}X_i)}{a^2} && \text{shown in 1} \\
+	&\leq \frac{\sum_{i=1}^N V(X_i)}{N^2a^2} && \text{pull out constant, squared since $V = \sigma^2$} \\
+	&\leq \frac{V(X_i)}{Na^2} = \frac{\sigma^2}{Na^2} && \text{simplify} 
 	\end{align}
-	\\ Therefore the claim must be true.
-	\item Use the properties found in 1 and 2 to show $\frac{w(t)\cdot w^*}{||w(t)||} \geq \sqrt{t}\frac{M}{R}.$
-	\\\\ We start by first slightly modifying the relationship found in 2 in order to remove the squared terms. We simply take the square root of both sides, resulting in the property $||w(t)|| \leq \sqrt{t}R$. We now observe that given an inequality $x \geq y$, we can obtain the inequality $\frac{x}{a} \geq  \frac{y}{b}$, on the condition that $a \leq b$. Using this property, we thus have:
-	\begin{align}
-	w(t)\cdot w^* &\geq tM \\
-	\frac{w(t)\cdot w^*}{||w(t)||} &\geq \frac{t}{\sqrt{t}} \frac{M}{R} \\
-	\frac{w(t)\cdot w^*}{||w(t)||} &\geq \sqrt{t} \frac{M}{R} && \frac{x}{\sqrt{x}} = \sqrt{x}
-	\end{align}
-	Thus the claim is true.
-	\item Show that $t \leq \frac{R^2||w^*||^2}{M^2}$
-	\\\\ We can arrive at this claim by simply modifying a few terms from the previous problem as follows.
-	\begin{align}
-	\sqrt{t} \frac{M}{R} &\leq \frac{w(t)\cdot w^*}{||w(t)||} \\
-	t \frac{M^2}{R^2} &\leq \frac{w(t)^2 \cdot (w^*)^2}{||w(t)||^2} && \text{square both sides} \\
-	t \frac{M^2}{R^2} &\leq (w^*)^2 && w(t)^2 \text{is the dot product of $t$ with $t$, which is the same as $||w(t)||^2$} \\
-	t &\leq \frac{R^2||w^*||^2}{M^2} && \text{rearrange}
-	\end{align}
-	Thus the claim is true.
+	Therefore, proceeding from the definitions given, the proven Chebyshev's inequality for random variables, and the property shown in 1, we have that $Pr(|Y - \mu| \geq a) \leq \frac{\sigma^2}{Na^2}$.
 \end{enumerate}
 	
 
