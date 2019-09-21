@@ -1,5 +1,6 @@
 import random
 import numpy as np
+import random
 
 def error_function(X, y, w):
     """Compute the error of perceptron, defined by weights w, on examples (X, y).
@@ -15,11 +16,16 @@ def error_function(X, y, w):
     Returns:
     error    fraction of misclassified examples
     """
-    error = 0.0
     ##################################################
     # TODO: write code here to compute error correctly
     ##################################################
-    raise NotImplementedError()
+    ## get perceptron outputs
+    y_out = np.dot(X,w)
+    ## predict label 
+    y_hat = np.where(y_out >= 0, 1, -1)
+    ## compute error
+    error = sum(np.where(y_hat == y, 0, 1)) / len(y)
+    return(error)
 
 
 def pla(X, y, t_max):
@@ -45,7 +51,26 @@ def pla(X, y, t_max):
     ##################################################
     # TODO: finish the implementation of PLA
     ##################################################
-    raise NotImplementedError()
+    ## init weights
+    w = np.zeros(len(X[0]))
+    Ws = list([w])
+    ## iterate through learning algorithm
+    for i in range(t_max):
+        ## make predictions
+        y_hat = np.where(np.dot(X,w) >= 0, 1, -1)
+        ## if converged, exit algorithm
+        if sum(np.where(y_hat == y, 0, 1)) == 0:
+            break
+        ## pick random misclassified
+        idx = random.choice(np.where(y_hat != y)[0])
+        ## update weights
+        w = w + np.multiply(y[idx],X[idx])
+        Ws.append(w)
+
+    ## return computed weights
+    return((w,Ws))
+        
+
 
 
 def pocket(X, y, t_max):
