@@ -24,7 +24,8 @@ def plot_perceptron(X, y, w):
     # TODO: write code here to plot data + perceptron
     ##################################################
     ## plot data
-    x0, x1, x2 = zip(*X)
+    x0 = np.repeat(1,len(X))
+    x1, x2 = zip(*X)
     colormap = {1 : 'b', -1: 'r'}
     colors = [colormap[label] for label in y]
     plt.scatter(x1,x2,c=colors)

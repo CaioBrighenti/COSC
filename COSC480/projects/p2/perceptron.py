@@ -51,19 +51,18 @@ def pla(X, y, t_max):
     ##################################################
     # TODO: finish the implementation of PLA
     ##################################################
+    X_temp = X.copy()
     ## add X0
-    for i in range(len(X)):
-        X[i] = (1,) + X[i]
-    w = np.zeros(len(X[0]))
+    for i in range(len(X_temp)):
+        X_temp[i] = (1,) + X_temp[i]
+    w = np.zeros(len(X_temp[0]))
     Ws = list([w])
     for i in range(t_max):
-        print(w)
-        y_hat = np.where(np.dot(X,w) >= 0, 1, -1)
+        y_hat = np.where(np.dot(X_temp,w) >= 0, 1, -1)
         if sum(np.where(y_hat == y, 0, 1)) == 0:
             break
         idx = random.choice(np.where(y_hat != y)[0])
-        print(X[idx])
-        w = np.add(w,np.multiply(y[idx],X[idx]))
+        w = np.add(w,np.multiply(y[idx],X_temp[idx]))
         Ws.append(w)
     return((w,Ws))
         
@@ -93,7 +92,24 @@ def pocket(X, y, t_max):
     ##########################################################
     # TODO: finish the implementation of the pocket algorithm
     ##########################################################
-    raise NotImplementedError()
+    X_temp = X.copy()
+    ## add X0
+    for i in range(len(X_temp)):
+        X_temp[i] = (1,) + X_temp[i]
+    w = np.zeros(len(X_temp[0]))
+    Ws = list([w])
+    w_pocket = w
+    for i in range(t_max):
+        y_hat = np.where(np.dot(X_temp,w) >= 0, 1, -1)
+        if sum(np.where(y_hat == y, 0, 1)) == 0:
+            break
+        idx = random.choice(np.where(y_hat != y)[0])
+        w = np.add(w,np.multiply(y[idx],X_temp[idx]))
+        Ws.append(w)
+        ## check if new min
+        if error_function(X_temp,y,w) < error_function(X_temp,y,w_pocket):
+            w_pocket = w
+    return((w_pocket,Ws))
 
 
 def featurize(x):
