@@ -51,23 +51,20 @@ def pla(X, y, t_max):
     ##################################################
     # TODO: finish the implementation of PLA
     ##################################################
-    ## init weights
+    ## add X0
+    for i in range(len(X)):
+        X[i] = (1,) + X[i]
     w = np.zeros(len(X[0]))
     Ws = list([w])
-    ## iterate through learning algorithm
     for i in range(t_max):
-        ## make predictions
+        print(w)
         y_hat = np.where(np.dot(X,w) >= 0, 1, -1)
-        ## if converged, exit algorithm
         if sum(np.where(y_hat == y, 0, 1)) == 0:
             break
-        ## pick random misclassified
         idx = random.choice(np.where(y_hat != y)[0])
-        ## update weights
-        w = w + np.multiply(y[idx],X[idx])
+        print(X[idx])
+        w = np.add(w,np.multiply(y[idx],X[idx]))
         Ws.append(w)
-
-    ## return computed weights
     return((w,Ws))
         
 

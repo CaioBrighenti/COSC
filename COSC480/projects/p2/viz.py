@@ -1,6 +1,9 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
+def decision_boundary(x1,w):
+    return((w[0]+(w[1]*x1)) / (-w[2]))
+
 def plot_perceptron(X, y, w):
     """Plot the points X, their color using y, and decision classification using
     perceptron with weights w.
@@ -20,4 +23,14 @@ def plot_perceptron(X, y, w):
     ##################################################
     # TODO: write code here to plot data + perceptron
     ##################################################
-    raise NotImplementedError()
+    ## plot data
+    x0, x1, x2 = zip(*X)
+    colormap = {1 : 'b', -1: 'r'}
+    colors = [colormap[label] for label in y]
+    plt.scatter(x1,x2,c=colors)
+    ## plot decision boundary
+    xx = np.linspace(min(x1), max(x1))
+    plt.plot(xx,decision_boundary(xx,w))
+
+    plt.title('Perceptron')
+    plt.show
