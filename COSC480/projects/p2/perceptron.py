@@ -126,4 +126,4 @@ def featurize(x):
     ##################################################
     # you find this line helpful
     img = x.reshape(20,20)      # img is a 2-array where img[i][j] is pixel in ith row and jth col
-    raise NotImplementedError()
+    print(img)
