@@ -2,7 +2,11 @@ import random
 import numpy as np
 import random
 
-def error_function(X, y, w):
+def test_function(x):
+    print("here is x")
+    print(x)
+
+def error_function(w, X, y):
     """Compute the error of perceptron, defined by weights w, on examples (X, y).
 
     Inputs:
@@ -19,8 +23,11 @@ def error_function(X, y, w):
     ##################################################
     # TODO: write code here to compute error correctly
     ##################################################
+    X_temp = X.copy()
+    ## add X0
+    X_temp = np.insert(X_temp, 0, 1, axis=1)
     ## get perceptron outputs
-    y_out = np.dot(X,w)
+    y_out = np.dot(X_temp,w)
     ## predict label 
     y_hat = np.where(y_out >= 0, 1, -1)
     ## compute error
@@ -53,8 +60,7 @@ def pla(X, y, t_max):
     ##################################################
     X_temp = X.copy()
     ## add X0
-    for i in range(len(X_temp)):
-        X_temp[i] = (1,) + X_temp[i]
+    X_temp = np.insert(X_temp, 0, 1, axis=1)
     w = np.zeros(len(X_temp[0]))
     Ws = list([w])
     ## iterative update
@@ -96,8 +102,7 @@ def pocket(X, y, t_max):
     ##########################################################
     X_temp = X.copy()
     ## add X0
-    for i in range(len(X_temp)):
-        X_temp[i] = (1,) + X_temp[i]
+    X_temp = np.insert(X_temp, 0, 1, axis=1)
     w = np.zeros(len(X_temp[0]))
     Ws = list([w])
     w_pocket = w
@@ -107,10 +112,10 @@ def pocket(X, y, t_max):
             break
         idx = random.choice(np.where(y_hat != y)[0])
         w = np.add(w,np.multiply(y[idx],X_temp[idx]))
-        Ws.append(w)
         ## check if new min
-        if error_function(X_temp,y,w) < error_function(X_temp,y,w_pocket):
+        if error_function(w,X,y) < error_function(w_pocket,X,y):
             w_pocket = w
+        Ws.append(w_pocket)
     return((w_pocket,Ws))
 
 
@@ -128,4 +133,7 @@ def featurize(x):
     ##################################################
     # you find this line helpful
     img = x.reshape(20,20)      # img is a 2-array where img[i][j] is pixel in ith row and jth col
-    raise NotImplementedError()
+    intensity = np.sum(np.abs(x))
+    flipped = np.flip(img,1).reshape(1,400)
+    symmetry = np.sum(np.abs(np.subtract(flipped, x)))
+    return(intensity,symmetry)
