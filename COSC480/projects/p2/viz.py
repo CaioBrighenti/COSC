@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 def decision_boundary(x1,w):
     return((w[0]+(w[1]*x1)) / (-w[2]))
 
-def plot_perceptron(X, y, w):
+def plot_perceptron(X, y, w, title):
     """Plot the points X, their color using y, and decision classification using
     perceptron with weights w.
 
@@ -34,6 +34,5 @@ def plot_perceptron(X, y, w):
     plt.plot(xx,decision_boundary(xx,w))
     plt.fill_between(xx,decision_boundary(xx,w), color='r', alpha=0.3)
     plt.fill_between(xx,decision_boundary(xx,w),plt.ylim()[1], color='b', alpha=0.3)
-
-    plt.title('Perceptron')
+    plt.title(title)
     plt.show
