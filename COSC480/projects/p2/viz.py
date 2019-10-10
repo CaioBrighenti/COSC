@@ -32,6 +32,8 @@ def plot_perceptron(X, y, w):
     ## plot decision boundary
     xx = np.linspace(min(x1), max(x1))
     plt.plot(xx,decision_boundary(xx,w))
+    plt.fill_between(xx,decision_boundary(xx,w), color='r', alpha=0.3)
+    plt.fill_between(xx,decision_boundary(xx,w),plt.ylim()[1], color='b', alpha=0.3)
 
     plt.title('Perceptron')
     plt.show

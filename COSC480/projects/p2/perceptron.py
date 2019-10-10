@@ -57,10 +57,12 @@ def pla(X, y, t_max):
         X_temp[i] = (1,) + X_temp[i]
     w = np.zeros(len(X_temp[0]))
     Ws = list([w])
+    ## iterative update
     for i in range(t_max):
         y_hat = np.where(np.dot(X_temp,w) >= 0, 1, -1)
         if sum(np.where(y_hat == y, 0, 1)) == 0:
             break
+        #print(error_function(X_temp, y, w))
         idx = random.choice(np.where(y_hat != y)[0])
         w = np.add(w,np.multiply(y[idx],X_temp[idx]))
         Ws.append(w)
