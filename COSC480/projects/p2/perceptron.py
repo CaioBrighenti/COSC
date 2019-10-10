@@ -24,13 +24,9 @@ def error_function(w, X, y):
     # TODO: write code here to compute error correctly
     ##################################################
     X_temp = X.copy()
-    ## add X0
     X_temp = np.insert(X_temp, 0, 1, axis=1)
-    ## get perceptron outputs
     y_out = np.dot(X_temp,w)
-    ## predict label 
     y_hat = np.where(y_out >= 0, 1, -1)
-    ## compute error
     error = sum(np.where(y_hat == y, 0, 1)) / len(y)
     return(error)
 

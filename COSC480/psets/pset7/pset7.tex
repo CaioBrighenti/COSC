@@ -1,0 +1,72 @@
+\documentclass{article}
+\usepackage{amsmath} %This allows me to use the align functionality.
+                     %If you find yourself trying to replicate
+                     %something you found online, ensure you're
+                     %loading the necessary packages!
+\usepackage{amsfonts}%Math font
+\usepackage{graphicx}%For including graphics
+\usepackage{hyperref}%For Hyperlinks
+\usepackage{listings}
+\usepackage{graphicx}
+\usepackage{natbib}        %For the bibliography
+\usepackage{tikz}
+\bibliographystyle{apalike}%For the bibliography
+\usepackage[margin=1.0in]{geometry}
+\usepackage{float}
+\begin{document}
+%set the size of the graphs to fit nicely on a 8.5x11 sheet
+\noindent \textbf{Caio Brighenti }\\
+\noindent \textbf{COSC 480 - Learning From Data}\\%\\ gives you a new line
+\noindent \textbf{Fall 2019}\\%\\ gives you a new line
+\noindent \textbf{Problem Set 7}\vspace{1em}\\
+\begin{enumerate}
+	\item Smallest break point for a 3D perceptron?
+	\\\\ This question can be easily answered by applying the claim proven in class that the VC of a $d$-dimensional perceptron is equal to $d+1$. For a 3D perceptron, we have $d=3$ and therefore $d_{vc} = 3+1=4$. We can understand the VC dimension as the highest number of points a hypothesis set is able to shatter. Therefore, if a 3D perceptron is able to shatter at most 4 points, then we must have the minimal break point at 5 points.
+	\item Break point for two-interval hypothesis set.
+	\\\\ In order to find a break point for this hypothesis set, must find a number of points where at least one dichotomy cannot be produced. Additionally, if we are seeking to show that this is the \emph{smallest} break point, we must also show that this hypothesis set can shatter all sets of points smaller than the number in question.
+	\\ We show that the two-interval set has a break point at 5. Let $x_1=1, x_2=2, x_3=3, x_4=4, x_5=5$ be the 5 points to be classified as either $-1$ or $+1$. Given this set of points, there is no assignment of $a,b,c,d$ such that the points $x_1,x_3,x_5$ can be classified as +1 and the remaining points $x_2$ and $x_4$. This is because the two interval set is only able to classify two consecutive sequence of points as +1. Since the three points can be considered as three non-consecutive intervals, this dichotomy cannot be produced and thus 5 must be a breakpoint.
+	\\ It remains to show that 5 is the smallest breakpoint. Let us consider the case of 4 points to be classified as +1 or -1. In this case, the two-interval set will have to classify either 0, 1, 2, 3, or 4 points as either +1 or -1. This is clearly possible in the cases of 0,1,2, but requires more though for 3 and 4 points. We have established that the two-interval hypothesis set can discriminate any two consutive sequences of points. In a set of 4 points, there is no way to select 3 or 4 points such that more than 2 of these are not consecutive. Therefore we have at most two consecutive sequences in a set of 4 points, and thus the two-interval hypothesis set can shatter 4 points.
+	\item Break point for a $l$-interval hypothesis set
+	\\\\ This question requires showing a general case of the above problem. As we have shown, a $l$-interval hypothesis set cannot produce a dichotomy where $l+1$ nonconsecutive points are labeled as +1. Thus, the number of points where the $l$-interval hypothesis set cannot shatter will be equal to the $l+1$ points plus the number of points needed to separate these such that none are consecutive. This is clearly equal to $(l+1)+l=2l+1$, as each point in $l+1$ will necessarily be followed by another point not counted in $l+1$, minus the very last point which will have nothing following it. Thus the general break point for a $l$-interval set is $2l+1$. 
+	\item Break point for a triangle in 2D space
+	\\\\ We can visualize the points to be classified as points on a uniform circle. Let us visualize this for 8 points in the diagram as follows.
+	\\
+	\begin{tikzpicture}[scale=4,cap=round,>=latex]
+
+        % draw the unit circle
+        \draw[thick] (0cm,0cm) circle(1cm);
+
+        \foreach \x in {0,90,...,360} {
+                % dots at each point
+                \filldraw[blue] (\x:1cm) circle(0.4pt);
+        }
+        \foreach \x in {45,135,...,315} {
+                % dots at each point
+                \filldraw[red] (\x:1cm) circle(0.4pt);
+        }
+    \end{tikzpicture}
+    \\ From this picture, it is clear that no triangle can create this dichotomy of points, where the blue and red colorings represent the binary classifications. Producing this dichotomy would require a 4-sided polygon. Therefore, 8 must be a break point for a triangle in 2D space. However, is it the smallest break point? In order to check for this, we show that removing a single point produces a dichotomy that can be separated by a triangle. This is done as follows:
+    \\
+    	\begin{tikzpicture}[scale=2,cap=round,>=latex]
+
+        % draw the unit circle
+        \draw[thick] (0cm,0cm) circle(1cm);
+
+        \foreach \x in {0,90,...,360} {
+                % dots at each point
+                \filldraw[blue] (\x:1cm) circle(0.7pt);
+        }
+        \foreach \x in {45,135,...,270} {
+                % dots at each point
+                \filldraw[red] (\x:1cm) circle(0.7pt);
+        }
+        \draw (-45:4.5cm) node[anchor=north]{$A$}
+  		-- (190:1.25cm) node[anchor=north]{$C$}
+ 	 	-- (80:1.25cm) node[anchor=south]{$B$}
+  		-- cycle;
+    \end{tikzpicture}
+    \\ Clearly, we are now able to create this dichotomy using only a triangle separator. Therefore all dichotomies on 7 points are possible, while this is not the case for 8 points. Thus, 8 is the break point for the 2D triangle hypothesis set.
+\end{enumerate}
+	
+
+\end{document}
