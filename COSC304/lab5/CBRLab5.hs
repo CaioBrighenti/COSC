@@ -40,12 +40,20 @@ noreplist (first:rest) = if inlist first rest
     then noreplist rest
     else first : noreplist rest
 
-minlist [] = []
+--minlist [] = []
 minlist [a] = a
 minlist (first:second:rest) = if first > second  
     then minlist (second:rest)
     else minlist (first:rest)
 
+sortlist [] = []
+sortlist [a] = [a]
+sortlist (first:rest) = if first <= (minlist rest)
+    then first:(sortlist rest)
+    else sortlist (rest++[first])
+
+fixlist list = sortlist (noreplist list)
+    
 
 {- Expressions test1, ... test12 ARE DEFINED IN THIS FILE, NOT IN THE TEST FILE -}
 
