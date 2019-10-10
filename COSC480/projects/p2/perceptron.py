@@ -129,7 +129,11 @@ def featurize(x):
     ##################################################
     # you find this line helpful
     img = x.reshape(20,20)      # img is a 2-array where img[i][j] is pixel in ith row and jth col
+<<<<<<< HEAD
+    print(img)
+=======
     intensity = np.sum(np.abs(x))
     flipped = np.flip(img,1).reshape(1,400)
     symmetry = np.sum(np.abs(np.subtract(flipped, x)))
     return(intensity,symmetry)
+>>>>>>> 0426555f5c4eec54abf7993b6b6f834ba24f4ea8
