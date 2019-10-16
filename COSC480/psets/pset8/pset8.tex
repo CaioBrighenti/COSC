@@ -1,0 +1,83 @@
+\documentclass{article}
+\usepackage{amsmath} %This allows me to use the align functionality.
+                     %If you find yourself trying to replicate
+                     %something you found online, ensure you're
+                     %loading the necessary packages!
+\usepackage{amsfonts}%Math font
+\usepackage{graphicx}%For including graphics
+\usepackage{hyperref}%For Hyperlinks
+\usepackage{listings}
+\usepackage{graphicx}
+\usepackage{natbib}        %For the bibliography
+\usepackage{tikz}
+\bibliographystyle{apalike}%For the bibliography
+\usepackage[margin=1.0in]{geometry}
+\usepackage{float}
+\begin{document}
+%set the size of the graphs to fit nicely on a 8.5x11 sheet
+\noindent \textbf{Caio Brighenti }\\
+\noindent \textbf{COSC 480 - Learning From Data}\\%\\ gives you a new line
+\noindent \textbf{Fall 2019}\\%\\ gives you a new line
+\noindent \textbf{Problem Set 8}\vspace{1em}\\
+\begin{enumerate}
+	\item Given hypothesis set with VC dimension 4 and 40,000 observations, how likely are you to have a generalization error of at most 0.1?	
+	\\\\ We have that $N=40,000$, $d_{vc}=4$, and are concerned with an error of at most 0.1, so $\epsilon = 0.1$. We can use the VC inequality to solve this as follows:
+	\begin{align}
+	Pr(|E_{in}(g)-E_{out}(g)|\geq \epsilon) &\leq 4m_h(2N)e^{-\frac{1}{8}\epsilon^2N} && \text{VC inequality} \\
+	& \leq 4(2N+1)e^{-\frac{1}{8}\epsilon^2N} && \text{substitute growth function} \\
+	&\leq .0316 && \text{plug in variables and calculate} 
+	\end{align}
+	We thus have the probability that the error is greater than 0.1 is 0.0316. The probability that the error is at most 0.1 is thus $1-0.0316\approx .97$.
+	\item Suppose you have a hypothesis set with VC dimension 2, 1000 training examples, and $E_in=0.06$. Give an upper bound with 95\% confidence for $E_out$.
+	\\\\ We are given that $d_{vc}=2$ and $N=1000$. Let $\sigma$ be the probability given by the VC inequality such that $\delta=4m_h(2N)e^{-\frac{1}{8}\epsilon^2N}$. We thus have an expression in terms of $\delta$, $N$, $d_vc$ and $\epsilon$. Given that we are considering a upper bound for $95\%$ confidence, we have that $\sigma = 0.05$. We thus have values for all these variables, and thus can solve for $\epsilon$ as follows.
+	\begin{align}
+	4m_h(2N)e^{-\frac{1}{8}\epsilon^2N} &= \delta && \text{VC inequality} \\
+	ln(4m_h(2N))+ln(e^{-\frac{1}{8}\epsilon^2N}) &= ln(\delta) && \text{ln both cards} \\
+	\epsilon &= \sqrt{\frac{-8}{N}ln(\frac{\sigma}{4m_h(2N)})} && \text{algebra} \\
+	&\approx 0.389 && \text{plug in variables and calculate}
+	\end{align}
+	We can thus bound the error as 0.389, meaning the misclassification rate could be as high as $0.439$.
+	\item Suppose you have 10,000 training examples, a hypothesis set with VC dimension 2, and that $E_in=0.06$. Give a low bound with 90\% confidence for $E_in$.
+	We approach this problem in the same way as above, given that we have $N=1000$, $d_{vc}=2$, and $\sigma=0.1$. We can thus plug these values into the previous equation as follows:
+	\begin{align}
+	\epsilon &= \sqrt{\frac{-8}{N}ln(\frac{\sigma}{4m_h(2N)})} && \text{algebra} \\
+	&\approx 0.301
+	\end{align}
+	Thus the error can be as low as $0.06 - 0.301 = -0.241$, which suggests that our bounds are too large to be meaningful.
+	\item Suppose you have a hypothesis set with VC dimension 5 and you want to be 95\% certain the generalization error is less than 0.1. How many observations do you need?
+	\\\\ We have that $d_{vc}=5$ and want to be $95\%$ sure that the generalization error ($|E_{in}-E_{out}|$) is less than 0.1. We use the VC inequality to solve for $N$ when $\epsilon=0.1$.
+	\begin{align}
+	\sigma &\leq 4m_h(2N)e^{-\frac{1}{8}\epsilon^2N} && \text{VC inequality} \\
+	\sigma &\leq (8N^{d^{vc}}+4)e^{-\frac{1}{8}\epsilon^2N}	&& \text{substitute} 
+	\end{align}
+	As we have multiple $N$ terms, we cannot simply solve for it. Instead we plug in several values for $N$ until we find the correct value for $N$ that approaches $\sigma=0.5$. This approach finds that the right value for $N$ is approximately 445-450.
+	\item .
+	\begin{enumerate}
+		\item Which bound on $E_{out}$ provides a more accurate estimate of the true performance?
+		\\\\ We solve for the error bound on the train and test set separately. Given that we have a single hypothesis with respect to the test set, we can use Hoeffding's inequality as follows.
+		\begin{align}
+		\sigma &= 2e^{-2\epsilon^2N} && \text{Hoeffding's inequality} \\
+		ln(\sigma) &= ln(2) + ln(e^{-2\epsilon^2N}) && \text{ln both sides} \\
+		-2\epsilon^2N &= ln(\frac{\sigma}{2}) && \text{algebra} \\
+		\epsilon &= \sqrt{\frac{ln(\frac{\sigma}{2})}{2N}} && \text{algebra} \\
+		\epsilon &\approx 0.122
+		\end{align}
+		We now find the bound for the training set. For this, we must consider all hypotheses as they were chosen based on the train set. We thus use Hoeffding's inequality for multiple hypotheses as follows.
+		\begin{align}
+		\sigma &= M2e^{-2\epsilon^2N} && \text{Hoeffding's inequality} \\
+		ln(\sigma) &= ln(2M) + ln(e^{-2\epsilon^2N}) && \text{ln both sides} \\
+		-2\epsilon^2N &= ln(\frac{\sigma}{2M}) && \text{algebra} \\
+		\epsilon &= \sqrt{\frac{ln(\frac{\sigma}{2M})}{-2N}} \\
+		\epsilon &\approx 0.128
+		\end{align}
+		We can see that the test set produces a slightly more accurate estimation of the out of sample error.
+		\item Repeat the previous, splitting the size of the train and test sets.
+		\\\\ For the test set, we use the previous expression $\epsilon = \sqrt{\frac{ln(\frac{\sigma}{2})}{2N}}$ to approximate $e\approx0.071$. For the train set, we use the expression $\epsilon = \sqrt{\frac{ln(\frac{\sigma}{2M})}{-2N}}$ to approximate $\epsilon\approx 0.223$. In this case, the test set provides the best estimate of the error.
+		\item Explain why the first scenario is preferred.
+		\\\\ When learning from data, we have two objectives with respect to $E_{in}$ and $E_{out}$. Firstly, we want $E_out$ to be small, meaning that we have a model that accurately estimates the population of interest. As we cannot estimate this directly, we are concerned with the generalization error, meaning how good of an approximation is $E_{in}$ is for $E_{out}$.
+		\\ We have seen that the second scenario provides the lowest generalization error, meaning we have the most accurate estimate of $E_{out}$. This is certainly desirable, but says nothing of how low the error actually is. We might have a better estimate of $E_{out}$, but it is unlikely that we have a good model. It is likely not worth trading the better generalizability for the decreased model accuracy.
+	\end{enumerate}
+\end{enumerate}
+	
+
+\end{document}
