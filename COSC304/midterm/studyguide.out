@@ -4,11 +4,10 @@
 \BOOKMARK [2][-]{subsection.1.3}{Relations and Functions}{section.1}% 4
 \BOOKMARK [2][-]{subsection.1.4}{Cardinality of Sets}{section.1}% 5
 \BOOKMARK [1][-]{section.2}{Alphabets and Languages}{}% 6
-\BOOKMARK [2][-]{subsection.2.1}{Definitions}{section.2}% 7
-\BOOKMARK [2][-]{subsection.2.2}{Regular Languages}{section.2}% 8
+\BOOKMARK [2][-]{subsection.2.1}{Regular Languages}{section.2}% 7
+\BOOKMARK [2][-]{subsection.2.2}{Pumping Lemma}{section.2}% 8
 \BOOKMARK [1][-]{section.3}{Finite Automata}{}% 9
-\BOOKMARK [2][-]{subsection.3.1}{Definitions}{section.3}% 10
-\BOOKMARK [2][-]{subsection.3.2}{Regular Expressions to f.a.}{section.3}% 11
+\BOOKMARK [2][-]{subsection.3.1}{Deterministic versus Non-Deterministic}{section.3}% 10
+\BOOKMARK [2][-]{subsection.3.2}{Regular Expressions to fa}{section.3}% 11
 \BOOKMARK [2][-]{subsection.3.3}{Simplifying}{section.3}% 12
-\BOOKMARK [2][-]{subsection.3.4}{Converting ndfa to dfa}{section.3}% 13
-\BOOKMARK [2][-]{subsection.3.5}{Finding Language of f.a.}{section.3}% 14
+\BOOKMARK [2][-]{subsection.3.4}{Finding Language of fa}{section.3}% 13

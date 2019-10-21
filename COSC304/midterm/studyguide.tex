@@ -10,6 +10,7 @@
 \usepackage{graphicx}
 \usepackage{natbib}        %For the bibliography
 \usepackage{tikz}
+\usetikzlibrary{automata, positioning, arrows}
 \bibliographystyle{apalike}%For the bibliography
 \usepackage[margin=1.0in]{geometry}
 \usepackage{float}
@@ -56,15 +57,61 @@
 				\item Multi function - $|A$ --- $B| = |P(B)|^{|A|}$
 			\end{itemize}
 	\section{Alphabets and Languages}
-		\subsection{Definitions}
 		\textbf{Alphabet} $A$ is a set of single characters. \textbf{Word} $w$ in alphabet $A$ is a string of characters from $A$. $A^*$ denotes the set of all words in alphabet $A$. This operation is called \emph{Kleene star}.
-		\subsection{Regular Languages}
+		\subsection{Regular Languages} \label{reglangs}
+		A language is \textbf{regular} if it can be defined as follows.
+		\begin{itemize}
+			\item The empty language $\O$ is regular
+			\item For each $a \in \epsilon$ where $\epsilon$ is the alphabet in question, the singleton language $\{a\}$ is regular
+			\item If $A$ and $B$ are regular, then $A \cup B$ is regular
+			\item If $A$ and $B$ are regular, then $A \cdot B$ is regular
+			\item If $A$ is regular, then $A^*$ is regular.
+		\end{itemize}
+		Regular languages can be expressed by \textbf{regular expressions}. For each rule above, we have a corresponding regular expression.
+		\begin{itemize}
+			\item $e \rightarrow \O$
+			\item $a \rightarrow \{a\}$
+			\item $a \lor b \rightarrow \{a\} \cup \{a\} = \{a,b\}$
+			\item $ab \rightarrow \{a\} \cdot \{b\} = \{ab\}$
+			\item $a^* \rightarrow \{a\}^* = \{\O,a,a^2,a^3 \cdots \}$ 
+		\end{itemize}
+		\subsection{Pumping Lemma}
+		All finite languages are regular. For infinite languages, we use the \textbf{Pumping lemme} to determine whether or not they are regular.
 	\section{Finite Automata}
-		\subsection{Definitions}
-		\subsection{Regular Expressions to f.a.}
+		A \textbf{deterministic finite automata} consists of
+		\begin{itemize}
+			\item alphabet $A$
+			\item set of states $S = S_0,S_1,S_2 \cdots S_n$
+			\item transition function $f : S \text{ x } A \rightarrow S$
+		\end{itemize}
+		The transition function given a state $S_i$ and input $a$ changes the machine to state $S_j$. By adding
+		\begin{itemize}
+			\item start state $S_0$
+			\item final states $F \subset S$
+		\end{itemize}
+		we create a f.a. that can be said to \emph{accept a language}. The language accepted by a fa can be defined as $LM = \{w | S_0  \overset{w}{\rightarrow} \text{stops in final state}\}$
+		\subsection{Deterministic versus Non-Deterministic}
+			A deterministic fa is one where the number of arrows leaving each state is exactly equal to $|A|$. In a \textbf{non-deterministic} fa the number of arrows leaving a state is $\geq 0$. Additionally, the same word may lead to different states from the same state. In terms of functions, we consider the transition function as $f : S \text{ x } A \rightarrow S$ for a dfa and $f : S \text{ x } A$ ---  $S$ for a ndfa.
+			\\\\ We describe a procedure for converting a ndfa into a dfa.\footnote{See worksheet problem 7 for example.}
+			\begin{enumerate}
+				\item List $ES_0$, the set including the initial state and all states reachable without consuming any characters
+				\item For $a \in A$, list the set of states reachable from $ES_0$ by consuming $a$
+				\item Repeat 2. until no new sets are produced (including $\O$)
+				\item Draw the new dfa by treating each unique set as a state, where $E_S0$ is the initial state and any set containing a final state from the ndfa is a final state
+			\end{enumerate}
+		\subsection{Regular Expressions to fa}
+			The collection of languages accepted by fa is exactly equal to the regular languages. We can therefore define a simple fa for each of the regular expressions in section \ref{reglangs}. \\
+			\begin{itemize}
+				\item $e$ \\
+				\item $a$
+				\item $a \lor b$
+				\item $ab$
+				\item $a^*$
+			\end{itemize}
+			These can be used as building blocks to construct fa for more complex regular expressions. When two of these are chained together, a new state must be added where all final states can reach this new state using $e$.
 		\subsection{Simplifying}
-		\subsection{Converting ndfa to dfa}
-		\subsection{Finding Language of f.a.}
+		
+		\subsection{Finding Language of fa}
 	
 
 \end{document}
