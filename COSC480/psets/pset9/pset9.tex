@@ -1,0 +1,51 @@
+\documentclass{article}
+\usepackage{amsmath} %This allows me to use the align functionality.
+                     %If you find yourself trying to replicate
+                     %something you found online, ensure you're
+                     %loading the necessary packages!
+\usepackage{amsfonts}%Math font
+\usepackage{graphicx}%For including graphics
+\usepackage{hyperref}%For Hyperlinks
+\usepackage{listings}
+\usepackage{graphicx}
+\usepackage{natbib}        %For the bibliography
+\usepackage{tikz}
+\bibliographystyle{apalike}%For the bibliography
+\usepackage[margin=1.0in]{geometry}
+\usepackage{float}
+\DeclareMathOperator{\EX}{\mathbb{E}}
+\begin{document}
+%set the size of the graphs to fit nicely on a 8.5x11 sheet
+\noindent \textbf{Caio Brighenti }\\
+\noindent \textbf{COSC 480 - Learning From Data}\\%\\ gives you a new line
+\noindent \textbf{Fall 2019}\\%\\ gives you a new line
+\noindent \textbf{Problem Set 9}\vspace{1em}\\
+\begin{enumerate}
+	\item Show that the expected squared error can be decomposed into bias, variance, and irreducible error.
+	\\\\ Before showing that the expected error can be decomposed as such, we clarify a few formulas and properties that will be used.
+	\begin{enumerate}
+		\item \textbf{Average prediction: } $\EX[g(x)] = \overline{g}(x)$
+		\item \textbf{Variance: } $\EX [(g(x)-\overline{g}(x))^2] = \EX [g(x)^2] - \overline{g}(x)^2$
+		\item \textbf{Bias: } $(f(x) - \overline{g}(x))^2$
+		\item \textbf{Variance of random variable: } $\EX[(X-\EX[X])^2] = \sigma^2$
+		\item \textbf{Expected value of a constant: } $\EX[c] = c, \forall $ constants $c$
+	\end{enumerate}
+	We now proceed with the derivation.
+	\begin{align}
+		\EX[\text{MSE}] &= \EX[(g(x)-y)^2] && \text{definition of MSE} \\
+		&= \EX[g(x)^2-2g(x)y+y^2] && \text{expand} \\
+		&= \EX[g(x)^2-2g(x)(f(x)+Z)+(f(x)+Z)^2] && \text{y = f(x) + Z} \\
+		&= \EX[g(x)^2] - \EX[2g(x)f(x)+Z] + \EX[f(x)^2+2f(x)Z+Z^2] && \text{expand} \\
+		&= \EX[g(x)^2] - 2\overline{g}(x)\EX[f(x)+Z]+ \EX[f(x)^2+2f(x)Z+Z^2] && \text{property (a)} \\
+		&= \EX[g(x)^2] - 2\overline{g}(x)(f(x)+\EX[Z])+f(x)^2+2f(x)\EX[z]+\EX[Z^2] && \text{property (e)} \\
+		&= \EX[g(x)^2] - 2\overline{g}(x)f(x) - 2\overline{g}(x)\EX[Z] + f(x)^2 + 2f(x)\EX[Z] + \EX[Z^2] && \text{expand} \\
+		&= \EX[g(x)^2] - 2\overline{g}(x)f(x) + f(x)^2 + \EX[Z^2] && \EX[Z] = 0 \\
+		&= \EX[g(x)^2] - \overline{g}(x)^2 +\overline{g}(x)^2  - 2\overline{g}(x)f(x) + f(x)^2 + \EX[Z^2] && \text{algebra} \\
+		&= \EX[g(x)^2] - \overline{g}(x)^2 + (f(x)-\overline{g}(x))^2 + \EX[Z^2] && \text{simplify} \\
+		&= \text{Var}(x) + \text{Bias}(x) + \EX[Z^2] && \text{(b),(c)} \\
+		&= \text{Var}(x) + \text{Bias}(x) + \sigma^2 && \text{(d) since $E[Z]=0$}
+	\end{align}
+\end{enumerate}
+	
+
+\end{document}
