@@ -76,7 +76,13 @@
 			\item $a^* \rightarrow \{a\}^* = \{\O,a,a^2,a^3 \cdots \}$ 
 		\end{itemize}
 		\subsection{Pumping Lemma}
-		All finite languages are regular. For infinite languages, we use the \textbf{Pumping lemme} to determine whether or not they are regular.
+		All finite languages are regular. For infinite languages, we use the Pumping lemma to determine whether or not they are regular. Specifically, the Pumping lemma states that if $L$ is regular and infinite, then there exists an $N > 0$ such that for all words $\{w : w \in L \land |w| \geq N\}$,  $w$ can be decomposed into $w = xyz$ such that 
+		\begin{itemize}
+			\item $y \neq e$
+			\item $|xy| \leq N$
+			\item $wy^kz \in L$ for all $k \geq 0$	
+		\end{itemize}		 
+		This is typically used to show something is \emph{not} regular through proof by contradiction.\footnote{See worksheet problem 5 for an example.}
 	\section{Finite Automata}
 		A \textbf{deterministic finite automata} consists of
 		\begin{itemize}
