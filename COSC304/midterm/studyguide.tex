@@ -20,15 +20,51 @@
 \noindent \textbf{COSC 304 - Computer Theory}\\%\\ gives you a new line
 \noindent \textbf{Fall 2019}\\%\\ gives you a new line
 \noindent \textbf{Midterm Study Guide}\vspace{1em}\\
-\begin{itemize}
-	\item \textbf{Set properties}
-	\item \textbf{Finite and infinite sets}
-	\item \textbf{Total, partial, and multi-functions}
-	\item \textbf{Regular language closure properties}
-	\item \textbf{Regular language to f.a. translation}
-	\item \textbf{Simplifying f.a.}
-	\item \textbf{Converting ndfa to dfa}
-\end{itemize}
+	\section{Sets}
+	\textbf{Sets} are collections of values of one type with no internal structure. Sets have no repeated items and order does not matter.
+		\subsection{Set Operations}
+			\begin{itemize}
+				\item Union - $A \cup B = \{x : x \in A \text{ or } x \in B\}$
+				\item Intersect - $ A \cap B = \{ x : x \in A \text{ and } x \in B\}$
+				\item Concatenation - $AB = \{ ab : a \in A \text{ and } b \in B\}$
+				\item Cartesian Product - $A \text{x} B  = \{(a,b) : a \in A \text{ and } b \in B\}$
+				\item Complement - $A^c = \{x : x \notin A\}$
+				\item Powerset - $P(A) = \{A' : A' \subset A\}$
+			\end{itemize}
+		\subsection{Finite and Infinite Sets}
+			Set $A$ is \textbf{finite} if it can be put in 1-to-1 correspondence with an initial segment of $\mathbb{N}$, or is the empty set $\O$. More intuitively, a set is finite if we can list the elements of $A$ in finite time.
+			\\\\ Set $A$ is \textbf{countably infinite} if it can be put in 1-to-1 correspondence with \emph{all} of $\mathbb{N}$. Intuitively, a procedure can be devised to list all elements, but this procedure will never finish.
+			\\\\ Set $A$ is \textbf{uncountably infinite} if it is not countable.
+		\subsection{Relations and Functions}
+		A \textbf{function} can be defined as a binary operation between two sets that given an input in set $A$ produces an output in set $B$. There are three types of functions:
+		\begin{enumerate}
+			\item Total function: $A \rightarrow B$ means for every input $A$ there is exactly one output $B$
+			\item Partial function: $A \rightharpoonup B$ means for every input $A$ there is at most one output $B$
+			\item Multi function: $A$ --- $B$ means for every input $A$ there are 0, 1, or many outputs in $B$
+		\end{enumerate}
+		We also define the \textbf{identity function} such that for any type $A$, $f(A) = A$.
+		\subsection{Cardinality of Sets}
+		The cardinality of a set $A$, or $|A|$, is the total number of elements in $A$.
+		\begin{itemize}
+				\item Union - $|A \cup B| = |A| + |B| - |A \cap B|$
+				\item Intersect - $ |A \cap B| = |A| + |B| - |A\cup B|$
+				\item Concatenation - 
+				\item Cartesian Product - $|A \text{x} B|  = |A| \text{x} |B|$
+				\item Powerset - $P(A) = 2^{|A|}$
+				\item Total function - $|A \rightarrow B| = |B|^{|A|}$
+				\item Partial function - $|A \rightharpoonup B| = |B+1|^{|A|}$
+				\item Multi function - $|A$ --- $B| = |P(B)|^{|A|}$
+			\end{itemize}
+	\section{Alphabets and Languages}
+		\subsection{Definitions}
+		\textbf{Alphabet} $A$ is a set of single characters. \textbf{Word} $w$ in alphabet $A$ is a string of characters from $A$. $A^*$ denotes the set of all words in alphabet $A$. This operation is called \emph{Kleene star}.
+		\subsection{Regular Languages}
+	\section{Finite Automata}
+		\subsection{Definitions}
+		\subsection{Regular Expressions to f.a.}
+		\subsection{Simplifying}
+		\subsection{Converting ndfa to dfa}
+		\subsection{Finding Language of f.a.}
 	
 
 \end{document}
