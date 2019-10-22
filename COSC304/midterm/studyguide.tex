@@ -114,9 +114,16 @@
 				\item $ab$
 				\item $a^*$
 			\end{itemize}
-			These can be used as building blocks to construct fa for more complex regular expressions. When two of these are chained together, a new state must be added where all final states can reach this new state using $e$.
-		\subsection{Simplifying}
-		
+			These can be used as building blocks to construct fa for more complex regular expressions. When two of these are chained together, a new state must be added where all final states can reach this new state using $e$.\footnote{See worksheet problem 2 for example.}
+		\subsection{Simplifying dfa}
+		We outline a process for simplifying a dfa. By simplifying we mean producing a new dfa with a possibly smaller number of states that accepts the same language.\footnote{See worksheet problem 8 for example.}
+		\begin{enumerate}
+			\item Partition the states into $P_0$ composed of two partitions, one with the final states $F$ and the other with the non-final states $\overset{~}{F}$
+			\item List the behavior of each state $s \in S$ under each character $a \in A$
+			\item Partition $P_0$ into $P_1$ such that each state in each partition leads to the same partition when consuming $a \in A$ \footnote{That is to say, all states in a partition must go to the same other partition given a character $a \in A$.}
+			\item Repeat 3. until no new partitions are formed
+			\item Draw a dfa where each partition is a state, the partition including $S_0$ is the initial state, and any partition such that $P \subset F$ is a final state  
+		\end{enumerate}
 		\subsection{Finding Language of fa}
 	
 
