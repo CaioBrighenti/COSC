@@ -124,7 +124,13 @@
 			\item Repeat 3. until no new partitions are formed
 			\item Draw a dfa where each partition is a state, the partition including $S_0$ is the initial state, and any partition such that $P \subset F$ is a final state  
 		\end{enumerate}
-		\subsection{Finding Language of fa}
-	
-
+		\subsection{Finding Language of f.a.}
+	We define a recursive procedure for finding the language accepted by an arbitrary f.a.\footnote{See worksheet problem 4 for example.} For any two states $i$ and $j$ and intermediate states up to $k$, the words that take the f.a. from state $i$ to $j$ using intermediate states up to at most $k$ is given by 
+	$$R(i,j,k) = R(i,j,k-1) \cup R(i,k,k-1)R(k,k,k-1)^*R(k,j,j-1)$$
+	This is applied recursively to each term until $k$ goes to 0, at which point we consider only edges. In practice it is often obvious that no paths exist prior to reaching $k=0$, at which point the term can be substituted by $\O$. It is also useful to note the following properties:
+	\begin{itemize}
+		\item $A\cdot \O = \O$, for any set A
+		\item $\O^* = \{e\}$
+		\item $A \cdot \{e\} = A$, for any set A
+	\end{itemize}	 
 \end{document}
