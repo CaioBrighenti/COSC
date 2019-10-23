@@ -60,7 +60,8 @@ def error_function(X, y, w):
     ##################################################
     # TODO: write code here to compute error correctly
     ##################################################
-    raise NotImplementedError()
+    y_out = np.dot(X,w)
+    error = sum((y-y_out)**2) / len(y)
     return error
 
 def normal_equations(X, y):
@@ -123,12 +124,14 @@ def gradient_descent( X, y, eta, iters, w=None ):
     Ein_history = np.zeros(iters)
 
     for k in range(iters):
-
         ######################################################
         # TODO: compute gradient (vectorized) and update w
         ######################################################
-        raise NotImplementedError()
-
+        y_out = np.dot(X,w)
+        update = np.sum(np.multiply(y-y_out,X.T).T,axis=0)
+        print(update)
+        print(np.multiply(update,eta))
+        w = w + np.multiply(update,eta)
         # Record error function
         Ein_history[k] = error_function(X, y, w)
 

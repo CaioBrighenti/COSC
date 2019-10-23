@@ -15,6 +15,7 @@
 \usepackage[margin=1.0in]{geometry}
 \usepackage{float}
 \DeclareMathOperator{\EX}{\mathbb{E}}
+\graphicspath{ {pictures/} }
 \begin{document}
 %set the size of the graphs to fit nicely on a 8.5x11 sheet
 \noindent \textbf{Caio Brighenti }\\
@@ -108,11 +109,14 @@
 		\subsection{Regular Expressions to fa}
 			The collection of languages accepted by fa is exactly equal to the regular languages. We can therefore define a simple fa for each of the regular expressions in section \ref{reglangs}. \\
 			\begin{itemize}
-				\item $e$ \\
-				\item $a$
-				\item $a \lor b$
-				\item $ab$
-				\item $a^*$
+				\item $a$ \\ 
+				\includegraphics[scale=0.5]{a}
+				\item $a \lor b$ \\ 
+				\includegraphics[scale=0.5]{aorb}
+				\item $ab$ \\
+				\includegraphics[scale=0.25]{ab}
+				\item $a^*$ \\
+				\includegraphics[scale=0.5]{astar}
 			\end{itemize}
 			These can be used as building blocks to construct fa for more complex regular expressions. When two of these are chained together, a new state must be added where all final states can reach this new state using $e$.\footnote{See worksheet problem 2 for example.}
 		\subsection{Simplifying dfa}
@@ -126,7 +130,7 @@
 		\end{enumerate}
 		\subsection{Finding Language of f.a.}
 	We define a recursive procedure for finding the language accepted by an arbitrary f.a.\footnote{See worksheet problem 4 for example.} For any two states $i$ and $j$ and intermediate states up to $k$, the words that take the f.a. from state $i$ to $j$ using intermediate states up to at most $k$ is given by 
-	$$R(i,j,k) = R(i,j,k-1) \cup R(i,k,k-1)R(k,k,k-1)^*R(k,j,j-1)$$
+	$$R(i,j,k) = R(i,j,k-1) \cup R(i,k,k-1)R(k,k,k-1)^*R(k,j,k-1)$$
 	This is applied recursively to each term until $k$ goes to 0, at which point we consider only edges. In practice it is often obvious that no paths exist prior to reaching $k=0$, at which point the term can be substituted by $\O$. It is also useful to note the following properties:
 	\begin{itemize}
 		\item $A\cdot \O = \O$, for any set A

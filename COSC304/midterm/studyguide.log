@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6500 64-bit) (preloaded format=pdflatex 2018.1.27)  22 OCT 2019 14:05
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6500 64-bit) (preloaded format=pdflatex 2018.1.27)  22 OCT 2019 21:50
 entering extended mode
 **./studyguide.tex
 (studyguide.tex
@@ -615,20 +615,20 @@ Package: float 2001/11/08 v1.3d Float enhancements (AL)
 ) (studyguide.aux)
 \openout1 = `studyguide.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 18.
-LaTeX Font Info:    ... okay on input line 18.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 18.
-LaTeX Font Info:    ... okay on input line 18.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 18.
-LaTeX Font Info:    ... okay on input line 18.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 18.
-LaTeX Font Info:    ... okay on input line 18.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 18.
-LaTeX Font Info:    ... okay on input line 18.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 18.
-LaTeX Font Info:    ... okay on input line 18.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 18.
-LaTeX Font Info:    ... okay on input line 18.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 19.
+LaTeX Font Info:    ... okay on input line 19.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 19.
+LaTeX Font Info:    ... okay on input line 19.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 19.
+LaTeX Font Info:    ... okay on input line 19.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 19.
+LaTeX Font Info:    ... okay on input line 19.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 19.
+LaTeX Font Info:    ... okay on input line 19.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 19.
+LaTeX Font Info:    ... okay on input line 19.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 19.
+LaTeX Font Info:    ... okay on input line 19.
 
 ("D:\Program Files (x86)\MiKTeX\tex\context\base\supp-pdf.mkii"
 [Loading MPS to PDF converter (version 2006.09.02).]
@@ -657,7 +657,7 @@ G,.JBIG2,.JB2,.eps]
 (grfext)             \AppendGraphicsExtensions on input line 456.
 )
 \AtBeginShipoutBox=\box64
-Package hyperref Info: Link coloring OFF on input line 18.
+Package hyperref Info: Link coloring OFF on input line 19.
 
 ("D:\Program Files (x86)\MiKTeX\tex\latex\hyperref\nameref.sty"
 Package: nameref 2016/05/21 v2.44 Cross-referencing by name of section
@@ -667,9 +667,9 @@ Package: gettitlestring 2016/05/16 v1.5 Cleanup title references (HO)
 )
 \c@section@level=\count147
 )
-LaTeX Info: Redefining \ref on input line 18.
-LaTeX Info: Redefining \pageref on input line 18.
-LaTeX Info: Redefining \nameref on input line 18.
+LaTeX Info: Redefining \ref on input line 19.
+LaTeX Info: Redefining \pageref on input line 19.
+LaTeX Info: Redefining \nameref on input line 19.
 
 (studyguide.out) (studyguide.out)
 \@outlinefile=\write4
@@ -712,36 +712,36 @@ LaTeX Info: Redefining \nameref on input line 18.
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 20--24
+Underfull \hbox (badness 10000) in paragraph at lines 21--25
 
  []
 
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 28.
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 29.
 ("D:\Program Files (x86)\MiKTeX\tex\latex\base\omscmr.fd"
 File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 28.
-LaTeX Font Info:    Try loading font information for U+msa on input line 28.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 29.
+LaTeX Font Info:    Try loading font information for U+msa on input line 29.
 
 ("D:\Program Files (x86)\MiKTeX\tex\latex\amsfonts\umsa.fd"
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 28.
+LaTeX Font Info:    Try loading font information for U+msb on input line 29.
 
 ("D:\Program Files (x86)\MiKTeX\tex\latex\amsfonts\umsb.fd"
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
 
-LaTeX Warning: Command \O invalid in math mode on input line 36.
+LaTeX Warning: Command \O invalid in math mode on input line 37.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 36--39
+Underfull \hbox (badness 10000) in paragraph at lines 37--40
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 36--39
+Underfull \hbox (badness 10000) in paragraph at lines 37--40
 
  []
 
@@ -749,63 +749,87 @@ Underfull \hbox (badness 10000) in paragraph at lines 36--39
 
 {C:/Users/Caio Brighenti/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}]
 
-LaTeX Warning: Command \O invalid in math mode on input line 64.
+LaTeX Warning: Command \O invalid in math mode on input line 65.
 
 
-LaTeX Warning: Command \O invalid in math mode on input line 72.
+LaTeX Warning: Command \O invalid in math mode on input line 73.
 
 
-LaTeX Warning: Command \O invalid in math mode on input line 76.
+LaTeX Warning: Command \O invalid in math mode on input line 77.
 
 [2]
-Underfull \hbox (badness 10000) in paragraph at lines 100--102
+Underfull \hbox (badness 10000) in paragraph at lines 101--103
 
  []
 
 
-LaTeX Warning: Command \O invalid in math mode on input line 105.
+LaTeX Warning: Command \O invalid in math mode on input line 106.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 109--110
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 111--112
+Underfull \hbox (badness 10000) in paragraph at lines 110--111
 
  []
 
-[3]
+<pictures/a.jpg, id=86, 238.64156pt x 97.86563pt>
+File: pictures/a.jpg Graphic file (type jpg)
+<use pictures/a.jpg>
+Package pdftex.def Info: pictures/a.jpg  used on input line 113. on input line 
+113.
+Package pdftex.def Info: Requested size: 119.32048pt x 48.93268pt on input line
+ 113.
+<pictures/aorb.jpg, id=87, 271.76532pt x 205.5178pt>
+File: pictures/aorb.jpg Graphic file (type jpg)
+<use pictures/aorb.jpg>
+Package pdftex.def Info: pictures/aorb.jpg  used on input line 115. on input li
+ne 115.
+Package pdftex.def Info: Requested size: 135.88232pt x 102.75865pt on input lin
+e 115.
+<pictures/ab.jpg, id=88, 547.2947pt x 183.68625pt>
+File: pictures/ab.jpg Graphic file (type jpg)
+<use pictures/ab.jpg>
+Package pdftex.def Info: pictures/ab.jpg  used on input line 117. on input line
+ 117.
+Package pdftex.def Info: Requested size: 136.82333pt x 45.92143pt on input line
+ 117.
+[3 <./pictures/a.jpg> <./pictures/aorb.jpg>]
+<pictures/astar.jpg, id=98, 245.41687pt x 130.23656pt>
+File: pictures/astar.jpg Graphic file (type jpg)
+<use pictures/astar.jpg>
+Package pdftex.def Info: pictures/astar.jpg  used on input line 119. on input l
+ine 119.
+Package pdftex.def Info: Requested size: 122.70813pt x 65.11812pt on input line
+ 119.
 
-LaTeX Warning: Command \O invalid in math mode on input line 130.
+
+LaTeX Warning: Command \O invalid in math mode on input line 134.
 
 
-LaTeX Warning: Command \O invalid in math mode on input line 132.
+LaTeX Warning: Command \O invalid in math mode on input line 136.
 
 
-LaTeX Warning: Command \O invalid in math mode on input line 132.
+LaTeX Warning: Command \O invalid in math mode on input line 136.
 
 
-LaTeX Warning: Command \O invalid in math mode on input line 133.
+LaTeX Warning: Command \O invalid in math mode on input line 137.
 
-[4]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 136.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 136.
+[4 <./pictures/ab.jpg> <./pictures/astar.jpg>]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 140.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 140.
  (studyguide.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 136.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 136.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 140.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 140.
 Package rerunfilecheck Info: File `studyguide.out' has not changed.
 (rerunfilecheck)             Checksum: 4B30F2872F0FB50AC49F37EC959F5FF5;866.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 136.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 140.
  ) 
 Here is how much of TeX's memory you used:
- 18647 strings out of 493312
- 357006 string characters out of 3138006
- 434277 words of memory out of 3000000
- 21864 multiletter control sequences out of 15000+200000
+ 18669 strings out of 493312
+ 357381 string characters out of 3138006
+ 434292 words of memory out of 3000000
+ 21880 multiletter control sequences out of 15000+200000
  10303 words of font info for 40 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 55i,8n,66p,452b,387s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 55i,8n,66p,452b,395s stack positions out of 5000i,500n,10000p,200000b,50000s
 <D:/Program Files (x86)/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx10.pfb><D:/
 Program Files (x86)/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx12.pfb><D:/Progra
 m Files (x86)/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><D:/Program File
@@ -819,9 +843,9 @@ fonts/cm/cmr8.pfb><D:/Program Files (x86)/MiKTeX/fonts/type1/public/amsfonts/cm
 .pfb><D:/Program Files (x86)/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy8.pfb><D
 :/Program Files (x86)/MiKTeX/fonts/type1/public/amsfonts/cm/cmti10.pfb><D:/Prog
 ram Files (x86)/MiKTeX/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on studyguide.pdf (4 pages, 177385 bytes).
+Output written on studyguide.pdf (4 pages, 241958 bytes).
 PDF statistics:
- 166 PDF objects out of 1000 (max. 8388607)
+ 170 PDF objects out of 1000 (max. 8388607)
  36 named destinations out of 1000 (max. 500000)
- 117 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 137 words of extra memory for PDF output out of 10000 (max. 10000000)
 
