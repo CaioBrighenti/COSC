@@ -43,6 +43,11 @@ def generate_dataset():
     y = np.dot(X, w) + np.random.randn(N)   # polynomial plus noise
     return x, y
 
+def normalize(X):   
+    X_norm = (X[:,1:] - np.mean(X[:,1:],axis=0)) / np.std(X[:,1:],axis=0)
+    X_norm = np.insert(X_norm, 0, X[:,0], axis=1)
+    return(X_norm)
+
 
 def error_function(X, y, w):
     '''
@@ -128,9 +133,9 @@ def gradient_descent( X, y, eta, iters, w=None ):
         # TODO: compute gradient (vectorized) and update w
         ######################################################
         y_out = np.dot(X,w)
-        update = np.sum(np.multiply(y-y_out,X.T).T,axis=0)
-        print(update)
-        print(np.multiply(update,eta))
+        update = np.sum(np.multiply(y-y_out,X.T).T,axis=0) / N
+        #print(update)
+        #print(np.multiply(update,eta))
         w = w + np.multiply(update,eta)
         # Record error function
         Ein_history[k] = error_function(X, y, w)
