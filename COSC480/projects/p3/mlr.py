@@ -48,6 +48,24 @@ def normalize(X):
     X_norm = np.insert(X_norm, 0, X[:,0], axis=1)
     return(X_norm)
 
+def un_normalize(w,X):
+    w_copy = w.copy()
+    w_copy[0] = w_copy[0] - np.sum(
+                                np.divide(
+                                    np.multiply(
+                                        w[1:],
+                                        np.mean(X[:,1:],axis=0)
+                                    ),
+                                    np.std(
+                                        X[:,1:],
+                                        axis=0
+                                    )
+                                )
+                            )
+    X_stds = np.insert(np.std(X[:,1:],axis=0), 0, 1)
+    w_unnorm = np.divide(w_copy,X_stds)
+    return(w_unnorm)
+
 
 def error_function(X, y, w):
     '''
@@ -134,8 +152,6 @@ def gradient_descent( X, y, eta, iters, w=None ):
         ######################################################
         y_out = np.dot(X,w)
         update = np.sum(np.multiply(y-y_out,X.T).T,axis=0) / N
-        #print(update)
-        #print(np.multiply(update,eta))
         w = w + np.multiply(update,eta)
         # Record error function
         Ein_history[k] = error_function(X, y, w)
