@@ -52,6 +52,11 @@ move (str,state,ch,pos) = let (newstate,overwritech,dir) = spec1 (state,ch) in
 test5 = move (str1,0,'d',3)
 test6 = move (str1,1,'c',2)
 test7 = move (move (str1,0,'d',3))
+
+--5
+run (str,state,ch,pos) = if (state == 100)
+                        then (str,state,ch,pos)
+                        else run(move(str,state,ch,pos))
  
 {- Expressions test1, ... test10 ARE DEFINED IN THIS FILE, NOT IN THE TEST FILE -}
 
