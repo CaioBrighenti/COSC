@@ -1,12 +1,11 @@
 -- COSC 304 Fall 2019 
--- Lab 8 November 5&7, 2019
--- CBRLab8 
+-- Lab9 Nov 12&14, 2019
+-- ABCLab9 
 
 {- Replace ABC above and below with your 3 letters, capped.
 Then rename the file, again changing ABC with your 3 letters, capped. -}
 
-module CBRLab8 where 
-
+module ABCLab9 where 
 -- 1
 spec1 (0,'#') = (0,'#','l')
 spec1 (0,'a') = (1,'a','l')
@@ -27,7 +26,6 @@ spec1 (2,'d') = (2,'d','r')
 -- 2
 val (first:rest,0) = first
 val (first:rest,pos) = val (rest,pos-1) 
-test1 = val ("abcd",2)
 
 listlength [] = 0
 listlength (firstval:restoflist) = 1 + listlength restoflist
@@ -36,35 +34,26 @@ startstring str = '#':str ++ ['#']
 startpos str = (listlength str) + 1
 
 str1 = "abcd"
-test2 = startstring str1
-test3 = val (startstring str1, startpos str1)
 
 --3
 chstr (first:rest,ch,0) = ch:rest
 chstr (first:rest,ch,pos) = first:(chstr (rest,ch,pos-1))
-test4 = chstr (str1,'z',2)
 
 --4
-move (str,state,ch,pos) = let (newstate,overwritech,dir) = spec1 (state,ch) in
+newmove tmspec (str,state,ch,pos) = let (newstate,overwritech,dir) = tmspec (state,ch) in
                         if (dir == 'r') then (chstr (str,overwritech,pos),newstate,val (str,pos+1),pos+1) else
                         if (dir == 'l') then (chstr (str,overwritech,pos),newstate,val (str,pos-1),pos-1) else
                             (chstr (str,overwritech,pos),newstate,overwritech,pos)
-test5 = move (str1,0,'d',3)
-test6 = move (str1,1,'c',2)
-test7 = move (move (str1,0,'d',3))
-
 --5
-run (str,state,ch,pos) = if (state == 100) 
+newrun tmspec (str,state,ch,pos) = if (state == 100) 
                         then (str,state,ch,pos) 
-                        else run (move (str,state,ch,pos))
+                        else newrun tmspec (newmove tmspec (str,state,ch,pos))
 
 --6
-startrun str = run (startstring str, 0, '#', startpos str)
-test8 = startrun str1
-test9 = startrun "bbcaa"
-test10 = startrun "bb#cd"
- 
-{- Expressions test1, ... test10 ARE DEFINED IN THIS FILE, NOT IN THE TEST FILE -}
+startrun tmspec str = newrun tmspec (startstring str, 0, '#', startpos str)
+
+
+{- Expressions test1, ... test6 ARE DEFINED IN THIS FILE, NOT IN THE TEST FILE -}
 
 
 
