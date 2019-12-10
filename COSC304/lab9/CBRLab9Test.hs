@@ -4,7 +4,7 @@
 
 {- Replace ABC in the import statement below with your 3 letters, capped, then uncomment the line -}
 
-import ABCLab9
+import CBRLab9
 
 {- DO NOT DEFINE test1, ... test6 IN THIS FILE. IT IS ONLY DEFINED IN YOUR MAIN PROGRAM
 
